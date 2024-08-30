@@ -70,11 +70,17 @@
     <Compile Include="Control\QuanLiFeedBack.Designer.cs">
       <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\QuanLiPhieuThu.cs">
+    <Compile Include="Control\QuanLyPhieuThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\QuanLiPhieuThu.Designer.cs">
-      <DependentUpon>QuanLiPhieuThu.cs</DependentUpon>
+    <Compile Include="Control\QuanLyPhieuThu.Designer.cs">
+      <DependentUpon>QuanLyPhieuThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TaoPhieuThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TaoPhieuThu.Designer.cs">
+      <DependentUpon>TaoPhieuThu.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\QuanLiPhong.cs">
       <SubType>UserControl</SubType>
@@ -111,8 +117,17 @@
     <EmbeddedResource Include="Control\QuanLiFeedBack.resx">
       <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\QuanLyPhieuThu.resx">
+      <DependentUpon>QuanLyPhieuThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TaoPhieuThu.resx">
+      <DependentUpon>TaoPhieuThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiPhong.resx">
       <DependentUpon>QuanLiPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\QuanLiThongKe.resx">
+      <DependentUpon>QuanLiThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
