@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
-    public partial class QuanLiThongKe : UserControl
+    public partial class TaoPhieuThu : UserControl
     {
-        public QuanLiThongKe()
+        public TaoPhieuThu()
         {
             InitializeComponent();
         }
