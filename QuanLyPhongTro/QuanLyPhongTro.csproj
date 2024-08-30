@@ -108,6 +108,9 @@
     <EmbeddedResource Include="Control\QuanLiDanCu.resx">
       <DependentUpon>QuanLiDanCu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\QuanLiFeedBack.resx">
+      <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiPhong.resx">
       <DependentUpon>QuanLiPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +143,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\account_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
