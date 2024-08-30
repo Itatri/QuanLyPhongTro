@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>QuanLyPhongTro</RootNamespace>
     <AssemblyName>QuanLyPhongTro</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiDanCu.resx">
       <DependentUpon>QuanLiDanCu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\QuanLiDichVu.resx">
+      <DependentUpon>QuanLiDichVu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiFeedBack.resx">
       <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
