@@ -49,7 +49,7 @@
             this.dataGridViewFeedBack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFeedBack.Location = new System.Drawing.Point(25, 76);
             this.dataGridViewFeedBack.Name = "dataGridViewFeedBack";
-            this.dataGridViewFeedBack.Size = new System.Drawing.Size(888, 457);
+            this.dataGridViewFeedBack.Size = new System.Drawing.Size(888, 688);
             this.dataGridViewFeedBack.TabIndex = 31;
             // 
             // label1
@@ -71,7 +71,7 @@
             this.Controls.Add(this.dataGridViewFeedBack);
             this.Controls.Add(this.label1);
             this.Name = "QuanLiFeedBack";
-            this.Size = new System.Drawing.Size(935, 557);
+            this.Size = new System.Drawing.Size(935, 780);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
