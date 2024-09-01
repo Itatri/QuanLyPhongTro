@@ -137,19 +137,32 @@
             // 
             // button8
             // 
+<<<<<<< Updated upstream
             this.button8.Location = new System.Drawing.Point(52, 475);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(103, 23);
             this.button8.TabIndex = 7;
             this.button8.Text = "Đăng xuất";
             this.button8.UseVisualStyleBackColor = true;
+=======
+            this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Location = new System.Drawing.Point(244, 12);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(930, 780);
+            this.panelForm.TabIndex = 1;
+>>>>>>> Stashed changes
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(923, 538);
             this.Controls.Add(this.panel2);
+=======
+            this.ClientSize = new System.Drawing.Size(1183, 801);
+            this.Controls.Add(this.panelForm);
+>>>>>>> Stashed changes
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "MainForm";
