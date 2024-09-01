@@ -149,14 +149,14 @@
             this.panelForm.BackColor = System.Drawing.Color.White;
             this.panelForm.Location = new System.Drawing.Point(244, 12);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(959, 780);
+            this.panelForm.Size = new System.Drawing.Size(931, 780);
             this.panelForm.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 801);
+            this.ClientSize = new System.Drawing.Size(1187, 801);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
