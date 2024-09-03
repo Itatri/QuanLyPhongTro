@@ -51,6 +51,7 @@
             this.dataGridViewFeedBack.Name = "dataGridViewFeedBack";
             this.dataGridViewFeedBack.Size = new System.Drawing.Size(888, 688);
             this.dataGridViewFeedBack.TabIndex = 31;
+            this.dataGridViewFeedBack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFeedBack_CellContentClick);
             // 
             // label1
             // 
