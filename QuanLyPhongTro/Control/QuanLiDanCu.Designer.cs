@@ -38,29 +38,30 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxGioiTinh = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtQueQuan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPhong = new System.Windows.Forms.ComboBox();
+            this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
-            this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
-            this.buttonThemCD = new System.Windows.Forms.Button();
-            this.buttonXoaCD = new System.Windows.Forms.Button();
-            this.buttonSuaCD = new System.Windows.Forms.Button();
-            this.buttonLuuCD = new System.Windows.Forms.Button();
+            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.pictureBoxAnhCuDan = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
+            this.buttonLuuCD = new System.Windows.Forms.Button();
+            this.buttonSuaCD = new System.Windows.Forms.Button();
+            this.buttonXoaCD = new System.Windows.Forms.Button();
+            this.buttonThemCD = new System.Windows.Forms.Button();
+            this.buttonChonAnh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
-            this.panelCRUDThongTinDanCu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).BeginInit();
+            this.panelCRUDThongTinDanCu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -80,6 +81,8 @@
             this.dataGridViewDanCu.Name = "dataGridViewDanCu";
             this.dataGridViewDanCu.Size = new System.Drawing.Size(888, 347);
             this.dataGridViewDanCu.TabIndex = 1;
+            this.dataGridViewDanCu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellClick);
+            this.dataGridViewDanCu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellContentClick);
             // 
             // label2
             // 
@@ -135,7 +138,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(388, 122);
+            this.label6.Location = new System.Drawing.Point(399, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 13;
@@ -149,12 +152,12 @@
             this.comboBoxGioiTinh.Size = new System.Drawing.Size(159, 21);
             this.comboBoxGioiTinh.TabIndex = 15;
             // 
-            // textBox3
+            // txtCCCD
             // 
-            this.textBox3.Location = new System.Drawing.Point(734, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(144, 20);
-            this.textBox3.TabIndex = 17;
+            this.txtCCCD.Location = new System.Drawing.Point(734, 25);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(144, 20);
+            this.txtCCCD.TabIndex = 17;
             // 
             // label7
             // 
@@ -165,12 +168,12 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "CCCD";
             // 
-            // textBox5
+            // txtSDT
             // 
-            this.textBox5.Location = new System.Drawing.Point(294, 75);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(148, 20);
-            this.textBox5.TabIndex = 19;
+            this.txtSDT.Location = new System.Drawing.Point(294, 75);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(148, 20);
+            this.txtSDT.TabIndex = 19;
             // 
             // label8
             // 
@@ -181,12 +184,12 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Số điện thoại ";
             // 
-            // textBox6
+            // txtQueQuan
             // 
-            this.textBox6.Location = new System.Drawing.Point(513, 75);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(159, 20);
-            this.textBox6.TabIndex = 21;
+            this.txtQueQuan.Location = new System.Drawing.Point(513, 75);
+            this.txtQueQuan.Name = "txtQueQuan";
+            this.txtQueQuan.Size = new System.Drawing.Size(159, 20);
+            this.txtQueQuan.TabIndex = 21;
             // 
             // label9
             // 
@@ -206,21 +209,21 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Phòng";
             // 
-            // comboBox2
+            // comboBoxPhong
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(734, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(144, 21);
-            this.comboBox2.TabIndex = 23;
+            this.comboBoxPhong.FormattingEnabled = true;
+            this.comboBoxPhong.Location = new System.Drawing.Point(734, 74);
+            this.comboBoxPhong.Name = "comboBoxPhong";
+            this.comboBoxPhong.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxPhong.TabIndex = 23;
             // 
-            // comboBox3
+            // comboBoxTrangThai
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(74, 74);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(108, 21);
-            this.comboBox3.TabIndex = 25;
+            this.comboBoxTrangThai.FormattingEnabled = true;
+            this.comboBoxTrangThai.Location = new System.Drawing.Point(74, 74);
+            this.comboBoxTrangThai.Name = "comboBoxTrangThai";
+            this.comboBoxTrangThai.Size = new System.Drawing.Size(108, 21);
+            this.comboBoxTrangThai.TabIndex = 25;
             // 
             // label11
             // 
@@ -234,7 +237,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(684, 122);
+            this.label12.Location = new System.Drawing.Point(695, 122);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 26;
@@ -243,30 +246,48 @@
             // panelThongTinDanCu
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
-            this.panelThongTinDanCu.Controls.Add(this.dateTimePicker1);
+            this.panelThongTinDanCu.Controls.Add(this.buttonChonAnh);
+            this.panelThongTinDanCu.Controls.Add(this.dateTimePickerNgaySinh);
             this.panelThongTinDanCu.Controls.Add(this.pictureBoxAnhCuDan);
             this.panelThongTinDanCu.Controls.Add(this.label3);
             this.panelThongTinDanCu.Controls.Add(this.label12);
             this.panelThongTinDanCu.Controls.Add(this.txtMaCuDan);
-            this.panelThongTinDanCu.Controls.Add(this.comboBox3);
+            this.panelThongTinDanCu.Controls.Add(this.comboBoxTrangThai);
             this.panelThongTinDanCu.Controls.Add(this.label4);
             this.panelThongTinDanCu.Controls.Add(this.label11);
             this.panelThongTinDanCu.Controls.Add(this.txtHoTenCuDan);
-            this.panelThongTinDanCu.Controls.Add(this.comboBox2);
+            this.panelThongTinDanCu.Controls.Add(this.comboBoxPhong);
             this.panelThongTinDanCu.Controls.Add(this.label5);
             this.panelThongTinDanCu.Controls.Add(this.label10);
             this.panelThongTinDanCu.Controls.Add(this.label6);
-            this.panelThongTinDanCu.Controls.Add(this.textBox6);
+            this.panelThongTinDanCu.Controls.Add(this.txtQueQuan);
             this.panelThongTinDanCu.Controls.Add(this.label9);
             this.panelThongTinDanCu.Controls.Add(this.comboBoxGioiTinh);
-            this.panelThongTinDanCu.Controls.Add(this.textBox5);
+            this.panelThongTinDanCu.Controls.Add(this.txtSDT);
             this.panelThongTinDanCu.Controls.Add(this.label7);
             this.panelThongTinDanCu.Controls.Add(this.label8);
-            this.panelThongTinDanCu.Controls.Add(this.textBox3);
+            this.panelThongTinDanCu.Controls.Add(this.txtCCCD);
             this.panelThongTinDanCu.Location = new System.Drawing.Point(25, 431);
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
             this.panelThongTinDanCu.Size = new System.Drawing.Size(888, 254);
             this.panelThongTinDanCu.TabIndex = 28;
+            // 
+            // dateTimePickerNgaySinh
+            // 
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(471, 120);
+            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
+            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerNgaySinh.TabIndex = 28;
+            // 
+            // pictureBoxAnhCuDan
+            // 
+            this.pictureBoxAnhCuDan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(761, 122);
+            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
+            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(92, 98);
+            this.pictureBoxAnhCuDan.TabIndex = 27;
+            this.pictureBoxAnhCuDan.TabStop = false;
             // 
             // panelCRUDThongTinDanCu
             // 
@@ -280,23 +301,15 @@
             this.panelCRUDThongTinDanCu.Size = new System.Drawing.Size(888, 76);
             this.panelCRUDThongTinDanCu.TabIndex = 29;
             // 
-            // buttonThemCD
+            // buttonLuuCD
             // 
-            this.buttonThemCD.Location = new System.Drawing.Point(63, 28);
-            this.buttonThemCD.Name = "buttonThemCD";
-            this.buttonThemCD.Size = new System.Drawing.Size(118, 23);
-            this.buttonThemCD.TabIndex = 0;
-            this.buttonThemCD.Text = "Thêm ";
-            this.buttonThemCD.UseVisualStyleBackColor = true;
-            // 
-            // buttonXoaCD
-            // 
-            this.buttonXoaCD.Location = new System.Drawing.Point(273, 28);
-            this.buttonXoaCD.Name = "buttonXoaCD";
-            this.buttonXoaCD.Size = new System.Drawing.Size(118, 23);
-            this.buttonXoaCD.TabIndex = 1;
-            this.buttonXoaCD.Text = "Xóa ";
-            this.buttonXoaCD.UseVisualStyleBackColor = true;
+            this.buttonLuuCD.Location = new System.Drawing.Point(687, 28);
+            this.buttonLuuCD.Name = "buttonLuuCD";
+            this.buttonLuuCD.Size = new System.Drawing.Size(118, 23);
+            this.buttonLuuCD.TabIndex = 3;
+            this.buttonLuuCD.Text = "Lưu";
+            this.buttonLuuCD.UseVisualStyleBackColor = true;
+            this.buttonLuuCD.Click += new System.EventHandler(this.buttonLuuCD_Click);
             // 
             // buttonSuaCD
             // 
@@ -306,32 +319,37 @@
             this.buttonSuaCD.TabIndex = 2;
             this.buttonSuaCD.Text = "Sửa ";
             this.buttonSuaCD.UseVisualStyleBackColor = true;
+            this.buttonSuaCD.Click += new System.EventHandler(this.buttonSuaCD_Click);
             // 
-            // buttonLuuCD
+            // buttonXoaCD
             // 
-            this.buttonLuuCD.Location = new System.Drawing.Point(687, 28);
-            this.buttonLuuCD.Name = "buttonLuuCD";
-            this.buttonLuuCD.Size = new System.Drawing.Size(118, 23);
-            this.buttonLuuCD.TabIndex = 3;
-            this.buttonLuuCD.Text = "Lưu";
-            this.buttonLuuCD.UseVisualStyleBackColor = true;
+            this.buttonXoaCD.Location = new System.Drawing.Point(273, 28);
+            this.buttonXoaCD.Name = "buttonXoaCD";
+            this.buttonXoaCD.Size = new System.Drawing.Size(118, 23);
+            this.buttonXoaCD.TabIndex = 1;
+            this.buttonXoaCD.Text = "Xóa ";
+            this.buttonXoaCD.UseVisualStyleBackColor = true;
+            this.buttonXoaCD.Click += new System.EventHandler(this.buttonXoaCD_Click);
             // 
-            // pictureBoxAnhCuDan
+            // buttonThemCD
             // 
-            this.pictureBoxAnhCuDan.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_icon;
-            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(750, 122);
-            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
-            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(121, 121);
-            this.pictureBoxAnhCuDan.TabIndex = 27;
-            this.pictureBoxAnhCuDan.TabStop = false;
+            this.buttonThemCD.Location = new System.Drawing.Point(63, 28);
+            this.buttonThemCD.Name = "buttonThemCD";
+            this.buttonThemCD.Size = new System.Drawing.Size(118, 23);
+            this.buttonThemCD.TabIndex = 0;
+            this.buttonThemCD.Text = "Thêm ";
+            this.buttonThemCD.UseVisualStyleBackColor = true;
+            this.buttonThemCD.Click += new System.EventHandler(this.buttonThemCD_Click);
             // 
-            // dateTimePicker1
+            // buttonChonAnh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(460, 122);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 28;
+            this.buttonChonAnh.Location = new System.Drawing.Point(761, 227);
+            this.buttonChonAnh.Name = "buttonChonAnh";
+            this.buttonChonAnh.Size = new System.Drawing.Size(92, 23);
+            this.buttonChonAnh.TabIndex = 4;
+            this.buttonChonAnh.Text = "Chọn ảnh";
+            this.buttonChonAnh.UseVisualStyleBackColor = true;
+            this.buttonChonAnh.Click += new System.EventHandler(this.buttonChonAnh_Click);
             // 
             // QuanLiDanCu
             // 
@@ -348,8 +366,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
-            this.panelCRUDThongTinDanCu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).EndInit();
+            this.panelCRUDThongTinDanCu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,15 +385,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxGioiTinh;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCCCD;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtQueQuan;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxPhong;
+        private System.Windows.Forms.ComboBox comboBoxTrangThai;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBoxAnhCuDan;
@@ -385,6 +403,7 @@
         private System.Windows.Forms.Button buttonSuaCD;
         private System.Windows.Forms.Button buttonXoaCD;
         private System.Windows.Forms.Button buttonThemCD;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
+        private System.Windows.Forms.Button buttonChonAnh;
     }
 }
