@@ -164,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\account_icon.png" />
+    <None Include="Images\FeedbackIcon.png" />
+    <None Include="Images\ChungCu.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
