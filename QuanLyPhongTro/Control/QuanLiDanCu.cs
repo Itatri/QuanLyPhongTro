@@ -16,6 +16,7 @@ namespace QuanLyPhongTro.Control
     public partial class QuanLiDanCu : UserControl
     {
         private ThongTinKhachBLL thongTinKhachBLL = new ThongTinKhachBLL();
+        private bool isAddingNew = false; // Biến trạng thái để theo dõi chế độ thêm mới hay sửa
         public QuanLiDanCu()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace QuanLyPhongTro.Control
             dataGridViewDanCu.CellClick += dataGridViewDanCu_CellClick;
             // Thiết lập chế độ hiển thị ảnh cho PictureBox
             pictureBoxAnhCuDan.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
             // Thiết lập trạng thái của các trường dữ liệu
             SetControlsEnabled(false);
 
@@ -76,6 +78,7 @@ namespace QuanLyPhongTro.Control
             comboBoxPhong.Enabled = enabled;
             dateTimePickerNgaySinh.Enabled = enabled;
             buttonChonAnh.Enabled = enabled;
+            buttonChonChuKy.Enabled = enabled;
         }
 
         private void LoadData()
@@ -94,9 +97,12 @@ namespace QuanLyPhongTro.Control
             dataGridViewDanCu.Columns["MaPhong"].HeaderText = "Mã Phòng";
             dataGridViewDanCu.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
             dataGridViewDanCu.Columns["AnhNhanDien"].HeaderText = "Ảnh Nhận Diện";
+            dataGridViewDanCu.Columns["ChuKy"].HeaderText = "Chữ Ký";
         }
         private void buttonThemCD_Click(object sender, EventArgs e)
         {
+            isAddingNew = true; // Đặt chế độ thêm mới
+
             // Làm mới các trường dữ liệu để nhập thông tin
             SetControlsEnabled(true);
 
@@ -117,18 +123,121 @@ namespace QuanLyPhongTro.Control
             comboBoxPhong.SelectedIndex = -1;
             dateTimePickerNgaySinh.Value = DateTime.Now;
             pictureBoxAnhCuDan.Image = null; // Xóa ảnh cũ
+            pictureBoxChuKy.Image = null; // Xóa ảnh cũ
         }
 
         private void buttonXoaCD_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Lấy mã khách hàng từ txtMaCuDan
+                string maKhachTro = txtMaCuDan.Text;
 
+                // Kiểm tra xem mã khách hàng có hợp lệ không
+                if (!string.IsNullOrEmpty(maKhachTro))
+                {
+                    // Xác nhận việc xóa
+                    var result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Lấy thông tin khách hàng hiện tại để lấy tên file ảnh
+                        var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
+
+                        if (currentCustomer != null)
+                        {
+                            // Xóa ảnh của khách hàng nếu có
+                            if (!string.IsNullOrEmpty(currentCustomer.AnhNhanDien))
+                            {
+                                // Tạo đường dẫn đầy đủ tới ảnh
+                                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+                                string filePath = Path.Combine(imagesFolderPath, currentCustomer.AnhNhanDien);
+
+                                // Giải phóng tài nguyên ảnh nếu cần
+                                pictureBoxAnhCuDan.Image?.Dispose();
+                                pictureBoxAnhCuDan.Image = null;
+
+                                // Đảm bảo file không còn được sử dụng
+                                GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
+                                GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+
+                                // Xóa file ảnh nếu tồn tại
+                                if (File.Exists(filePath))
+                                {
+                                    File.Delete(filePath);
+                                }
+                            }
+                            // Xóa chữ ký của khách hàng nếu có
+                            if (!string.IsNullOrEmpty(currentCustomer.ChuKy))
+                            {
+                                // Tạo đường dẫn đầy đủ tới ảnh
+                                string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
+                                string imagesFolderPathChuKy = Path.Combine(baseDirectoryChuKy, "..", "..", "AnhChuKy");
+                                string filePathChuKy = Path.Combine(imagesFolderPathChuKy, currentCustomer.ChuKy);
+
+                                // Giải phóng tài nguyên ảnh nếu cần
+                                pictureBoxChuKy.Image?.Dispose();
+                                pictureBoxChuKy.Image = null;
+
+                                // Đảm bảo file không còn được sử dụng
+                                GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
+                                GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+
+                                // Xóa file ảnh nếu tồn tại
+                                if (File.Exists(filePathChuKy))
+                                {
+                                    File.Delete(filePathChuKy);
+                                }
+                            }
+                            // Xóa thông tin khách hàng khỏi cơ sở dữ liệu
+                            thongTinKhachBLL.XoaThongTinKhach(maKhachTro);
+
+                            // Cập nhật lại DataGridView
+                            LoadData();
+
+                            MessageBox.Show("Khách hàng và ảnh của họ đã được xóa thành công.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy thông tin khách hàng.");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn khách hàng cần xóa.");
+                }
+            }
+            catch (IOException ioEx)
+            {
+                MessageBox.Show("Lỗi khi xóa file ảnh: " + ioEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể xóa khách hàng: " + ex.Message);
+            }
         }
 
         private void buttonSuaCD_Click(object sender, EventArgs e)
         {
+            isAddingNew = false; // Đặt chế độ sửa
             // Kích hoạt các trường dữ liệu để chỉnh sửa thông tin
             SetControlsEnabled(true);
             txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
+
+            // Giải phóng tài nguyên ảnh nhận diện hiện tại 
+            if (pictureBoxAnhCuDan.Image != null)
+            {
+                pictureBoxAnhCuDan.Image.Dispose();
+                pictureBoxAnhCuDan.Image = null;
+            }
+
+            // Giải phóng tài nguyên ảnh chũ ký hiện tại 
+            if (pictureBoxChuKy.Image != null)
+            {
+                pictureBoxChuKy.Image.Dispose();
+                pictureBoxChuKy.Image = null;
+            }
         }
 
         private void buttonLuuCD_Click(object sender, EventArgs e)
@@ -136,29 +245,45 @@ namespace QuanLyPhongTro.Control
             
             try
             {
-                // Lấy thông tin từ các trường dữ liệu
                 string maKhachTro = txtMaCuDan.Text;
                 string hoTen = txtHoTenCuDan.Text;
                 string gioiTinh = comboBoxGioiTinh.Text;
                 string cccd = txtCCCD.Text;
                 string phone = txtSDT.Text;
                 string queQuan = txtQueQuan.Text;
-
-                // Chuyển đổi giá trị TrangThai từ string sang int
-                int trangThai = (comboBoxTrangThai.SelectedIndex == 1) ? 0 : 1; // Ngưng hoạt động: 0, Đang hoạt động: 1
-
+                int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Ngưng hoạt động") ? 0 : 1;
                 string maPhong = comboBoxPhong.SelectedValue.ToString();
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
+                string newImagePath = null;
+                string newImagePathChuKy = null;
 
-                // Lấy đường dẫn ảnh từ PictureBox (nếu có)
-                string imagePath = null;
+                // Handle the image in pictureBoxAnhCuDan
                 if (pictureBoxAnhCuDan.Image != null)
                 {
-                    // Lưu ảnh vào thư mục và lấy đường dẫn tương đối
-                    imagePath = SaveImageToFolder(pictureBoxAnhCuDan.Image, maKhachTro, hoTen);
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBoxAnhCuDan.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        using (Image img = Image.FromStream(ms))
+                        {
+                            newImagePath = SaveImageToFolder(img, maKhachTro, hoTen);
+                        }
+                    }
                 }
 
-                // Tạo đối tượng DTO và gọi phương thức cập nhật dữ liệu
+                // Handle the image in pictureBoxChuKy
+                if (pictureBoxChuKy.Image != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBoxChuKy.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        using (Image img = Image.FromStream(ms))
+                        {
+                            newImagePathChuKy = SaveImageToFolderChuKy(img, maKhachTro, hoTen);
+                        }
+                    }
+                }
+
+                // Create DTO
                 var khachDTO = new ThongTinKhachDTO
                 {
                     MaKhachTro = maKhachTro,
@@ -167,31 +292,50 @@ namespace QuanLyPhongTro.Control
                     CCCD = cccd,
                     Phone = phone,
                     QueQuan = queQuan,
-                    TrangThai = trangThai, // Đã chuyển đổi thành int
+                    TrangThai = trangThai,
                     MaPhong = maPhong,
                     NgaySinh = ngaySinh,
-                    AnhNhanDien = imagePath // Đường dẫn ảnh
+                    AnhNhanDien = newImagePath,
+                    ChuKy = newImagePathChuKy
                 };
 
-                // Gọi phương thức cập nhật từ BLL
-                thongTinKhachBLL.CapNhatThongTinKhach(khachDTO);
+                if (isAddingNew)
+                {
+                    thongTinKhachBLL.ThemThongTinKhach(khachDTO); // Add new record
+                }
+                else
+                {
+                    var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
 
-                // Cập nhật lại dữ liệu trên DataGridView
+                    if (currentCustomer != null)
+                    {
+                        // Handle AnhNhanDien
+                        if (newImagePath == null)
+                        {
+                            khachDTO.AnhNhanDien = currentCustomer.AnhNhanDien;
+                        }
+
+                        // Handle ChuKy
+                        if (newImagePathChuKy == null)
+                        {
+                            khachDTO.ChuKy = currentCustomer.ChuKy;
+                        }
+                    }
+
+                    thongTinKhachBLL.CapNhatThongTinKhach(khachDTO); // Update record
+                }
+
                 LoadData();
-
-                // Hiển thị thông báo thành công
-                MessageBox.Show("Thông tin đã được cập nhật thành công.");
+                MessageBox.Show("Thông tin đã được lưu thành công.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể cập nhật thông tin: " + ex.Message);
+                MessageBox.Show("Không thể lưu thông tin: " + ex.Message);
             }
         }
 
         private void dataGridViewDanCu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-
+        {      
             if (e.RowIndex >= 0) // Đảm bảo người dùng không nhấn vào tiêu đề cột
             {
                 DataGridViewRow selectedRow = dataGridViewDanCu.Rows[e.RowIndex];
@@ -221,14 +365,49 @@ namespace QuanLyPhongTro.Control
                 }
 
                 // Hiển thị hình ảnh trực tiếp nếu có
-                string imagePath = selectedRow.Cells["AnhNhanDien"].Value.ToString();
-                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                string imageFileName = selectedRow.Cells["AnhNhanDien"].Value.ToString();
+                if (!string.IsNullOrEmpty(imageFileName))
                 {
-                    pictureBoxAnhCuDan.Image = Image.FromFile(imagePath);
+                    // Tạo đường dẫn đầy đủ tới ảnh
+                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+                    string filePath = Path.Combine(imagesFolderPath, imageFileName);
+
+                    if (File.Exists(filePath))
+                    {
+                        pictureBoxAnhCuDan.Image = Image.FromFile(filePath);
+                    }
+                    else
+                    {
+                        pictureBoxAnhCuDan.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
+                    }
                 }
                 else
                 {
                     pictureBoxAnhCuDan.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
+                }
+
+                // Hiển thị chữ ký trực tiếp nếu có
+                string imageChuKy = selectedRow.Cells["ChuKy"].Value.ToString();
+                if (!string.IsNullOrEmpty(imageChuKy))
+                {
+                    // Tạo đường dẫn đầy đủ tới ảnh
+                    string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
+                    string imagesFolderPathChuKy = Path.Combine(baseDirectoryChuKy, "..", "..", "AnhChuKy");
+                    string filePathChuKy = Path.Combine(imagesFolderPathChuKy, imageChuKy);
+
+                    if (File.Exists(filePathChuKy))
+                    {
+                        pictureBoxChuKy.Image = Image.FromFile(filePathChuKy);
+                    }
+                    else
+                    {
+                        pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
+                    }
+                }
+                else
+                {
+                    pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
                 }
 
                 // Kích hoạt các trường dữ liệu để chỉnh sửa (trừ MaKhachTro)
@@ -239,29 +418,44 @@ namespace QuanLyPhongTro.Control
         private void dataGridViewDanCu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
+        }      
         private string SaveImageToFolder(Image image, string maKhachTro, string hoTen)
         {
             try
             {
-                string imagesFolderPath = @"QuanLyPhongTro\QuanLyPhongTro\Images"; // Thư mục Images trong thư mục dự án
-                string fullFolderPath = Path.Combine(Application.StartupPath, imagesFolderPath);
+                // Lấy thư mục gốc của ứng dụng
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
+                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+
+                // Chuyển đường dẫn lên thư mục gốc của dự án
+                imagesFolderPath = Path.GetFullPath(imagesFolderPath);
 
                 // Tạo thư mục nếu chưa tồn tại
-                if (!Directory.Exists(fullFolderPath))
+                if (!Directory.Exists(imagesFolderPath))
                 {
-                    Directory.CreateDirectory(fullFolderPath);
+                    Directory.CreateDirectory(imagesFolderPath);
                 }
 
                 // Tạo tên tệp ảnh
                 string fileName = $"{maKhachTro}_{hoTen}.jpg";
-                string filePath = Path.Combine(fullFolderPath, fileName);
+                string filePath = Path.Combine(imagesFolderPath, fileName);
+
+                // Kiểm tra nếu tệp đã tồn tại
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+                }
 
                 // Lưu ảnh
-                image.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                {
+                    image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
 
-                // Trả về đường dẫn tương đối
-                return Path.Combine(imagesFolderPath, fileName);
+                // Trả về tên tệp ảnh cho cơ sở dữ liệu
+                return fileName;
             }
             catch (Exception ex)
             {
@@ -270,7 +464,50 @@ namespace QuanLyPhongTro.Control
             }
         }
 
+        private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
+        {
+            try
+            {
+                // Lấy thư mục gốc của ứng dụng
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
+                // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
+                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+
+                // Chuyển đường dẫn lên thư mục gốc của dự án
+                imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+
+                // Tạo thư mục nếu chưa tồn tại
+                if (!Directory.Exists(imagesFolderPath))
+                {
+                    Directory.CreateDirectory(imagesFolderPath);
+                }
+
+                // Tạo tên tệp ảnh
+                string fileName = $"CK_{maKhachTro}_{hoTen}.jpg";
+                string filePath = Path.Combine(imagesFolderPath, fileName);
+
+                // Kiểm tra nếu tệp đã tồn tại
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+                }
+
+                // Lưu ảnh
+                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                {
+                    image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+
+                // Trả về tên tệp ảnh cho cơ sở dữ liệu
+                return fileName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể lưu ảnh: " + ex.Message);
+                return null;
+            }
+        }
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
@@ -289,6 +526,32 @@ namespace QuanLyPhongTro.Control
                     {
                         Image selectedImage = Image.FromFile(openFileDialog.FileName);
                         pictureBoxAnhCuDan.Image = selectedImage;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void buttonChonChuKy_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                openFileDialog.Title = "Chọn hình ảnh";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Ẩn ảnh mặc định trong PictureBox
+                    pictureBoxChuKy.Image = null;
+
+                    // Hiển thị ảnh trong PictureBox
+                    try
+                    {
+                        Image selectedImage = Image.FromFile(openFileDialog.FileName);
+                        pictureBoxChuKy.Image = selectedImage;
                     }
                     catch (Exception ex)
                     {
