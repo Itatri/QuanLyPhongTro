@@ -11,13 +11,13 @@ namespace DTO
         public string MaKhachTro { get; set; }
         public string HoTen { get; set; }
         public string GioiTinh { get; set; }
-        public byte[] AnhNhanDien { get; set; }
+        public string AnhNhanDien { get; set; }
         public DateTime NgaySinh { get; set; }
         public string CCCD { get; set; }
         public string Phone { get; set; }
         public string QueQuan { get; set; }
-        public byte[] ChuKy { get; set; }
+        public string ChuKy { get; set; }
         public string MaPhong { get; set; }
-        public string TrangThai { get; set; }
+        public int TrangThai { get; set; }
     }
 }
