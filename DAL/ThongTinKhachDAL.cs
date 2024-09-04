@@ -32,14 +32,14 @@ namespace DAL
                             MaKhachTro = reader["MaKhachTro"].ToString(),
                             HoTen = reader["HoTen"].ToString(),
                             GioiTinh = reader["GioiTinh"].ToString(),
-                            AnhNhanDien = reader["AnhNhanDien"] as byte[],
+                            AnhNhanDien = reader["AnhNhanDien"].ToString(),
                             NgaySinh = (DateTime)reader["NgaySinh"],
                             CCCD = reader["CCCD"].ToString(),
                             Phone = reader["Phone"].ToString(),
                             QueQuan = reader["QueQuan"].ToString(),
-                            ChuKy = reader["ChuKy"] as byte[],
+                            ChuKy = reader["ChuKy"].ToString(),
                             MaPhong = reader["MaPhong"].ToString(),
-                            TrangThai = reader["TrangThai"].ToString()
+                            TrangThai = (int)reader["TrangThai"]
                         };
 
                         danhSachKhach.Add(khach);
@@ -49,5 +49,46 @@ namespace DAL
 
             return danhSachKhach;
         }
+
+        public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
+        {
+            // Thực hiện câu lệnh SQL để cập nhật thông tin
+            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, AnhNhanDien = @AnhNhanDien WHERE MaKhachTro = @MaKhachTro";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@MaKhachTro", khachDTO.MaKhachTro);
+                cmd.Parameters.AddWithValue("@HoTen", khachDTO.HoTen);
+                cmd.Parameters.AddWithValue("@GioiTinh", khachDTO.GioiTinh);
+                cmd.Parameters.AddWithValue("@CCCD", khachDTO.CCCD);
+                cmd.Parameters.AddWithValue("@Phone", khachDTO.Phone);
+                cmd.Parameters.AddWithValue("@QueQuan", khachDTO.QueQuan);
+                cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
+                cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
+                cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
+                cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DemSoLuongKhach()
+        {
+            int soLuongKhach = 0;
+            string query = "SELECT COUNT(*) FROM ThongTinKhach";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                soLuongKhach = (int)cmd.ExecuteScalar();
+            }
+
+            return soLuongKhach;
+        }
+
+
     }
 }

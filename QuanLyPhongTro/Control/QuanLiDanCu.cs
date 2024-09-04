@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,13 @@ namespace QuanLyPhongTro.Control
             SetControlsEnabled(false);
 
             SetComboBoxGioiTinh();
+            SetComboBoxTrangThai();
+        }
+        private void SetComboBoxTrangThai()
+        {
+            comboBoxTrangThai.Items.Clear();
+            comboBoxTrangThai.Items.Add("Đang hoạt động"); // Chỉ mục 0
+            comboBoxTrangThai.Items.Add("Ngưng hoạt động"); // Chỉ mục 1
         }
 
         private void LoadPhongComboBox()
@@ -67,6 +75,7 @@ namespace QuanLyPhongTro.Control
             comboBoxTrangThai.Enabled = enabled;
             comboBoxPhong.Enabled = enabled;
             dateTimePickerNgaySinh.Enabled = enabled;
+            buttonChonAnh.Enabled = enabled;
         }
 
         private void LoadData()
@@ -88,11 +97,17 @@ namespace QuanLyPhongTro.Control
         }
         private void buttonThemCD_Click(object sender, EventArgs e)
         {
-            // Kích hoạt các trường dữ liệu để nhập thông tin
+            // Làm mới các trường dữ liệu để nhập thông tin
             SetControlsEnabled(true);
-            txtMaCuDan.Enabled = false;
-            // Làm mới các trường dữ liệu 
-            txtMaCuDan.Clear();
+
+            // Đếm số lượng khách hiện tại
+            int soLuongKhach = thongTinKhachBLL.DemSoLuongKhach();
+
+            // Tạo mã khách trọ mới với tiền tố "KH" + STT (e.g., KH001)
+            string maCuDanMoi = "KH" + (soLuongKhach + 1).ToString("D3"); // Số thứ tự có 3 chữ số
+
+            txtMaCuDan.Text = maCuDanMoi;
+            txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ mới
             txtHoTenCuDan.Clear();
             comboBoxGioiTinh.SelectedIndex = -1;
             txtCCCD.Clear();
@@ -113,18 +128,74 @@ namespace QuanLyPhongTro.Control
         {
             // Kích hoạt các trường dữ liệu để chỉnh sửa thông tin
             SetControlsEnabled(true);
-            txtMaCuDan.Enabled = false;
+            txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
         }
 
         private void buttonLuuCD_Click(object sender, EventArgs e)
         {
+            
+            try
+            {
+                // Lấy thông tin từ các trường dữ liệu
+                string maKhachTro = txtMaCuDan.Text;
+                string hoTen = txtHoTenCuDan.Text;
+                string gioiTinh = comboBoxGioiTinh.Text;
+                string cccd = txtCCCD.Text;
+                string phone = txtSDT.Text;
+                string queQuan = txtQueQuan.Text;
+
+                // Chuyển đổi giá trị TrangThai từ string sang int
+                int trangThai = (comboBoxTrangThai.SelectedIndex == 1) ? 0 : 1; // Ngưng hoạt động: 0, Đang hoạt động: 1
+
+                string maPhong = comboBoxPhong.SelectedValue.ToString();
+                DateTime ngaySinh = dateTimePickerNgaySinh.Value;
+
+                // Lấy đường dẫn ảnh từ PictureBox (nếu có)
+                string imagePath = null;
+                if (pictureBoxAnhCuDan.Image != null)
+                {
+                    // Lưu ảnh vào thư mục và lấy đường dẫn tương đối
+                    imagePath = SaveImageToFolder(pictureBoxAnhCuDan.Image, maKhachTro, hoTen);
+                }
+
+                // Tạo đối tượng DTO và gọi phương thức cập nhật dữ liệu
+                var khachDTO = new ThongTinKhachDTO
+                {
+                    MaKhachTro = maKhachTro,
+                    HoTen = hoTen,
+                    GioiTinh = gioiTinh,
+                    CCCD = cccd,
+                    Phone = phone,
+                    QueQuan = queQuan,
+                    TrangThai = trangThai, // Đã chuyển đổi thành int
+                    MaPhong = maPhong,
+                    NgaySinh = ngaySinh,
+                    AnhNhanDien = imagePath // Đường dẫn ảnh
+                };
+
+                // Gọi phương thức cập nhật từ BLL
+                thongTinKhachBLL.CapNhatThongTinKhach(khachDTO);
+
+                // Cập nhật lại dữ liệu trên DataGridView
+                LoadData();
+
+                // Hiển thị thông báo thành công
+                MessageBox.Show("Thông tin đã được cập nhật thành công.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể cập nhật thông tin: " + ex.Message);
+            }
         }
 
         private void dataGridViewDanCu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+
             if (e.RowIndex >= 0) // Đảm bảo người dùng không nhấn vào tiêu đề cột
             {
                 DataGridViewRow selectedRow = dataGridViewDanCu.Rows[e.RowIndex];
+
                 // Hiển thị thông tin từ hàng được chọn lên các điều khiển
                 txtMaCuDan.Text = selectedRow.Cells["MaKhachTro"].Value.ToString();
                 txtHoTenCuDan.Text = selectedRow.Cells["HoTen"].Value.ToString();
@@ -132,7 +203,11 @@ namespace QuanLyPhongTro.Control
                 txtCCCD.Text = selectedRow.Cells["CCCD"].Value.ToString();
                 txtSDT.Text = selectedRow.Cells["Phone"].Value.ToString();
                 txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
-                comboBoxTrangThai.Text = selectedRow.Cells["TrangThai"].Value.ToString();
+
+                // Hiển thị trạng thái
+                int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
+                comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0; // Ngưng hoạt động: 1, Đang hoạt động: 0
+
                 comboBoxPhong.Text = selectedRow.Cells["MaPhong"].Value.ToString();
 
                 // Xử lý ngày sinh
@@ -146,13 +221,10 @@ namespace QuanLyPhongTro.Control
                 }
 
                 // Hiển thị hình ảnh trực tiếp nếu có
-                byte[] imageBytes = (byte[])selectedRow.Cells["AnhNhanDien"].Value;
-                if (imageBytes != null && imageBytes.Length > 0)
+                string imagePath = selectedRow.Cells["AnhNhanDien"].Value.ToString();
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
                 {
-                    using (var ms = new System.IO.MemoryStream(imageBytes))
-                    {
-                        pictureBoxAnhCuDan.Image = Image.FromStream(ms);
-                    }
+                    pictureBoxAnhCuDan.Image = Image.FromFile(imagePath);
                 }
                 else
                 {
@@ -168,11 +240,11 @@ namespace QuanLyPhongTro.Control
         {
 
         }
-        private string SaveImageToFolder(Image image)
+        private string SaveImageToFolder(Image image, string maKhachTro, string hoTen)
         {
             try
             {
-                string imagesFolderPath = @"Images"; // Thư mục Images trong thư mục dự án
+                string imagesFolderPath = @"QuanLyPhongTro\QuanLyPhongTro\Images"; // Thư mục Images trong thư mục dự án
                 string fullFolderPath = Path.Combine(Application.StartupPath, imagesFolderPath);
 
                 // Tạo thư mục nếu chưa tồn tại
@@ -182,7 +254,7 @@ namespace QuanLyPhongTro.Control
                 }
 
                 // Tạo tên tệp ảnh
-                string fileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + ".jpg";
+                string fileName = $"{maKhachTro}_{hoTen}.jpg";
                 string filePath = Path.Combine(fullFolderPath, fileName);
 
                 // Lưu ảnh
@@ -197,6 +269,8 @@ namespace QuanLyPhongTro.Control
                 return null;
             }
         }
+
+
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
