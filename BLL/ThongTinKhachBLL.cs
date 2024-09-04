@@ -16,5 +16,17 @@ namespace BLL
         {
             return thongTinKhachDAL.LayTatCaThongTinKhach();
         }
+
+        public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
+        {
+            thongTinKhachDAL.CapNhatThongTinKhach(khachDTO);
+        }
+
+        public int DemSoLuongKhach()
+        {
+            // Gọi DAL để thực hiện truy vấn đếm số lượng khách
+            return thongTinKhachDAL.DemSoLuongKhach();
+        }
+
     }
 }
