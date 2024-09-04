@@ -31,14 +31,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewFeedBack = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(21, 40);
+            this.label2.Location = new System.Drawing.Point(21, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(182, 24);
             this.label2.TabIndex = 32;
@@ -47,9 +49,9 @@
             // dataGridViewFeedBack
             // 
             this.dataGridViewFeedBack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFeedBack.Location = new System.Drawing.Point(25, 76);
+            this.dataGridViewFeedBack.Location = new System.Drawing.Point(25, 92);
             this.dataGridViewFeedBack.Name = "dataGridViewFeedBack";
-            this.dataGridViewFeedBack.Size = new System.Drawing.Size(888, 688);
+            this.dataGridViewFeedBack.Size = new System.Drawing.Size(888, 672);
             this.dataGridViewFeedBack.TabIndex = 31;
             this.dataGridViewFeedBack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFeedBack_CellContentClick);
             // 
@@ -57,23 +59,35 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(337, 12);
+            this.label1.Location = new System.Drawing.Point(337, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 31);
             this.label1.TabIndex = 30;
             this.label1.Text = "QUẢN LÍ FEEDBACK";
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.FeedbackIcon;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(634, 12);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(37, 36);
+            this.pictureBoxIcon.TabIndex = 33;
+            this.pictureBoxIcon.TabStop = false;
             // 
             // QuanLiFeedBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridViewFeedBack);
             this.Controls.Add(this.label1);
             this.Name = "QuanLiFeedBack";
             this.Size = new System.Drawing.Size(935, 780);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,5 +97,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewFeedBack;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

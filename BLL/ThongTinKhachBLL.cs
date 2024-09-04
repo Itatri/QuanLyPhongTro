@@ -28,5 +28,30 @@ namespace BLL
             return thongTinKhachDAL.DemSoLuongKhach();
         }
 
+        public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
+        {
+            try
+            {
+                // Tạo đối tượng DAL để thực hiện truy vấn
+                ThongTinKhachDAL khachDAL = new ThongTinKhachDAL();
+
+                // Gọi phương thức thêm khách hàng vào cơ sở dữ liệu
+                khachDAL.ThemThongTinKhach(khachDTO);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm khách hàng: " + ex.Message);
+            }
+        }
+        public ThongTinKhachDTO LayThongTinKhachTheoMa(string maKhachTro)
+        {
+            ThongTinKhachDAL dal = new ThongTinKhachDAL();
+            return dal.LayThongTinKhachTheoMa(maKhachTro);
+        }
+
+        public void XoaThongTinKhach(string maKhachTro)
+        {
+            thongTinKhachDAL.XoaThongTinKhach(maKhachTro);
+        }
     }
 }

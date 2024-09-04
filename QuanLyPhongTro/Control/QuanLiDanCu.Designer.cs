@@ -50,25 +50,31 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.buttonChonAnh = new System.Windows.Forms.Button();
             this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.pictureBoxAnhCuDan = new System.Windows.Forms.PictureBox();
             this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
             this.buttonLuuCD = new System.Windows.Forms.Button();
             this.buttonSuaCD = new System.Windows.Forms.Button();
             this.buttonXoaCD = new System.Windows.Forms.Button();
             this.buttonThemCD = new System.Windows.Forms.Button();
-            this.buttonChonAnh = new System.Windows.Forms.Button();
+            this.buttonChonChuKy = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAnhCuDan = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).BeginInit();
             this.panelCRUDThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(346, 13);
+            this.label1.Location = new System.Drawing.Point(339, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 31);
             this.label1.TabIndex = 0;
@@ -82,7 +88,6 @@
             this.dataGridViewDanCu.Size = new System.Drawing.Size(888, 347);
             this.dataGridViewDanCu.TabIndex = 1;
             this.dataGridViewDanCu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellClick);
-            this.dataGridViewDanCu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellContentClick);
             // 
             // label2
             // 
@@ -112,15 +117,15 @@
             // 
             // txtHoTenCuDan
             // 
-            this.txtHoTenCuDan.Location = new System.Drawing.Point(294, 25);
+            this.txtHoTenCuDan.Location = new System.Drawing.Point(277, 25);
             this.txtHoTenCuDan.Name = "txtHoTenCuDan";
-            this.txtHoTenCuDan.Size = new System.Drawing.Size(148, 20);
+            this.txtHoTenCuDan.Size = new System.Drawing.Size(165, 20);
             this.txtHoTenCuDan.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(213, 27);
+            this.label4.Location = new System.Drawing.Point(212, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 9;
@@ -138,7 +143,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(399, 121);
+            this.label6.Location = new System.Drawing.Point(205, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 13;
@@ -170,9 +175,9 @@
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(294, 75);
+            this.txtSDT.Location = new System.Drawing.Point(277, 75);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(148, 20);
+            this.txtSDT.Size = new System.Drawing.Size(165, 20);
             this.txtSDT.TabIndex = 19;
             // 
             // label8
@@ -237,7 +242,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(695, 122);
+            this.label12.Location = new System.Drawing.Point(501, 122);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 26;
@@ -246,6 +251,9 @@
             // panelThongTinDanCu
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
+            this.panelThongTinDanCu.Controls.Add(this.buttonChonChuKy);
+            this.panelThongTinDanCu.Controls.Add(this.pictureBoxChuKy);
+            this.panelThongTinDanCu.Controls.Add(this.label13);
             this.panelThongTinDanCu.Controls.Add(this.buttonChonAnh);
             this.panelThongTinDanCu.Controls.Add(this.dateTimePickerNgaySinh);
             this.panelThongTinDanCu.Controls.Add(this.pictureBoxAnhCuDan);
@@ -272,22 +280,22 @@
             this.panelThongTinDanCu.Size = new System.Drawing.Size(888, 254);
             this.panelThongTinDanCu.TabIndex = 28;
             // 
+            // buttonChonAnh
+            // 
+            this.buttonChonAnh.Location = new System.Drawing.Point(567, 227);
+            this.buttonChonAnh.Name = "buttonChonAnh";
+            this.buttonChonAnh.Size = new System.Drawing.Size(92, 23);
+            this.buttonChonAnh.TabIndex = 4;
+            this.buttonChonAnh.Text = "Chọn ảnh";
+            this.buttonChonAnh.UseVisualStyleBackColor = true;
+            this.buttonChonAnh.Click += new System.EventHandler(this.buttonChonAnh_Click);
+            // 
             // dateTimePickerNgaySinh
             // 
-            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(471, 120);
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(277, 120);
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerNgaySinh.TabIndex = 28;
-            // 
-            // pictureBoxAnhCuDan
-            // 
-            this.pictureBoxAnhCuDan.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(761, 122);
-            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
-            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(92, 98);
-            this.pictureBoxAnhCuDan.TabIndex = 27;
-            this.pictureBoxAnhCuDan.TabStop = false;
             // 
             // panelCRUDThongTinDanCu
             // 
@@ -341,21 +349,61 @@
             this.buttonThemCD.UseVisualStyleBackColor = true;
             this.buttonThemCD.Click += new System.EventHandler(this.buttonThemCD_Click);
             // 
-            // buttonChonAnh
+            // buttonChonChuKy
             // 
-            this.buttonChonAnh.Location = new System.Drawing.Point(761, 227);
-            this.buttonChonAnh.Name = "buttonChonAnh";
-            this.buttonChonAnh.Size = new System.Drawing.Size(92, 23);
-            this.buttonChonAnh.TabIndex = 4;
-            this.buttonChonAnh.Text = "Chọn ảnh";
-            this.buttonChonAnh.UseVisualStyleBackColor = true;
-            this.buttonChonAnh.Click += new System.EventHandler(this.buttonChonAnh_Click);
+            this.buttonChonChuKy.Location = new System.Drawing.Point(766, 227);
+            this.buttonChonChuKy.Name = "buttonChonChuKy";
+            this.buttonChonChuKy.Size = new System.Drawing.Size(92, 23);
+            this.buttonChonChuKy.TabIndex = 29;
+            this.buttonChonChuKy.Text = "Chọn ảnh";
+            this.buttonChonChuKy.UseVisualStyleBackColor = true;
+            this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(700, 122);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Chữ ký";
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.ChungCu;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(593, 13);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(37, 36);
+            this.pictureBoxIcon.TabIndex = 30;
+            this.pictureBoxIcon.TabStop = false;
+            // 
+            // pictureBoxChuKy
+            // 
+            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(766, 122);
+            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(92, 98);
+            this.pictureBoxChuKy.TabIndex = 31;
+            this.pictureBoxChuKy.TabStop = false;
+            // 
+            // pictureBoxAnhCuDan
+            // 
+            this.pictureBoxAnhCuDan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(567, 122);
+            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
+            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(92, 98);
+            this.pictureBoxAnhCuDan.TabIndex = 27;
+            this.pictureBoxAnhCuDan.TabStop = false;
             // 
             // QuanLiDanCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.panelCRUDThongTinDanCu);
             this.Controls.Add(this.panelThongTinDanCu);
             this.Controls.Add(this.label2);
@@ -366,8 +414,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).EndInit();
             this.panelCRUDThongTinDanCu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +455,9 @@
         private System.Windows.Forms.Button buttonThemCD;
         private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
         private System.Windows.Forms.Button buttonChonAnh;
+        private System.Windows.Forms.Button buttonChonChuKy;
+        private System.Windows.Forms.PictureBox pictureBoxChuKy;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }
