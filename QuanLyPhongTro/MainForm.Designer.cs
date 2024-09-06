@@ -44,6 +44,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.buttonDangXuat);
             this.panel1.Controls.Add(this.buttonQuanLyFeedBack);
             this.panel1.Controls.Add(this.buttonQuanLyThongKe);
@@ -54,14 +55,14 @@
             this.panel1.Controls.Add(this.buttonQuanLyChungCu);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(212, 777);
+            this.panel1.Size = new System.Drawing.Size(212, 780);
             this.panel1.TabIndex = 0;
             // 
             // buttonDangXuat
             // 
-            this.buttonDangXuat.Location = new System.Drawing.Point(55, 739);
+            this.buttonDangXuat.Location = new System.Drawing.Point(45, 729);
             this.buttonDangXuat.Name = "buttonDangXuat";
-            this.buttonDangXuat.Size = new System.Drawing.Size(103, 23);
+            this.buttonDangXuat.Size = new System.Drawing.Size(121, 33);
             this.buttonDangXuat.TabIndex = 7;
             this.buttonDangXuat.Text = "Đăng xuất";
             this.buttonDangXuat.UseVisualStyleBackColor = true;
@@ -70,9 +71,9 @@
             // buttonQuanLyFeedBack
             // 
             this.buttonQuanLyFeedBack.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyFeedBack.Location = new System.Drawing.Point(5, 294);
+            this.buttonQuanLyFeedBack.Location = new System.Drawing.Point(17, 353);
             this.buttonQuanLyFeedBack.Name = "buttonQuanLyFeedBack";
-            this.buttonQuanLyFeedBack.Size = new System.Drawing.Size(204, 34);
+            this.buttonQuanLyFeedBack.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyFeedBack.TabIndex = 6;
             this.buttonQuanLyFeedBack.Text = "Quản lí feedback";
             this.buttonQuanLyFeedBack.UseVisualStyleBackColor = true;
@@ -81,9 +82,9 @@
             // buttonQuanLyThongKe
             // 
             this.buttonQuanLyThongKe.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyThongKe.Location = new System.Drawing.Point(5, 245);
+            this.buttonQuanLyThongKe.Location = new System.Drawing.Point(17, 295);
             this.buttonQuanLyThongKe.Name = "buttonQuanLyThongKe";
-            this.buttonQuanLyThongKe.Size = new System.Drawing.Size(202, 34);
+            this.buttonQuanLyThongKe.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyThongKe.TabIndex = 5;
             this.buttonQuanLyThongKe.Text = "Quản lí thống kê ";
             this.buttonQuanLyThongKe.UseVisualStyleBackColor = true;
@@ -92,9 +93,9 @@
             // buttonQuanLyPhieuThu
             // 
             this.buttonQuanLyPhieuThu.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyPhieuThu.Location = new System.Drawing.Point(4, 191);
+            this.buttonQuanLyPhieuThu.Location = new System.Drawing.Point(16, 238);
             this.buttonQuanLyPhieuThu.Name = "buttonQuanLyPhieuThu";
-            this.buttonQuanLyPhieuThu.Size = new System.Drawing.Size(205, 34);
+            this.buttonQuanLyPhieuThu.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyPhieuThu.TabIndex = 4;
             this.buttonQuanLyPhieuThu.Text = "Quản lí phiếu thu ";
             this.buttonQuanLyPhieuThu.UseVisualStyleBackColor = true;
@@ -103,9 +104,9 @@
             // buttonQuanLyDichVu
             // 
             this.buttonQuanLyDichVu.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyDichVu.Location = new System.Drawing.Point(4, 144);
+            this.buttonQuanLyDichVu.Location = new System.Drawing.Point(16, 181);
             this.buttonQuanLyDichVu.Name = "buttonQuanLyDichVu";
-            this.buttonQuanLyDichVu.Size = new System.Drawing.Size(205, 34);
+            this.buttonQuanLyDichVu.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyDichVu.TabIndex = 3;
             this.buttonQuanLyDichVu.Text = "Quản lí dịch vụ ";
             this.buttonQuanLyDichVu.UseVisualStyleBackColor = true;
@@ -114,9 +115,9 @@
             // buttonQuanLyDanCu
             // 
             this.buttonQuanLyDanCu.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyDanCu.Location = new System.Drawing.Point(4, 96);
+            this.buttonQuanLyDanCu.Location = new System.Drawing.Point(16, 124);
             this.buttonQuanLyDanCu.Name = "buttonQuanLyDanCu";
-            this.buttonQuanLyDanCu.Size = new System.Drawing.Size(205, 34);
+            this.buttonQuanLyDanCu.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyDanCu.TabIndex = 2;
             this.buttonQuanLyDanCu.Text = "Quản lí dân cư";
             this.buttonQuanLyDanCu.UseVisualStyleBackColor = true;
@@ -125,9 +126,9 @@
             // buttonQuanLyPhong
             // 
             this.buttonQuanLyPhong.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyPhong.Location = new System.Drawing.Point(3, 55);
+            this.buttonQuanLyPhong.Location = new System.Drawing.Point(15, 70);
             this.buttonQuanLyPhong.Name = "buttonQuanLyPhong";
-            this.buttonQuanLyPhong.Size = new System.Drawing.Size(206, 34);
+            this.buttonQuanLyPhong.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyPhong.TabIndex = 1;
             this.buttonQuanLyPhong.Text = "Quản lí phòng";
             this.buttonQuanLyPhong.UseVisualStyleBackColor = true;
@@ -136,9 +137,9 @@
             // buttonQuanLyChungCu
             // 
             this.buttonQuanLyChungCu.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonQuanLyChungCu.Location = new System.Drawing.Point(3, 15);
+            this.buttonQuanLyChungCu.Location = new System.Drawing.Point(15, 16);
             this.buttonQuanLyChungCu.Name = "buttonQuanLyChungCu";
-            this.buttonQuanLyChungCu.Size = new System.Drawing.Size(206, 34);
+            this.buttonQuanLyChungCu.Size = new System.Drawing.Size(179, 34);
             this.buttonQuanLyChungCu.TabIndex = 0;
             this.buttonQuanLyChungCu.Text = "Quản lí chung cư";
             this.buttonQuanLyChungCu.UseVisualStyleBackColor = true;
@@ -147,6 +148,7 @@
             // panelForm
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelForm.Location = new System.Drawing.Point(244, 12);
             this.panelForm.Name = "panelForm";
             this.panelForm.Size = new System.Drawing.Size(931, 780);
@@ -156,9 +158,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1187, 801);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = " ";
             this.panel1.ResumeLayout(false);
