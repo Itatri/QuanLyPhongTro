@@ -175,5 +175,54 @@ namespace DAL
             }
         }
 
+        public List<ThongTinKhachDTO> TimKiemThongTinKhach(string searchValue)
+        {
+            List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM ThongTinKhach WHERE " +
+                               "MaKhachTro LIKE @searchValue OR " +
+                               "HoTen LIKE @searchValue OR " +
+                               "GioiTinh LIKE @searchValue OR " +
+                               "CCCD LIKE @searchValue OR " +
+                               "Phone LIKE @searchValue OR " +
+                               "QueQuan LIKE @searchValue";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@searchValue", "%" + searchValue + "%");
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ThongTinKhachDTO item = new ThongTinKhachDTO
+                            {
+                                MaKhachTro = reader["MaKhachTro"].ToString(),
+                                HoTen = reader["HoTen"].ToString(),
+                                GioiTinh = reader["GioiTinh"].ToString(),
+                                CCCD = reader["CCCD"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                QueQuan = reader["QueQuan"].ToString(),
+                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
+                                MaPhong = reader["MaPhong"].ToString(),
+                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
+                                AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                                ChuKy = reader["ChuKy"].ToString()
+                            };
+
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+
     }
 }

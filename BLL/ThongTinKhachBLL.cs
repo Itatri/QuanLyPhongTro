@@ -53,5 +53,12 @@ namespace BLL
         {
             thongTinKhachDAL.XoaThongTinKhach(maKhachTro);
         }
+
+        public List<ThongTinKhachDTO> TimKiemThongTinKhach(string searchValue)
+        {
+            // Gọi phương thức trong DAL để tìm kiếm
+            return thongTinKhachDAL.TimKiemThongTinKhach(searchValue);
+        }
+
     }
 }
