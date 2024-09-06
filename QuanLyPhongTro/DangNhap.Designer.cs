@@ -50,7 +50,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(105, 33);
+            this.label1.Location = new System.Drawing.Point(103, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(210, 45);
             this.label1.TabIndex = 0;
@@ -91,7 +91,6 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.Gainsboro;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.textBox1.Location = new System.Drawing.Point(24, 122);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -106,7 +105,6 @@
             this.textBox2.Location = new System.Drawing.Point(24, 194);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(350, 28);
             this.textBox2.TabIndex = 5;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -126,9 +124,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.RoyalBlue;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(143, 331);
+            this.button1.Location = new System.Drawing.Point(145, 328);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 32);
             this.button1.TabIndex = 7;
@@ -192,7 +190,6 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DangNhap";
-            this.Text = "Đăng nhập";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
