@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,5 +37,44 @@ namespace QuanLyPhongTro.Control
         {
 
         }
+
+        private void buttonTimKiemFeedBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchValue = txtTimKiemFeedBack.Text.Trim();
+                if (!string.IsNullOrEmpty(searchValue))
+                {
+                    var result = feedbackBLL.TimKiemFeedBack(searchValue);
+                    dataGridViewFeedBack.DataSource = result;
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập giá trị tìm kiếm.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể tìm kiếm phản hồi: " + ex.Message);
+            }
+        }
+
+        private void buttonRefeshFB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Xóa giá trị tìm kiếm
+                txtTimKiemFeedBack.Text = string.Empty;
+
+                // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể làm mới dữ liệu: " + ex.Message);
+            }
+        }
+
+       
     }
 }
