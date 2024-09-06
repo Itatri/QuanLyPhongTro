@@ -40,5 +40,34 @@ namespace DAL
 
             return danhSachFeedBack;
         }
+
+        public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
+        {
+            List<FeedBackDTO> list = new List<FeedBackDTO>();
+            // Câu lệnh SQL để tìm kiếm
+            string query = "SELECT * FROM FeedBack WHERE MaFB LIKE @searchValue OR MaPhong LIKE @searchValue OR MoTa LIKE @searchValue";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@searchValue", "%" + searchValue + "%");
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    FeedBackDTO feedBack = new FeedBackDTO
+                    {
+                        MaFB = reader["MaFB"].ToString(),
+                        MaPhong = reader["MaPhong"].ToString(),
+                        MoTa = reader["MoTa"].ToString()
+                    };
+                    list.Add(feedBack);
+                }
+            }
+
+            return list;
+        }
     }
 }

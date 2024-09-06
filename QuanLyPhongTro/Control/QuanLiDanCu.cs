@@ -560,5 +560,41 @@ namespace QuanLyPhongTro.Control
                 }
             }
         }
+
+        private void buttonTimKiemCuDan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchValue = txtTimKiemCuDan.Text.Trim();
+
+                // Gọi phương thức tìm kiếm từ BLL
+                var searchResults = thongTinKhachBLL.TimKiemThongTinKhach(searchValue);
+
+                // Hiển thị kết quả tìm kiếm trên DataGridView
+                dataGridViewDanCu.DataSource = searchResults;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+            }
+        }
+
+        private void buttonRefesh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Xóa giá trị tìm kiếm
+                txtTimKiemCuDan.Text = string.Empty;
+
+                // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể làm mới dữ liệu: " + ex.Message);
+            }
+        }
+
+     
     }
 }

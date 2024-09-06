@@ -16,5 +16,10 @@ namespace BLL
         {
             return feedbackDAL.LayTatCaFeedBack();
         }
+
+        public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
+        {
+            return feedbackDAL.TimKiemFeedBack(searchValue);
+        }
     }
 }
