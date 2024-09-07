@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\DanKyTaiKhoanKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DanKyTaiKhoanKhachHang.Designer.cs">
+      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\QuanLiChungCuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     <Compile Include="Control\QuanLiThongKe.Designer.cs">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\TaoQuanLyPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TaoQuanLyPhong.Designer.cs">
+      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang.resx">
+      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiChungCuControl.resx">
       <DependentUpon>QuanLiChungCuControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiThongKe.resx">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TaoQuanLyPhong.resx">
+      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
@@ -164,6 +182,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\account_icon.png" />
+    <None Include="Images\apartment.png" />
+    <None Include="Images\RefeshIcon.png" />
+    <None Include="Images\FeedbackIcon.png" />
+    <None Include="Images\ChungCu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{9ea763a8-292b-4274-b56f-057e43c89831}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{6730ba77-ffb1-456f-bf0b-1986a1118a8a}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{84b3540d-f00b-4953-aef2-f5b30d72676c}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
