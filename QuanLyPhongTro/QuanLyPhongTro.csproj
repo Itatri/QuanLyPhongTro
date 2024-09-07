@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\DanKyTaiKhoanKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DanKyTaiKhoanKhachHang.Designer.cs">
+      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\QuanLiChungCuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     <Compile Include="Control\QuanLiThongKe.Designer.cs">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\TaoQuanLyPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TaoQuanLyPhong.Designer.cs">
+      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang.resx">
+      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiChungCuControl.resx">
       <DependentUpon>QuanLiChungCuControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiThongKe.resx">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TaoQuanLyPhong.resx">
+      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
