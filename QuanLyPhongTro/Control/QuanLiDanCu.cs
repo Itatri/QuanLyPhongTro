@@ -245,6 +245,20 @@ namespace QuanLyPhongTro.Control
             
             try
             {
+                // Kiểm tra nếu chưa có ảnh trong pictureBoxAnhCuDan
+                if (pictureBoxAnhCuDan.Image == null)
+                {
+                    MessageBox.Show("Vui lòng chọn ảnh cho khách trọ.");
+                    return; 
+                }
+
+                // Kiểm tra nếu chưa có ảnh trong pictureBoxChuKy
+                if (pictureBoxChuKy.Image == null)
+                {
+                    MessageBox.Show("Vui lòng chọn chữ ký cho khách trọ.");
+                    return; 
+                }
+
                 string maKhachTro = txtMaCuDan.Text;
                 string hoTen = txtHoTenCuDan.Text;
                 string gioiTinh = comboBoxGioiTinh.Text;
