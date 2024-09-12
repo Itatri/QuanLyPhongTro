@@ -51,9 +51,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
+            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.buttonChonAnh = new System.Windows.Forms.Button();
             this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.pictureBoxAnhCuDan = new System.Windows.Forms.PictureBox();
             this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
             this.buttonLuuCD = new System.Windows.Forms.Button();
             this.buttonSuaCD = new System.Windows.Forms.Button();
@@ -63,14 +65,12 @@
             this.txtTimKiemCuDan = new System.Windows.Forms.TextBox();
             this.buttonRefesh = new System.Windows.Forms.Button();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAnhCuDan = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
-            this.panelCRUDThongTinDanCu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).BeginInit();
+            this.panelCRUDThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -294,6 +294,16 @@
             this.buttonChonChuKy.UseVisualStyleBackColor = true;
             this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
             // 
+            // pictureBoxChuKy
+            // 
+            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(766, 113);
+            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(92, 98);
+            this.pictureBoxChuKy.TabIndex = 31;
+            this.pictureBoxChuKy.TabStop = false;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -319,6 +329,16 @@
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerNgaySinh.TabIndex = 28;
+            // 
+            // pictureBoxAnhCuDan
+            // 
+            this.pictureBoxAnhCuDan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(567, 113);
+            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
+            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(92, 98);
+            this.pictureBoxAnhCuDan.TabIndex = 27;
+            this.pictureBoxAnhCuDan.TabStop = false;
             // 
             // panelCRUDThongTinDanCu
             // 
@@ -412,26 +432,6 @@
             this.pictureBoxIcon.TabIndex = 30;
             this.pictureBoxIcon.TabStop = false;
             // 
-            // pictureBoxChuKy
-            // 
-            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(766, 113);
-            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(92, 98);
-            this.pictureBoxChuKy.TabIndex = 31;
-            this.pictureBoxChuKy.TabStop = false;
-            // 
-            // pictureBoxAnhCuDan
-            // 
-            this.pictureBoxAnhCuDan.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxAnhCuDan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxAnhCuDan.Location = new System.Drawing.Point(567, 113);
-            this.pictureBoxAnhCuDan.Name = "pictureBoxAnhCuDan";
-            this.pictureBoxAnhCuDan.Size = new System.Drawing.Size(92, 98);
-            this.pictureBoxAnhCuDan.TabIndex = 27;
-            this.pictureBoxAnhCuDan.TabStop = false;
-            // 
             // QuanLiDanCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,10 +451,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
-            this.panelCRUDThongTinDanCu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhCuDan)).EndInit();
+            this.panelCRUDThongTinDanCu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
