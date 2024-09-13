@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpk_NgayHetHan = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.txtSoNuoc = new System.Windows.Forms.TextBox();
             this.txtSodien = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -43,6 +41,7 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.RtxtGhiChu = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.cbbTrangThai = new System.Windows.Forms.ComboBox();
             this.txtTienCoc = new System.Windows.Forms.TextBox();
             this.DTPK_NgayVao = new System.Windows.Forms.DateTimePicker();
@@ -60,18 +59,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnmoi = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtpk_NgayHetHan
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(158, 344);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(274, 22);
-            this.dateTimePicker1.TabIndex = 26;
+            this.dtpk_NgayHetHan.Location = new System.Drawing.Point(158, 344);
+            this.dtpk_NgayHetHan.Name = "dtpk_NgayHetHan";
+            this.dtpk_NgayHetHan.Size = new System.Drawing.Size(274, 22);
+            this.dtpk_NgayHetHan.TabIndex = 26;
             // 
             // label16
             // 
@@ -84,8 +85,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.txtSoNuoc);
             this.panel3.Controls.Add(this.txtSodien);
             this.panel3.Controls.Add(this.label12);
@@ -95,30 +94,13 @@
             this.panel3.Size = new System.Drawing.Size(413, 127);
             this.panel3.TabIndex = 22;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(210, 61);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(72, 16);
-            this.label15.TabIndex = 25;
-            this.label15.Text = "tự điền vào";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(242, -1);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 16);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "tự điền vào";
-            // 
             // txtSoNuoc
             // 
             this.txtSoNuoc.Location = new System.Drawing.Point(176, 75);
             this.txtSoNuoc.Name = "txtSoNuoc";
             this.txtSoNuoc.Size = new System.Drawing.Size(186, 22);
             this.txtSoNuoc.TabIndex = 23;
+            this.txtSoNuoc.TextChanged += new System.EventHandler(this.txtSoNuoc_TextChanged);
             // 
             // txtSodien
             // 
@@ -126,6 +108,7 @@
             this.txtSodien.Name = "txtSodien";
             this.txtSodien.Size = new System.Drawing.Size(186, 22);
             this.txtSodien.TabIndex = 22;
+            this.txtSodien.TextChanged += new System.EventHandler(this.txtSodien_TextChanged);
             // 
             // label12
             // 
@@ -152,12 +135,11 @@
             this.txtMaKhuVuc.Name = "txtMaKhuVuc";
             this.txtMaKhuVuc.Size = new System.Drawing.Size(277, 22);
             this.txtMaKhuVuc.TabIndex = 19;
-            this.txtMaKhuVuc.Text = "hiện lên khu vực từ chỗ đăng nhập";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(227, 111);
+            this.label11.Location = new System.Drawing.Point(323, 91);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 16);
             this.label11.TabIndex = 18;
@@ -166,7 +148,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(193, 26);
+            this.label10.Location = new System.Drawing.Point(301, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(166, 16);
             this.label10.TabIndex = 17;
@@ -177,12 +159,13 @@
             this.btnDangKy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
-            this.btnDangKy.Location = new System.Drawing.Point(208, 728);
+            this.btnDangKy.Location = new System.Drawing.Point(522, 999);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(201, 37);
+            this.btnDangKy.Size = new System.Drawing.Size(165, 55);
             this.btnDangKy.TabIndex = 15;
             this.btnDangKy.Text = "tạo phòng";
             this.btnDangKy.UseVisualStyleBackColor = false;
+            this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
             // 
             // RtxtGhiChu
             // 
@@ -195,7 +178,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.dtpk_NgayHetHan);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.txtMaKhuVuc);
@@ -221,6 +205,15 @@
             this.panel1.Size = new System.Drawing.Size(932, 590);
             this.panel1.TabIndex = 13;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(697, 91);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(206, 16);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "hiện lên khu vực từ chỗ đăng nhập";
+            // 
             // cbbTrangThai
             // 
             this.cbbTrangThai.FormattingEnabled = true;
@@ -235,6 +228,7 @@
             this.txtTienCoc.Name = "txtTienCoc";
             this.txtTienCoc.Size = new System.Drawing.Size(277, 22);
             this.txtTienCoc.TabIndex = 14;
+            this.txtTienCoc.TextChanged += new System.EventHandler(this.txtTienCoc_TextChanged);
             // 
             // DTPK_NgayVao
             // 
@@ -359,23 +353,53 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 853);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 746);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1230, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(1230, 210);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // btnmoi
+            // 
+            this.btnmoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnmoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmoi.ForeColor = System.Drawing.Color.White;
+            this.btnmoi.Location = new System.Drawing.Point(932, 999);
+            this.btnmoi.Name = "btnmoi";
+            this.btnmoi.Size = new System.Drawing.Size(165, 55);
+            this.btnmoi.TabIndex = 17;
+            this.btnmoi.Text = "mới";
+            this.btnmoi.UseVisualStyleBackColor = false;
+            this.btnmoi.Click += new System.EventHandler(this.btnmoi_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Location = new System.Drawing.Point(727, 999);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(165, 55);
+            this.btnXoa.TabIndex = 18;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // TaoQuanLyPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnmoi);
             this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "TaoQuanLyPhong";
             this.Size = new System.Drawing.Size(1247, 1076);
+            this.Load += new System.EventHandler(this.TaoQuanLyPhong_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -389,11 +413,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpk_NgayHetHan;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtSoNuoc;
         private System.Windows.Forms.TextBox txtSodien;
         private System.Windows.Forms.Label label12;
@@ -421,5 +443,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnmoi;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

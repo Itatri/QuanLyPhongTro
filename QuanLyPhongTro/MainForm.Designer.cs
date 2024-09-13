@@ -53,9 +53,10 @@
             this.panel1.Controls.Add(this.buttonQuanLyDanCu);
             this.panel1.Controls.Add(this.buttonQuanLyPhong);
             this.panel1.Controls.Add(this.buttonQuanLyChungCu);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(212, 780);
+            this.panel1.Size = new System.Drawing.Size(282, 960);
             this.panel1.TabIndex = 0;
             // 
             // buttonDangXuat
@@ -64,9 +65,10 @@
             this.buttonDangXuat.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDangXuat.ForeColor = System.Drawing.Color.White;
-            this.buttonDangXuat.Location = new System.Drawing.Point(45, 729);
+            this.buttonDangXuat.Location = new System.Drawing.Point(60, 897);
+            this.buttonDangXuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDangXuat.Name = "buttonDangXuat";
-            this.buttonDangXuat.Size = new System.Drawing.Size(121, 33);
+            this.buttonDangXuat.Size = new System.Drawing.Size(161, 41);
             this.buttonDangXuat.TabIndex = 7;
             this.buttonDangXuat.Text = "Đăng xuất";
             this.buttonDangXuat.UseVisualStyleBackColor = false;
@@ -77,9 +79,10 @@
             this.buttonQuanLyFeedBack.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyFeedBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyFeedBack.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyFeedBack.Location = new System.Drawing.Point(17, 353);
+            this.buttonQuanLyFeedBack.Location = new System.Drawing.Point(23, 434);
+            this.buttonQuanLyFeedBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyFeedBack.Name = "buttonQuanLyFeedBack";
-            this.buttonQuanLyFeedBack.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyFeedBack.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyFeedBack.TabIndex = 6;
             this.buttonQuanLyFeedBack.Text = "Quản lí feedback";
             this.buttonQuanLyFeedBack.UseVisualStyleBackColor = false;
@@ -90,9 +93,10 @@
             this.buttonQuanLyThongKe.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyThongKe.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyThongKe.Location = new System.Drawing.Point(17, 295);
+            this.buttonQuanLyThongKe.Location = new System.Drawing.Point(23, 363);
+            this.buttonQuanLyThongKe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyThongKe.Name = "buttonQuanLyThongKe";
-            this.buttonQuanLyThongKe.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyThongKe.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyThongKe.TabIndex = 5;
             this.buttonQuanLyThongKe.Text = "Quản lí thống kê ";
             this.buttonQuanLyThongKe.UseVisualStyleBackColor = false;
@@ -103,9 +107,10 @@
             this.buttonQuanLyPhieuThu.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyPhieuThu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyPhieuThu.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyPhieuThu.Location = new System.Drawing.Point(16, 238);
+            this.buttonQuanLyPhieuThu.Location = new System.Drawing.Point(21, 293);
+            this.buttonQuanLyPhieuThu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyPhieuThu.Name = "buttonQuanLyPhieuThu";
-            this.buttonQuanLyPhieuThu.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyPhieuThu.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyPhieuThu.TabIndex = 4;
             this.buttonQuanLyPhieuThu.Text = "Quản lí phiếu thu ";
             this.buttonQuanLyPhieuThu.UseVisualStyleBackColor = false;
@@ -116,9 +121,10 @@
             this.buttonQuanLyDichVu.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyDichVu.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyDichVu.Location = new System.Drawing.Point(16, 181);
+            this.buttonQuanLyDichVu.Location = new System.Drawing.Point(21, 223);
+            this.buttonQuanLyDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyDichVu.Name = "buttonQuanLyDichVu";
-            this.buttonQuanLyDichVu.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyDichVu.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyDichVu.TabIndex = 3;
             this.buttonQuanLyDichVu.Text = "Quản lí dịch vụ ";
             this.buttonQuanLyDichVu.UseVisualStyleBackColor = false;
@@ -129,9 +135,10 @@
             this.buttonQuanLyDanCu.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyDanCu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyDanCu.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyDanCu.Location = new System.Drawing.Point(16, 124);
+            this.buttonQuanLyDanCu.Location = new System.Drawing.Point(21, 153);
+            this.buttonQuanLyDanCu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyDanCu.Name = "buttonQuanLyDanCu";
-            this.buttonQuanLyDanCu.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyDanCu.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyDanCu.TabIndex = 2;
             this.buttonQuanLyDanCu.Text = "Quản lí dân cư";
             this.buttonQuanLyDanCu.UseVisualStyleBackColor = false;
@@ -142,9 +149,10 @@
             this.buttonQuanLyPhong.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyPhong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyPhong.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyPhong.Location = new System.Drawing.Point(15, 70);
+            this.buttonQuanLyPhong.Location = new System.Drawing.Point(20, 86);
+            this.buttonQuanLyPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyPhong.Name = "buttonQuanLyPhong";
-            this.buttonQuanLyPhong.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyPhong.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyPhong.TabIndex = 1;
             this.buttonQuanLyPhong.Text = "Quản lí phòng";
             this.buttonQuanLyPhong.UseVisualStyleBackColor = false;
@@ -155,9 +163,10 @@
             this.buttonQuanLyChungCu.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonQuanLyChungCu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonQuanLyChungCu.ForeColor = System.Drawing.Color.White;
-            this.buttonQuanLyChungCu.Location = new System.Drawing.Point(15, 16);
+            this.buttonQuanLyChungCu.Location = new System.Drawing.Point(20, 20);
+            this.buttonQuanLyChungCu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonQuanLyChungCu.Name = "buttonQuanLyChungCu";
-            this.buttonQuanLyChungCu.Size = new System.Drawing.Size(179, 34);
+            this.buttonQuanLyChungCu.Size = new System.Drawing.Size(239, 42);
             this.buttonQuanLyChungCu.TabIndex = 0;
             this.buttonQuanLyChungCu.Text = "Quản lí chung cư";
             this.buttonQuanLyChungCu.UseVisualStyleBackColor = false;
@@ -167,22 +176,26 @@
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
             this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelForm.Location = new System.Drawing.Point(244, 12);
+            this.panelForm.Location = new System.Drawing.Point(325, 15);
+            this.panelForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(931, 780);
+            this.panelForm.Size = new System.Drawing.Size(1241, 960);
             this.panelForm.TabIndex = 1;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1187, 801);
+            this.ClientSize = new System.Drawing.Size(1583, 986);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
