@@ -13,11 +13,24 @@ namespace QuanLyPhongTro
 {
     public partial class MainForm : Form
     {
+        private string khuVuc;
         public MainForm()
         {
             InitializeComponent();
         }
-        private void ShowControl(System.Windows.Forms.Control control)
+
+        public void SetKhuVuc(string khuVuc)
+        {
+            this.khuVuc = khuVuc;
+
+            // Tạo và mở instance của TaoQuanLyPhong
+            TaoQuanLyPhong formQuanLyPhong = new TaoQuanLyPhong();
+            //formQuanLyPhong.UpdateMaKhuVuc(khuVuc);
+            formQuanLyPhong.Show();
+
+            // Cập nhật các điều khiển khác nếu cần
+        }
+        public void ShowControl(System.Windows.Forms.Control control)
         {
             panelForm.Controls.Clear();
             control.Dock = DockStyle.Fill;

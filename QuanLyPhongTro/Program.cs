@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyPhongTro.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,9 @@ namespace QuanLyPhongTro
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new DangNhap());
-            Application.Run(new MainForm());
+            Application.Run(new DangNhap());
+
+            //Application.Run(new MainForm());
         }
     }
 }
