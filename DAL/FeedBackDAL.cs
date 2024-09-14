@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace DAL
 {
     public class FeedBackDAL
     {
-        private string connectionString = "Data Source=TRIS72\\VANTRI;Initial Catalog=QuanLyPhongTro;Integrated Security=True;Encrypt=False";
+        // Lấy chuỗi kết nối từ tệp App.config
+        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
         public List<FeedBackDTO> LayTatCaFeedBack()
         {

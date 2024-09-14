@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using DTO;
+using System.Configuration;
 
 namespace DAL
 {
     public class TaoQuanLyPhongDAL
     {
-        private static string connectionString = @"Data Source=DOHHUY\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;Encrypt=False";
+        // Lấy chuỗi kết nối từ tệp App.config
+        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
         public List<TaoQuanLyPhongDTO> GetAllPhong()
         {
