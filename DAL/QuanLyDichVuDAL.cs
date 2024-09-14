@@ -6,12 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using System.Configuration;
 
 namespace DAL
 {
     public class QuanLyDichVuDAL
     {
-        private readonly string connectionString = @"Data Source=DOHHUY\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;Encrypt=False";
+        // Lấy chuỗi kết nối từ tệp App.config
+        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
         public DataTable GetAllServices()
         {

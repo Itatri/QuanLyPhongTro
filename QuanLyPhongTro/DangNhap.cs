@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -19,7 +20,8 @@ namespace QuanLyPhongTro
         SqlConnection ketnoi;
         SqlCommand thuchien;
         SqlDataReader DocDuLieu;
-        string chuoiketnoi = "Data Source=DOHHUY\\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;Encrypt=False";
+        // Lấy chuỗi kết nối từ tệp App.config
+        private string chuoiketnoi = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         string lenh;
 
         public DangNhap()

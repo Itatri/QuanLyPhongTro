@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Configuration;
 
 
 namespace QuanLyPhongTro.Control
 {
     public partial class QuanLiPhong : UserControl
     {
-        private string connectionString = @"Data Source=DOHHUY\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True;Encrypt=False";
+        // Lấy chuỗi kết nối từ tệp App.config
+        private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private SqlConnection con;
         public QuanLiPhong()
         {
