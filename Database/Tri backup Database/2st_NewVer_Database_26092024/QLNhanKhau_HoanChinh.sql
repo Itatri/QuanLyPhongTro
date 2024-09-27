@@ -160,6 +160,8 @@ CREATE TABLE DuongDan
 	DDChuKy varchar(50) primary key, --- chữ ký thường admin và khách
 	DDFile varchar(50), ----- hợp đồng, ct01, cam kết
 );
+
+
 ALTER TABLE Phong
 ADD CONSTRAINT fk_Phong_KhuVuc
   FOREIGN KEY (MaKhuVuc)
