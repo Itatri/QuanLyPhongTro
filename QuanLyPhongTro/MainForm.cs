@@ -90,5 +90,17 @@ namespace QuanLyPhongTro
         {
 
         }
+
+        private void buttonTrangChu_Click(object sender, EventArgs e)
+        {
+            var trangchuControl = new MainForm_TrangChu();
+            ShowControl(trangchuControl);
+        }
+
+        private void buttonTaiKhoan_Click(object sender, EventArgs e)
+        {
+            var thongtinAdmin = new ThongTinAdmin();
+            ShowControl(thongtinAdmin);
+        }
     }
 }
