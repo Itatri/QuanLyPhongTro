@@ -85,5 +85,10 @@ namespace QuanLyPhongTro
             dangNhapForm.Show();
             this.Hide(); // Ẩn MainForm
         }
+
+        private void pictureBoxLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

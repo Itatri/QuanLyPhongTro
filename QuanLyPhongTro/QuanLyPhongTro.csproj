@@ -57,6 +57,12 @@
     <Compile Include="Control\DanKyTaiKhoanKhachHang.Designer.cs">
       <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\MainForm_TrangChu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainForm_TrangChu.Designer.cs">
+      <DependentUpon>MainForm_TrangChu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\QuanLiChungCuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,12 @@
     <Compile Include="Control\TaoQuanLyPhong.Designer.cs">
       <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\ThongTinAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ThongTinAdmin.Designer.cs">
+      <DependentUpon>ThongTinAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang.resx">
       <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainForm_TrangChu.resx">
+      <DependentUpon>MainForm_TrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiChungCuControl.resx">
       <DependentUpon>QuanLiChungCuControl.cs</DependentUpon>
@@ -154,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\TaoQuanLyPhong.resx">
       <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ThongTinAdmin.resx">
+      <DependentUpon>ThongTinAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
@@ -186,7 +204,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\account_circle.png" />
     <Content Include="Images\account_icon.png" />
+    <None Include="Images\settings.png" />
+    <None Include="Images\Home.png" />
+    <None Include="Images\IconLogout.png" />
+    <None Include="Images\IconDoccuments.png" />
+    <None Include="Images\AnhChungCu.png" />
     <None Include="Images\apartment.png" />
     <None Include="Images\RefeshIcon.png" />
     <None Include="Images\FeedbackIcon.png" />
