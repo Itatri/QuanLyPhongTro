@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelForm = new System.Windows.Forms.Panel();
-            this.buttonDangXuat = new System.Windows.Forms.Button();
-            this.buttonTrangChu = new System.Windows.Forms.Button();
-            this.buttonSetting = new System.Windows.Forms.Button();
             this.buttonTaiKhoan = new System.Windows.Forms.Button();
+            this.buttonSetting = new System.Windows.Forms.Button();
+            this.buttonDangXuat = new System.Windows.Forms.Button();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonTrangChu = new System.Windows.Forms.Button();
             this.pictureBoxLogout = new System.Windows.Forms.PictureBox();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -65,13 +65,40 @@
             this.panel1.Size = new System.Drawing.Size(231, 801);
             this.panel1.TabIndex = 0;
             // 
-            // panelForm
+            // buttonTaiKhoan
             // 
-            this.panelForm.BackColor = System.Drawing.Color.LightBlue;
-            this.panelForm.Location = new System.Drawing.Point(230, 0);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(945, 801);
-            this.panelForm.TabIndex = 1;
+            this.buttonTaiKhoan.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTaiKhoan.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTaiKhoan.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.buttonTaiKhoan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonTaiKhoan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonTaiKhoan.ForeColor = System.Drawing.Color.White;
+            this.buttonTaiKhoan.Location = new System.Drawing.Point(3, 398);
+            this.buttonTaiKhoan.Name = "buttonTaiKhoan";
+            this.buttonTaiKhoan.Size = new System.Drawing.Size(223, 50);
+            this.buttonTaiKhoan.TabIndex = 38;
+            this.buttonTaiKhoan.Text = "Tài khoản";
+            this.buttonTaiKhoan.UseVisualStyleBackColor = false;
+            this.buttonTaiKhoan.Click += new System.EventHandler(this.buttonTaiKhoan_Click);
+            // 
+            // buttonSetting
+            // 
+            this.buttonSetting.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSetting.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonSetting.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.buttonSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonSetting.ForeColor = System.Drawing.Color.White;
+            this.buttonSetting.Location = new System.Drawing.Point(3, 336);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(223, 50);
+            this.buttonSetting.TabIndex = 36;
+            this.buttonSetting.Text = "Setting";
+            this.buttonSetting.UseVisualStyleBackColor = false;
             // 
             // buttonDangXuat
             // 
@@ -91,56 +118,13 @@
             this.buttonDangXuat.UseVisualStyleBackColor = false;
             this.buttonDangXuat.Click += new System.EventHandler(this.buttonDangXuat_Click);
             // 
-            // buttonTrangChu
+            // panelForm
             // 
-            this.buttonTrangChu.BackColor = System.Drawing.Color.Transparent;
-            this.buttonTrangChu.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonTrangChu.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.buttonTrangChu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonTrangChu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonTrangChu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonTrangChu.ForeColor = System.Drawing.Color.White;
-            this.buttonTrangChu.Location = new System.Drawing.Point(3, 272);
-            this.buttonTrangChu.Name = "buttonTrangChu";
-            this.buttonTrangChu.Size = new System.Drawing.Size(223, 50);
-            this.buttonTrangChu.TabIndex = 34;
-            this.buttonTrangChu.Text = "Trang chủ";
-            this.buttonTrangChu.UseVisualStyleBackColor = false;
-            // 
-            // buttonSetting
-            // 
-            this.buttonSetting.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSetting.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonSetting.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.buttonSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonSetting.ForeColor = System.Drawing.Color.White;
-            this.buttonSetting.Location = new System.Drawing.Point(3, 336);
-            this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(223, 50);
-            this.buttonSetting.TabIndex = 36;
-            this.buttonSetting.Text = "Setting";
-            this.buttonSetting.UseVisualStyleBackColor = false;
-            // 
-            // buttonTaiKhoan
-            // 
-            this.buttonTaiKhoan.BackColor = System.Drawing.Color.Transparent;
-            this.buttonTaiKhoan.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonTaiKhoan.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.buttonTaiKhoan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonTaiKhoan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.buttonTaiKhoan.Location = new System.Drawing.Point(3, 398);
-            this.buttonTaiKhoan.Name = "buttonTaiKhoan";
-            this.buttonTaiKhoan.Size = new System.Drawing.Size(223, 50);
-            this.buttonTaiKhoan.TabIndex = 38;
-            this.buttonTaiKhoan.Text = "Tài khoản";
-            this.buttonTaiKhoan.UseVisualStyleBackColor = false;
+            this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Location = new System.Drawing.Point(230, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(979, 801);
+            this.panelForm.TabIndex = 1;
             // 
             // pictureBox3
             // 
@@ -175,6 +159,24 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
+            // buttonTrangChu
+            // 
+            this.buttonTrangChu.BackColor = System.Drawing.Color.Transparent;
+            this.buttonTrangChu.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTrangChu.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.buttonTrangChu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonTrangChu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonTrangChu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonTrangChu.ForeColor = System.Drawing.Color.White;
+            this.buttonTrangChu.Location = new System.Drawing.Point(3, 272);
+            this.buttonTrangChu.Name = "buttonTrangChu";
+            this.buttonTrangChu.Size = new System.Drawing.Size(223, 50);
+            this.buttonTrangChu.TabIndex = 34;
+            this.buttonTrangChu.Text = "Trang chủ";
+            this.buttonTrangChu.UseVisualStyleBackColor = false;
+            this.buttonTrangChu.Click += new System.EventHandler(this.buttonTrangChu_Click);
+            // 
             // pictureBoxLogout
             // 
             this.pictureBoxLogout.BackColor = System.Drawing.Color.Transparent;
@@ -202,7 +204,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1187, 801);
+            this.ClientSize = new System.Drawing.Size(1210, 801);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
