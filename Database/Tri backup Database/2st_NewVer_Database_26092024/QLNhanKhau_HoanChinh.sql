@@ -276,10 +276,10 @@ VALUES
 ('PT02', 'P02', '2024-09-01', '2024-09-05', 2500000.0, 150, 170, 70000.0, 250, 270, 300000.0, 100000.0, 2970000.0, 1);
 
 -- Insert data into ThongTinKhach
-INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, AnhNhanDien, NgaySinh, Cccd, NgayCap, NoiCap, MaDinhDanh, Phone, QueQuan, QuanHe, ChuKy, MaPhong, TrangThai)
+INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, NgaySinh, Cccd, NgayCap, NoiCap, Phone, QueQuan, QuanHe, ChuKy, MaPhong, TrangThai)
 VALUES
-('KT01', N'Nguyen Van A', N'Nam', NULL, '1990-01-01', '0123456789', '2010-01-01', N'Hà Nội', 'MDD001', '0987654321', N'Hà Nội', N'Chủ hộ', NULL, 'P01', 1),
-('KT02', N'Tran Thi B', N'Nữ', NULL, '1992-02-02', '9876543210', '2010-02-02', N'TP.HCM', 'MDD002', '0123456789', N'TP.HCM', N'Vợ', NULL, 'P02', 1);
+('KT01', N'Nguyen Van A', N'Nam', '1990-01-01', '0123456789', '2010-01-01', N'Hà Nội', '0987654321', N'Hà Nội', N'Chủ hộ', NULL, 'P01', 1),
+('KT02', N'Tran Thi B', N'Nữ', '1992-02-02', '9876543210', '2010-02-02', N'TP.HCM', '0123456789', N'TP.HCM', N'Vợ', NULL, 'P02', 1);
 
 -- Insert data into TraPhong
 INSERT INTO TraPhong (ID, MaKhachTro, MaPhong, NgayThue, NgayTra)
@@ -313,10 +313,10 @@ VALUES
 ('DN02', 'pass456', 'KV02', 1);
 
 -- Insert data into ThongTinAdmin
-INSERT INTO ThongTinAdmin (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, MaDinhDanh, Phone, QueQuan, ChuKy, ChuKyXacNhan, IdUser, TrangThai)
+INSERT INTO ThongTinAdmin (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, QueQuan, ChuKy, ChuKyXacNhan, IdUser, TrangThai)
 VALUES
-('A01', N'Le Van C', N'Nam', '1985-05-15', '1234567890', 'MDD003', '0981234567', N'Hà Nội', NULL, NULL, 'DN01', 1),
-('A02', N'Nguyen Thi D', N'Nữ', '1986-06-10', '9876543210', 'MDD004', '0912345678', N'TP.HCM', NULL, NULL, 'DN02', 1);
+('A01', N'Le Van C', N'Nam', '1985-05-15', '1234567890',  '0981234567', N'Hà Nội', NULL, NULL, 'DN01', 1),
+('A02', N'Nguyen Thi D', N'Nữ', '1986-06-10', '9876543210', '0912345678', N'TP.HCM', NULL, NULL, 'DN02', 1);
 
 -- Insert data into LuuTru
 INSERT INTO LuuTru (MaLuuTru, MaPhong, UserPhong, DiaChi, TrangThai)
