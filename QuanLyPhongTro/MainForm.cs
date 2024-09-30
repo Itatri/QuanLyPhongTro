@@ -17,6 +17,8 @@ namespace QuanLyPhongTro
         public MainForm()
         {
             InitializeComponent();
+            var trangchuControl = new MainForm_TrangChu();
+            ShowControl(trangchuControl);
         }
 
         public void SetKhuVuc(string khuVuc)
