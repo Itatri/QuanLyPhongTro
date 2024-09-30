@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="DanKyTaiKhoanKH_DTO.cs" />
     <Compile Include="FeedBackDTO.cs" />
+    <Compile Include="KhuVucDTO.cs" />
     <Compile Include="TaoQuanLyPhongDTO.cs" />
+    <Compile Include="ThongTinAdminDTO.cs" />
     <Compile Include="ThongTinDichVuDTO.cs" />
     <Compile Include="ThongTinKhachDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

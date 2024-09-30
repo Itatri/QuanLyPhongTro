@@ -97,7 +97,7 @@ namespace DAL
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("SinhMaPhong", connection))
+                    using (SqlCommand command = new SqlCommand("SinhMaPhong01", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
