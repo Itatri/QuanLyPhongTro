@@ -487,6 +487,7 @@ namespace QuanLyPhongTro.Control
                 txtCCCD.Text = selectedRow.Cells["CCCD"].Value.ToString();
                 txtSDT.Text = selectedRow.Cells["Phone"].Value.ToString();
                 txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
+                labelTenAnhChuKy.Text = selectedRow.Cells["ChuKy"].Value.ToString();
 
                 int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
                 comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0;

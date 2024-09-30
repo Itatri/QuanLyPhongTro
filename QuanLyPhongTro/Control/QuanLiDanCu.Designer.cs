@@ -49,7 +49,7 @@
             this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
-            this.labelAnhChuKy = new System.Windows.Forms.Label();
+            this.labelTenAnhChuKy = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
@@ -249,7 +249,7 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelThongTinDanCu.Controls.Add(this.labelAnhChuKy);
+            this.panelThongTinDanCu.Controls.Add(this.labelTenAnhChuKy);
             this.panelThongTinDanCu.Controls.Add(this.label14);
             this.panelThongTinDanCu.Controls.Add(this.buttonChonChuKy);
             this.panelThongTinDanCu.Controls.Add(this.pictureBoxChuKy);
@@ -278,15 +278,16 @@
             this.panelThongTinDanCu.TabIndex = 28;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
-            // labelAnhChuKy
+            // labelTenAnhChuKy
             // 
-            this.labelAnhChuKy.AutoSize = true;
-            this.labelAnhChuKy.Location = new System.Drawing.Point(737, 221);
-            this.labelAnhChuKy.Name = "labelAnhChuKy";
-            this.labelAnhChuKy.Size = new System.Drawing.Size(74, 13);
-            this.labelAnhChuKy.TabIndex = 41;
-            this.labelAnhChuKy.Text = "AnhChuKy.jpg";
-            this.labelAnhChuKy.Click += new System.EventHandler(this.labelAnhChuKy_Click);
+            this.labelTenAnhChuKy.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelTenAnhChuKy.Location = new System.Drawing.Point(700, 221);
+            this.labelTenAnhChuKy.Name = "labelTenAnhChuKy";
+            this.labelTenAnhChuKy.Size = new System.Drawing.Size(158, 13);
+            this.labelTenAnhChuKy.TabIndex = 41;
+            this.labelTenAnhChuKy.Text = "AnhChuKy.jpg";
+            this.labelTenAnhChuKy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTenAnhChuKy.Click += new System.EventHandler(this.labelAnhChuKy_Click);
             // 
             // label14
             // 
@@ -306,7 +307,7 @@
             this.buttonChonChuKy.ForeColor = System.Drawing.Color.White;
             this.buttonChonChuKy.Location = new System.Drawing.Point(697, 243);
             this.buttonChonChuKy.Name = "buttonChonChuKy";
-            this.buttonChonChuKy.Size = new System.Drawing.Size(158, 23);
+            this.buttonChonChuKy.Size = new System.Drawing.Size(161, 23);
             this.buttonChonChuKy.TabIndex = 29;
             this.buttonChonChuKy.Text = "Chọn ảnh";
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
@@ -316,9 +317,9 @@
             // 
             this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(697, 32);
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(697, 28);
             this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(158, 179);
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(161, 186);
             this.pictureBoxChuKy.TabIndex = 31;
             this.pictureBoxChuKy.TabStop = false;
             this.pictureBoxChuKy.Click += new System.EventHandler(this.pictureBoxChuKy_Click);
@@ -326,7 +327,8 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(737, 9);
+            this.label13.ForeColor = System.Drawing.Color.Firebrick;
+            this.label13.Location = new System.Drawing.Point(739, 6);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 30;
@@ -512,6 +514,6 @@
         private System.Windows.Forms.TextBox txtTimKiemCuDan;
         private System.Windows.Forms.Button buttonRefesh;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label labelAnhChuKy;
+        private System.Windows.Forms.Label labelTenAnhChuKy;
     }
 }
