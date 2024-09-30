@@ -37,9 +37,9 @@
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtMaCuDan = new System.Windows.Forms.TextBox();
+            this.txtMaPhong = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtHoTenCuDan = new System.Windows.Forms.TextBox();
+            this.txtNoiDungPhanHoi = new System.Windows.Forms.TextBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
@@ -132,33 +132,36 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Mã phòng";
+            this.label3.Text = "Mã phòng :";
             // 
-            // txtMaCuDan
+            // txtMaPhong
             // 
-            this.txtMaCuDan.Location = new System.Drawing.Point(81, 61);
-            this.txtMaCuDan.Name = "txtMaCuDan";
-            this.txtMaCuDan.Size = new System.Drawing.Size(135, 20);
-            this.txtMaCuDan.TabIndex = 8;
+            this.txtMaPhong.Location = new System.Drawing.Point(81, 59);
+            this.txtMaPhong.Multiline = true;
+            this.txtMaPhong.Name = "txtMaPhong";
+            this.txtMaPhong.Size = new System.Drawing.Size(123, 26);
+            this.txtMaPhong.TabIndex = 8;
+            this.txtMaPhong.TextChanged += new System.EventHandler(this.txtMaPhong_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 115);
+            this.label4.Location = new System.Drawing.Point(14, 112);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Nội dung :";
             // 
-            // txtHoTenCuDan
+            // txtNoiDungPhanHoi
             // 
-            this.txtHoTenCuDan.Location = new System.Drawing.Point(81, 112);
-            this.txtHoTenCuDan.Multiline = true;
-            this.txtHoTenCuDan.Name = "txtHoTenCuDan";
-            this.txtHoTenCuDan.Size = new System.Drawing.Size(873, 152);
-            this.txtHoTenCuDan.TabIndex = 10;
+            this.txtNoiDungPhanHoi.Location = new System.Drawing.Point(81, 112);
+            this.txtNoiDungPhanHoi.Multiline = true;
+            this.txtNoiDungPhanHoi.Name = "txtNoiDungPhanHoi";
+            this.txtNoiDungPhanHoi.Size = new System.Drawing.Size(887, 188);
+            this.txtNoiDungPhanHoi.TabIndex = 10;
+            this.txtNoiDungPhanHoi.TextChanged += new System.EventHandler(this.txtHoTenCuDan_TextChanged);
             // 
             // panelThongTinDanCu
             // 
@@ -166,13 +169,14 @@
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelThongTinDanCu.Controls.Add(this.label14);
             this.panelThongTinDanCu.Controls.Add(this.label3);
-            this.panelThongTinDanCu.Controls.Add(this.txtMaCuDan);
+            this.panelThongTinDanCu.Controls.Add(this.txtMaPhong);
             this.panelThongTinDanCu.Controls.Add(this.label4);
-            this.panelThongTinDanCu.Controls.Add(this.txtHoTenCuDan);
+            this.panelThongTinDanCu.Controls.Add(this.txtNoiDungPhanHoi);
             this.panelThongTinDanCu.Location = new System.Drawing.Point(16, 469);
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
-            this.panelThongTinDanCu.Size = new System.Drawing.Size(993, 289);
+            this.panelThongTinDanCu.Size = new System.Drawing.Size(993, 330);
             this.panelThongTinDanCu.TabIndex = 40;
+            this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
             // QuanLiFeedBack
             // 
@@ -188,7 +192,7 @@
             this.Controls.Add(this.dataGridViewFeedBack);
             this.Controls.Add(this.label1);
             this.Name = "QuanLiFeedBack";
-            this.Size = new System.Drawing.Size(1024, 777);
+            this.Size = new System.Drawing.Size(1024, 815);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
@@ -208,9 +212,9 @@
         private System.Windows.Forms.Button buttonRefeshFB;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMaCuDan;
+        private System.Windows.Forms.TextBox txtMaPhong;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtHoTenCuDan;
+        private System.Windows.Forms.TextBox txtNoiDungPhanHoi;
         private System.Windows.Forms.Panel panelThongTinDanCu;
     }
 }
