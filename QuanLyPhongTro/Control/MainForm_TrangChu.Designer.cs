@@ -213,6 +213,7 @@
             this.btnQLPhanHoi.TabIndex = 23;
             this.btnQLPhanHoi.Text = "Quản Lý Phản Hồi";
             this.btnQLPhanHoi.UseVisualStyleBackColor = false;
+            this.btnQLPhanHoi.Click += new System.EventHandler(this.btnQLPhanHoi_Click);
             // 
             // btnQLGiaoDich
             // 

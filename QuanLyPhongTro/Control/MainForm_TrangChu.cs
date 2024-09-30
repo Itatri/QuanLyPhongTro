@@ -13,12 +13,15 @@ namespace QuanLyPhongTro.Control
     public partial class MainForm_TrangChu : UserControl
     {
         private QuanLiDanCu controlQuanLyDanCu;
-
+        private QuanLiFeedBack controlQuanLyPhanHoi;
         public MainForm_TrangChu()
         {
             InitializeComponent();
             controlQuanLyDanCu = new QuanLiDanCu();
-            controlQuanLyDanCu.Dock = DockStyle.Fill; // Đặt control hiển thị chiếm toàn bộ panel
+            controlQuanLyDanCu.Dock = DockStyle.Fill; // Đặt control hiển thị chiếm toàn bộ 
+
+            controlQuanLyPhanHoi = new QuanLiFeedBack();
+            controlQuanLyPhanHoi.Dock = DockStyle.Fill; // Đặt control hiển thị chiếm toàn bộ panel
         }
 
         private void btnQLDanCu_Click(object sender, EventArgs e)
@@ -26,6 +29,12 @@ namespace QuanLyPhongTro.Control
             this.Controls.Clear(); // Xóa các control hiện có
             this.Controls.Add(controlQuanLyDanCu); // Thêm control QuanLyDanCu
 
+        }
+
+        private void btnQLPhanHoi_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear(); // Xóa các control hiện có
+            this.Controls.Add(controlQuanLyPhanHoi); // Thêm control QuanLyDanCu
         }
     }
 }

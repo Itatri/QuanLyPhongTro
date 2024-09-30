@@ -358,7 +358,7 @@
             this.buttonLuuCD.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonLuuCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
-            this.buttonLuuCD.Location = new System.Drawing.Point(687, 17);
+            this.buttonLuuCD.Location = new System.Drawing.Point(764, 17);
             this.buttonLuuCD.Name = "buttonLuuCD";
             this.buttonLuuCD.Size = new System.Drawing.Size(118, 23);
             this.buttonLuuCD.TabIndex = 3;
@@ -371,7 +371,7 @@
             this.buttonSuaCD.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonSuaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
-            this.buttonSuaCD.Location = new System.Drawing.Point(487, 17);
+            this.buttonSuaCD.Location = new System.Drawing.Point(534, 17);
             this.buttonSuaCD.Name = "buttonSuaCD";
             this.buttonSuaCD.Size = new System.Drawing.Size(118, 23);
             this.buttonSuaCD.TabIndex = 2;
@@ -384,7 +384,7 @@
             this.buttonXoaCD.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonXoaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
-            this.buttonXoaCD.Location = new System.Drawing.Point(273, 17);
+            this.buttonXoaCD.Location = new System.Drawing.Point(289, 17);
             this.buttonXoaCD.Name = "buttonXoaCD";
             this.buttonXoaCD.Size = new System.Drawing.Size(118, 23);
             this.buttonXoaCD.TabIndex = 1;
@@ -463,6 +463,7 @@
             this.Controls.Add(this.label1);
             this.Name = "QuanLiDanCu";
             this.Size = new System.Drawing.Size(1024, 815);
+            this.Load += new System.EventHandler(this.QuanLiDanCu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
