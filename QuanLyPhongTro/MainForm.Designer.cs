@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonTaiKhoan = new System.Windows.Forms.Button();
-            this.buttonSetting = new System.Windows.Forms.Button();
-            this.buttonDangXuat = new System.Windows.Forms.Button();
-            this.panelForm = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.buttonTaiKhoan = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.buttonSetting = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTrangChu = new System.Windows.Forms.Button();
             this.pictureBoxLogout = new System.Windows.Forms.PictureBox();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.buttonDangXuat = new System.Windows.Forms.Button();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -62,8 +62,19 @@
             this.panel1.Controls.Add(this.buttonDangXuat);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(231, 801);
+            this.panel1.Size = new System.Drawing.Size(231, 829);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_circle;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(30, 403);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(33, 40);
+            this.pictureBox3.TabIndex = 39;
+            this.pictureBox3.TabStop = false;
             // 
             // buttonTaiKhoan
             // 
@@ -83,6 +94,17 @@
             this.buttonTaiKhoan.UseVisualStyleBackColor = false;
             this.buttonTaiKhoan.Click += new System.EventHandler(this.buttonTaiKhoan_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.settings;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(30, 341);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 40);
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
             // buttonSetting
             // 
             this.buttonSetting.BackColor = System.Drawing.Color.Transparent;
@@ -99,54 +121,6 @@
             this.buttonSetting.TabIndex = 36;
             this.buttonSetting.Text = "Setting";
             this.buttonSetting.UseVisualStyleBackColor = false;
-            // 
-            // buttonDangXuat
-            // 
-            this.buttonDangXuat.BackColor = System.Drawing.Color.Transparent;
-            this.buttonDangXuat.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonDangXuat.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.buttonDangXuat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonDangXuat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonDangXuat.ForeColor = System.Drawing.Color.White;
-            this.buttonDangXuat.Location = new System.Drawing.Point(7, 735);
-            this.buttonDangXuat.Name = "buttonDangXuat";
-            this.buttonDangXuat.Size = new System.Drawing.Size(215, 50);
-            this.buttonDangXuat.TabIndex = 7;
-            this.buttonDangXuat.Text = "Đăng xuất";
-            this.buttonDangXuat.UseVisualStyleBackColor = false;
-            this.buttonDangXuat.Click += new System.EventHandler(this.buttonDangXuat_Click);
-            // 
-            // panelForm
-            // 
-            this.panelForm.BackColor = System.Drawing.Color.White;
-            this.panelForm.Location = new System.Drawing.Point(230, 0);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(979, 801);
-            this.panelForm.TabIndex = 1;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_circle;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(30, 403);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(33, 40);
-            this.pictureBox3.TabIndex = 39;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.settings;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(30, 341);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 40);
-            this.pictureBox2.TabIndex = 37;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -182,7 +156,7 @@
             this.pictureBoxLogout.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxLogout.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.IconLogout;
             this.pictureBoxLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxLogout.Location = new System.Drawing.Point(30, 741);
+            this.pictureBoxLogout.Location = new System.Drawing.Point(30, 751);
             this.pictureBoxLogout.Name = "pictureBoxLogout";
             this.pictureBoxLogout.Size = new System.Drawing.Size(33, 40);
             this.pictureBoxLogout.TabIndex = 33;
@@ -199,18 +173,46 @@
             this.pictureBoxIcon.TabIndex = 32;
             this.pictureBoxIcon.TabStop = false;
             // 
+            // buttonDangXuat
+            // 
+            this.buttonDangXuat.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDangXuat.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonDangXuat.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.buttonDangXuat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonDangXuat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonDangXuat.ForeColor = System.Drawing.Color.White;
+            this.buttonDangXuat.Location = new System.Drawing.Point(7, 746);
+            this.buttonDangXuat.Name = "buttonDangXuat";
+            this.buttonDangXuat.Size = new System.Drawing.Size(215, 50);
+            this.buttonDangXuat.TabIndex = 7;
+            this.buttonDangXuat.Text = "Đăng xuất";
+            this.buttonDangXuat.UseVisualStyleBackColor = false;
+            this.buttonDangXuat.Click += new System.EventHandler(this.buttonDangXuat_Click);
+            // 
+            // panelForm
+            // 
+            this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Location = new System.Drawing.Point(230, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(1028, 829);
+            this.panelForm.TabIndex = 1;
+            this.panelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelForm_Paint);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1210, 801);
+            this.ClientSize = new System.Drawing.Size(1258, 830);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
