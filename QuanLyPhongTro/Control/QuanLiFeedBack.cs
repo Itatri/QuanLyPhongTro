@@ -94,16 +94,34 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridViewFeedBack_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Kiểm tra xem cột được nhấn có phải là cột "Xem Chi Tiết" không
             if (e.ColumnIndex == dataGridViewFeedBack.Columns["btnXemChiTiet"].Index && e.RowIndex >= 0)
             {
+                // Lấy dữ liệu của dòng hiện tại
                 string maPhong = dataGridViewFeedBack.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
-                HienThiChiTietPhanHoi(maPhong);
+                string moTa = dataGridViewFeedBack.Rows[e.RowIndex].Cells["MoTa"].Value.ToString();
+
+                // Hiển thị dữ liệu lên các TextBox
+                txtMaPhong.Text = maPhong;
+                txtNoiDungPhanHoi.Text = moTa;
             }
+
         }
-        private void HienThiChiTietPhanHoi(string maPhong)
+
+
+        private void txtHoTenCuDan_TextChanged(object sender, EventArgs e)
         {
-            // Thực hiện logic để hiển thị chi tiết phản hồi của phòng
-            MessageBox.Show("Hiển thị chi tiết phản hồi cho phòng: " + maPhong);
+
+        }
+
+        private void panelThongTinDanCu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtMaPhong_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
