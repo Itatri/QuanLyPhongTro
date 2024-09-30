@@ -191,28 +191,28 @@ namespace QuanLyPhongTro.Control
 
                         if (currentCustomer != null)
                         {
-                            // Xóa ảnh của khách hàng nếu có
-                            if (!string.IsNullOrEmpty(currentCustomer.AnhNhanDien))
-                            {
-                                // Tạo đường dẫn đầy đủ tới ảnh
-                                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-                                string filePath = Path.Combine(imagesFolderPath, currentCustomer.AnhNhanDien);
+                            //// Xóa ảnh của khách hàng nếu có
+                            //if (!string.IsNullOrEmpty(currentCustomer.AnhNhanDien))
+                            //{
+                            //    // Tạo đường dẫn đầy đủ tới ảnh
+                            //    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                            //    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+                            //    string filePath = Path.Combine(imagesFolderPath, currentCustomer.AnhNhanDien);
 
-                                //// Giải phóng tài nguyên ảnh nếu cần
-                                //pictureBoxAnhCuDan.Image?.Dispose();
-                                //pictureBoxAnhCuDan.Image = null;
+                            //    //// Giải phóng tài nguyên ảnh nếu cần
+                            //    //pictureBoxAnhCuDan.Image?.Dispose();
+                            //    //pictureBoxAnhCuDan.Image = null;
 
-                                // Đảm bảo file không còn được sử dụng
-                                GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
-                                GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+                            //    // Đảm bảo file không còn được sử dụng
+                            //    GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
+                            //    GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
 
-                                // Xóa file ảnh nếu tồn tại
-                                if (File.Exists(filePath))
-                                {
-                                    File.Delete(filePath);
-                                }
-                            }
+                            //    // Xóa file ảnh nếu tồn tại
+                            //    if (File.Exists(filePath))
+                            //    {
+                            //        File.Delete(filePath);
+                            //    }
+                            //}
                             // Xóa chữ ký của khách hàng nếu có
                             if (!string.IsNullOrEmpty(currentCustomer.ChuKy))
                             {
@@ -314,7 +314,7 @@ namespace QuanLyPhongTro.Control
                 int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Ngưng hoạt động") ? 0 : 1;
                 string maPhong = comboBoxPhong.SelectedValue.ToString();
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
-                string newImagePath = null;
+                //string newImagePath = null;
                 string newImagePathChuKy = null;
 
                 //// Handle the image in pictureBoxAnhCuDan
@@ -355,7 +355,7 @@ namespace QuanLyPhongTro.Control
                     TrangThai = trangThai,
                     MaPhong = maPhong,
                     NgaySinh = ngaySinh,
-                    AnhNhanDien = newImagePath,
+                    //AnhNhanDien = newImagePath,
                     ChuKy = newImagePathChuKy
                 };
 
@@ -369,11 +369,11 @@ namespace QuanLyPhongTro.Control
 
                     if (currentCustomer != null)
                     {
-                        // Handle AnhNhanDien
-                        if (newImagePath == null)
-                        {
-                            khachDTO.AnhNhanDien = currentCustomer.AnhNhanDien;
-                        }
+                        //// Handle AnhNhanDien
+                        //if (newImagePath == null)
+                        //{
+                        //    khachDTO.AnhNhanDien = currentCustomer.AnhNhanDien;
+                        //}
 
                         // Handle ChuKy
                         if (newImagePathChuKy == null)
@@ -552,50 +552,50 @@ namespace QuanLyPhongTro.Control
         {
 
         }      
-        private string SaveImageToFolder(Image image, string maKhachTro, string hoTen)
-        {
-            try
-            {
-                // Lấy thư mục gốc của ứng dụng
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        //private string SaveImageToFolder(Image image, string maKhachTro, string hoTen)
+        //{
+        //    try
+        //    {
+        //        // Lấy thư mục gốc của ứng dụng
+        //        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
-                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+        //        // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
+        //        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
 
-                // Chuyển đường dẫn lên thư mục gốc của dự án
-                imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+        //        // Chuyển đường dẫn lên thư mục gốc của dự án
+        //        imagesFolderPath = Path.GetFullPath(imagesFolderPath);
 
-                // Tạo thư mục nếu chưa tồn tại
-                if (!Directory.Exists(imagesFolderPath))
-                {
-                    Directory.CreateDirectory(imagesFolderPath);
-                }
+        //        // Tạo thư mục nếu chưa tồn tại
+        //        if (!Directory.Exists(imagesFolderPath))
+        //        {
+        //            Directory.CreateDirectory(imagesFolderPath);
+        //        }
 
-                // Tạo tên tệp ảnh
-                string fileName = $"{maKhachTro}_{hoTen}.jpg";
-                string filePath = Path.Combine(imagesFolderPath, fileName);
+        //        // Tạo tên tệp ảnh
+        //        string fileName = $"{maKhachTro}_{hoTen}.jpg";
+        //        string filePath = Path.Combine(imagesFolderPath, fileName);
 
-                // Kiểm tra nếu tệp đã tồn tại
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
-                }
+        //        // Kiểm tra nếu tệp đã tồn tại
+        //        if (File.Exists(filePath))
+        //        {
+        //            File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+        //        }
 
-                // Lưu ảnh
-                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                {
-                    image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                }
+        //        // Lưu ảnh
+        //        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+        //        {
+        //            image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //        }
 
-                // Trả về tên tệp ảnh cho cơ sở dữ liệu
-                return fileName;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể lưu ảnh: " + ex.Message);
-                return null;
-            }
-        }
+        //        // Trả về tên tệp ảnh cho cơ sở dữ liệu
+        //        return fileName;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Không thể lưu ảnh: " + ex.Message);
+        //        return null;
+        //    }
+        //}
 
         private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
         {

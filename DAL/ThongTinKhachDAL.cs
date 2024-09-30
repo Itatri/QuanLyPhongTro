@@ -55,7 +55,7 @@ namespace DAL
         public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
         {
             // Thực hiện câu lệnh SQL để cập nhật thông tin
-            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, AnhNhanDien = @AnhNhanDien, ChuKy = @ChuKy WHERE MaKhachTro = @MaKhachTro";
+            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy WHERE MaKhachTro = @MaKhachTro";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -69,7 +69,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
                 cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
                 cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-                cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
+                //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
                 cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
 
                 conn.Open();
@@ -101,8 +101,8 @@ namespace DAL
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, AnhNhanDien, ChuKy) " +
-                                   "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @AnhNhanDien,@ChuKy )";
+                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy) " +
+                                   "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh,@ChuKy )";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -115,7 +115,7 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
                         cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
                         cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-                        cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
+                        //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
                         cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
 
                         cmd.ExecuteNonQuery();
@@ -155,7 +155,7 @@ namespace DAL
                         TrangThai = Convert.ToInt32(reader["TrangThai"]),
                         MaPhong = reader["MaPhong"].ToString(),
                         NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                        AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                        //AnhNhanDien = reader["AnhNhanDien"].ToString(),
                         ChuKy = reader["ChuKy"].ToString()
                     };
                 }
@@ -212,7 +212,7 @@ namespace DAL
                                 TrangThai = Convert.ToInt32(reader["TrangThai"]),
                                 MaPhong = reader["MaPhong"].ToString(),
                                 NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                                //AnhNhanDien = reader["AnhNhanDien"].ToString(),
                                 ChuKy = reader["ChuKy"].ToString()
                             };
 
