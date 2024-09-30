@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="DanKyTaiKhoanKH_DAL.cs" />
     <Compile Include="FeedBackDAL.cs" />
+    <Compile Include="KhuVucDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyDichVuDAL.cs" />
     <Compile Include="TaoQuanLyPhongDAL.cs" />
+    <Compile Include="ThongTinAdminDAL.cs" />
     <Compile Include="ThongTinKhachDAL.cs" />
     <Compile Include="ThongTinPhongDAL.cs" />
   </ItemGroup>
