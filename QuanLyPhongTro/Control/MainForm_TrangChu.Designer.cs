@@ -35,14 +35,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonDangXuat = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnQuanLyPhong = new System.Windows.Forms.Button();
+            this.btnQLDanCu = new System.Windows.Forms.Button();
+            this.btnQLDichVu = new System.Windows.Forms.Button();
+            this.btnQLPhanHoi = new System.Windows.Forms.Button();
+            this.btnQLGiaoDich = new System.Windows.Forms.Button();
+            this.btnQLHopDong = new System.Windows.Forms.Button();
+            this.btnLuuTru = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -135,128 +135,6 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Tài khoản :";
             // 
-            // buttonDangXuat
-            // 
-            this.buttonDangXuat.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonDangXuat.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonDangXuat.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.buttonDangXuat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonDangXuat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.buttonDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonDangXuat.ForeColor = System.Drawing.Color.White;
-            this.buttonDangXuat.Location = new System.Drawing.Point(0, 386);
-            this.buttonDangXuat.Name = "buttonDangXuat";
-            this.buttonDangXuat.Size = new System.Drawing.Size(506, 92);
-            this.buttonDangXuat.TabIndex = 20;
-            this.buttonDangXuat.Text = "Quản Lý Phòng";
-            this.buttonDangXuat.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Orange;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(504, 386);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(510, 92);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Quản Lý Dân Cư";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 478);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(506, 92);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Quản Lý Dịch Vụ";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.SteelBlue;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 570);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(506, 92);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Quản Lý Phản Hồi";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.SteelBlue;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(504, 478);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(510, 92);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "Quản Lý Giao Dịch";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.SteelBlue;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(504, 570);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(510, 92);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Quản Lý Hợp Đồng , CT01, Cam Kết";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = global::QuanLyPhongTro.Properties.Resources.IconDoccuments;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(791, 183);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(223, 203);
-            this.button6.TabIndex = 26;
-            this.button6.Text = "Lưu trữ";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_icon1;
@@ -267,13 +145,136 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnQuanLyPhong
+            // 
+            this.btnQuanLyPhong.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnQuanLyPhong.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQuanLyPhong.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyPhong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQuanLyPhong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQuanLyPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuanLyPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQuanLyPhong.ForeColor = System.Drawing.Color.White;
+            this.btnQuanLyPhong.Location = new System.Drawing.Point(0, 386);
+            this.btnQuanLyPhong.Name = "btnQuanLyPhong";
+            this.btnQuanLyPhong.Size = new System.Drawing.Size(506, 92);
+            this.btnQuanLyPhong.TabIndex = 20;
+            this.btnQuanLyPhong.Text = "Quản Lý Phòng";
+            this.btnQuanLyPhong.UseVisualStyleBackColor = false;
+            // 
+            // btnQLDanCu
+            // 
+            this.btnQLDanCu.BackColor = System.Drawing.Color.Orange;
+            this.btnQLDanCu.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQLDanCu.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQLDanCu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQLDanCu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQLDanCu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLDanCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQLDanCu.ForeColor = System.Drawing.Color.White;
+            this.btnQLDanCu.Location = new System.Drawing.Point(504, 386);
+            this.btnQLDanCu.Name = "btnQLDanCu";
+            this.btnQLDanCu.Size = new System.Drawing.Size(536, 92);
+            this.btnQLDanCu.TabIndex = 21;
+            this.btnQLDanCu.Text = "Quản Lý Dân Cư";
+            this.btnQLDanCu.UseVisualStyleBackColor = false;
+            this.btnQLDanCu.Click += new System.EventHandler(this.btnQLDanCu_Click);
+            // 
+            // btnQLDichVu
+            // 
+            this.btnQLDichVu.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnQLDichVu.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQLDichVu.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQLDichVu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQLDichVu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQLDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLDichVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQLDichVu.ForeColor = System.Drawing.Color.White;
+            this.btnQLDichVu.Location = new System.Drawing.Point(0, 478);
+            this.btnQLDichVu.Name = "btnQLDichVu";
+            this.btnQLDichVu.Size = new System.Drawing.Size(506, 92);
+            this.btnQLDichVu.TabIndex = 22;
+            this.btnQLDichVu.Text = "Quản Lý Dịch Vụ";
+            this.btnQLDichVu.UseVisualStyleBackColor = false;
+            // 
+            // btnQLPhanHoi
+            // 
+            this.btnQLPhanHoi.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnQLPhanHoi.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQLPhanHoi.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQLPhanHoi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQLPhanHoi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQLPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQLPhanHoi.ForeColor = System.Drawing.Color.White;
+            this.btnQLPhanHoi.Location = new System.Drawing.Point(0, 570);
+            this.btnQLPhanHoi.Name = "btnQLPhanHoi";
+            this.btnQLPhanHoi.Size = new System.Drawing.Size(506, 92);
+            this.btnQLPhanHoi.TabIndex = 23;
+            this.btnQLPhanHoi.Text = "Quản Lý Phản Hồi";
+            this.btnQLPhanHoi.UseVisualStyleBackColor = false;
+            // 
+            // btnQLGiaoDich
+            // 
+            this.btnQLGiaoDich.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnQLGiaoDich.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQLGiaoDich.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQLGiaoDich.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQLGiaoDich.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQLGiaoDich.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQLGiaoDich.ForeColor = System.Drawing.Color.White;
+            this.btnQLGiaoDich.Location = new System.Drawing.Point(504, 478);
+            this.btnQLGiaoDich.Name = "btnQLGiaoDich";
+            this.btnQLGiaoDich.Size = new System.Drawing.Size(536, 92);
+            this.btnQLGiaoDich.TabIndex = 24;
+            this.btnQLGiaoDich.Text = "Quản Lý Giao Dịch";
+            this.btnQLGiaoDich.UseVisualStyleBackColor = false;
+            // 
+            // btnQLHopDong
+            // 
+            this.btnQLHopDong.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnQLHopDong.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnQLHopDong.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnQLHopDong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnQLHopDong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnQLHopDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLHopDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnQLHopDong.ForeColor = System.Drawing.Color.White;
+            this.btnQLHopDong.Location = new System.Drawing.Point(504, 570);
+            this.btnQLHopDong.Name = "btnQLHopDong";
+            this.btnQLHopDong.Size = new System.Drawing.Size(536, 92);
+            this.btnQLHopDong.TabIndex = 25;
+            this.btnQLHopDong.Text = "Quản Lý Hợp Đồng , CT01, Cam Kết";
+            this.btnQLHopDong.UseVisualStyleBackColor = false;
+            // 
+            // btnLuuTru
+            // 
+            this.btnLuuTru.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnLuuTru.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLuuTru.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnLuuTru.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnLuuTru.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnLuuTru.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLuuTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLuuTru.ForeColor = System.Drawing.Color.White;
+            this.btnLuuTru.Image = global::QuanLyPhongTro.Properties.Resources.IconDoccuments;
+            this.btnLuuTru.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuuTru.Location = new System.Drawing.Point(791, 183);
+            this.btnLuuTru.Name = "btnLuuTru";
+            this.btnLuuTru.Size = new System.Drawing.Size(249, 203);
+            this.btnLuuTru.TabIndex = 26;
+            this.btnLuuTru.Text = "Lưu trữ";
+            this.btnLuuTru.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLuuTru.UseVisualStyleBackColor = false;
+            // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.AnhChungCu;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1014, 184);
+            this.panel1.Size = new System.Drawing.Size(1040, 184);
             this.panel1.TabIndex = 0;
             // 
             // MainForm_TrangChu
@@ -281,17 +282,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonDangXuat);
+            this.Controls.Add(this.btnLuuTru);
+            this.Controls.Add(this.btnQLHopDong);
+            this.Controls.Add(this.btnQLGiaoDich);
+            this.Controls.Add(this.btnQLPhanHoi);
+            this.Controls.Add(this.btnQLDichVu);
+            this.Controls.Add(this.btnQLDanCu);
+            this.Controls.Add(this.btnQuanLyPhong);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm_TrangChu";
-            this.Size = new System.Drawing.Size(1014, 904);
+            this.Size = new System.Drawing.Size(1040, 904);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -310,12 +311,12 @@
         private System.Windows.Forms.Label labelTaiKhoanXC;
         private System.Windows.Forms.Label labelKhuVuc;
         private System.Windows.Forms.Label lbTaiKhoan;
-        private System.Windows.Forms.Button buttonDangXuat;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnQuanLyPhong;
+        private System.Windows.Forms.Button btnLuuTru;
+        private System.Windows.Forms.Button btnQLDanCu;
+        private System.Windows.Forms.Button btnQLDichVu;
+        private System.Windows.Forms.Button btnQLPhanHoi;
+        private System.Windows.Forms.Button btnQLGiaoDich;
+        private System.Windows.Forms.Button btnQLHopDong;
     }
 }
