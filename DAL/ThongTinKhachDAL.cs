@@ -34,7 +34,7 @@ namespace DAL
                             MaKhachTro = reader["MaKhachTro"].ToString(),
                             HoTen = reader["HoTen"].ToString(),
                             GioiTinh = reader["GioiTinh"].ToString(),
-                            AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                         
                             NgaySinh = (DateTime)reader["NgaySinh"],
                             CCCD = reader["CCCD"].ToString(),
                             Phone = reader["Phone"].ToString(),

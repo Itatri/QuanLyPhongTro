@@ -25,7 +25,7 @@ namespace QuanLyPhongTro.Control
             // Đăng ký sự kiện CellClick cho DataGridView
             dataGridViewDanCu.CellClick += dataGridViewDanCu_CellClick;
             // Thiết lập chế độ hiển thị ảnh cho PictureBox
-            pictureBoxAnhCuDan.SizeMode = PictureBoxSizeMode.Zoom;
+            //pictureBoxAnhCuDan.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
             // Thiết lập trạng thái của các trường dữ liệu
             SetControlsEnabled(false);
@@ -77,7 +77,7 @@ namespace QuanLyPhongTro.Control
             comboBoxTrangThai.Enabled = enabled;
             comboBoxPhong.Enabled = enabled;
             dateTimePickerNgaySinh.Enabled = enabled;
-            buttonChonAnh.Enabled = enabled;
+            //buttonChonAnh.Enabled = enabled;
             buttonChonChuKy.Enabled = enabled;
         }
 
@@ -168,7 +168,7 @@ namespace QuanLyPhongTro.Control
             comboBoxTrangThai.SelectedIndex = -1;
             comboBoxPhong.SelectedIndex = -1;
             dateTimePickerNgaySinh.Value = DateTime.Now;
-            pictureBoxAnhCuDan.Image = null; // Xóa ảnh cũ
+            ////pictureBoxAnhCuDan.Image = null; // Xóa ảnh cũ
             pictureBoxChuKy.Image = null; // Xóa ảnh cũ
         }
 
@@ -199,9 +199,9 @@ namespace QuanLyPhongTro.Control
                                 string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
                                 string filePath = Path.Combine(imagesFolderPath, currentCustomer.AnhNhanDien);
 
-                                // Giải phóng tài nguyên ảnh nếu cần
-                                pictureBoxAnhCuDan.Image?.Dispose();
-                                pictureBoxAnhCuDan.Image = null;
+                                //// Giải phóng tài nguyên ảnh nếu cần
+                                //pictureBoxAnhCuDan.Image?.Dispose();
+                                //pictureBoxAnhCuDan.Image = null;
 
                                 // Đảm bảo file không còn được sử dụng
                                 GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
@@ -271,12 +271,12 @@ namespace QuanLyPhongTro.Control
             SetControlsEnabled(true);
             txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
 
-            // Giải phóng tài nguyên ảnh nhận diện hiện tại 
-            if (pictureBoxAnhCuDan.Image != null)
-            {
-                pictureBoxAnhCuDan.Image.Dispose();
-                pictureBoxAnhCuDan.Image = null;
-            }
+            ////// Giải phóng tài nguyên ảnh nhận diện hiện tại 
+            ////if (pictureBoxAnhCuDan.Image != null)
+            ////{
+            ////    pictureBoxAnhCuDan.Image.Dispose();
+            ////    pictureBoxAnhCuDan.Image = null;
+            ////}
 
             // Giải phóng tài nguyên ảnh chũ ký hiện tại 
             if (pictureBoxChuKy.Image != null)
@@ -291,12 +291,12 @@ namespace QuanLyPhongTro.Control
             
             try
             {
-                // Kiểm tra nếu chưa có ảnh trong pictureBoxAnhCuDan
-                if (pictureBoxAnhCuDan.Image == null)
-                {
-                    MessageBox.Show("Vui lòng chọn ảnh cho khách trọ.");
-                    return; 
-                }
+                //// Kiểm tra nếu chưa có ảnh trong pictureBoxAnhCuDan
+                //if (pictureBoxAnhCuDan.Image == null)
+                //{
+                //    MessageBox.Show("Vui lòng chọn ảnh cho khách trọ.");
+                //    return; 
+                //}
 
                 // Kiểm tra nếu chưa có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image == null)
@@ -317,18 +317,18 @@ namespace QuanLyPhongTro.Control
                 string newImagePath = null;
                 string newImagePathChuKy = null;
 
-                // Handle the image in pictureBoxAnhCuDan
-                if (pictureBoxAnhCuDan.Image != null)
-                {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        pictureBoxAnhCuDan.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        using (Image img = Image.FromStream(ms))
-                        {
-                            newImagePath = SaveImageToFolder(img, maKhachTro, hoTen);
-                        }
-                    }
-                }
+                //// Handle the image in pictureBoxAnhCuDan
+                //if (pictureBoxAnhCuDan.Image != null)
+                //{
+                //    using (MemoryStream ms = new MemoryStream())
+                //    {
+                //        pictureBoxAnhCuDan.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                //        using (Image img = Image.FromStream(ms))
+                //        {
+                //            newImagePath = SaveImageToFolder(img, maKhachTro, hoTen);
+                //        }
+                //    }
+                //}
 
                 // Handle the image in pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
@@ -502,26 +502,26 @@ namespace QuanLyPhongTro.Control
                     dateTimePickerNgaySinh.Value = DateTime.Now;
                 }
 
-                string imageFileName = selectedRow.Cells["AnhNhanDien"].Value.ToString();
-                if (!string.IsNullOrEmpty(imageFileName))
-                {
-                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-                    string filePath = Path.Combine(imagesFolderPath, imageFileName);
+                ////string imageFileName = selectedRow.Cells["AnhNhanDien"].Value.ToString();
+                ////if (!string.IsNullOrEmpty(imageFileName))
+                ////{
+                ////    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                ////    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
+                ////    string filePath = Path.Combine(imagesFolderPath, imageFileName);
 
-                    if (File.Exists(filePath))
-                    {
-                        pictureBoxAnhCuDan.Image = Image.FromFile(filePath);
-                    }
-                    else
-                    {
-                        pictureBoxAnhCuDan.Image = null;
-                    }
-                }
-                else
-                {
-                    pictureBoxAnhCuDan.Image = null;
-                }
+                ////    if (File.Exists(filePath))
+                ////    {
+                ////        pictureBoxAnhCuDan.Image = Image.FromFile(filePath);
+                ////    }
+                ////    else
+                ////    {
+                ////        pictureBoxAnhCuDan.Image = null;
+                ////    }
+                ////}
+                ////else
+                ////{
+                ////    pictureBoxAnhCuDan.Image = null;
+                ////}
 
                 string imageChuKy = selectedRow.Cells["ChuKy"].Value.ToString();
                 if (!string.IsNullOrEmpty(imageChuKy))
@@ -644,28 +644,28 @@ namespace QuanLyPhongTro.Control
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                openFileDialog.Title = "Chọn hình ảnh";
+            //    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //{
+            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+            //    openFileDialog.Title = "Chọn hình ảnh";
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // Ẩn ảnh mặc định trong PictureBox
-                    pictureBoxAnhCuDan.Image = null;
+            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        // Ẩn ảnh mặc định trong PictureBox
+            //        pictureBoxAnhCuDan.Image = null;
 
-                    // Hiển thị ảnh trong PictureBox
-                    try
-                    {
-                        Image selectedImage = Image.FromFile(openFileDialog.FileName);
-                        pictureBoxAnhCuDan.Image = selectedImage;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-                    }
-                }
-            }
+            //        // Hiển thị ảnh trong PictureBox
+            //        try
+            //        {
+            //            Image selectedImage = Image.FromFile(openFileDialog.FileName);
+            //            pictureBoxAnhCuDan.Image = selectedImage;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+            //        }
+            //    }
+            //}
         }
 
         private void buttonChonChuKy_Click(object sender, EventArgs e)
@@ -728,6 +728,54 @@ namespace QuanLyPhongTro.Control
             }
         }
 
-     
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxChuKy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAnhChuKy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaCuDan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHoTenCuDan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCCCD_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelThongTinDanCu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
