@@ -102,5 +102,15 @@ namespace QuanLyPhongTro
             var thongtinAdmin = new ThongTinAdmin();
             ShowControl(thongtinAdmin);
         }
+
+        private void panelForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
