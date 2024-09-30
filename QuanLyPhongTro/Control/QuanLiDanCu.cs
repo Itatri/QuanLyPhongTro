@@ -777,5 +777,10 @@ namespace QuanLyPhongTro.Control
         {
 
         }
+
+        private void QuanLiDanCu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
