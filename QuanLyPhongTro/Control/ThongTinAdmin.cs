@@ -179,56 +179,7 @@ namespace QuanLyPhongTro.Control
 
         private void btnCapNhatThongTin_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Lấy thông tin từ các điều khiển
-            //    string idUser = txtIDUserAdmin.Text;
-            //    string maAdmin = txtMaAdmin.Text;
-            //    string hoTen = txtHoTenAdmin.Text;
-            //    string gioiTinh = comboBoxGioiTinhAdmin.SelectedItem != null ? comboBoxGioiTinhAdmin.SelectedItem.ToString() : "";
-            //    string cccd = txtCCCDAdmin.Text;
-            //    string queQuan = txtQueQuanAdmin.Text;
-            //    string phone = txtPhoneAdmin.Text;
-            //    DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
-
-            //    // Kiểm tra xem có ảnh chữ ký không
-            //    string chuKyFileName = null;
-            //    if (pictureBoxChuKy.Image != null)
-            //    {
-            //        // Lưu ảnh chữ ký và lấy tên tệp
-            //        chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
-            //    }
-
-            //    // Tạo đối tượng DTO với các thông tin mới
-            //    ThongTinAdminDTO adminInfo = new ThongTinAdminDTO
-            //    {
-            //        MaAdmin = maAdmin,
-            //        HoTen = hoTen,
-            //        GioiTinh = gioiTinh,
-            //        NgaySinh = ngaySinh,
-            //        Cccd = cccd,
-            //        Phone = phone,
-            //        QueQuan = queQuan,
-            //        ChuKy = chuKyFileName,
-            //        IdUser = idUser
-            //    };
-
-            //    // Gọi phương thức cập nhật thông tin trong BLL
-            //    bool isUpdated = thongTinAdminBLL.CapNhatThongTinAdmin(adminInfo);
-
-            //    if (isUpdated)
-            //    {
-            //        MessageBox.Show("Cập nhật thông tin Admin thành công!");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Cập nhật thông tin Admin thất bại!");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
-            //}
+           
             try
             {
                 // Lấy thông tin từ các điều khiển
@@ -281,12 +232,48 @@ namespace QuanLyPhongTro.Control
                 {
                     MessageBox.Show("Cập nhật thông tin Admin thất bại!");
                 }
+
+
+
+                // Kiểm tra và cập nhật mật khẩu
+                string password = txtPassword.Text;
+                string rePass = txtRePass.Text;
+
+                if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(rePass))
+                {
+                    if (password == rePass)
+                    {
+                        // Gọi phương thức cập nhật mật khẩu trong BLL
+                        DangNhapAdminBLL dangNhapBLL = new DangNhapAdminBLL();
+                        bool isPasswordUpdated = dangNhapBLL.CapNhatMatKhau(idUser, password);
+
+                        if (isPasswordUpdated)
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu Admin thành công!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật mật khẩu Admin thất bại!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật mật khẩu Admin thất bại! Nhập lại mật khẩu");
+                    }
+                }
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
             }
 
+
+        }
+
+        private void pictureBoxIcon_Click(object sender, EventArgs e)
+        {
 
         }
     }

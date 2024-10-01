@@ -282,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BackColor = System.Drawing.Color.RoyalBlue;
             this.Controls.Add(this.btnLuuTru);
             this.Controls.Add(this.btnQLHopDong);
             this.Controls.Add(this.btnQLGiaoDich);
@@ -294,6 +294,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "MainForm_TrangChu";
             this.Size = new System.Drawing.Size(1040, 904);
+            this.Load += new System.EventHandler(this.MainForm_TrangChu_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

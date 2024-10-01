@@ -194,6 +194,7 @@
             // panelForm
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelForm.Location = new System.Drawing.Point(230, 0);
             this.panelForm.Name = "panelForm";
             this.panelForm.Size = new System.Drawing.Size(1038, 829);
