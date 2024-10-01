@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DangNhapAdminBLL.cs" />
     <Compile Include="DanKyTaiKhoanKH_BLL.cs" />
     <Compile Include="FeedBackBLL.cs" />
     <Compile Include="KhuVucBLL.cs" />

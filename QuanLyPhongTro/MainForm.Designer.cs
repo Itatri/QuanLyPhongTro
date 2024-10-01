@@ -194,9 +194,10 @@
             // panelForm
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelForm.Location = new System.Drawing.Point(230, 0);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1028, 829);
+            this.panelForm.Size = new System.Drawing.Size(1038, 829);
             this.panelForm.TabIndex = 1;
             this.panelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelForm_Paint);
             // 
@@ -205,7 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1258, 830);
+            this.ClientSize = new System.Drawing.Size(1268, 830);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
