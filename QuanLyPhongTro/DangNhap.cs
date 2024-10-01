@@ -72,28 +72,7 @@ namespace QuanLyPhongTro
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            //string id = txtTaiKhoan.Text;
-            //string password = txtMatKhau.Text;
-            //string region = cbbChungCu.SelectedItem?.ToString();
 
-            //if (string.IsNullOrEmpty(region))
-            //{
-            //    MessageBox.Show("Vui lòng chọn khu vực!");
-            //    return;
-            //}
-
-            //if (ValidateLogin(id, password, region))
-            //{
-            //    // Đăng nhập thành công, mở form chính
-            //    MessageBox.Show("Đăng nhập thành công!");
-
-            //    // Gọi OpenUserControl1 với biến region
-            //    OpenUserControl1(region);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sai tên đăng nhập, mật khẩu hoặc khu vực!");
-            //}
 
             string id = txtTaiKhoan.Text;
             string password = txtMatKhau.Text;
@@ -107,12 +86,9 @@ namespace QuanLyPhongTro
 
             if (ValidateLogin(id, password, region))
             {
-                // Đăng nhập thành công, mở form chính
+                // Đăng nhập thành công, mở MainForm và truyền id, region
                 MessageBox.Show("Đăng nhập thành công!");
-
-                // Tạo và mở instance của MainForm
-                MainForm mainForm = new MainForm();
-                mainForm.SetKhuVuc(region);
+                MainForm mainForm = new MainForm(id, region);
                 mainForm.Show();
 
                 // Ẩn form đăng nhập
@@ -122,6 +98,7 @@ namespace QuanLyPhongTro
             {
                 MessageBox.Show("Sai tên đăng nhập, mật khẩu hoặc khu vực!");
             }
+
         }
 
 

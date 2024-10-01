@@ -13,25 +13,27 @@ namespace QuanLyPhongTro
 {
     public partial class MainForm : Form
     {
-        private string khuVuc;
-        public MainForm()
+        private string id;
+        private string region;
+
+        public MainForm(string id, string region)
         {
             InitializeComponent();
+            this.id = id;
+            this.region = region;
+
+            // Hiển thị trang chủ và truyền id, region
             var trangchuControl = new MainForm_TrangChu();
-            ShowControl(trangchuControl);
+            trangchuControl.SetUserInfo(id, region); // Truyền id và region vào trang chủ
+            var thongtinAdmin = new ThongTinAdmin();
+            thongtinAdmin.SetUserInfo(id, region); // Truyền id và region
+
+            ShowControl(trangchuControl); // Hiển thị trang chủ
+
+
         }
 
-        public void SetKhuVuc(string khuVuc)
-        {
-            this.khuVuc = khuVuc;
 
-            // Tạo và mở instance của TaoQuanLyPhong
-            TaoQuanLyPhong formQuanLyPhong = new TaoQuanLyPhong();
-            //formQuanLyPhong.UpdateMaKhuVuc(khuVuc);
-            formQuanLyPhong.Show();
-
-            // Cập nhật các điều khiển khác nếu cần
-        }
         public void ShowControl(System.Windows.Forms.Control control)
         {
             panelForm.Controls.Clear();
@@ -95,13 +97,18 @@ namespace QuanLyPhongTro
 
         private void buttonTrangChu_Click(object sender, EventArgs e)
         {
+            // Khi nhấn nút Trang Chủ, truyền id và region vào trang chủ
             var trangchuControl = new MainForm_TrangChu();
+            trangchuControl.SetUserInfo(id, region); // Truyền id và region vào trang chủ
             ShowControl(trangchuControl);
+
+
         }
 
         private void buttonTaiKhoan_Click(object sender, EventArgs e)
         {
             var thongtinAdmin = new ThongTinAdmin();
+            thongtinAdmin.SetUserInfo(id, region);
             ShowControl(thongtinAdmin);
         }
 
