@@ -51,19 +51,22 @@
             this.txtIDUserAdmin = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnCapNhatThongTin = new System.Windows.Forms.Button();
-            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
             this.txtRePass = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
+            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(383, 53);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(375, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(275, 31);
             this.label1.TabIndex = 31;
@@ -269,17 +272,20 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtPassword.Location = new System.Drawing.Point(178, 451);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(496, 28);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(496, 30);
             this.txtPassword.TabIndex = 74;
             // 
             // btnCapNhatThongTin
             // 
             this.btnCapNhatThongTin.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCapNhatThongTin.FlatAppearance.BorderSize = 0;
+            this.btnCapNhatThongTin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnCapNhatThongTin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnCapNhatThongTin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
             this.btnCapNhatThongTin.Location = new System.Drawing.Point(427, 707);
@@ -289,16 +295,6 @@
             this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
             this.btnCapNhatThongTin.UseVisualStyleBackColor = false;
             this.btnCapNhatThongTin.Click += new System.EventHandler(this.btnCapNhatThongTin_Click);
-            // 
-            // pictureBoxChuKy
-            // 
-            this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(733, 93);
-            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(220, 300);
-            this.pictureBoxChuKy.TabIndex = 47;
-            this.pictureBoxChuKy.TabStop = false;
             // 
             // panelThongTinDanCu
             // 
@@ -336,11 +332,12 @@
             // 
             // txtRePass
             // 
-            this.txtRePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtRePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtRePass.Location = new System.Drawing.Point(178, 509);
             this.txtRePass.Multiline = true;
             this.txtRePass.Name = "txtRePass";
-            this.txtRePass.Size = new System.Drawing.Size(496, 28);
+            this.txtRePass.PasswordChar = '*';
+            this.txtRePass.Size = new System.Drawing.Size(496, 30);
             this.txtRePass.TabIndex = 76;
             // 
             // label11
@@ -353,20 +350,43 @@
             this.label11.TabIndex = 75;
             this.label11.Text = "Nhập lại ";
             // 
+            // pictureBoxChuKy
+            // 
+            this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(733, 93);
+            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(220, 300);
+            this.pictureBoxChuKy.TabIndex = 47;
+            this.pictureBoxChuKy.TabStop = false;
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_circle1;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(656, 53);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(31, 33);
+            this.pictureBoxIcon.TabIndex = 77;
+            this.pictureBoxIcon.TabStop = false;
+            this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBoxIcon_Click);
+            // 
             // ThongTinAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.panelThongTinDanCu);
             this.Controls.Add(this.btnCapNhatThongTin);
             this.Controls.Add(this.label1);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1040, 904);
             this.Load += new System.EventHandler(this.ThongTinAdmin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,5 +421,6 @@
         private System.Windows.Forms.Panel panelThongTinDanCu;
         private System.Windows.Forms.TextBox txtRePass;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

@@ -68,5 +68,10 @@ namespace QuanLyPhongTro.Control
             this.Controls.Clear(); // Xóa các control hiện có
             this.Controls.Add(controlQuanLyPhanHoi); // Thêm control QuanLyDanCu
         }
+
+        private void MainForm_TrangChu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
