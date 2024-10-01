@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DangNhapAdminDTO.cs" />
     <Compile Include="DanKyTaiKhoanKH_DTO.cs" />
     <Compile Include="FeedBackDTO.cs" />
     <Compile Include="KhuVucDTO.cs" />

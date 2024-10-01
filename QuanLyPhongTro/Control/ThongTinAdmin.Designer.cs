@@ -32,27 +32,29 @@
             this.labelAnhChuKy = new System.Windows.Forms.Label();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerNgaySinhAdmin = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtMaCuDan = new System.Windows.Forms.TextBox();
+            this.txtMaAdmin = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtHoTenCuDan = new System.Windows.Forms.TextBox();
+            this.txtHoTenAdmin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtQueQuan = new System.Windows.Forms.TextBox();
+            this.txtQueQuanAdmin = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBoxGioiTinh = new System.Windows.Forms.ComboBox();
+            this.comboBoxGioiTinhAdmin = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.txtCCCDAdmin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buttonThemCD = new System.Windows.Forms.Button();
+            this.txtPhoneAdmin = new System.Windows.Forms.TextBox();
+            this.txtIDUserAdmin = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnCapNhatThongTin = new System.Windows.Forms.Button();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.txtRePass = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(360, 53);
+            this.label1.Location = new System.Drawing.Point(383, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(275, 31);
             this.label1.TabIndex = 31;
@@ -69,85 +71,91 @@
             // 
             // labelAnhChuKy
             // 
-            this.labelAnhChuKy.AutoSize = true;
             this.labelAnhChuKy.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelAnhChuKy.Location = new System.Drawing.Point(773, 409);
+            this.labelAnhChuKy.Location = new System.Drawing.Point(733, 403);
             this.labelAnhChuKy.Name = "labelAnhChuKy";
-            this.labelAnhChuKy.Size = new System.Drawing.Size(74, 13);
+            this.labelAnhChuKy.Size = new System.Drawing.Size(220, 25);
             this.labelAnhChuKy.TabIndex = 49;
             this.labelAnhChuKy.Text = "AnhChuKy.jpg";
+            this.labelAnhChuKy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonChonChuKy
             // 
             this.buttonChonChuKy.BackColor = System.Drawing.Color.LightSlateGray;
             this.buttonChonChuKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChonChuKy.ForeColor = System.Drawing.Color.White;
-            this.buttonChonChuKy.Location = new System.Drawing.Point(698, 437);
+            this.buttonChonChuKy.Location = new System.Drawing.Point(733, 437);
             this.buttonChonChuKy.Name = "buttonChonChuKy";
             this.buttonChonChuKy.Size = new System.Drawing.Size(220, 32);
             this.buttonChonChuKy.TabIndex = 45;
             this.buttonChonChuKy.Text = "Chọn ảnh";
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
+            this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label13.ForeColor = System.Drawing.Color.Firebrick;
-            this.label13.Location = new System.Drawing.Point(762, 65);
+            this.label13.Location = new System.Drawing.Point(797, 65);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 16);
             this.label13.TabIndex = 46;
             this.label13.Text = "Chữ ký Admin";
             // 
-            // dateTimePickerNgaySinh
+            // dateTimePickerNgaySinhAdmin
             // 
-            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(143, 320);
-            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(496, 20);
-            this.dateTimePickerNgaySinh.TabIndex = 67;
+            this.dateTimePickerNgaySinhAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.dateTimePickerNgaySinhAdmin.Location = new System.Drawing.Point(178, 320);
+            this.dateTimePickerNgaySinhAdmin.Name = "dateTimePickerNgaySinhAdmin";
+            this.dateTimePickerNgaySinhAdmin.Size = new System.Drawing.Size(496, 26);
+            this.dateTimePickerNgaySinhAdmin.TabIndex = 67;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(21, 68);
+            this.label3.Location = new System.Drawing.Point(56, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 50;
             this.label3.Text = "Mã Admin";
             // 
-            // txtMaCuDan
+            // txtMaAdmin
             // 
-            this.txtMaCuDan.Location = new System.Drawing.Point(143, 65);
-            this.txtMaCuDan.Multiline = true;
-            this.txtMaCuDan.Name = "txtMaCuDan";
-            this.txtMaCuDan.Size = new System.Drawing.Size(128, 28);
-            this.txtMaCuDan.TabIndex = 51;
+            this.txtMaAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtMaAdmin.Location = new System.Drawing.Point(178, 65);
+            this.txtMaAdmin.Multiline = true;
+            this.txtMaAdmin.Name = "txtMaAdmin";
+            this.txtMaAdmin.ReadOnly = true;
+            this.txtMaAdmin.Size = new System.Drawing.Size(128, 28);
+            this.txtMaAdmin.TabIndex = 51;
+            this.txtMaAdmin.TextChanged += new System.EventHandler(this.txtMaAdmin_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.Location = new System.Drawing.Point(291, 68);
+            this.label4.Location = new System.Drawing.Point(326, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 20);
             this.label4.TabIndex = 52;
             this.label4.Text = "Họ Tên ";
             // 
-            // txtHoTenCuDan
+            // txtHoTenAdmin
             // 
-            this.txtHoTenCuDan.Location = new System.Drawing.Point(362, 65);
-            this.txtHoTenCuDan.Multiline = true;
-            this.txtHoTenCuDan.Name = "txtHoTenCuDan";
-            this.txtHoTenCuDan.Size = new System.Drawing.Size(277, 28);
-            this.txtHoTenCuDan.TabIndex = 53;
+            this.txtHoTenAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtHoTenAdmin.Location = new System.Drawing.Point(397, 65);
+            this.txtHoTenAdmin.Multiline = true;
+            this.txtHoTenAdmin.Name = "txtHoTenAdmin";
+            this.txtHoTenAdmin.Size = new System.Drawing.Size(277, 28);
+            this.txtHoTenAdmin.TabIndex = 53;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(21, 123);
+            this.label5.Location = new System.Drawing.Point(56, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 54;
@@ -157,43 +165,45 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.Location = new System.Drawing.Point(21, 318);
+            this.label6.Location = new System.Drawing.Point(56, 318);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 20);
             this.label6.TabIndex = 55;
             this.label6.Text = "Ngày sinh";
             // 
-            // txtQueQuan
+            // txtQueQuanAdmin
             // 
-            this.txtQueQuan.Location = new System.Drawing.Point(143, 188);
-            this.txtQueQuan.Multiline = true;
-            this.txtQueQuan.Name = "txtQueQuan";
-            this.txtQueQuan.Size = new System.Drawing.Size(496, 28);
-            this.txtQueQuan.TabIndex = 62;
+            this.txtQueQuanAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtQueQuanAdmin.Location = new System.Drawing.Point(178, 188);
+            this.txtQueQuanAdmin.Multiline = true;
+            this.txtQueQuanAdmin.Name = "txtQueQuanAdmin";
+            this.txtQueQuanAdmin.Size = new System.Drawing.Size(496, 28);
+            this.txtQueQuanAdmin.TabIndex = 62;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label9.Location = new System.Drawing.Point(21, 190);
+            this.label9.Location = new System.Drawing.Point(56, 190);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 20);
             this.label9.TabIndex = 61;
             this.label9.Text = "Quê quán ";
             // 
-            // comboBoxGioiTinh
+            // comboBoxGioiTinhAdmin
             // 
-            this.comboBoxGioiTinh.FormattingEnabled = true;
-            this.comboBoxGioiTinh.Location = new System.Drawing.Point(143, 126);
-            this.comboBoxGioiTinh.Name = "comboBoxGioiTinh";
-            this.comboBoxGioiTinh.Size = new System.Drawing.Size(128, 21);
-            this.comboBoxGioiTinh.TabIndex = 56;
+            this.comboBoxGioiTinhAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.comboBoxGioiTinhAdmin.FormattingEnabled = true;
+            this.comboBoxGioiTinhAdmin.Location = new System.Drawing.Point(178, 126);
+            this.comboBoxGioiTinhAdmin.Name = "comboBoxGioiTinhAdmin";
+            this.comboBoxGioiTinhAdmin.Size = new System.Drawing.Size(128, 28);
+            this.comboBoxGioiTinhAdmin.TabIndex = 56;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label7.Location = new System.Drawing.Point(291, 123);
+            this.label7.Location = new System.Drawing.Point(326, 123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 20);
             this.label7.TabIndex = 57;
@@ -203,25 +213,26 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label8.Location = new System.Drawing.Point(21, 256);
+            this.label8.Location = new System.Drawing.Point(56, 256);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 20);
             this.label8.TabIndex = 59;
             this.label8.Text = "Số điện thoại ";
             // 
-            // txtCCCD
+            // txtCCCDAdmin
             // 
-            this.txtCCCD.Location = new System.Drawing.Point(362, 123);
-            this.txtCCCD.Multiline = true;
-            this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(277, 28);
-            this.txtCCCD.TabIndex = 58;
+            this.txtCCCDAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtCCCDAdmin.Location = new System.Drawing.Point(397, 123);
+            this.txtCCCDAdmin.Multiline = true;
+            this.txtCCCDAdmin.Name = "txtCCCDAdmin";
+            this.txtCCCDAdmin.Size = new System.Drawing.Size(277, 28);
+            this.txtCCCDAdmin.TabIndex = 58;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(21, 389);
+            this.label2.Location = new System.Drawing.Point(56, 389);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 68;
@@ -231,54 +242,59 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label10.Location = new System.Drawing.Point(24, 457);
+            this.label10.Location = new System.Drawing.Point(59, 457);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 20);
             this.label10.TabIndex = 70;
             this.label10.Text = "Mật khẩu";
             // 
-            // textBox3
+            // txtPhoneAdmin
             // 
-            this.textBox3.Location = new System.Drawing.Point(143, 253);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(496, 28);
-            this.textBox3.TabIndex = 72;
+            this.txtPhoneAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPhoneAdmin.Location = new System.Drawing.Point(178, 253);
+            this.txtPhoneAdmin.Multiline = true;
+            this.txtPhoneAdmin.Name = "txtPhoneAdmin";
+            this.txtPhoneAdmin.Size = new System.Drawing.Size(496, 28);
+            this.txtPhoneAdmin.TabIndex = 72;
             // 
-            // textBox1
+            // txtIDUserAdmin
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 388);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(496, 28);
-            this.textBox1.TabIndex = 73;
+            this.txtIDUserAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtIDUserAdmin.Location = new System.Drawing.Point(178, 388);
+            this.txtIDUserAdmin.Multiline = true;
+            this.txtIDUserAdmin.Name = "txtIDUserAdmin";
+            this.txtIDUserAdmin.ReadOnly = true;
+            this.txtIDUserAdmin.Size = new System.Drawing.Size(496, 28);
+            this.txtIDUserAdmin.TabIndex = 73;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(143, 451);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(496, 28);
-            this.textBox2.TabIndex = 74;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPassword.Location = new System.Drawing.Point(178, 451);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(496, 28);
+            this.txtPassword.TabIndex = 74;
             // 
-            // buttonThemCD
+            // btnCapNhatThongTin
             // 
-            this.buttonThemCD.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonThemCD.FlatAppearance.BorderSize = 0;
-            this.buttonThemCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonThemCD.ForeColor = System.Drawing.Color.White;
-            this.buttonThemCD.Location = new System.Drawing.Point(395, 672);
-            this.buttonThemCD.Name = "buttonThemCD";
-            this.buttonThemCD.Size = new System.Drawing.Size(184, 38);
-            this.buttonThemCD.TabIndex = 75;
-            this.buttonThemCD.Text = "Cập nhật thông tin";
-            this.buttonThemCD.UseVisualStyleBackColor = false;
+            this.btnCapNhatThongTin.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCapNhatThongTin.FlatAppearance.BorderSize = 0;
+            this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
+            this.btnCapNhatThongTin.Location = new System.Drawing.Point(427, 707);
+            this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
+            this.btnCapNhatThongTin.Size = new System.Drawing.Size(184, 38);
+            this.btnCapNhatThongTin.TabIndex = 75;
+            this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
+            this.btnCapNhatThongTin.UseVisualStyleBackColor = false;
+            this.btnCapNhatThongTin.Click += new System.EventHandler(this.btnCapNhatThongTin_Click);
             // 
             // pictureBoxChuKy
             // 
             this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(698, 93);
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(733, 93);
             this.pictureBoxChuKy.Name = "pictureBoxChuKy";
             this.pictureBoxChuKy.Size = new System.Drawing.Size(220, 300);
             this.pictureBoxChuKy.TabIndex = 47;
@@ -288,43 +304,66 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThongTinDanCu.Controls.Add(this.txtRePass);
+            this.panelThongTinDanCu.Controls.Add(this.label11);
             this.panelThongTinDanCu.Controls.Add(this.label3);
-            this.panelThongTinDanCu.Controls.Add(this.txtCCCD);
+            this.panelThongTinDanCu.Controls.Add(this.txtCCCDAdmin);
             this.panelThongTinDanCu.Controls.Add(this.labelAnhChuKy);
-            this.panelThongTinDanCu.Controls.Add(this.textBox2);
+            this.panelThongTinDanCu.Controls.Add(this.txtPassword);
             this.panelThongTinDanCu.Controls.Add(this.buttonChonChuKy);
             this.panelThongTinDanCu.Controls.Add(this.label8);
             this.panelThongTinDanCu.Controls.Add(this.pictureBoxChuKy);
-            this.panelThongTinDanCu.Controls.Add(this.textBox1);
+            this.panelThongTinDanCu.Controls.Add(this.txtIDUserAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label13);
             this.panelThongTinDanCu.Controls.Add(this.label7);
-            this.panelThongTinDanCu.Controls.Add(this.textBox3);
-            this.panelThongTinDanCu.Controls.Add(this.comboBoxGioiTinh);
+            this.panelThongTinDanCu.Controls.Add(this.txtPhoneAdmin);
+            this.panelThongTinDanCu.Controls.Add(this.comboBoxGioiTinhAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label10);
             this.panelThongTinDanCu.Controls.Add(this.label9);
             this.panelThongTinDanCu.Controls.Add(this.label2);
-            this.panelThongTinDanCu.Controls.Add(this.txtQueQuan);
-            this.panelThongTinDanCu.Controls.Add(this.dateTimePickerNgaySinh);
+            this.panelThongTinDanCu.Controls.Add(this.txtQueQuanAdmin);
+            this.panelThongTinDanCu.Controls.Add(this.dateTimePickerNgaySinhAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label6);
             this.panelThongTinDanCu.Controls.Add(this.label5);
-            this.panelThongTinDanCu.Controls.Add(this.txtMaCuDan);
-            this.panelThongTinDanCu.Controls.Add(this.txtHoTenCuDan);
+            this.panelThongTinDanCu.Controls.Add(this.txtMaAdmin);
+            this.panelThongTinDanCu.Controls.Add(this.txtHoTenAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label4);
-            this.panelThongTinDanCu.Location = new System.Drawing.Point(12, 107);
+            this.panelThongTinDanCu.Location = new System.Drawing.Point(26, 107);
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
-            this.panelThongTinDanCu.Size = new System.Drawing.Size(952, 539);
+            this.panelThongTinDanCu.Size = new System.Drawing.Size(989, 572);
             this.panelThongTinDanCu.TabIndex = 76;
+            this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
+            // 
+            // txtRePass
+            // 
+            this.txtRePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtRePass.Location = new System.Drawing.Point(178, 509);
+            this.txtRePass.Multiline = true;
+            this.txtRePass.Name = "txtRePass";
+            this.txtRePass.Size = new System.Drawing.Size(496, 28);
+            this.txtRePass.TabIndex = 76;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.Location = new System.Drawing.Point(64, 515);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 20);
+            this.label11.TabIndex = 75;
+            this.label11.Text = "Nhập lại ";
             // 
             // ThongTinAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.panelThongTinDanCu);
-            this.Controls.Add(this.buttonThemCD);
+            this.Controls.Add(this.btnCapNhatThongTin);
             this.Controls.Add(this.label1);
             this.Name = "ThongTinAdmin";
-            this.Size = new System.Drawing.Size(978, 739);
+            this.Size = new System.Drawing.Size(1040, 904);
+            this.Load += new System.EventHandler(this.ThongTinAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
@@ -340,25 +379,27 @@
         private System.Windows.Forms.Button buttonChonChuKy;
         private System.Windows.Forms.PictureBox pictureBoxChuKy;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinhAdmin;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMaCuDan;
+        private System.Windows.Forms.TextBox txtMaAdmin;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtHoTenCuDan;
+        private System.Windows.Forms.TextBox txtHoTenAdmin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtQueQuan;
+        private System.Windows.Forms.TextBox txtQueQuanAdmin;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBoxGioiTinh;
+        private System.Windows.Forms.ComboBox comboBoxGioiTinhAdmin;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCCCD;
+        private System.Windows.Forms.TextBox txtCCCDAdmin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button buttonThemCD;
+        private System.Windows.Forms.TextBox txtPhoneAdmin;
+        private System.Windows.Forms.TextBox txtIDUserAdmin;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnCapNhatThongTin;
         private System.Windows.Forms.Panel panelThongTinDanCu;
+        private System.Windows.Forms.TextBox txtRePass;
+        private System.Windows.Forms.Label label11;
     }
 }
