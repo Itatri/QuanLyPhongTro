@@ -235,7 +235,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(56, 389);
+            this.label2.Location = new System.Drawing.Point(56, 390);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 68;
@@ -245,7 +245,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label10.Location = new System.Drawing.Point(59, 457);
+            this.label10.Location = new System.Drawing.Point(60, 459);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 20);
             this.label10.TabIndex = 70;
@@ -273,7 +273,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtPassword.Location = new System.Drawing.Point(178, 451);
+            this.txtPassword.Location = new System.Drawing.Point(178, 453);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -288,7 +288,7 @@
             this.btnCapNhatThongTin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhatThongTin.Location = new System.Drawing.Point(427, 707);
+            this.btnCapNhatThongTin.Location = new System.Drawing.Point(399, 590);
             this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
             this.btnCapNhatThongTin.Size = new System.Drawing.Size(184, 38);
             this.btnCapNhatThongTin.TabIndex = 75;
@@ -302,6 +302,7 @@
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelThongTinDanCu.Controls.Add(this.txtRePass);
             this.panelThongTinDanCu.Controls.Add(this.label11);
+            this.panelThongTinDanCu.Controls.Add(this.btnCapNhatThongTin);
             this.panelThongTinDanCu.Controls.Add(this.label3);
             this.panelThongTinDanCu.Controls.Add(this.txtCCCDAdmin);
             this.panelThongTinDanCu.Controls.Add(this.labelAnhChuKy);
@@ -324,16 +325,16 @@
             this.panelThongTinDanCu.Controls.Add(this.txtMaAdmin);
             this.panelThongTinDanCu.Controls.Add(this.txtHoTenAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label4);
-            this.panelThongTinDanCu.Location = new System.Drawing.Point(26, 107);
+            this.panelThongTinDanCu.Location = new System.Drawing.Point(24, 107);
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
-            this.panelThongTinDanCu.Size = new System.Drawing.Size(989, 572);
+            this.panelThongTinDanCu.Size = new System.Drawing.Size(989, 663);
             this.panelThongTinDanCu.TabIndex = 76;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
             // txtRePass
             // 
             this.txtRePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtRePass.Location = new System.Drawing.Point(178, 509);
+            this.txtRePass.Location = new System.Drawing.Point(178, 514);
             this.txtRePass.Multiline = true;
             this.txtRePass.Name = "txtRePass";
             this.txtRePass.PasswordChar = '*';
@@ -344,7 +345,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label11.Location = new System.Drawing.Point(64, 515);
+            this.label11.Location = new System.Drawing.Point(65, 520);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 20);
             this.label11.TabIndex = 75;
@@ -364,9 +365,9 @@
             // 
             this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_circle1;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(656, 53);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(656, 44);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(31, 33);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(45, 48);
             this.pictureBoxIcon.TabIndex = 77;
             this.pictureBoxIcon.TabStop = false;
             this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBoxIcon_Click);
@@ -378,7 +379,6 @@
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.panelThongTinDanCu);
-            this.Controls.Add(this.btnCapNhatThongTin);
             this.Controls.Add(this.label1);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1040, 904);

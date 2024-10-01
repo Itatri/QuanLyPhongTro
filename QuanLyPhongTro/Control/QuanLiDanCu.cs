@@ -20,7 +20,7 @@ namespace QuanLyPhongTro.Control
         public QuanLiDanCu()
         {
             InitializeComponent();
-            LoadData();
+           
             LoadPhongComboBox();
             // Đăng ký sự kiện CellClick cho DataGridView
             dataGridViewDanCu.CellClick += dataGridViewDanCu_CellClick;
@@ -29,7 +29,7 @@ namespace QuanLyPhongTro.Control
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
             // Thiết lập trạng thái của các trường dữ liệu
             SetControlsEnabled(false);
-
+            LoadData();
             SetComboBoxGioiTinh();
             SetComboBoxTrangThai();
         }
@@ -93,19 +93,6 @@ namespace QuanLyPhongTro.Control
             dataGridViewDanCu.Columns["Phone"].HeaderText = "Số Điện Thoại";
             dataGridViewDanCu.Columns["TrangThai"].HeaderText = "Trạng Thái";
 
-            // Ẩn các cột không cần thiết
-            foreach (DataGridViewColumn column in dataGridViewDanCu.Columns)
-            {
-                if (column.Name != "MaKhachTro" &&
-                    column.Name != "HoTen" &&
-                    column.Name != "GioiTinh" &&
-                    column.Name != "Phone" &&
-                    column.Name != "TrangThai" &&
-                    column.Name != "btnXemChiTiet")
-                {
-                    column.Visible = false;
-                }
-            }
 
             // Xóa cột "TrangThai" hiện tại nếu có
             if (dataGridViewDanCu.Columns["TrangThai"] != null)
@@ -120,6 +107,23 @@ namespace QuanLyPhongTro.Control
             chkTrangThai.DataPropertyName = "TrangThai"; // Tên thuộc tính trong DataSource
             dataGridViewDanCu.Columns.Add(chkTrangThai);
 
+
+            // Ẩn các cột không cần thiết
+            foreach (DataGridViewColumn column in dataGridViewDanCu.Columns)
+            {
+                if (column.Name != "MaKhachTro" &&
+                    column.Name != "HoTen" &&
+                    column.Name != "GioiTinh" &&
+                    column.Name != "Phone" &&
+                    column.Name != "TrangThai" &&
+                    column.Name != "btnXemChiTiet")
+                {
+                    column.Visible = false;
+                }
+            }
+
+         
+
             // Thêm cột nút "Xem Chi Tiết" nếu chưa tồn tại
             if (dataGridViewDanCu.Columns["btnXemChiTiet"] == null)
             {
@@ -131,6 +135,9 @@ namespace QuanLyPhongTro.Control
                 btnXemChiTiet.FlatStyle = FlatStyle.Flat; // Đặt kiểu phẳng cho nút
                 dataGridViewDanCu.Columns.Add(btnXemChiTiet);
             }
+
+            // Thiết lập cột "Xem Chi Tiết" luôn ở vị trí cuối
+            dataGridViewDanCu.Columns["btnXemChiTiet"].DisplayIndex = dataGridViewDanCu.Columns.Count - 1;
 
             // Tùy chỉnh màu sắc cho cột nút
             dataGridViewDanCu.Columns["btnXemChiTiet"].DefaultCellStyle.BackColor = Color.Black;
@@ -191,28 +198,7 @@ namespace QuanLyPhongTro.Control
 
                         if (currentCustomer != null)
                         {
-                            //// Xóa ảnh của khách hàng nếu có
-                            //if (!string.IsNullOrEmpty(currentCustomer.AnhNhanDien))
-                            //{
-                            //    // Tạo đường dẫn đầy đủ tới ảnh
-                            //    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                            //    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-                            //    string filePath = Path.Combine(imagesFolderPath, currentCustomer.AnhNhanDien);
-
-                            //    //// Giải phóng tài nguyên ảnh nếu cần
-                            //    //pictureBoxAnhCuDan.Image?.Dispose();
-                            //    //pictureBoxAnhCuDan.Image = null;
-
-                            //    // Đảm bảo file không còn được sử dụng
-                            //    GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
-                            //    GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
-
-                            //    // Xóa file ảnh nếu tồn tại
-                            //    if (File.Exists(filePath))
-                            //    {
-                            //        File.Delete(filePath);
-                            //    }
-                            //}
+                          
                             // Xóa chữ ký của khách hàng nếu có
                             if (!string.IsNullOrEmpty(currentCustomer.ChuKy))
                             {
@@ -396,83 +382,7 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridViewDanCu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0) // Đảm bảo người dùng không nhấn vào tiêu đề cột
-            //{
-            //    DataGridViewRow selectedRow = dataGridViewDanCu.Rows[e.RowIndex];
-
-            //    // Hiển thị thông tin từ hàng được chọn lên các điều khiển
-            //    txtMaCuDan.Text = selectedRow.Cells["MaKhachTro"].Value.ToString();
-            //    txtHoTenCuDan.Text = selectedRow.Cells["HoTen"].Value.ToString();
-            //    comboBoxGioiTinh.Text = selectedRow.Cells["GioiTinh"].Value.ToString();
-            //    txtCCCD.Text = selectedRow.Cells["CCCD"].Value.ToString();
-            //    txtSDT.Text = selectedRow.Cells["Phone"].Value.ToString();
-            //    txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
-
-            //    // Hiển thị trạng thái
-            //    int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
-            //    comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0; // Ngưng hoạt động: 1, Đang hoạt động: 0
-
-            //    comboBoxPhong.Text = selectedRow.Cells["MaPhong"].Value.ToString();
-
-            //    // Xử lý ngày sinh
-            //    if (selectedRow.Cells["NgaySinh"].Value != DBNull.Value)
-            //    {
-            //        dateTimePickerNgaySinh.Value = (DateTime)selectedRow.Cells["NgaySinh"].Value;
-            //    }
-            //    else
-            //    {
-            //        dateTimePickerNgaySinh.Value = DateTime.Now;
-            //    }
-
-            //    // Hiển thị hình ảnh trực tiếp nếu có
-            //    string imageFileName = selectedRow.Cells["AnhNhanDien"].Value.ToString();
-            //    if (!string.IsNullOrEmpty(imageFileName))
-            //    {
-            //        // Tạo đường dẫn đầy đủ tới ảnh
-            //        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            //        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-            //        string filePath = Path.Combine(imagesFolderPath, imageFileName);
-
-            //        if (File.Exists(filePath))
-            //        {
-            //            pictureBoxAnhCuDan.Image = Image.FromFile(filePath);
-            //        }
-            //        else
-            //        {
-            //            pictureBoxAnhCuDan.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
-            //        }
-            //    }
-            //    else
-            //    {
-            //        pictureBoxAnhCuDan.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
-            //    }
-
-            //    // Hiển thị chữ ký trực tiếp nếu có
-            //    string imageChuKy = selectedRow.Cells["ChuKy"].Value.ToString();
-            //    if (!string.IsNullOrEmpty(imageChuKy))
-            //    {
-            //        // Tạo đường dẫn đầy đủ tới ảnh
-            //        string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
-            //        string imagesFolderPathChuKy = Path.Combine(baseDirectoryChuKy, "..", "..", "AnhChuKy");
-            //        string filePathChuKy = Path.Combine(imagesFolderPathChuKy, imageChuKy);
-
-            //        if (File.Exists(filePathChuKy))
-            //        {
-            //            pictureBoxChuKy.Image = Image.FromFile(filePathChuKy);
-            //        }
-            //        else
-            //        {
-            //            pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
-            //        }
-            //    }
-            //    else
-            //    {
-            //        pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có dữ liệu hình ảnh
-            //    }
-
-            //    // Kích hoạt các trường dữ liệu để chỉnh sửa (trừ MaKhachTro)
-            //    SetControlsEnabled(false);
-            //}
+         
 
             // Kiểm tra xem người dùng có nhấn vào cột nút không
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewDanCu.Columns["btnXemChiTiet"].Index)
@@ -503,26 +413,7 @@ namespace QuanLyPhongTro.Control
                     dateTimePickerNgaySinh.Value = DateTime.Now;
                 }
 
-                ////string imageFileName = selectedRow.Cells["AnhNhanDien"].Value.ToString();
-                ////if (!string.IsNullOrEmpty(imageFileName))
-                ////{
-                ////    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                ////    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-                ////    string filePath = Path.Combine(imagesFolderPath, imageFileName);
-
-                ////    if (File.Exists(filePath))
-                ////    {
-                ////        pictureBoxAnhCuDan.Image = Image.FromFile(filePath);
-                ////    }
-                ////    else
-                ////    {
-                ////        pictureBoxAnhCuDan.Image = null;
-                ////    }
-                ////}
-                ////else
-                ////{
-                ////    pictureBoxAnhCuDan.Image = null;
-                ////}
+               
 
                 string imageChuKy = selectedRow.Cells["ChuKy"].Value.ToString();
                 if (!string.IsNullOrEmpty(imageChuKy))
@@ -553,50 +444,7 @@ namespace QuanLyPhongTro.Control
         {
 
         }      
-        //private string SaveImageToFolder(Image image, string maKhachTro, string hoTen)
-        //{
-        //    try
-        //    {
-        //        // Lấy thư mục gốc của ứng dụng
-        //        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-        //        // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
-        //        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhCuDan");
-
-        //        // Chuyển đường dẫn lên thư mục gốc của dự án
-        //        imagesFolderPath = Path.GetFullPath(imagesFolderPath);
-
-        //        // Tạo thư mục nếu chưa tồn tại
-        //        if (!Directory.Exists(imagesFolderPath))
-        //        {
-        //            Directory.CreateDirectory(imagesFolderPath);
-        //        }
-
-        //        // Tạo tên tệp ảnh
-        //        string fileName = $"{maKhachTro}_{hoTen}.jpg";
-        //        string filePath = Path.Combine(imagesFolderPath, fileName);
-
-        //        // Kiểm tra nếu tệp đã tồn tại
-        //        if (File.Exists(filePath))
-        //        {
-        //            File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
-        //        }
-
-        //        // Lưu ảnh
-        //        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-        //        {
-        //            image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-        //        }
-
-        //        // Trả về tên tệp ảnh cho cơ sở dữ liệu
-        //        return fileName;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Không thể lưu ảnh: " + ex.Message);
-        //        return null;
-        //    }
-        //}
+       
 
         private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
         {
@@ -645,28 +493,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
-            //    using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            //{
-            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-            //    openFileDialog.Title = "Chọn hình ảnh";
-
-            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        // Ẩn ảnh mặc định trong PictureBox
-            //        pictureBoxAnhCuDan.Image = null;
-
-            //        // Hiển thị ảnh trong PictureBox
-            //        try
-            //        {
-            //            Image selectedImage = Image.FromFile(openFileDialog.FileName);
-            //            pictureBoxAnhCuDan.Image = selectedImage;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-            //        }
-            //    }
-            //}
+            
         }
 
         private void buttonChonChuKy_Click(object sender, EventArgs e)
@@ -719,6 +546,17 @@ namespace QuanLyPhongTro.Control
             {
                 // Xóa giá trị tìm kiếm
                 txtTimKiemCuDan.Text = string.Empty;
+                txtMaCuDan.Text = string.Empty;
+                txtHoTenCuDan.Text = string.Empty;
+                comboBoxGioiTinh.Text = null;
+                txtCCCD.Text = string.Empty;
+                txtQueQuan.Text = string.Empty;
+                comboBoxPhong.Text = null;
+                comboBoxTrangThai.Text = null;
+                txtSDT.Text = string.Empty;
+                dateTimePickerNgaySinh.Text = string.Empty;
+                labelTenAnhChuKy.Text = "AnhChuKy.jpg";
+                pictureBoxChuKy.Image = null;
 
                 // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
                 LoadData();
