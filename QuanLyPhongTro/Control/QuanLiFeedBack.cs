@@ -82,6 +82,8 @@ namespace QuanLyPhongTro.Control
             {
                 // Xóa giá trị tìm kiếm
                 txtTimKiemFeedBack.Text = string.Empty;
+                txtMaPhong.Text = string.Empty;
+                txtNoiDungPhanHoi.Text = string.Empty;
 
                 // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
                 LoadData();
