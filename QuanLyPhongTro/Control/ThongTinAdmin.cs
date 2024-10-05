@@ -25,7 +25,7 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
             thongTinAdminBLL = new ThongTinAdminBLL(); // Khởi tạo BLL trong constructor
             SetCBGioiTinh();
-            //pictureBoxAnhCuDan.SizeMode = PictureBoxSizeMode.Zoom;
+          
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
@@ -35,6 +35,8 @@ namespace QuanLyPhongTro.Control
             comboBoxGioiTinhAdmin.Items.Add("Nam");
             comboBoxGioiTinhAdmin.Items.Add("Nữ");
         }
+      
+        
         public void SetUserInfo(string id, string region)
         {
             try
@@ -42,54 +44,73 @@ namespace QuanLyPhongTro.Control
                 // Gọi phương thức BLL để lấy thông tin admin theo IdUser
                 ThongTinAdminDTO adminInfo = thongTinAdminBLL.LayThongTinAdminTheoIdUser(id);
 
-                // Hiển thị thông tin admin lên các control
-                txtMaAdmin.Text = adminInfo.MaAdmin;
-                txtHoTenAdmin.Text = adminInfo.HoTen;
-                comboBoxGioiTinhAdmin.SelectedItem = adminInfo.GioiTinh; // ComboBox
-                txtCCCDAdmin.Text = adminInfo.Cccd;
-                txtQueQuanAdmin.Text = adminInfo.QueQuan;
-                txtPhoneAdmin.Text = adminInfo.Phone;
-                dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
-                txtIDUserAdmin.Text = adminInfo.IdUser;
-                labelAnhChuKy.Text = adminInfo.ChuKy;
-
-
-                // Hiển thị ảnh chữ ký nếu có
-                if (!string.IsNullOrEmpty(adminInfo.ChuKy))
+                // Nếu không tìm thấy thông tin admin thì chỉ hiển thị IdUser và xóa thông tin khác
+                if (adminInfo == null)
                 {
-                    // Lấy đường dẫn thư mục chứa ảnh chữ ký
-                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
-                    imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+                    // Chỉ hiển thị IdUser
+                    txtIDUserAdmin.Text = id;  // Gán giá trị IdUser từ DangNhap
 
-                    // Tạo đường dẫn đầy đủ tới file ảnh
-                    string filePath = Path.Combine(imagesFolderPath, adminInfo.ChuKy);
+                    // Xóa thông tin khác trên giao diện
+                    txtMaAdmin.Text = string.Empty;
+                    txtHoTenAdmin.Text = string.Empty;
+                    comboBoxGioiTinhAdmin.SelectedItem = null;
+                    txtCCCDAdmin.Text = string.Empty;
+                    txtQueQuanAdmin.Text = string.Empty;
+                    txtPhoneAdmin.Text = string.Empty;
+                    dateTimePickerNgaySinhAdmin.Value = DateTime.Now;  // Đặt giá trị ngày hiện tại
+                    labelAnhChuKy.Text = string.Empty;
+                    pictureBoxChuKy.Image = null; // Xóa ảnh chữ ký nếu không có thông tin
 
-                    // Kiểm tra xem file ảnh có tồn tại không
-                    if (File.Exists(filePath))
-                    {
-                        // Hiển thị ảnh trong pictureBox
-                        pictureBoxChuKy.Image = Image.FromFile(filePath);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy ảnh chữ ký.");
-                        pictureBoxChuKy.Image = null; // Xóa ảnh nếu không tìm thấy
-                    }
+
                 }
                 else
                 {
-                    pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có chữ ký
+                    // Hiển thị thông tin admin lên các control
+                    txtMaAdmin.Text = adminInfo.MaAdmin;
+                    txtHoTenAdmin.Text = adminInfo.HoTen;
+                    comboBoxGioiTinhAdmin.SelectedItem = adminInfo.GioiTinh;
+                    txtCCCDAdmin.Text = adminInfo.Cccd;
+                    txtQueQuanAdmin.Text = adminInfo.QueQuan;
+                    txtPhoneAdmin.Text = adminInfo.Phone;
+                    dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
+                    txtIDUserAdmin.Text = adminInfo.IdUser;
+                    //labelAnhChuKy.Text = adminInfo.ChuKy;
+
+                    // Hiển thị ảnh chữ ký nếu có
+                    if (!string.IsNullOrEmpty(adminInfo.ChuKy))
+                    {
+                        // Lấy đường dẫn thư mục chứa ảnh chữ ký
+                        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+                        imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+
+                        // Tạo đường dẫn đầy đủ tới file ảnh
+                        string filePath = Path.Combine(imagesFolderPath, adminInfo.ChuKy);
+
+                        // Kiểm tra xem file ảnh có tồn tại không
+                        if (File.Exists(filePath))
+                        {
+                            // Hiển thị ảnh trong pictureBox
+                            pictureBoxChuKy.Image = Image.FromFile(filePath);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy ảnh chữ ký.");
+                            pictureBoxChuKy.Image = null; // Xóa ảnh nếu không tìm thấy
+                        }
+                    }
+                    else
+                    {
+                        pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có chữ ký
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi lấy thông tin admin: {ex.Message}");
             }
-
         }
+
 
         private void ThongTinAdmin_Load(object sender, EventArgs e)
         {
@@ -179,6 +200,7 @@ namespace QuanLyPhongTro.Control
 
         private void btnCapNhatThongTin_Click(object sender, EventArgs e)
         {
+
            
             try
             {
@@ -196,15 +218,11 @@ namespace QuanLyPhongTro.Control
                 string chuKyFileName = null;
                 bool isChuKyUpdated = false; // Đánh dấu xem ảnh chữ ký có được cập nhật hay không
 
-                if (pictureBoxChuKy.Image != null)
+                if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
                 {
-                    // Kiểm tra xem ảnh chữ ký có phải là ảnh mới hay không
-                    if (isChuKyUpdated) // Nếu ảnh chữ ký đã được chọn mới
-                    {
-                        // Lưu ảnh chữ ký mới và lấy tên tệp
-                        chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
-                        isChuKyUpdated = true; // Đánh dấu rằng ảnh đã được cập nhật
-                    }
+                    // Lưu ảnh chữ ký mới và lấy tên tệp
+                    chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
+                    isChuKyUpdated = true; // Đánh dấu rằng ảnh đã được cập nhật
                 }
 
                 // Tạo đối tượng DTO với các thông tin mới
@@ -221,19 +239,37 @@ namespace QuanLyPhongTro.Control
                     IdUser = idUser
                 };
 
-                // Gọi phương thức cập nhật thông tin trong BLL
-                bool isUpdated = thongTinAdminBLL.CapNhatThongTinAdmin(adminInfo);
+                // Kiểm tra xem Admin đã tồn tại chưa
+                bool adminExists = thongTinAdminBLL.KiemTraThongTinAdmin(idUser);
 
-                if (isUpdated)
+                if (adminExists)
                 {
-                    MessageBox.Show("Cập nhật thông tin Admin thành công!");
+                    // Nếu tồn tại, cập nhật thông tin Admin
+                    bool isUpdated = thongTinAdminBLL.CapNhatThongTinAdmin(adminInfo);
+
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Cập nhật thông tin Admin thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật thông tin Admin thất bại!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật thông tin Admin thất bại!");
+                    // Thêm mới Admin
+                    bool isAdded = thongTinAdminBLL.ThemAdmin(adminInfo);
+
+                    if (isAdded)
+                    {
+                        MessageBox.Show("Thêm mới thông tin Admin thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm mới thông tin Admin thất bại!");
+                    }
                 }
-
-
 
                 // Kiểm tra và cập nhật mật khẩu
                 string password = txtPassword.Text;
@@ -262,14 +298,11 @@ namespace QuanLyPhongTro.Control
                     }
                 }
 
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
             }
-
-
         }
 
         private void pictureBoxIcon_Click(object sender, EventArgs e)
