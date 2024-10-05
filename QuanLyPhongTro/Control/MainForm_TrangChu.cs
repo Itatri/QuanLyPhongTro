@@ -31,9 +31,36 @@ namespace QuanLyPhongTro.Control
             thongTinAdminBLL = new ThongTinAdminBLL();
         }
         // Phương thức để nhận id và region và cập nhật label
+        ////public void SetUserInfo(string id, string region)
+        ////{
+        ////    lbTaiKhoan.Text = id; 
+        ////    // Lấy thông tin khu vực từ maKhuVuc và hiển thị lên labelKhuVuc
+        ////    KhuVucDTO khuVuc = khuVucBLL.GetKhuVucByMaKhuVuc(region);
+        ////    if (khuVuc != null)
+        ////    {
+        ////        labelKhuVuc.Text = khuVuc.TenKhuVuc; // Hiển thị tên khu vực
+        ////    }
+        ////    else
+        ////    {
+        ////        labelKhuVuc.Text = "Khu vực không tồn tại"; // Xử lý trường hợp không tìm thấy
+        ////    }
+
+        ////    ThongTinAdminDTO thongTinAdmin = thongTinAdminBLL.LayThongTinAdminTheoIdUser(id);
+        ////    if (thongTinAdmin != null)
+        ////    {
+        ////        labelTaiKhoanXC.Text = thongTinAdmin.HoTen;
+        ////    }
+        ////    else
+        ////    {
+        ////        labelTaiKhoanXC.Text = "Tài khoản không tồn tại";
+        ////    }
+        ////}
+        // Phương thức để nhận id và region và cập nhật label
+        // Phương thức để nhận id và region và cập nhật label
         public void SetUserInfo(string id, string region)
         {
-            lbTaiKhoan.Text = id; 
+            lbTaiKhoan.Text = id;
+
             // Lấy thông tin khu vực từ maKhuVuc và hiển thị lên labelKhuVuc
             KhuVucDTO khuVuc = khuVucBLL.GetKhuVucByMaKhuVuc(region);
             if (khuVuc != null)
@@ -45,16 +72,18 @@ namespace QuanLyPhongTro.Control
                 labelKhuVuc.Text = "Khu vực không tồn tại"; // Xử lý trường hợp không tìm thấy
             }
 
+            // Lấy thông tin admin từ bảng ThongTinAdmin theo IdUser
             ThongTinAdminDTO thongTinAdmin = thongTinAdminBLL.LayThongTinAdminTheoIdUser(id);
             if (thongTinAdmin != null)
             {
-                labelTaiKhoanXC.Text = thongTinAdmin.HoTen;
+                labelTaiKhoanXC.Text = thongTinAdmin.HoTen; // Nếu có thông tin thì hiển thị họ tên
             }
             else
             {
-                labelTaiKhoanXC.Text = "Tài khoản không tồn tại";
+                labelTaiKhoanXC.Text = "Chưa cập nhật"; // Nếu không có thông tin thì hiển thị "Chưa cập nhật"
             }
         }
+
 
         private void btnQLDanCu_Click(object sender, EventArgs e)
         {
