@@ -50,97 +50,149 @@ namespace DAL
 
 
 
-        //public bool UpdateThongTinAdmin(ThongTinAdminDTO admin)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
 
-        //        string query = @"
-        //    UPDATE ThongTinAdmin
-        //    SET 
-        //        MaAdmin = @MaAdmin,
-        //        HoTen = @HoTen,
-        //        GioiTinh = @GioiTinh,
-        //        NgaySinh = @NgaySinh,
-        //        Cccd = @Cccd,
-        //        Phone = @Phone,
-        //        QueQuan = @QueQuan,
-        //        ChuKy = @ChuKy,
-        //        TrangThai = @TrangThai
-        //    WHERE IdUser = @IdUser";
 
-        //        SqlCommand command = new SqlCommand(query, connection);
 
-        //        // Thêm các tham số cho câu truy vấn
-        //        command.Parameters.AddWithValue("@MaAdmin", admin.MaAdmin);
-        //        command.Parameters.AddWithValue("@HoTen", admin.HoTen);
-        //        command.Parameters.AddWithValue("@GioiTinh", admin.GioiTinh);
-        //        command.Parameters.AddWithValue("@NgaySinh", admin.NgaySinh != DateTime.MinValue ? (object)admin.NgaySinh : DBNull.Value);
-        //        command.Parameters.AddWithValue("@Cccd", admin.Cccd);
-        //        command.Parameters.AddWithValue("@Phone", admin.Phone);
-        //        command.Parameters.AddWithValue("@QueQuan", admin.QueQuan);
-        //        command.Parameters.AddWithValue("@ChuKy", admin.ChuKy);
-        //        command.Parameters.AddWithValue("@TrangThai", admin.TrangThai);
-        //        command.Parameters.AddWithValue("@IdUser", admin.IdUser);
 
-        //        // Thực hiện truy vấn
-        //        int rowsAffected = command.ExecuteNonQuery();
 
-        //        // Trả về true nếu có bản ghi bị ảnh hưởng (cập nhật thành công)
-        //        return rowsAffected > 0;
-        //    }
-        //}
 
-        public bool UpdateThongTinAdmin(ThongTinAdminDTO admin)
+        public bool KiemTraThongTinAdmin(string idUser)
         {
+            string query = "SELECT COUNT(*) FROM ThongTinAdmin WHERE IdUser = @IdUser";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-
-                // Tạo câu lệnh SQL động, chỉ cập nhật cột ChuKy nếu có giá trị mới
-                string query = @"
-        UPDATE ThongTinAdmin
-        SET 
-            MaAdmin = @MaAdmin,
-            HoTen = @HoTen,
-            GioiTinh = @GioiTinh,
-            NgaySinh = @NgaySinh,
-            Cccd = @Cccd,
-            Phone = @Phone,
-            QueQuan = @QueQuan, " +
-                    (admin.ChuKy != null ? "ChuKy = @ChuKy, " : "") + // Chỉ thêm ChuKy nếu có giá trị mới
-                @"   TrangThai = @TrangThai
-        WHERE IdUser = @IdUser";
-
                 SqlCommand command = new SqlCommand(query, connection);
-
-                // Thêm các tham số cho câu truy vấn
-                command.Parameters.AddWithValue("@MaAdmin", admin.MaAdmin);
-                command.Parameters.AddWithValue("@HoTen", admin.HoTen);
-                command.Parameters.AddWithValue("@GioiTinh", admin.GioiTinh);
-                command.Parameters.AddWithValue("@NgaySinh", admin.NgaySinh != DateTime.MinValue ? (object)admin.NgaySinh : DBNull.Value);
-                command.Parameters.AddWithValue("@Cccd", admin.Cccd);
-                command.Parameters.AddWithValue("@Phone", admin.Phone);
-                command.Parameters.AddWithValue("@QueQuan", admin.QueQuan);
-
-                if (admin.ChuKy != null)
-                {
-                    command.Parameters.AddWithValue("@ChuKy", admin.ChuKy); // Thêm tham số cho ChuKy nếu không null
-                }
-
-                command.Parameters.AddWithValue("@TrangThai", admin.TrangThai);
-                command.Parameters.AddWithValue("@IdUser", admin.IdUser);
-
-                // Thực hiện truy vấn
-                int rowsAffected = command.ExecuteNonQuery();
-
-                // Trả về true nếu có bản ghi bị ảnh hưởng (cập nhật thành công)
-                return rowsAffected > 0;
+                command.Parameters.AddWithValue("@IdUser", idUser);
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
             }
         }
 
 
+        public string LayMaAdminMoi()
+        {
+            string query = "SELECT TOP 1 MaAdmin FROM ThongTinAdmin ORDER BY MaAdmin DESC";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                string lastMaAdmin = (string)command.ExecuteScalar();
+
+                if (string.IsNullOrEmpty(lastMaAdmin))
+                {
+                    return "A01"; // Trường hợp chưa có mã nào
+                }
+
+                // Tăng số thứ tự
+                int lastNumber = int.Parse(lastMaAdmin.Substring(1));
+                return "A" + (lastNumber + 1).ToString("D2");
+            }
+        }
+
+       
+
+        public bool ThemThongTinAdmin(ThongTinAdminDTO adminInfo)
+        {
+            string query = @"
+    INSERT INTO ThongTinAdmin 
+    (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, QueQuan, ChuKy, IdUser, TrangThai) 
+    VALUES 
+    (@MaAdmin, @HoTen, @GioiTinh, @NgaySinh, @Cccd, @Phone, @QueQuan, @ChuKy, @IdUser, @TrangThai)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                // Gán các giá trị cho tham số
+                command.Parameters.AddWithValue("@MaAdmin", adminInfo.MaAdmin);
+                command.Parameters.AddWithValue("@HoTen", adminInfo.HoTen);
+                command.Parameters.AddWithValue("@GioiTinh", adminInfo.GioiTinh);
+                command.Parameters.AddWithValue("@NgaySinh", adminInfo.NgaySinh);
+                command.Parameters.AddWithValue("@Cccd", adminInfo.Cccd);
+                command.Parameters.AddWithValue("@Phone", adminInfo.Phone);
+                command.Parameters.AddWithValue("@QueQuan", adminInfo.QueQuan);
+                command.Parameters.AddWithValue("@ChuKy", adminInfo.ChuKy ?? (object)DBNull.Value); // Đảm bảo không cập nhật nếu không có ảnh chữ ký
+                command.Parameters.AddWithValue("@IdUser", adminInfo.IdUser);
+                command.Parameters.AddWithValue("@TrangThai", 1); // Set TrangThai to 1
+
+                connection.Open();
+                int result = command.ExecuteNonQuery();
+                return result > 0; // Trả về true nếu thêm thành công
+            }
+        }
+
+       
+        public bool UpdateThongTinAdmin(ThongTinAdminDTO admin)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"
+            UPDATE ThongTinAdmin
+            SET 
+                MaAdmin = @MaAdmin,
+                HoTen = @HoTen,
+                GioiTinh = @GioiTinh,
+                NgaySinh = @NgaySinh,
+                Cccd = @Cccd,
+                Phone = @Phone,
+                QueQuan = @QueQuan, " +
+                            (admin.ChuKy != null ? "ChuKy = @ChuKy, " : "") +
+                        @"   TrangThai = @TrangThai
+            WHERE IdUser = @IdUser";
+
+                    if (admin.ChuKy == null)
+                    {
+                        query = query.Replace(", TrangThai", "TrangThai");
+                    }
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaAdmin", admin.MaAdmin);
+                    command.Parameters.AddWithValue("@HoTen", admin.HoTen);
+                    command.Parameters.AddWithValue("@GioiTinh", admin.GioiTinh);
+                    command.Parameters.AddWithValue("@NgaySinh", admin.NgaySinh != DateTime.MinValue ? (object)admin.NgaySinh : DBNull.Value);
+                    command.Parameters.AddWithValue("@Cccd", admin.Cccd);
+                    command.Parameters.AddWithValue("@Phone", admin.Phone);
+                    command.Parameters.AddWithValue("@QueQuan", admin.QueQuan);
+
+                    if (admin.ChuKy != null)
+                    {
+                        command.Parameters.AddWithValue("@ChuKy", admin.ChuKy);
+                    }
+
+                    command.Parameters.AddWithValue("@TrangThai", 1); 
+                    command.Parameters.AddWithValue("@IdUser", admin.IdUser);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật thông tin admin: " + ex.Message);
+            }
+        }
+
+        // Phương thức kiểm tra sự tồn tại của admin
+        public bool KiemTraAdminExist(string idUser)
+        {
+            // Câu truy vấn SQL để kiểm tra sự tồn tại của admin
+            string query = "SELECT COUNT(*) FROM ThongTinAdmin WHERE IdUser = @IdUser";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@IdUser", idUser);
+                conn.Open();
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0; // Trả về true nếu tồn tại, ngược lại false
+            }
+        }
 
     }
 }
