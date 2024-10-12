@@ -8,67 +8,55 @@ using System.Data.SqlClient;
 using DTO;
 using System.Configuration;
 
+
 namespace DAL
 {
     public class TaoQuanLyPhongDAL
     {
-        // Lấy chuỗi kết nối từ tệp App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
-        public List<TaoQuanLyPhongDTO> GetAllPhong()
+
+
+        public DataTable LayDanhSachThonTinPhong()
         {
-            List<TaoQuanLyPhongDTO> phongs = new List<TaoQuanLyPhongDTO>();
+            DataTable dataTable = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM PHONG";
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataReader reader = command.ExecuteReader();
+                string query = "SELECT MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
 
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        MaPhong = reader["MaPhong"].ToString(),
-                        MaLoaiPhong = reader["MaLoaiPhong"].ToString(),
-                        MaKhuVuc = reader["MaKhuVuc"].ToString(),
-                        TenPhong = reader["TenPhong"].ToString(),
-                        NgayVao = reader["NgayVao"] != DBNull.Value ? Convert.ToDateTime(reader["NgayVao"]) : DateTime.MinValue,
-                        TienCoc = reader["TienCoc"] != DBNull.Value ? float.Parse(reader["TienCoc"].ToString()) : 0,
-                        Dien = reader["Dien"] != DBNull.Value ? float.Parse(reader["Dien"].ToString()) : 0,
-                        Nuoc = reader["Nuoc"] != DBNull.Value ? float.Parse(reader["Nuoc"].ToString()) : 0,
-                        HanTro = reader["HanTro"] != DBNull.Value ? Convert.ToDateTime(reader["HanTro"]) : DateTime.MinValue,
-                        TrangThai = reader["TrangThai"] != DBNull.Value ? Convert.ToBoolean(reader["TrangThai"]) : false,
-                        GhiChu = reader["GhiChu"] != DBNull.Value ? reader["GhiChu"].ToString() : string.Empty
-                    };
-
-                    phongs.Add(phong);
+                        adapter.Fill(dataTable);
+                    }
                 }
             }
 
-            return phongs;
+            return dataTable;
         }
+
 
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO PHONG (MaPhong, MaLoaiPhong, TenPhong, NgayVao, TienCoc, Dien, Nuoc, HanTro, TrangThai, GhiChu) " +
-                               "VALUES (@MaPhong, @MaLoaiPhong, @TenPhong, @NgayVao, @TienCoc, @Dien, @Nuoc, @HanTro, @TrangThai, @GhiChu)";
+
+                string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu ,trangthai, makhuvuc, CongNo)  " +
+                               "VALUES (@MaPhong, @TenPhong, @TienPhong, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0)";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
-                command.Parameters.AddWithValue("@MaLoaiPhong", phong.MaLoaiPhong);
-                //command.Parameters.AddWithValue("@MaKhuVuc", phong.MaKhuVuc);
+                command.Parameters.AddWithValue("@makhuvuc", phong.MaKhuVuc);
                 command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
-                command.Parameters.AddWithValue("@NgayVao", phong.NgayVao);
-                command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+                command.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
                 command.Parameters.AddWithValue("@Dien", phong.Dien);
                 command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
-                command.Parameters.AddWithValue("@HanTro", phong.HanTro);
-                command.Parameters.AddWithValue("@TrangThai", phong.TrangThai);
+                command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+                //command.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value);
                 command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
 
                 return command.ExecuteNonQuery() > 0;
@@ -97,7 +85,7 @@ namespace DAL
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("SinhMaPhong01", connection))
+                    using (SqlCommand command = new SqlCommand("SinhMaPhong", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -118,5 +106,68 @@ namespace DAL
             return newMaPhong;
         }
 
+        public bool UpdatePhong(TaoQuanLyPhongDTO phong)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                //, NgayVao = @NgayVao, HanTro = @HanTro, TrangThai = @TrangThai
+                connection.Open();
+                string query = "UPDATE PHONG SET TenPhong = @TenPhong, Dien = @Dien, Nuoc = @Nuoc, GhiChu = @GhiChu " +
+                               "WHERE MaPhong = @MaPhong";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
+                //command.Parameters.AddWithValue("@MaLoaiPhong", phong.MaLoaiPhong);
+                command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
+                //command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+                command.Parameters.AddWithValue("@Dien", phong.Dien);
+                command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
+                command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
+                //command.Parameters.AddWithValue("@NgayVao", phong.NgayVao);
+                //command.Parameters.AddWithValue("@HanTro", phong.HanTro);
+                //command.Parameters.AddWithValue("@TrangThai", phong.TrangThai);
+
+                return command.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public DataTable TatCaDichVu()
+        {
+            string query = "SELECT tendichvu, dongia FROM DichVu";
+            return ExecuteQuery(query);
+        }
+
+        private DataTable ExecuteQuery(string query)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
+
+        public bool InsertDichVuPhong(string maPhong, string maDichVu)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO DichVuPhong (MaPhong, MaDichVu) VALUES (@MaPhong, @MaDichVu)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MaPhong", maPhong);
+                    command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+                    connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result > 0; // Trả về true nếu thành công
+                }
+            }
+        }
+
+
     }
 }
+
+
+
