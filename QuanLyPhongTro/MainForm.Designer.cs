@@ -60,9 +60,10 @@
             this.panel1.Controls.Add(this.pictureBoxLogout);
             this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.buttonDangXuat);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(231, 829);
+            this.panel1.Size = new System.Drawing.Size(231, 830);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox3
@@ -195,9 +196,10 @@
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
             this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelForm.Location = new System.Drawing.Point(230, 0);
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForm.Location = new System.Drawing.Point(231, 0);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(1038, 829);
+            this.panelForm.Size = new System.Drawing.Size(1037, 830);
             this.panelForm.TabIndex = 1;
             this.panelForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelForm_Paint);
             // 
@@ -213,6 +215,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
