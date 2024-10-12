@@ -17,6 +17,16 @@ namespace BLL
         {
             return phongDAL.LayTatCaPhong();
         }
+
+        public DataTable LayPhongTheoHanTroTangDan(string makhuvuc)
+        {
+            return phongDAL.LayPhongTheoHanTroTangDan(makhuvuc);
+        }
+
+        public DataTable LayPhongTheoTrangThai(string makhuvuc)
+        {
+            return phongDAL.LayPhongTheoTrangThai(makhuvuc);
+        }
     }
 
 

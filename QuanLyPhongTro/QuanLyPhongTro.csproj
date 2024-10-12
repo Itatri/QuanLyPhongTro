@@ -13,6 +13,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +38,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Abstractions, Version=2.0.2.45, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.Abstractions.2.0.2.45\lib\net45\System.Configuration.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
@@ -51,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\DanKyTaiKhoanKhachHang.cs">
+    <Compile Include="Control\DanKyTaiKhoanKhachHang0.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\DanKyTaiKhoanKhachHang.Designer.cs">
-      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    <Compile Include="Control\DanKyTaiKhoanKhachHang0.Designer.cs">
+      <DependentUpon>DanKyTaiKhoanKhachHang0.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\MainForm_TrangChu.cs">
       <SubType>UserControl</SubType>
@@ -87,6 +92,12 @@
     <Compile Include="Control\QuanLiFeedBack.Designer.cs">
       <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\QuanLiPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\QuanLiPhong.Designer.cs">
+      <DependentUpon>QuanLiPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\QuanLyPhieuThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,29 +110,29 @@
     <Compile Include="Control\TaoPhieuThu.Designer.cs">
       <DependentUpon>TaoPhieuThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\QuanLiPhong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Control\QuanLiPhong.Designer.cs">
-      <DependentUpon>QuanLiPhong.cs</DependentUpon>
-    </Compile>
     <Compile Include="Control\QuanLiThongKe.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Control\QuanLiThongKe.Designer.cs">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\TaoQuanLyPhong.cs">
+    <Compile Include="Control\TaoQuanLyPhong1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\TaoQuanLyPhong.Designer.cs">
-      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
+    <Compile Include="Control\TaoQuanLyPhong1.Designer.cs">
+      <DependentUpon>TaoQuanLyPhong1.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\ThongTinAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Control\ThongTinAdmin.Designer.cs">
       <DependentUpon>ThongTinAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ThongTinPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ThongTinPhong.Designer.cs">
+      <DependentUpon>ThongTinPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
@@ -137,8 +148,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang.resx">
-      <DependentUpon>DanKyTaiKhoanKhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang0.resx">
+      <DependentUpon>DanKyTaiKhoanKhachHang0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\MainForm_TrangChu.resx">
       <DependentUpon>MainForm_TrangChu.cs</DependentUpon>
@@ -155,23 +166,26 @@
     <EmbeddedResource Include="Control\QuanLiFeedBack.resx">
       <DependentUpon>QuanLiFeedBack.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\QuanLiPhong.resx">
+      <DependentUpon>QuanLiPhong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLyPhieuThu.resx">
       <DependentUpon>QuanLyPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\TaoPhieuThu.resx">
       <DependentUpon>TaoPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\QuanLiPhong.resx">
-      <DependentUpon>QuanLiPhong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Control\QuanLiThongKe.resx">
       <DependentUpon>QuanLiThongKe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\TaoQuanLyPhong.resx">
-      <DependentUpon>TaoQuanLyPhong.cs</DependentUpon>
+    <EmbeddedResource Include="Control\TaoQuanLyPhong1.resx">
+      <DependentUpon>TaoQuanLyPhong1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ThongTinAdmin.resx">
       <DependentUpon>ThongTinAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ThongTinPhong.resx">
+      <DependentUpon>ThongTinPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
@@ -234,4 +248,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
 </Project>

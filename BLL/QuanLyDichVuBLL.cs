@@ -13,9 +13,17 @@ namespace BLL
     {
         private QuanLyDichVuDAL dal = new QuanLyDichVuDAL();
 
+        //private DichVu_DAL dal = new DichVu_DAL();
+
+
         public DataTable GetAllServices()
         {
             return dal.GetAllServices();
+        }
+
+        public DataTable GetDichVuFormQLPhong()
+        {
+            return dal.GetDichVuFormQLPhong();
         }
 
         public bool AddService(ThongTinDichVuDTO service)
@@ -29,7 +37,22 @@ namespace BLL
 
         public bool RemoveService(string maDV)
         {
+            if (!CanRemoveService(maDV, out string message))
+            {
+                return false; // Không cho phép xóa
+            }
             return dal.DeleteService(maDV) > 0;
+        }
+
+        private bool CanRemoveService(string maDV, out string message)
+        {
+            if (maDV == "DV0000" || maDV == "DV0001" || maDV == "DV0002")
+            {
+                message = "Không thể xóa dịch vụ có MaDichVu là DV0000 hoặc DV0001 hoặc DV0002.";
+                return false;
+            }
+            message = string.Empty;
+            return true;
         }
 
         public bool EditService(ThongTinDichVuDTO service)
@@ -41,5 +64,17 @@ namespace BLL
         {
             return dal.GenerateNewServiceCode();
         }
+
+        public bool ServiceExists(string maDichVu)
+        {
+            return dal.ServiceExists(maDichVu);
+        }
+
+        public DataTable TimKiemDichVu(string keyword)
+        {
+            return dal.TimKiemDichVu(keyword);
+        }
+
+
     }
 }
