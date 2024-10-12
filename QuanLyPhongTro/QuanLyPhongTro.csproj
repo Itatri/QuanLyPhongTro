@@ -204,6 +204,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\feedback.png" />
+    <None Include="Images\admin.png" />
+    <None Include="Images\icon_cudan.png" />
     <None Include="Images\account_circle.png" />
     <Content Include="Images\account_icon.png" />
     <None Include="Images\settings.png" />

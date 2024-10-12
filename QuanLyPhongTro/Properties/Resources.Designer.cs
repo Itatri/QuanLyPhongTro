@@ -103,6 +103,16 @@ namespace QuanLyPhongTro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin {
+            get {
+                object obj = ResourceManager.GetObject("admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AnhChungCu {
             get {
                 object obj = ResourceManager.GetObject("AnhChungCu", resourceCulture);
@@ -143,6 +153,16 @@ namespace QuanLyPhongTro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap feedback {
+            get {
+                object obj = ResourceManager.GetObject("feedback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FeedbackIcon {
             get {
                 object obj = ResourceManager.GetObject("FeedbackIcon", resourceCulture);
@@ -166,6 +186,16 @@ namespace QuanLyPhongTro.Properties {
         internal static System.Drawing.Bitmap Home1 {
             get {
                 object obj = ResourceManager.GetObject("Home1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_cudan {
+            get {
+                object obj = ResourceManager.GetObject("icon_cudan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
