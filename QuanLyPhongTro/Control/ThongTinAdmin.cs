@@ -74,7 +74,7 @@ namespace QuanLyPhongTro.Control
                     txtPhoneAdmin.Text = adminInfo.Phone;
                     dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
                     txtIDUserAdmin.Text = adminInfo.IdUser;
-                    //labelAnhChuKy.Text = adminInfo.ChuKy;
+                    labelAnhChuKy.Text = adminInfo.ChuKy;
 
                     // Hiển thị ảnh chữ ký nếu có
                     if (!string.IsNullOrEmpty(adminInfo.ChuKy))
@@ -218,12 +218,26 @@ namespace QuanLyPhongTro.Control
                 string chuKyFileName = null;
                 bool isChuKyUpdated = false; // Đánh dấu xem ảnh chữ ký có được cập nhật hay không
 
+                //if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
+                //{
+                //    // Lưu ảnh chữ ký mới và lấy tên tệp
+                //    chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
+                //    isChuKyUpdated = true; // Đánh dấu rằng ảnh đã được cập nhật
+                //}
+
                 if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
                 {
-                    // Lưu ảnh chữ ký mới và lấy tên tệp
-                    chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
-                    isChuKyUpdated = true; // Đánh dấu rằng ảnh đã được cập nhật
+                    if (isChuKyUpdated) // Chỉ thực hiện nếu có cập nhật ảnh
+                    {
+                        // Giải phóng tài nguyên của ảnh hiện tại trong PictureBox trước khi lưu
+                        pictureBoxChuKy.Image.Dispose();
+                        pictureBoxChuKy.Image = null;
+
+                        // Lưu ảnh chữ ký mới và lấy tên tệp
+                        chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
+                    }
                 }
+
 
                 // Tạo đối tượng DTO với các thông tin mới
                 ThongTinAdminDTO adminInfo = new ThongTinAdminDTO
