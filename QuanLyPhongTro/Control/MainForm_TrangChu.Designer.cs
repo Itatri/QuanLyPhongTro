@@ -66,9 +66,9 @@
             this.btnQuanLyPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQuanLyPhong.ForeColor = System.Drawing.Color.White;
             this.btnQuanLyPhong.Location = new System.Drawing.Point(4, 4);
-            this.btnQuanLyPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuanLyPhong.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuanLyPhong.Name = "btnQuanLyPhong";
-            this.btnQuanLyPhong.Size = new System.Drawing.Size(685, 190);
+            this.btnQuanLyPhong.Size = new System.Drawing.Size(685, 55);
             this.btnQuanLyPhong.TabIndex = 20;
             this.btnQuanLyPhong.Text = "Quản Lý Phòng";
             this.btnQuanLyPhong.UseVisualStyleBackColor = false;
@@ -86,9 +86,9 @@
             this.btnQLDanCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQLDanCu.ForeColor = System.Drawing.Color.White;
             this.btnQLDanCu.Location = new System.Drawing.Point(697, 4);
-            this.btnQLDanCu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQLDanCu.Margin = new System.Windows.Forms.Padding(4);
             this.btnQLDanCu.Name = "btnQLDanCu";
-            this.btnQLDanCu.Size = new System.Drawing.Size(686, 190);
+            this.btnQLDanCu.Size = new System.Drawing.Size(685, 55);
             this.btnQLDanCu.TabIndex = 21;
             this.btnQLDanCu.Text = "Quản Lý Dân Cư";
             this.btnQLDanCu.UseVisualStyleBackColor = false;
@@ -105,10 +105,10 @@
             this.btnQLDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLDichVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQLDichVu.ForeColor = System.Drawing.Color.White;
-            this.btnQLDichVu.Location = new System.Drawing.Point(4, 202);
-            this.btnQLDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQLDichVu.Location = new System.Drawing.Point(4, 67);
+            this.btnQLDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.btnQLDichVu.Name = "btnQLDichVu";
-            this.btnQLDichVu.Size = new System.Drawing.Size(685, 201);
+            this.btnQLDichVu.Size = new System.Drawing.Size(685, 58);
             this.btnQLDichVu.TabIndex = 22;
             this.btnQLDichVu.Text = "Quản Lý Dịch Vụ";
             this.btnQLDichVu.UseVisualStyleBackColor = false;
@@ -125,8 +125,8 @@
             this.btnQLPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQLPhanHoi.ForeColor = System.Drawing.Color.White;
-            this.btnQLPhanHoi.Location = new System.Drawing.Point(4, 411);
-            this.btnQLPhanHoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQLPhanHoi.Location = new System.Drawing.Point(4, 133);
+            this.btnQLPhanHoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnQLPhanHoi.Name = "btnQLPhanHoi";
             this.btnQLPhanHoi.Size = new System.Drawing.Size(685, 206);
             this.btnQLPhanHoi.TabIndex = 23;
@@ -145,10 +145,10 @@
             this.btnQLGiaoDich.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQLGiaoDich.ForeColor = System.Drawing.Color.White;
-            this.btnQLGiaoDich.Location = new System.Drawing.Point(697, 202);
-            this.btnQLGiaoDich.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQLGiaoDich.Location = new System.Drawing.Point(697, 67);
+            this.btnQLGiaoDich.Margin = new System.Windows.Forms.Padding(4);
             this.btnQLGiaoDich.Name = "btnQLGiaoDich";
-            this.btnQLGiaoDich.Size = new System.Drawing.Size(686, 201);
+            this.btnQLGiaoDich.Size = new System.Drawing.Size(685, 58);
             this.btnQLGiaoDich.TabIndex = 24;
             this.btnQLGiaoDich.Text = "Quản Lý Giao Dịch";
             this.btnQLGiaoDich.UseVisualStyleBackColor = false;
@@ -164,10 +164,10 @@
             this.btnQLHopDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLHopDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQLHopDong.ForeColor = System.Drawing.Color.White;
-            this.btnQLHopDong.Location = new System.Drawing.Point(697, 411);
-            this.btnQLHopDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQLHopDong.Location = new System.Drawing.Point(697, 133);
+            this.btnQLHopDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnQLHopDong.Name = "btnQLHopDong";
-            this.btnQLHopDong.Size = new System.Drawing.Size(686, 206);
+            this.btnQLHopDong.Size = new System.Drawing.Size(685, 206);
             this.btnQLHopDong.TabIndex = 25;
             this.btnQLHopDong.Text = "Quản Lý Hợp Đồng , CT01, Cam Kết";
             this.btnQLHopDong.UseVisualStyleBackColor = false;
@@ -179,9 +179,9 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1387, 226);
+            this.panel1.Size = new System.Drawing.Size(1386, 283);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -196,14 +196,14 @@
             this.tableLayoutPanel1.Controls.Add(this.btnQLPhanHoi, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnQLGiaoDich, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 492);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 770);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.74214F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.25786F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 213F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1387, 621);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1386, 343);
             this.tableLayoutPanel1.TabIndex = 28;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -219,9 +219,9 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(909, 258);
+            this.panel2.Size = new System.Drawing.Size(908, 325);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -308,7 +308,7 @@
             this.pictureBox1.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.account_icon1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(31, 32);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 185);
             this.pictureBox1.TabIndex = 0;
@@ -326,11 +326,11 @@
             this.btnLuuTru.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnLuuTru.ForeColor = System.Drawing.Color.White;
             this.btnLuuTru.Image = global::QuanLyPhongTro.Properties.Resources.IconDoccuments;
-            this.btnLuuTru.Location = new System.Drawing.Point(921, 4);
-            this.btnLuuTru.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuuTru.Location = new System.Drawing.Point(920, 4);
+            this.btnLuuTru.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuuTru.Name = "btnLuuTru";
             this.btnLuuTru.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnLuuTru.Size = new System.Drawing.Size(462, 258);
+            this.btnLuuTru.Size = new System.Drawing.Size(462, 325);
             this.btnLuuTru.TabIndex = 26;
             this.btnLuuTru.Text = "Lưu trữ";
             this.btnLuuTru.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -342,10 +342,10 @@
             this.panel3.BackColor = System.Drawing.Color.BlueViolet;
             this.panel3.Controls.Add(this.tableLayoutPanel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 226);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(0, 354);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1387, 266);
+            this.panel3.Size = new System.Drawing.Size(1386, 333);
             this.panel3.TabIndex = 27;
             // 
             // tableLayoutPanel2
@@ -357,11 +357,11 @@
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1387, 266);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1386, 333);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // MainForm_TrangChu
@@ -372,9 +372,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm_TrangChu";
-            this.Size = new System.Drawing.Size(1387, 1113);
+            this.Size = new System.Drawing.Size(1109, 890);
             this.Load += new System.EventHandler(this.MainForm_TrangChu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
