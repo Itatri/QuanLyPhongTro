@@ -12,6 +12,7 @@ namespace DTO
         public string MatKhau { get; set; }
         public string MaPhong { get; set; }
         public int TrangThai { get; set; }
+        public DateTime NgayCapNhat { get; set; } // Thêm thuộc tính Ngày cập nhật
 
         public DanKyTaiKhoanKH_DTO() { }
 

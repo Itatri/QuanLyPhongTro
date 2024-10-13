@@ -20,6 +20,7 @@ namespace QuanLyPhongTro
         SqlConnection ketnoi;
         SqlCommand thuchien;
         SqlDataReader DocDuLieu;
+
         // Lấy chuỗi kết nối từ tệp App.config
         private string chuoiketnoi = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         string lenh;
@@ -27,6 +28,9 @@ namespace QuanLyPhongTro
         public DangNhap()
         {
             InitializeComponent();
+            cbbChungCu.DropDownStyle = ComboBoxStyle.DropDownList;
+            //cbbChungCu.BackColor = Color.LightBlue; // Đặt màu nền
+            //cbbChungCu.ForeColor = Color.Aqua; // Đặt màu chữ
             LoadComboBoxKhuVuc();
         }
 
@@ -66,14 +70,12 @@ namespace QuanLyPhongTro
                     }
                 }
             }
-
             return isValid;
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-
-
+            string makhuvuc = cbbChungCu.Text;
             string id = txtTaiKhoan.Text;
             string password = txtMatKhau.Text;
             string region = cbbChungCu.SelectedItem?.ToString();
@@ -86,9 +88,9 @@ namespace QuanLyPhongTro
 
             if (ValidateLogin(id, password, region))
             {
-                // Đăng nhập thành công, mở MainForm và truyền id, region
-                MessageBox.Show("Đăng nhập thành công!");
-                MainForm mainForm = new MainForm(id, region);
+                // Đăng nhập thành công, mở MainForm và truyền id, region, makhuvuc
+                //MessageBox.Show("Đăng nhập thành công!");
+                MainForm mainForm = new MainForm(id, region, makhuvuc);
                 mainForm.Show();
 
                 // Ẩn form đăng nhập
@@ -98,14 +100,13 @@ namespace QuanLyPhongTro
             {
                 MessageBox.Show("Sai tên đăng nhập, mật khẩu hoặc khu vực!");
             }
-
         }
 
 
 
         private void OpenUserControl1(string khuVuc)
         {
-            TaoQuanLyPhong userControl = new TaoQuanLyPhong();
+            TaoQuanLyPhong1 userControl = new TaoQuanLyPhong1();
             //userControl.SetKhuVuc(khuVuc); // Sử dụng biến khuVuc
             Form userControlForm = new Form
             {
@@ -133,6 +134,11 @@ namespace QuanLyPhongTro
         }
 
         private void cbbChungCu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

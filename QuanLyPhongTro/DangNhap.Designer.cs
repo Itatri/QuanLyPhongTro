@@ -95,8 +95,8 @@
             this.txtTaiKhoan.BackColor = System.Drawing.Color.Gainsboro;
             this.txtTaiKhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaiKhoan.Location = new System.Drawing.Point(34, 249);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(35, 249);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTaiKhoan.Multiline = true;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(467, 34);
@@ -108,7 +108,7 @@
             this.txtMatKhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtMatKhau.Location = new System.Drawing.Point(32, 326);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMatKhau.Multiline = true;
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(467, 34);
@@ -120,8 +120,8 @@
             this.cbbChungCu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbChungCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbbChungCu.FormattingEnabled = true;
-            this.cbbChungCu.Location = new System.Drawing.Point(34, 173);
-            this.cbbChungCu.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbChungCu.Location = new System.Drawing.Point(35, 174);
+            this.cbbChungCu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbbChungCu.Name = "cbbChungCu";
             this.cbbChungCu.Size = new System.Drawing.Size(465, 33);
             this.cbbChungCu.TabIndex = 1;
@@ -134,7 +134,7 @@
             this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(193, 404);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(172, 39);
             this.btnDangNhap.TabIndex = 4;
@@ -155,10 +155,11 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtTaiKhoan);
             this.panel1.Location = new System.Drawing.Point(523, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 466);
             this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -166,7 +167,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.pictureBoxIcon);
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(527, 466);
             this.panel2.TabIndex = 9;
@@ -188,7 +189,7 @@
             this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.apartment1;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxIcon.Location = new System.Drawing.Point(24, 31);
-            this.pictureBoxIcon.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxIcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
             this.pictureBoxIcon.Size = new System.Drawing.Size(472, 354);
             this.pictureBoxIcon.TabIndex = 31;
@@ -203,8 +204,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

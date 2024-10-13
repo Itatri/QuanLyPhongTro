@@ -15,16 +15,30 @@ namespace QuanLyPhongTro
     {
         private string id;
         private string region;
+        private string makhuvuc;
 
-        public MainForm(string id, string region)
+        public MainForm(string id, string region, string makhuvuc)
         {
+            //InitializeComponent();
+            //this.id = id;
+            //this.region = region;
+
+            //// Hiển thị trang chủ và truyền id, region
+            //var trangchuControl = new MainForm_TrangChu();
+            //trangchuControl.SetUserInfo(id, region); // Truyền id và region vào trang chủ
+            //var thongtinAdmin = new ThongTinAdmin();
+            //thongtinAdmin.SetUserInfo(id, region); // Truyền id và region
+
+            //ShowControl(trangchuControl); // Hiển thị trang chủ
+
             InitializeComponent();
             this.id = id;
             this.region = region;
+            this.makhuvuc = makhuvuc;
 
-            // Hiển thị trang chủ và truyền id, region
+            // Hiển thị trang chủ và truyền id, region, makhuvuc
             var trangchuControl = new MainForm_TrangChu();
-            trangchuControl.SetUserInfo(id, region); // Truyền id và region vào trang chủ
+            trangchuControl.SetUserInfo(id, region, makhuvuc); // Truyền id, region và makhuvuc vào trang chủ
             var thongtinAdmin = new ThongTinAdmin();
             thongtinAdmin.SetUserInfo(id, region); // Truyền id và region
 
@@ -99,7 +113,7 @@ namespace QuanLyPhongTro
         {
             // Khi nhấn nút Trang Chủ, truyền id và region vào trang chủ
             var trangchuControl = new MainForm_TrangChu();
-            trangchuControl.SetUserInfo(id, region); // Truyền id và region vào trang chủ
+            trangchuControl.SetUserInfo(id, region, makhuvuc); // Truyền id và region vào trang chủ
             ShowControl(trangchuControl);
 
 

@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 using DTO;
 using System.Configuration;
 
+
+
 namespace DAL
 {
     public class DanKyTaiKhoanKH_DAL
     {
-        // Lấy chuỗi kết nối từ tệp App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
         public DataTable GetUserPhongData()
         {
-            string query = "SELECT ID, MatKhau, MaPhong, TrangThai FROM UserPhong";
+            string query = "SELECT  MaPhong as [TÊN PHÒNG],ID, MatKhau as [Mật Khẩu] FROM UserPhong WHERE TRANGTHAI = 1";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -38,7 +39,13 @@ namespace DAL
 
         public bool InsertUserPhong(DanKyTaiKhoanKH_DTO userPhong)
         {
-            string query = "INSERT INTO UserPhong (ID, MatKhau, MaPhong, TrangThai) VALUES (@ID, @MatKhau, @MaPhong, @TrangThai)";
+            // Kiểm tra xem mã phòng đã tồn tại hay chưa
+            if (IsMaPhongExists(userPhong.MaPhong))
+            {
+                return false; // Trả về false nếu mã phòng đã tồn tại
+            }
+
+            string query = "INSERT INTO UserPhong (ID, MatKhau, MaPhong, TrangThai) VALUES (@ID, @MatKhau, @MaPhong, 1)";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -50,7 +57,29 @@ namespace DAL
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    return true;
+                    return true; // Trả về true nếu chèn thành công
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error: " + ex.Message);
+                }
+            }
+
+        }
+
+        // Phương thức kiểm tra mã phòng đã tồn tại
+        private bool IsMaPhongExists(string maPhong)
+        {
+            string query = "SELECT COUNT(*) FROM UserPhong WHERE MaPhong = @MaPhong";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaPhong", maPhong);
+                try
+                {
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar(); // Lấy số lượng mã phòng
+                    return count > 0; // Trả về true nếu mã phòng đã tồn tại
                 }
                 catch (Exception ex)
                 {
@@ -59,21 +88,28 @@ namespace DAL
             }
         }
 
+
         public bool UpdateUserPhong(DanKyTaiKhoanKH_DTO userPhong)
         {
-            string query = "UPDATE UserPhong SET MatKhau = @MatKhau, MaPhong = @MaPhong, TrangThai = @TrangThai WHERE ID = @ID";
+            // Kiểm tra xem mã phòng có tồn tại hay không
+            if (!IsMaPhongExists(userPhong.MaPhong))
+            {
+                return false; // Trả về false nếu mã phòng không tồn tại
+            }
+
+            string query = "UPDATE UserPhong SET MatKhau = @MatKhau, MaPhong = @MaPhong, TrangThai = 1 WHERE ID = @ID";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ID", userPhong.ID);
                 command.Parameters.AddWithValue("@MatKhau", userPhong.MatKhau);
                 command.Parameters.AddWithValue("@MaPhong", userPhong.MaPhong);
-                command.Parameters.AddWithValue("@TrangThai", userPhong.TrangThai);
+                //command.Parameters.AddWithValue("@TrangThai", userPhong.TrangThai);
                 try
                 {
                     connection.Open();
-                    command.ExecuteNonQuery();
-                    return true;
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // Trả về true nếu cập nhật thành công
                 }
                 catch (Exception ex)
                 {
@@ -81,6 +117,11 @@ namespace DAL
                 }
             }
         }
+
+
+
+
+
 
         public bool DeleteUserPhong(string id)
         {
@@ -122,9 +163,12 @@ namespace DAL
             }
         }
 
+        // hiển thị danh sách mã phòng lên combobox
         public DataTable GetPhongData()
         {
-            string query = "SELECT MaPhong FROM Phong WHERE TrangThai = 1";
+
+            // trạng thái 0 là phòng chưa đc kích hoạt sau khi tạo tài khoản phòng thì cập nhật trang thái phòng là 1
+            string query = "SELECT MaPhong FROM Phong where trangthai = 0";
             DataTable dataTable = new DataTable();
 
             try
@@ -143,5 +187,31 @@ namespace DAL
 
             return dataTable;
         }
+
+
+        public DataTable GetUserPhongByMaPhong(string keyword)
+        {
+            string query = "SELECT ID, MatKhau, MaPhong, TrangThai FROM UserPhong WHERE MaPhong LIKE @Keyword";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    connection.Open();
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error: " + ex.Message);
+                }
+                return dataTable;
+            }
+        }
+
+
+
     }
 }
