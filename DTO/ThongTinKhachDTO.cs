@@ -14,10 +14,14 @@ namespace DTO
         //public string AnhNhanDien { get; set; }
         public DateTime NgaySinh { get; set; }
         public string CCCD { get; set; }
+        public DateTime NgayCap {  get; set; }
+        public string NoiCap { get; set; }
         public string Phone { get; set; }
         public string QueQuan { get; set; }
+        public string QuanHe { get; set; }
         public string ChuKy { get; set; }
         public string MaPhong { get; set; }
         public int TrangThai { get; set; }
+        public string Email { get;set; }
     }
 }
