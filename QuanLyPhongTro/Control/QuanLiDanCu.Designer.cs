@@ -53,6 +53,7 @@
             this.labelTenAnhChuKy = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
+            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
             this.buttonLuuCD = new System.Windows.Forms.Button();
@@ -67,13 +68,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonRefesh = new System.Windows.Forms.Button();
-            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.panelCRUDThongTinDanCu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,6 +95,7 @@
             this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 517);
             this.dataGridViewDanCu.TabIndex = 1;
             this.dataGridViewDanCu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellClick);
+            this.dataGridViewDanCu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellContentClick_1);
             // 
             // label2
             // 
@@ -347,6 +348,17 @@
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
             this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
             // 
+            // pictureBoxChuKy
+            // 
+            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(1360, 30);
+            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(161, 186);
+            this.pictureBoxChuKy.TabIndex = 31;
+            this.pictureBoxChuKy.TabStop = false;
+            this.pictureBoxChuKy.Click += new System.EventHandler(this.pictureBoxChuKy_Click);
+            // 
             // dateTimePickerNgaySinh
             // 
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(432, 212);
@@ -518,17 +530,6 @@
             this.buttonRefesh.UseVisualStyleBackColor = true;
             this.buttonRefesh.Click += new System.EventHandler(this.buttonRefesh_Click);
             // 
-            // pictureBoxChuKy
-            // 
-            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(1360, 30);
-            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(161, 186);
-            this.pictureBoxChuKy.TabIndex = 31;
-            this.pictureBoxChuKy.TabStop = false;
-            this.pictureBoxChuKy.Click += new System.EventHandler(this.pictureBoxChuKy_Click);
-            // 
             // QuanLiDanCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,11 +542,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.panelCRUDThongTinDanCu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.ResumeLayout(false);
 
         }
