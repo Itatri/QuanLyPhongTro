@@ -626,5 +626,10 @@ namespace QuanLyPhongTro.Control
         {
 
         }
+
+        private void dataGridViewDanCu_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

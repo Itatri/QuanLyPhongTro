@@ -132,18 +132,18 @@ namespace DAL
                     connection.Open();
 
                     string query = @"
-            UPDATE ThongTinAdmin
-            SET 
-                MaAdmin = @MaAdmin,
-                HoTen = @HoTen,
-                GioiTinh = @GioiTinh,
-                NgaySinh = @NgaySinh,
-                Cccd = @Cccd,
-                Phone = @Phone,
-                QueQuan = @QueQuan, " +
-                            (admin.ChuKy != null ? "ChuKy = @ChuKy, " : "") +
-                        @"   TrangThai = @TrangThai
-            WHERE IdUser = @IdUser";
+                    UPDATE ThongTinAdmin
+                    SET 
+                        MaAdmin = @MaAdmin,
+                        HoTen = @HoTen,
+                        GioiTinh = @GioiTinh,
+                        NgaySinh = @NgaySinh,
+                        Cccd = @Cccd,
+                        Phone = @Phone,
+                        QueQuan = @QueQuan, " +
+                                    (admin.ChuKy != null ? "ChuKy = @ChuKy, " : "") +
+                                @"   TrangThai = @TrangThai
+                    WHERE IdUser = @IdUser";
 
                     if (admin.ChuKy == null)
                     {
