@@ -1,0 +1,661 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using BLL;
+using DTO;
+using System.Configuration.Abstractions;
+using System.Configuration;
+using ConfigManager = System.Configuration.ConfigurationManager;
+
+
+
+
+
+namespace QuanLyPhongTro.Control
+{
+    public partial class DanKyTaiKhoanKhachHang : UserControl
+    {
+        private DanKyTaiKhoanKH_BLL bll = new DanKyTaiKhoanKH_BLL();
+
+        public string makhuvuc { get; set; }
+
+        private string connectionString = ConfigManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
+        
+        int flag = 0;
+        
+        public DanKyTaiKhoanKhachHang()
+        {
+            InitializeComponent();
+        }
+
+
+        private void DanKyTaiKhoanKhachHang_Load(object sender, EventArgs e)
+        {
+
+
+            LoadTenPhongComboBox();
+            LoadUserPhongData();
+            AnHienTextBox(false);
+            AnHienButton(true);
+
+            dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
+            dtpkNgayBatDau.CustomFormat = "ddMMyyyy";
+
+            //MessageBox.Show(dtpkNgayBatDau.Text);
+        }
+
+        private void LoadTenPhongComboBox()
+        {
+            try
+            {
+                // Fetch the data using BLL method
+                DataTable dataTable = bll.GetPhongData();
+
+                // Clear existing items
+                cbbTenPhong.Items.Clear();
+
+                // Add items to ComboBox
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string maPhong = row["MaPhong"].ToString();
+                    cbbTenPhong.Items.Add(maPhong);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void UpdateTextFields()
+        {
+            if (cbbTenPhong.SelectedItem != null)
+            {
+
+                //string ab = cbbTenPhong.Text + dtpkNgayBatDau.Text;
+
+                string ab = cbbTenPhong.Text + dtpkNgayBatDau.Value.ToString("ddMMyy");
+
+                txtID.Text = ab;
+                txtMatKhau.Text = ab; // Set password to be the same as ID
+
+                // Set default status
+            }
+
+
+        }
+
+        private void LoadUserPhongData()
+        {
+
+            DataTable dataTable = bll.GetUserPhongData(); // Lấy dữ liệu từ cơ sở dữ liệu
+
+            // Thêm cột "NgayThang" tạm thời vào DataTable nếu chưa có
+            if (!dataTable.Columns.Contains("NgayThang"))
+            {
+                dataTable.Columns.Add("NgayThang", typeof(DateTime));
+            }
+
+            // Nếu bạn cần gán giá trị mặc định cho cột này, có thể làm như sau:
+            foreach (DataRow row in dataTable.Rows)
+            {
+                if (row["NgayThang"] == DBNull.Value)
+                {
+                    row["NgayThang"] = DateTime.Now; // Hoặc giá trị bạn muốn
+                }
+            }
+
+            dataGridView1.DataSource = dataTable; // Gán DataTable cho DataGridView
+
+            // Ẩn cột "NgayThang" không cho hiển thị
+            if (dataGridView1.Columns["NgayThang"] != null)
+            {
+                dataGridView1.Columns["NgayThang"].Visible = false;
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            flag = 1;
+            AnHienTextBox(true);
+            AnHienButton(false);
+           
+        }
+
+        private void UpdateNgayVao(string MaPhong, DateTime ngayvao)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Phong SET NgayVao = @ngayvao WHERE MaPhong = @MaPhong";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ngayvao", ngayvao);
+                command.Parameters.AddWithValue("@MaPhong", MaPhong); // Chuyển đổi thành string
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Cập nhật ngày vào cho phòng thành công.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy phòng với mã số đã chọn.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi cập nhật ngày vào: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            AnHienTextBox(true);
+            AnHienButton(false);
+            flag = 2;
+
+            //if (string.IsNullOrWhiteSpace(txtID.Text) || cbbTenPhong.SelectedItem == null || cbbTrangThai.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+            //    return;
+            //}
+
+            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật hồ sơ này không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.Yes)
+            //{
+            //    DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+            //    {
+            //        ID = txtID.Text,
+            //        MatKhau = txtMatKhau.Text,
+            //        MaPhong = cbbTenPhong.SelectedItem.ToString(),
+            //        TrangThai = cbbTrangThai.SelectedIndex,
+            //        NgayCapNhat = dtpkNgayBatDau.Value // Lấy giá trị từ DateTimePicker
+            //    };
+
+            //    try
+            //    {
+            //        if (bll.UpdateUserPhong(userPhong))
+            //        {
+            //            LoadUserPhongData();
+            //            MessageBox.Show("Bản ghi đã được cập nhật thành công.");
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error: " + ex.Message);
+            //    }
+            //}
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            AnHienButton(false);
+            AnHienTextBox(false);
+            flag = 3;
+            //if (string.IsNullOrWhiteSpace(txtID.Text))
+            //{
+            //    MessageBox.Show("Vui lòng chọn bản ghi để xóa.");
+            //    return;
+            //}
+
+            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.Yes)
+            //{
+            //    try
+            //    {
+            //        if (bll.DeleteUserPhong(txtID.Text))
+            //        {
+            //            LoadUserPhongData();
+            //            MessageBox.Show("Đã xóa bản ghi thành công.");
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error: " + ex.Message);
+            //    }
+            //}
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbTenPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateTextFields();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo rằng chỉ số hàng hợp lệ
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                // Hiển thị dữ liệu trong các textbox
+                txtID.Text = row.Cells["ID"].Value.ToString();
+                txtMatKhau.Text = row.Cells["Mật khẩu"].Value.ToString();
+                cbbTenPhong.Text = row.Cells["TÊN PHÒNG"].Value.ToString();
+
+                // Cập nhật DateTimePicker
+                //object ngayThangValue = row.Cells["NgayThang"].Value;
+
+                //if (ngayThangValue != null && DateTime.TryParse(ngayThangValue.ToString(), out DateTime ngayThang))
+                //{
+                //    dtpkNgayBatDau.Value = ngayThang;
+                //}
+                //else
+                //{
+                //    dtpkNgayBatDau.Value = DateTime.Now; // Hoặc một giá trị mặc định nào đó
+                //}
+            }
+            btnThem.Enabled = false;
+            buttonHuy.Enabled = true;
+            buttonSua.Enabled = false;
+        }
+
+        private void dtpkNgayBatDau_ValueChanged(object sender, EventArgs e)
+        {
+          
+            // Chỉ cập nhật nếu có một hàng hiện tại được chọn trong DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Gán giá trị DateTime từ DateTimePicker vào DataGridView
+                dataGridView1.CurrentRow.Cells["NgayThang"].Value = dtpkNgayBatDau.Value;
+
+                // Cập nhật dữ liệu trong DataTable liên kết với DataGridView
+                DataTable dataTable = (DataTable)dataGridView1.DataSource;
+                if (dataTable != null && dataGridView1.CurrentRow.Index < dataTable.Rows.Count)
+                {
+                    dataTable.Rows[dataGridView1.CurrentRow.Index]["NgayThang"] = dtpkNgayBatDau.Value;
+                }
+            }
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is MainForm mainForm)
+            {
+                QuanLiPhong f = new QuanLiPhong();
+                f.khuvuc = makhuvuc;
+                mainForm.ShowControl(f);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnQuayLai_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is MainForm mainForm)
+            {
+                QuanLiPhong f = new QuanLiPhong();
+                f.khuvuc = makhuvuc;
+                mainForm.ShowControl(f);
+            }
+        }
+        // Tìm kiếm tài khoản phòng
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            TimKiemTaiKhoanPhong();
+        }
+
+        private void TimKiemTaiKhoanPhong()
+        {
+            string keyword = textBoxTimKiem.Text.Trim();
+            DataTable result = bll.TimTaiKhoanPhong(keyword);
+
+            if (result.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = result;
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                MessageBox.Show("Không tìm thấy dịch vụ nào với từ khóa này.");
+            }
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (flag == 1)
+            {
+                if (cbbTenPhong.SelectedItem == null )
+                {
+
+                    MessageBox.Show("Vui lòng chọn phòng và trạng thái.");
+                    return;
+                    
+                }
+
+                string selectedPhong = cbbTenPhong.SelectedItem.ToString();
+                if (!bll.PhongExists(selectedPhong))
+                {
+                    MessageBox.Show("Phòng được chọn không tồn tại trong bảng Phòng.");
+                    return;
+                }
+
+
+                string ab = cbbTenPhong.Text + dtpkNgayBatDau.Text;
+                string id = ab;
+                string password = id; // Set password to be the same as ID
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm bản ghi này không?", "Xác nhận bổ sung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+                    {
+                        ID = id,
+                        MatKhau = password,
+                        MaPhong = selectedPhong,
+                        NgayCapNhat = dtpkNgayBatDau.Value // Lấy giá trị từ DateTimePicker
+                    };
+
+                    try
+                    {
+                        if (bll.InsertUserPhong(userPhong))
+                        {
+                            // Cập nhật ngày vào cho bảng Phong
+                            UpdateNgayVao(selectedPhong, dtpkNgayBatDau.Value); // Truyền trực tiếp
+                            LoadUserPhongData();
+                            MessageBox.Show("Đã thêm bản ghi thành công.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mã phòng đã tồn tại. Vui lòng chọn mã phòng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+           
+                //if (flag == 2)
+                //{
+                //    //// Kiểm tra đầu vào
+                //    //if (string.IsNullOrWhiteSpace(txtID.Text) || cbbTenPhong.SelectedItem == null)
+                //    //{
+                //    //    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                //    //    return;
+                //    //}
+
+                //    // Xác nhận cập nhật
+                //    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật hồ sơ này không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //    if (result == DialogResult.Yes)
+                //    {
+                //        // Tạo đối tượng DanKyTaiKhoanKH_DTO và lấy giá trị từ các điều khiển
+                //        DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+                //        {
+                //            ID = txtID.Text,
+                //            MatKhau = txtMatKhau.Text,
+                //            MaPhong = cbbTenPhong.SelectedItem.ToString(),
+                //            NgayCapNhat = dtpkNgayBatDau.Value, // Lấy giá trị từ DateTimePicker
+                //            //TrangThai = 1 // Thiết lập trạng thái mặc định là 1
+                //        };
+
+                //        try
+                //        {
+                //            // Gọi phương thức UpdateUserPhong từ tầng BLL
+                //            if (bll.UpdateUserPhong(userPhong))
+                //            {
+                //                // Tải lại dữ liệu sau khi cập nhật thành công
+                //                LoadUserPhongData();
+                //                MessageBox.Show("Bản ghi đã được cập nhật thành công.");
+                //            }
+                //            else
+                //            {
+                //                MessageBox.Show("Cập nhật không thành công.");
+                //            }
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            MessageBox.Show("Error: " + ex.Message);
+                //        }
+                //    }
+                //}
+
+
+            
+
+            if (flag == 3)
+            {
+                if (string.IsNullOrWhiteSpace(txtID.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn bản ghi để xóa.");
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (bll.DeleteUserPhong(txtID.Text))
+                        {
+                            LoadUserPhongData();
+                            MessageBox.Show("Đã xóa bản ghi thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+            //---------------------------------------------------------------------------
+            LoadTenPhongComboBox();
+            LoadUserPhongData();
+            AnHienTextBox(false);
+            AnHienButton(true);
+            txtID.Clear();
+            txtMatKhau.Clear();
+            dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
+            dtpkNgayBatDau.CustomFormat = "ddMMyyyy";
+        }
+
+        private void textBoxTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Ngăn không cho tiếng bíp phát ra khi nhấn Enter
+                TimKiemTaiKhoanPhong();
+            }
+        }
+
+        //(1) dựa vào java viết ra
+        private void AnHienButton(bool t)
+        {
+
+            btnLuu.Enabled = !t;
+            buttonSua.Enabled = t;
+            btnThem.Enabled = t;
+        }
+
+        private void AnHienTextBox(bool t)
+        {
+            dtpkNgayBatDau.Enabled = t;
+            cbbTenPhong.Enabled = t;
+            txtID.Enabled = t;
+            txtMatKhau.Enabled = t;
+
+        }
+
+        private void buttonLuu_Click(object sender, EventArgs e)
+        {
+            if (flag == 1)
+            {
+                if (cbbTenPhong.SelectedItem == null )
+                {
+
+                    MessageBox.Show("Vui lòng chọn phòng");
+                    return;
+                }
+
+                string selectedPhong = cbbTenPhong.SelectedItem.ToString();
+                if (!bll.PhongExists(selectedPhong))
+                {
+                    MessageBox.Show("Phòng được chọn không tồn tại trong bảng Phòng.");
+                    return;
+                }
+
+
+                string ab = cbbTenPhong.Text + dtpkNgayBatDau.Text;
+                string id = ab;
+                string password = id; // Set password to be the same as ID
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm bản ghi này không?", "Xác nhận bổ sung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+                    {
+                        ID = id,
+                        MatKhau = password,
+                        MaPhong = selectedPhong,
+                        NgayCapNhat = dtpkNgayBatDau.Value // Lấy giá trị từ DateTimePicker
+                    };
+
+                    try
+                    {
+                        if (bll.InsertUserPhong(userPhong))
+                        {
+                            // Cập nhật ngày vào cho bảng Phong
+                            UpdateNgayVao(selectedPhong, dtpkNgayBatDau.Value); // Truyền trực tiếp
+                            LoadUserPhongData();
+                            MessageBox.Show("Đã thêm bản ghi thành công.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mã phòng đã tồn tại. Vui lòng chọn mã phòng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            if (flag == 2)
+            {
+                if (string.IsNullOrWhiteSpace(txtID.Text) || cbbTenPhong.SelectedItem == null )
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật hồ sơ này không?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+                    {
+                     
+                        MaPhong = cbbTenPhong.SelectedItem.ToString(),
+                        NgayCapNhat = dtpkNgayBatDau.Value, // Lấy giá trị từ DateTimePicker
+                        ID = txtID.Text,
+                        MatKhau = txtMatKhau.Text,
+                    };
+
+                    try
+                    {
+                        if (bll.UpdateUserPhong(userPhong))
+                        {
+                            LoadUserPhongData();
+                            MessageBox.Show("Bản ghi đã được cập nhật thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            if (flag == 3)
+            {
+                if (string.IsNullOrWhiteSpace(txtID.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn bản ghi để xóa.");
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa bản ghi này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (bll.DeleteUserPhong(txtID.Text))
+                        {
+                            LoadUserPhongData();
+                            MessageBox.Show("Đã xóa bản ghi thành công.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+            //---------------------------------------------------------------------------
+            LoadTenPhongComboBox();
+            LoadUserPhongData();
+            AnHienTextBox(false);
+            AnHienButton(true);
+
+            dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
+            dtpkNgayBatDau.CustomFormat = "ddMMyyyy";
+        }
+
+        private void buttonSua_Click(object sender, EventArgs e)
+        {
+            AnHienTextBox(false);
+            txtID.Enabled = true;
+            txtMatKhau.Enabled= true;
+            AnHienButton(false);
+            flag = 2;
+
+        }
+
+        private void buttonHuy_Click(object sender, EventArgs e)
+        {
+            //cbbTenPhong.Items.Clear();
+            txtID.Clear();
+            txtMatKhau.Clear();
+            
+            AnHienButton(true);
+            AnHienTextBox(false);
+            LoadUserPhongData();
+
+        }
+
+        private void dtpkNgayBatDau_ValueChanged_1(object sender, EventArgs e)
+        {
+            UpdateTextFields();
+        }
+    }
+}

@@ -16,7 +16,7 @@ namespace DTO
 
         public ThongTinPhongDTO(string maDichVu, string tenDichVu, float donGia, bool trangThai)
         {
-             MaDichVu = maDichVu;
+            MaDichVu = maDichVu;
             TenDichVu = tenDichVu;
             DonGia = donGia;
             TrangThai = trangThai;

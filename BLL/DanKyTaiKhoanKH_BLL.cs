@@ -42,5 +42,14 @@ namespace BLL
         {
             return dal.GetPhongData();
         }
+
+        //Tìm tài khoản phòng theo mã phòng
+        public DataTable TimTaiKhoanPhong(string keyword)
+        {
+            return dal.GetUserPhongByMaPhong(keyword);
+        }
+
+
+
     }
 }
