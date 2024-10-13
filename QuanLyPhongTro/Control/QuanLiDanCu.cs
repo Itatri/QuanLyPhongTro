@@ -22,6 +22,9 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
            
             LoadPhongComboBox();
+            // Sự kiện CellFormatting
+            dataGridViewDanCu.CellFormatting += dataGridViewDanCu_CellFormatting;
+
             // Đăng ký sự kiện CellClick cho DataGridView
             dataGridViewDanCu.CellClick += dataGridViewDanCu_CellClick;
             // Thiết lập chế độ hiển thị ảnh cho PictureBox
@@ -36,8 +39,8 @@ namespace QuanLyPhongTro.Control
         private void SetComboBoxTrangThai()
         {
             comboBoxTrangThai.Items.Clear();
-            comboBoxTrangThai.Items.Add("Đang hoạt động"); // Chỉ mục 0
-            comboBoxTrangThai.Items.Add("Ngưng hoạt động"); // Chỉ mục 1
+            comboBoxTrangThai.Items.Add("Đang cư trú"); // Chỉ mục 0
+            comboBoxTrangThai.Items.Add("Đã rời đi"); // Chỉ mục 1
         }
 
         private void LoadPhongComboBox()
@@ -47,6 +50,9 @@ namespace QuanLyPhongTro.Control
 
             comboBoxPhong.DisplayMember = "TenPhong";
             comboBoxPhong.ValueMember = "MaPhong";
+
+            comboBoxLocPhong.DisplayMember = "TenPhong";
+            comboBoxLocPhong.ValueMember = "MaPhong";
 
             var phongList = dt.AsEnumerable()
                               .Select(row => new
@@ -58,6 +64,10 @@ namespace QuanLyPhongTro.Control
             comboBoxPhong.DataSource = phongList;
             comboBoxPhong.DisplayMember = "DisplayText";
             comboBoxPhong.ValueMember = "MaPhong";
+
+            comboBoxLocPhong.DataSource = phongList;
+            comboBoxLocPhong.DisplayMember = "DisplayText";
+            comboBoxLocPhong.ValueMember = "MaPhong";
         }
 
         private void SetComboBoxGioiTinh()
@@ -79,7 +89,13 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgaySinh.Enabled = enabled;
             //buttonChonAnh.Enabled = enabled;
             buttonChonChuKy.Enabled = enabled;
+            txtEmail.Enabled = enabled;
+            txtNoiCap.Enabled = enabled;
+            dateTimePickerNgayCap.Enabled = enabled;
+            txtQuanHe.Enabled = enabled;
         }
+
+   
 
         private void LoadData()
         {
@@ -88,41 +104,31 @@ namespace QuanLyPhongTro.Control
 
             // Đặt lại tên các cột
             dataGridViewDanCu.Columns["MaKhachTro"].HeaderText = "Mã Cư Dân";
+            dataGridViewDanCu.Columns["MaKhachTro"].Visible = false;
+            dataGridViewDanCu.Columns["ChuKy"].HeaderText = "Chữ Ký";
+            dataGridViewDanCu.Columns["ChuKy"].Visible = false;
             dataGridViewDanCu.Columns["HoTen"].HeaderText = "Họ Tên";
             dataGridViewDanCu.Columns["GioiTinh"].HeaderText = "Giới Tính";
+            dataGridViewDanCu.Columns["CCCD"].HeaderText = "Số Căn Cước";
             dataGridViewDanCu.Columns["Phone"].HeaderText = "Số Điện Thoại";
+            dataGridViewDanCu.Columns["QueQuan"].HeaderText = "Quê Quán";
+            dataGridViewDanCu.Columns["QuanHe"].HeaderText = "Quan Hệ";
+            dataGridViewDanCu.Columns["MaPhong"].HeaderText = "Phòng";
+            dataGridViewDanCu.Columns["Email"].HeaderText = "Email";
             dataGridViewDanCu.Columns["TrangThai"].HeaderText = "Trạng Thái";
+            dataGridViewDanCu.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
+            dataGridViewDanCu.Columns["NgayCap"].HeaderText = "Ngày Cấp";
+            dataGridViewDanCu.Columns["NoiCap"].HeaderText = "Nơi Cấp";
 
-
-            // Xóa cột "TrangThai" hiện tại nếu có
-            if (dataGridViewDanCu.Columns["TrangThai"] != null)
+            // Tạo cột "TrangThai" mới nếu chưa tồn tại
+            if (dataGridViewDanCu.Columns["TrangThai"] == null)
             {
-                dataGridViewDanCu.Columns.Remove("TrangThai");
+                DataGridViewTextBoxColumn colTrangThai = new DataGridViewTextBoxColumn();
+                colTrangThai.Name = "TrangThai";
+                colTrangThai.HeaderText = "Trạng Thái";
+                colTrangThai.DataPropertyName = "TrangThai"; // Tên thuộc tính trong DataSource
+                dataGridViewDanCu.Columns.Add(colTrangThai);
             }
-
-            // Thêm cột checkbox "TrangThai"
-            DataGridViewCheckBoxColumn chkTrangThai = new DataGridViewCheckBoxColumn();
-            chkTrangThai.Name = "TrangThai";
-            chkTrangThai.HeaderText = "Trạng Thái";
-            chkTrangThai.DataPropertyName = "TrangThai"; // Tên thuộc tính trong DataSource
-            dataGridViewDanCu.Columns.Add(chkTrangThai);
-
-
-            // Ẩn các cột không cần thiết
-            foreach (DataGridViewColumn column in dataGridViewDanCu.Columns)
-            {
-                if (column.Name != "MaKhachTro" &&
-                    column.Name != "HoTen" &&
-                    column.Name != "GioiTinh" &&
-                    column.Name != "Phone" &&
-                    column.Name != "TrangThai" &&
-                    column.Name != "btnXemChiTiet")
-                {
-                    column.Visible = false;
-                }
-            }
-
-         
 
             // Thêm cột nút "Xem Chi Tiết" nếu chưa tồn tại
             if (dataGridViewDanCu.Columns["btnXemChiTiet"] == null)
@@ -132,11 +138,11 @@ namespace QuanLyPhongTro.Control
                 btnXemChiTiet.HeaderText = "Hành Động";
                 btnXemChiTiet.Text = "Xem Chi Tiết";
                 btnXemChiTiet.UseColumnTextForButtonValue = true;
-                btnXemChiTiet.FlatStyle = FlatStyle.Flat; // Đặt kiểu phẳng cho nút
+                btnXemChiTiet.FlatStyle = FlatStyle.Flat;
                 dataGridViewDanCu.Columns.Add(btnXemChiTiet);
             }
 
-            // Thiết lập cột "Xem Chi Tiết" luôn ở vị trí cuối
+            // Đảm bảo cột "btnXemChiTiet" luôn ở vị trí cuối cùng
             dataGridViewDanCu.Columns["btnXemChiTiet"].DisplayIndex = dataGridViewDanCu.Columns.Count - 1;
 
             // Tùy chỉnh màu sắc cho cột nút
@@ -148,6 +154,7 @@ namespace QuanLyPhongTro.Control
             // Thiết lập tự động điều chỉnh kích thước cột
             dataGridViewDanCu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
 
 
 
@@ -177,6 +184,9 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgaySinh.Value = DateTime.Now;
             ////pictureBoxAnhCuDan.Image = null; // Xóa ảnh cũ
             pictureBoxChuKy.Image = null; // Xóa ảnh cũ
+            labelTenAnhChuKy.Text = "AnhChuKy.jpg";
+
+
         }
 
         private void buttonXoaCD_Click(object sender, EventArgs e)
@@ -257,68 +267,43 @@ namespace QuanLyPhongTro.Control
             SetControlsEnabled(true);
             txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
 
-            ////// Giải phóng tài nguyên ảnh nhận diện hiện tại 
-            ////if (pictureBoxAnhCuDan.Image != null)
-            ////{
-            ////    pictureBoxAnhCuDan.Image.Dispose();
-            ////    pictureBoxAnhCuDan.Image = null;
-            ////}
+        
 
-            // Giải phóng tài nguyên ảnh chũ ký hiện tại 
-            if (pictureBoxChuKy.Image != null)
-            {
-                pictureBoxChuKy.Image.Dispose();
-                pictureBoxChuKy.Image = null;
-            }
+            //// Giải phóng tài nguyên ảnh chũ ký hiện tại 
+            //if (pictureBoxChuKy.Image != null)
+            //{
+            //    pictureBoxChuKy.Image.Dispose();
+            //    pictureBoxChuKy.Image = null;
+            //}
         }
 
         private void buttonLuuCD_Click(object sender, EventArgs e)
         {
-            
+
+           
+
+
             try
             {
-                //// Kiểm tra nếu chưa có ảnh trong pictureBoxAnhCuDan
-                //if (pictureBoxAnhCuDan.Image == null)
-                //{
-                //    MessageBox.Show("Vui lòng chọn ảnh cho khách trọ.");
-                //    return; 
-                //}
-
-                // Kiểm tra nếu chưa có ảnh trong pictureBoxChuKy
-                if (pictureBoxChuKy.Image == null)
-                {
-                    MessageBox.Show("Vui lòng chọn chữ ký cho khách trọ.");
-                    return; 
-                }
-
                 string maKhachTro = txtMaCuDan.Text;
                 string hoTen = txtHoTenCuDan.Text;
                 string gioiTinh = comboBoxGioiTinh.Text;
                 string cccd = txtCCCD.Text;
                 string phone = txtSDT.Text;
                 string queQuan = txtQueQuan.Text;
-                int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Ngưng hoạt động") ? 0 : 1;
+                int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Đã rời đi") ? 0 : 1;
                 string maPhong = comboBoxPhong.SelectedValue.ToString();
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
-                //string newImagePath = null;
+                string email = txtEmail.Text;
+                string noiCap = txtNoiCap.Text;
+                DateTime ngayCap = dateTimePickerNgayCap.Value;
+                string quanHe = txtQuanHe.Text;
                 string newImagePathChuKy = null;
 
-                //// Handle the image in pictureBoxAnhCuDan
-                //if (pictureBoxAnhCuDan.Image != null)
-                //{
-                //    using (MemoryStream ms = new MemoryStream())
-                //    {
-                //        pictureBoxAnhCuDan.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //        using (Image img = Image.FromStream(ms))
-                //        {
-                //            newImagePath = SaveImageToFolder(img, maKhachTro, hoTen);
-                //        }
-                //    }
-                //}
-
-                // Handle the image in pictureBoxChuKy
-                if (pictureBoxChuKy.Image != null)
+                // Check if a new signature image is selected in pictureBoxChuKy
+                if (pictureBoxChuKy.Image != null && isAddingNew)
                 {
+                    // Save the new signature image
                     using (MemoryStream ms = new MemoryStream())
                     {
                         pictureBoxChuKy.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -329,7 +314,6 @@ namespace QuanLyPhongTro.Control
                     }
                 }
 
-                // Create DTO
                 var khachDTO = new ThongTinKhachDTO
                 {
                     MaKhachTro = maKhachTro,
@@ -341,34 +325,29 @@ namespace QuanLyPhongTro.Control
                     TrangThai = trangThai,
                     MaPhong = maPhong,
                     NgaySinh = ngaySinh,
-                    //AnhNhanDien = newImagePath,
-                    ChuKy = newImagePathChuKy
+                    ChuKy = newImagePathChuKy,
+                    Email = email,
+                    NoiCap = noiCap,
+                    NgayCap = ngayCap,
+                    QuanHe = quanHe
                 };
 
-                if (isAddingNew)
+                if (!isAddingNew)
                 {
-                    thongTinKhachBLL.ThemThongTinKhach(khachDTO); // Add new record
+                    // If editing and no new image was selected, keep the existing ChuKy
+                    var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
+                    if (currentCustomer != null && newImagePathChuKy == null)
+                    {
+                        khachDTO.ChuKy = currentCustomer.ChuKy;
+                    }
+
+                    // Update the customer's information
+                    thongTinKhachBLL.CapNhatThongTinKhach(khachDTO);
                 }
                 else
                 {
-                    var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
-
-                    if (currentCustomer != null)
-                    {
-                        //// Handle AnhNhanDien
-                        //if (newImagePath == null)
-                        //{
-                        //    khachDTO.AnhNhanDien = currentCustomer.AnhNhanDien;
-                        //}
-
-                        // Handle ChuKy
-                        if (newImagePathChuKy == null)
-                        {
-                            khachDTO.ChuKy = currentCustomer.ChuKy;
-                        }
-                    }
-
-                    thongTinKhachBLL.CapNhatThongTinKhach(khachDTO); // Update record
+                    // Add the new customer information
+                    thongTinKhachBLL.ThemThongTinKhach(khachDTO);
                 }
 
                 LoadData();
@@ -382,7 +361,9 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridViewDanCu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-         
+
+
+          
 
             // Kiểm tra xem người dùng có nhấn vào cột nút không
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewDanCu.Columns["btnXemChiTiet"].Index)
@@ -398,6 +379,18 @@ namespace QuanLyPhongTro.Control
                 txtSDT.Text = selectedRow.Cells["Phone"].Value.ToString();
                 txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
                 labelTenAnhChuKy.Text = selectedRow.Cells["ChuKy"].Value.ToString();
+                txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
+                txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+                txtNoiCap.Text = selectedRow.Cells["NoiCap"].Value.ToString(); // Assuming "NoiCap" is a column in your DataGridView.
+
+                if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
+                {
+                    dateTimePickerNgayCap.Value = (DateTime)selectedRow.Cells["NgayCap"].Value;
+                }
+                else
+                {
+                    dateTimePickerNgayCap.Value = DateTime.Now;
+                }
 
                 int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
                 comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0;
@@ -412,8 +405,6 @@ namespace QuanLyPhongTro.Control
                 {
                     dateTimePickerNgaySinh.Value = DateTime.Now;
                 }
-
-               
 
                 string imageChuKy = selectedRow.Cells["ChuKy"].Value.ToString();
                 if (!string.IsNullOrEmpty(imageChuKy))
@@ -542,9 +533,11 @@ namespace QuanLyPhongTro.Control
 
         private void buttonRefesh_Click(object sender, EventArgs e)
         {
+            SetControlsEnabled(false);
+
             try
             {
-                // Xóa giá trị tìm kiếm
+                // Xóa giá trị tìm kiếm và các trường nhập liệu
                 txtTimKiemCuDan.Text = string.Empty;
                 txtMaCuDan.Text = string.Empty;
                 txtHoTenCuDan.Text = string.Empty;
@@ -560,6 +553,9 @@ namespace QuanLyPhongTro.Control
 
                 // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
                 LoadData();
+
+                // Đảm bảo cột "btnXemChiTiet" luôn ở vị trí cuối cùng sau khi làm mới
+                dataGridViewDanCu.Columns["btnXemChiTiet"].DisplayIndex = dataGridViewDanCu.Columns.Count - 1;
             }
             catch (Exception ex)
             {
@@ -630,6 +626,59 @@ namespace QuanLyPhongTro.Control
         private void dataGridViewDanCu_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void buttonLoc_Click(object sender, EventArgs e)
+        {
+           
+
+            // Lấy giá trị MaPhong từ comboBoxLocPhong
+            string selectedMaPhong = comboBoxLocPhong.SelectedValue?.ToString();
+
+            // Kiểm tra nếu giá trị không null hoặc rỗng
+            if (!string.IsNullOrEmpty(selectedMaPhong))
+            {
+                // Gọi phương thức từ BLL để lấy danh sách khách trọ có MaPhong tương ứng
+                var danhSachKhach = thongTinKhachBLL.LayThongTinKhachTheoMaPhong(selectedMaPhong);
+
+                // Kiểm tra nếu danh sách khách trọ rỗng
+                if (danhSachKhach.Count == 0)
+                {
+                    MessageBox.Show("Phòng trống.");
+                }
+                else
+                {
+                    // Hiển thị danh sách khách trọ trên dataGridView
+                    dataGridViewDanCu.DataSource = danhSachKhach;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một phòng để lọc.");
+            }
+        }
+
+        private void dataGridViewDanCu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+           
+
+            if (dataGridViewDanCu.Columns[e.ColumnIndex].Name == "TrangThai" && e.Value != null)
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    e.Value = "Đang cư trú";
+                    e.CellStyle.ForeColor = Color.Green; // Màu xanh
+                    e.CellStyle.Font = new Font(dataGridViewDanCu.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                }
+                else if (e.Value.ToString() == "0")
+                {
+                    e.Value = "Đã rời đi";
+                    e.CellStyle.ForeColor = Color.Red; // Màu đỏ
+                    e.CellStyle.Font = new Font(dataGridViewDanCu.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                }
+            }
         }
     }
 }

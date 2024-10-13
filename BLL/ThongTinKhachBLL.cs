@@ -60,5 +60,11 @@ namespace BLL
             return thongTinKhachDAL.TimKiemThongTinKhach(searchValue);
         }
 
+        public List<ThongTinKhachDTO> LayThongTinKhachTheoMaPhong(string maPhong)
+        {
+            return thongTinKhachDAL.LayThongTinKhachTheoMaPhong(maPhong);
+        }
+
+
     }
 }
