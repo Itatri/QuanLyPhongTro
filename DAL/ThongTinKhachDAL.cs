@@ -31,17 +31,32 @@ namespace DAL
                     {
                         ThongTinKhachDTO khach = new ThongTinKhachDTO
                         {
+                            //MaKhachTro = reader["MaKhachTro"].ToString(),
+                            //HoTen = reader["HoTen"].ToString(),
+                            //GioiTinh = reader["GioiTinh"].ToString(),
+
+                            //NgaySinh = (DateTime)reader["NgaySinh"],
+                            //CCCD = reader["CCCD"].ToString(),
+                            //Phone = reader["Phone"].ToString(),
+                            //QueQuan = reader["QueQuan"].ToString(),
+                            //ChuKy = reader["ChuKy"].ToString(),
+                            //MaPhong = reader["MaPhong"].ToString(),
+                            //TrangThai = (int)reader["TrangThai"]
+
                             MaKhachTro = reader["MaKhachTro"].ToString(),
                             HoTen = reader["HoTen"].ToString(),
                             GioiTinh = reader["GioiTinh"].ToString(),
-                         
                             NgaySinh = (DateTime)reader["NgaySinh"],
                             CCCD = reader["CCCD"].ToString(),
+                            NgayCap = (DateTime)reader["NgayCap"],
+                            NoiCap = reader["NoiCap"].ToString(),
                             Phone = reader["Phone"].ToString(),
                             QueQuan = reader["QueQuan"].ToString(),
+                            QuanHe = reader["QuanHe"].ToString(),
                             ChuKy = reader["ChuKy"].ToString(),
                             MaPhong = reader["MaPhong"].ToString(),
-                            TrangThai = (int)reader["TrangThai"]
+                            TrangThai = (int)reader["TrangThai"],
+                            Email = reader["Email"].ToString()
                         };
 
                         danhSachKhach.Add(khach);
@@ -52,10 +67,33 @@ namespace DAL
             return danhSachKhach;
         }
 
+        //public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
+        //{
+        //    // Thực hiện câu lệnh SQL để cập nhật thông tin
+        //    string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy WHERE MaKhachTro = @MaKhachTro";
+
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    using (SqlCommand cmd = new SqlCommand(query, conn))
+        //    {
+        //        cmd.Parameters.AddWithValue("@MaKhachTro", khachDTO.MaKhachTro);
+        //        cmd.Parameters.AddWithValue("@HoTen", khachDTO.HoTen);
+        //        cmd.Parameters.AddWithValue("@GioiTinh", khachDTO.GioiTinh);
+        //        cmd.Parameters.AddWithValue("@CCCD", khachDTO.CCCD);
+        //        cmd.Parameters.AddWithValue("@Phone", khachDTO.Phone);
+        //        cmd.Parameters.AddWithValue("@QueQuan", khachDTO.QueQuan);
+        //        cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
+        //        cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
+        //        cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
+        //        //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
+        //        cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+
+        //        conn.Open();
+        //        cmd.ExecuteNonQuery();
+        //    }
+        //}
         public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
         {
-            // Thực hiện câu lệnh SQL để cập nhật thông tin
-            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy WHERE MaKhachTro = @MaKhachTro";
+            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy, Email = @Email, NoiCap = @NoiCap, NgayCap = @NgayCap, QuanHe = @QuanHe WHERE MaKhachTro = @MaKhachTro";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -69,13 +107,17 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
                 cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
                 cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-                //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
                 cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+                cmd.Parameters.AddWithValue("@Email", khachDTO.Email);
+                cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
+                cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
+                cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         public int DemSoLuongKhach()
         {
@@ -93,6 +135,40 @@ namespace DAL
         }
 
 
+        //public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+
+        //            string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy) " +
+        //                           "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh,@ChuKy )";
+
+        //            using (SqlCommand cmd = new SqlCommand(query, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("@MaKhachTro", khachDTO.MaKhachTro);
+        //                cmd.Parameters.AddWithValue("@HoTen", khachDTO.HoTen);
+        //                cmd.Parameters.AddWithValue("@GioiTinh", khachDTO.GioiTinh);
+        //                cmd.Parameters.AddWithValue("@CCCD", khachDTO.CCCD);
+        //                cmd.Parameters.AddWithValue("@Phone", khachDTO.Phone);
+        //                cmd.Parameters.AddWithValue("@QueQuan", khachDTO.QueQuan);
+        //                cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
+        //                cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
+        //                cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
+        //                //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
+        //                cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Lỗi khi thêm khách hàng vào cơ sở dữ liệu: " + ex.Message);
+        //    }
+        //}
         public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
         {
             try
@@ -101,8 +177,8 @@ namespace DAL
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy) " +
-                                   "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh,@ChuKy )";
+                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy, Email, NoiCap, NgayCap, QuanHe) " +
+                                   "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @ChuKy, @Email, @NoiCap, @NgayCap, @QuanHe)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -115,8 +191,11 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
                         cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
                         cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-                        //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
                         cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+                        cmd.Parameters.AddWithValue("@Email", khachDTO.Email);
+                        cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
+                        cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
+                        cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -127,6 +206,7 @@ namespace DAL
                 throw new Exception("Lỗi khi thêm khách hàng vào cơ sở dữ liệu: " + ex.Message);
             }
         }
+
 
 
         public ThongTinKhachDTO LayThongTinKhachTheoMa(string maKhachTro)
@@ -177,6 +257,7 @@ namespace DAL
             }
         }
 
+     
         public List<ThongTinKhachDTO> TimKiemThongTinKhach(string searchValue)
         {
             List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
@@ -191,7 +272,9 @@ namespace DAL
                                "GioiTinh LIKE @searchValue OR " +
                                "CCCD LIKE @searchValue OR " +
                                "Phone LIKE @searchValue OR " +
-                               "QueQuan LIKE @searchValue";
+                               "Phone LIKE @searchValue OR " +
+                               "QueQuan LIKE @searchValue OR " +
+                               "MaPhong LIKE @searchValue";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -212,8 +295,12 @@ namespace DAL
                                 TrangThai = Convert.ToInt32(reader["TrangThai"]),
                                 MaPhong = reader["MaPhong"].ToString(),
                                 NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                //AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString()
+                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                                ChuKy = reader["ChuKy"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                QuanHe = reader["QuanHe"].ToString(),
+                                NoiCap = reader["NoiCap"].ToString(),
+                                NgayCap = Convert.ToDateTime(reader["NgayCap"])
                             };
 
                             results.Add(item);
@@ -224,6 +311,57 @@ namespace DAL
 
             return results;
         }
+
+
+        public List<ThongTinKhachDTO> LayThongTinKhachTheoMaPhong(string searchValue)
+        {
+            List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM ThongTinKhach WHERE MaPhong = @MaPhong";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Sử dụng đúng tên tham số là "@MaPhong"
+                    command.Parameters.AddWithValue("@MaPhong", searchValue);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ThongTinKhachDTO item = new ThongTinKhachDTO
+                            {
+                                MaKhachTro = reader["MaKhachTro"].ToString(),
+                                HoTen = reader["HoTen"].ToString(),
+                                GioiTinh = reader["GioiTinh"].ToString(),
+                                CCCD = reader["CCCD"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                QueQuan = reader["QueQuan"].ToString(),
+                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
+                                MaPhong = reader["MaPhong"].ToString(),
+                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
+                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
+                                ChuKy = reader["ChuKy"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                QuanHe = reader["QuanHe"].ToString(),
+                                NoiCap = reader["NoiCap"].ToString(),
+                                NgayCap = Convert.ToDateTime(reader["NgayCap"])
+                                
+                            };
+
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+
 
 
     }
