@@ -185,6 +185,10 @@ namespace QuanLyPhongTro.Control
             ////pictureBoxAnhCuDan.Image = null; // Xóa ảnh cũ
             pictureBoxChuKy.Image = null; // Xóa ảnh cũ
             labelTenAnhChuKy.Text = "AnhChuKy.jpg";
+            txtEmail.Clear();
+            txtNoiCap.Clear();
+            dateTimePickerNgayCap.Value = DateTime.Now;
+            txtQuanHe.Clear();
 
 
         }
@@ -267,21 +271,22 @@ namespace QuanLyPhongTro.Control
             SetControlsEnabled(true);
             txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
 
-        
 
-            //// Giải phóng tài nguyên ảnh chũ ký hiện tại 
-            //if (pictureBoxChuKy.Image != null)
-            //{
-            //    pictureBoxChuKy.Image.Dispose();
-            //    pictureBoxChuKy.Image = null;
-            //}
+
+            // Giải phóng tài nguyên ảnh chũ ký hiện tại 
+            if (pictureBoxChuKy.Image != null)
+            {
+                pictureBoxChuKy.Image.Dispose();
+                pictureBoxChuKy.Image = null;
+            }
         }
+
+
 
         private void buttonLuuCD_Click(object sender, EventArgs e)
         {
 
            
-
 
             try
             {
@@ -292,18 +297,19 @@ namespace QuanLyPhongTro.Control
                 string phone = txtSDT.Text;
                 string queQuan = txtQueQuan.Text;
                 int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Đã rời đi") ? 0 : 1;
-                string maPhong = comboBoxPhong.SelectedValue.ToString();
+                //string maPhong = comboBoxPhong.SelectedValue.ToString();
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
                 string email = txtEmail.Text;
                 string noiCap = txtNoiCap.Text;
                 DateTime ngayCap = dateTimePickerNgayCap.Value;
                 string quanHe = txtQuanHe.Text;
                 string newImagePathChuKy = null;
+                // Lấy giá trị maPhong nếu SelectedValue không phải là null
+                string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
 
                 // Check if a new signature image is selected in pictureBoxChuKy
-                if (pictureBoxChuKy.Image != null && isAddingNew)
+                if (pictureBoxChuKy.Image != null)
                 {
-                    // Save the new signature image
                     using (MemoryStream ms = new MemoryStream())
                     {
                         pictureBoxChuKy.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -325,7 +331,7 @@ namespace QuanLyPhongTro.Control
                     TrangThai = trangThai,
                     MaPhong = maPhong,
                     NgaySinh = ngaySinh,
-                    ChuKy = newImagePathChuKy,
+                    ChuKy = newImagePathChuKy, // Set the new signature path
                     Email = email,
                     NoiCap = noiCap,
                     NgayCap = ngayCap,
@@ -489,27 +495,90 @@ namespace QuanLyPhongTro.Control
 
         private void buttonChonChuKy_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //{
+            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+            //    openFileDialog.Title = "Chọn hình ảnh";
+
+            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        // Ẩn ảnh mặc định trong PictureBox
+            //        pictureBoxChuKy.Image = null;
+
+            //        // Hiển thị ảnh trong PictureBox
+            //        try
+            //        {
+            //            Image selectedImage = Image.FromFile(openFileDialog.FileName);
+            //            pictureBoxChuKy.Image = selectedImage;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+            //        }
+            //    }
+            //}
+
+            try
             {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                openFileDialog.Title = "Chọn hình ảnh";
+                // Lấy mã khách hàng từ txtMaCuDan
+                string maKhachTro = txtMaCuDan.Text;
+                var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (currentCustomer != null && !string.IsNullOrEmpty(currentCustomer.ChuKy))
                 {
-                    // Ẩn ảnh mặc định trong PictureBox
-                    pictureBoxChuKy.Image = null;
+                    // Hỏi người dùng xem có muốn xóa ảnh cũ để cập nhật ảnh mới không
+                    var result = MessageBox.Show("Xóa ảnh cũ để cập nhật ảnh mới?", "Xác nhận", MessageBoxButtons.OKCancel);
 
-                    // Hiển thị ảnh trong PictureBox
-                    try
+                    if (result == DialogResult.OK)
                     {
+                        // Tạo đường dẫn đầy đủ tới ảnh
+                        string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
+                        string imagesFolderPathChuKy = Path.Combine(baseDirectoryChuKy, "..", "..", "AnhChuKy");
+                        string filePathChuKy = Path.Combine(imagesFolderPathChuKy, currentCustomer.ChuKy);
+
+                        // Giải phóng tài nguyên ảnh nếu cần
+                        pictureBoxChuKy.Image?.Dispose();
+                        pictureBoxChuKy.Image = null;
+
+                        // Đảm bảo file không còn được sử dụng
+                        GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
+                        GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+
+                        // Xóa file ảnh nếu tồn tại
+                        if (File.Exists(filePathChuKy))
+                        {
+                            File.Delete(filePathChuKy);
+                        }
+
+                        // Xóa tên ảnh cũ khỏi cột ChuKy trong cơ sở dữ liệu
+                        thongTinKhachBLL.CapNhatChuKyKhachHang(maKhachTro, null);
+
+                        MessageBox.Show("Ảnh cũ đã được xóa. Vui lòng chọn ảnh mới.");
+                    }
+                    else
+                    {
+                        // Nếu người dùng chọn "Hủy", không làm gì cả
+                        return;
+                    }
+                }
+
+                // Mở hộp thoại chọn ảnh mới
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                    openFileDialog.Title = "Chọn hình ảnh";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Hiển thị ảnh mới trong PictureBox
                         Image selectedImage = Image.FromFile(openFileDialog.FileName);
                         pictureBoxChuKy.Image = selectedImage;
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
-                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể tải ảnh: " + ex.Message);
             }
         }
 
@@ -679,6 +748,11 @@ namespace QuanLyPhongTro.Control
                     e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
