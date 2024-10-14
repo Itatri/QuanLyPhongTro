@@ -65,6 +65,12 @@ namespace BLL
             return thongTinKhachDAL.LayThongTinKhachTheoMaPhong(maPhong);
         }
 
+        public void CapNhatChuKyKhachHang(string maKhachTro, string chuKyMoi)
+        {
+            thongTinKhachDAL.CapNhatChuKyKhachHang(maKhachTro, chuKyMoi);
+        }
+
+
 
     }
 }
