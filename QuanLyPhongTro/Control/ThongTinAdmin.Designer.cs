@@ -54,11 +54,11 @@
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
             this.txtRePass = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,7 +107,6 @@
             this.label13.TabIndex = 46;
             this.label13.Text = "Chữ ký Admin";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // dateTimePickerNgaySinhAdmin
             // 
@@ -136,7 +135,6 @@
             this.txtMaAdmin.ReadOnly = true;
             this.txtMaAdmin.Size = new System.Drawing.Size(201, 40);
             this.txtMaAdmin.TabIndex = 51;
-            this.txtMaAdmin.TextChanged += new System.EventHandler(this.txtMaAdmin_TextChanged);
             // 
             // label4
             // 
@@ -147,7 +145,6 @@
             this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 52;
             this.label4.Text = "Họ Tên ";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtHoTenAdmin
             // 
@@ -334,7 +331,6 @@
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
             this.panelThongTinDanCu.Size = new System.Drawing.Size(1651, 916);
             this.panelThongTinDanCu.TabIndex = 76;
-            this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
             // txtRePass
             // 
@@ -356,17 +352,6 @@
             this.label11.TabIndex = 75;
             this.label11.Text = "Nhập lại ";
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.admin;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(963, 9);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(45, 48);
-            this.pictureBoxIcon.TabIndex = 77;
-            this.pictureBoxIcon.TabStop = false;
-            this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBoxIcon_Click);
-            // 
             // pictureBoxChuKy
             // 
             this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
@@ -376,6 +361,16 @@
             this.pictureBoxChuKy.Size = new System.Drawing.Size(333, 475);
             this.pictureBoxChuKy.TabIndex = 47;
             this.pictureBoxChuKy.TabStop = false;
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.admin;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(963, 9);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(45, 48);
+            this.pictureBoxIcon.TabIndex = 77;
+            this.pictureBoxIcon.TabStop = false;
             // 
             // ThongTinAdmin
             // 
@@ -387,11 +382,10 @@
             this.Controls.Add(this.label1);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1684, 1002);
-            this.Load += new System.EventHandler(this.ThongTinAdmin_Load);
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

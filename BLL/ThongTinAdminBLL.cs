@@ -83,6 +83,11 @@ namespace BLL
             }
         }
 
+        // Phương thức để cập nhật chữ ký của Admin
+        public void CapNhatChuKy(string idUser, string chuKy)
+        {
+            thongTinAdminDAL.CapNhatChuKy(idUser, chuKy);
+        }
 
 
     }
