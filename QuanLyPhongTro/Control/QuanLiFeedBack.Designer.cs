@@ -31,22 +31,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewFeedBack = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTimKiemFeedBack = new System.Windows.Forms.TextBox();
-            this.buttonTimKiemFeedBack = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMaPhong = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNoiDungPhanHoi = new System.Windows.Forms.TextBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuiPhanHoi = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPhanHoi = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLoc = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBoxLocPhong = new System.Windows.Forms.ComboBox();
+            this.comboboxTrangThai = new System.Windows.Forms.ComboBox();
             this.buttonRefeshFB = new System.Windows.Forms.Button();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).BeginInit();
@@ -74,6 +72,8 @@
             this.dataGridViewFeedBack.Size = new System.Drawing.Size(1620, 529);
             this.dataGridViewFeedBack.TabIndex = 31;
             this.dataGridViewFeedBack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFeedBack_CellContentClick);
+            this.dataGridViewFeedBack.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewFeedBack_CellFormatting);
+            this.dataGridViewFeedBack.SelectionChanged += new System.EventHandler(this.dataGridViewFeedBack_SelectionChanged);
             // 
             // label1
             // 
@@ -85,27 +85,6 @@
             this.label1.Size = new System.Drawing.Size(325, 29);
             this.label1.TabIndex = 30;
             this.label1.Text = " PHẢN HỒI CỦA CƯ DÂN";
-            // 
-            // txtTimKiemFeedBack
-            // 
-            this.txtTimKiemFeedBack.Location = new System.Drawing.Point(1115, 51);
-            this.txtTimKiemFeedBack.Multiline = true;
-            this.txtTimKiemFeedBack.Name = "txtTimKiemFeedBack";
-            this.txtTimKiemFeedBack.Size = new System.Drawing.Size(304, 24);
-            this.txtTimKiemFeedBack.TabIndex = 34;
-            // 
-            // buttonTimKiemFeedBack
-            // 
-            this.buttonTimKiemFeedBack.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonTimKiemFeedBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTimKiemFeedBack.ForeColor = System.Drawing.Color.White;
-            this.buttonTimKiemFeedBack.Location = new System.Drawing.Point(1442, 51);
-            this.buttonTimKiemFeedBack.Name = "buttonTimKiemFeedBack";
-            this.buttonTimKiemFeedBack.Size = new System.Drawing.Size(141, 27);
-            this.buttonTimKiemFeedBack.TabIndex = 35;
-            this.buttonTimKiemFeedBack.Text = "Tìm kiếm";
-            this.buttonTimKiemFeedBack.UseVisualStyleBackColor = false;
-            this.buttonTimKiemFeedBack.Click += new System.EventHandler(this.buttonTimKiemFeedBack_Click);
             // 
             // label14
             // 
@@ -164,10 +143,10 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelThongTinDanCu.Controls.Add(this.button1);
+            this.panelThongTinDanCu.Controls.Add(this.btnGuiPhanHoi);
             this.panelThongTinDanCu.Controls.Add(this.label6);
             this.panelThongTinDanCu.Controls.Add(this.label5);
-            this.panelThongTinDanCu.Controls.Add(this.textBox1);
+            this.panelThongTinDanCu.Controls.Add(this.txtPhanHoi);
             this.panelThongTinDanCu.Controls.Add(this.label14);
             this.panelThongTinDanCu.Controls.Add(this.label3);
             this.panelThongTinDanCu.Controls.Add(this.txtMaPhong);
@@ -179,18 +158,19 @@
             this.panelThongTinDanCu.TabIndex = 40;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
-            // button1
+            // btnGuiPhanHoi
             // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(696, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 35);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Gửi phản hồi";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnGuiPhanHoi.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnGuiPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuiPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGuiPhanHoi.ForeColor = System.Drawing.Color.White;
+            this.btnGuiPhanHoi.Location = new System.Drawing.Point(696, 281);
+            this.btnGuiPhanHoi.Name = "btnGuiPhanHoi";
+            this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 35);
+            this.btnGuiPhanHoi.TabIndex = 41;
+            this.btnGuiPhanHoi.Text = "Gửi phản hồi";
+            this.btnGuiPhanHoi.UseVisualStyleBackColor = false;
+            this.btnGuiPhanHoi.Click += new System.EventHandler(this.btnGuiPhanHoi_Click);
             // 
             // label6
             // 
@@ -213,26 +193,24 @@
             this.label5.TabIndex = 40;
             this.label5.Text = "Nội dung";
             // 
-            // textBox1
+            // txtPhanHoi
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox1.Location = new System.Drawing.Point(84, 214);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1517, 55);
-            this.textBox1.TabIndex = 41;
+            this.txtPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPhanHoi.Location = new System.Drawing.Point(84, 214);
+            this.txtPhanHoi.Multiline = true;
+            this.txtPhanHoi.Name = "txtPhanHoi";
+            this.txtPhanHoi.Size = new System.Drawing.Size(1517, 55);
+            this.txtPhanHoi.TabIndex = 41;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.buttonLoc);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.comboBoxLocPhong);
+            this.panel1.Controls.Add(this.comboboxTrangThai);
             this.panel1.Controls.Add(this.buttonRefeshFB);
             this.panel1.Controls.Add(this.panelThongTinDanCu);
-            this.panel1.Controls.Add(this.buttonTimKiemFeedBack);
             this.panel1.Controls.Add(this.dataGridViewFeedBack);
-            this.panel1.Controls.Add(this.txtTimKiemFeedBack);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.label2);
@@ -247,36 +225,37 @@
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLoc.Location = new System.Drawing.Point(445, 46);
+            this.buttonLoc.Location = new System.Drawing.Point(1472, 47);
             this.buttonLoc.Name = "buttonLoc";
             this.buttonLoc.Size = new System.Drawing.Size(117, 27);
             this.buttonLoc.TabIndex = 44;
             this.buttonLoc.Text = "Lọc ";
             this.buttonLoc.UseVisualStyleBackColor = false;
+            this.buttonLoc.Click += new System.EventHandler(this.buttonLoc_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(228, 53);
+            this.label12.Location = new System.Drawing.Point(1222, 53);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.Size = new System.Drawing.Size(69, 13);
             this.label12.TabIndex = 45;
-            this.label12.Text = "Phòng";
+            this.label12.Text = "Trạng Thái";
             // 
-            // comboBoxLocPhong
+            // comboboxTrangThai
             // 
-            this.comboBoxLocPhong.FormattingEnabled = true;
-            this.comboBoxLocPhong.Location = new System.Drawing.Point(280, 49);
-            this.comboBoxLocPhong.Name = "comboBoxLocPhong";
-            this.comboBoxLocPhong.Size = new System.Drawing.Size(153, 21);
-            this.comboBoxLocPhong.TabIndex = 43;
+            this.comboboxTrangThai.FormattingEnabled = true;
+            this.comboboxTrangThai.Location = new System.Drawing.Point(1307, 50);
+            this.comboboxTrangThai.Name = "comboboxTrangThai";
+            this.comboboxTrangThai.Size = new System.Drawing.Size(153, 21);
+            this.comboboxTrangThai.TabIndex = 43;
             // 
             // buttonRefeshFB
             // 
             this.buttonRefeshFB.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.RefeshIcon;
             this.buttonRefeshFB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRefeshFB.Location = new System.Drawing.Point(1602, 51);
+            this.buttonRefeshFB.Location = new System.Drawing.Point(1605, 47);
             this.buttonRefeshFB.Name = "buttonRefeshFB";
             this.buttonRefeshFB.Size = new System.Drawing.Size(36, 27);
             this.buttonRefeshFB.TabIndex = 39;
@@ -316,8 +295,6 @@
         private System.Windows.Forms.DataGridView dataGridViewFeedBack;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
-        private System.Windows.Forms.TextBox txtTimKiemFeedBack;
-        private System.Windows.Forms.Button buttonTimKiemFeedBack;
         private System.Windows.Forms.Button buttonRefeshFB;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label3;
@@ -326,12 +303,12 @@
         private System.Windows.Forms.TextBox txtNoiDungPhanHoi;
         private System.Windows.Forms.Panel panelThongTinDanCu;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuiPhanHoi;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPhanHoi;
         private System.Windows.Forms.Button buttonLoc;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBoxLocPhong;
+        private System.Windows.Forms.ComboBox comboboxTrangThai;
     }
 }
