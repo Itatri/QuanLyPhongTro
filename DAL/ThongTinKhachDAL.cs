@@ -362,7 +362,19 @@ namespace DAL
         }
 
 
+        public void CapNhatChuKyKhachHang(string maKhachTro, string chuKyMoi)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE ThongTinKhach SET ChuKy = @ChuKy WHERE MaKhachTro = @MaKhachTro";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaKhachTro", maKhachTro);
+                command.Parameters.AddWithValue("@ChuKy", (object)chuKyMoi ?? DBNull.Value); // Nếu chuKyMoi là null, sử dụng DBNull.Value để xóa giá trị
 
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
 
     }
 }
