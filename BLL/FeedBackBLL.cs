@@ -17,9 +17,25 @@ namespace BLL
             return feedbackDAL.LayTatCaFeedBack();
         }
 
-        public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
+        //public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
+        //{
+        //    return feedbackDAL.TimKiemFeedBack(searchValue);
+        //}
+
+        public bool CapNhatPhanHoi(string maFB, string phanHoi, DateTime ngayPhanHoi)
         {
-            return feedbackDAL.TimKiemFeedBack(searchValue);
+            return feedbackDAL.CapNhatPhanHoi(maFB, phanHoi, ngayPhanHoi);
         }
+
+      
+
+        public List<FeedBackDTO> LocFeedBack(int trangThai)
+        {
+            return feedbackDAL.LocFeedBack(trangThai);
+        }
+
+
+
+
     }
 }
