@@ -49,13 +49,6 @@ namespace DAL
         }
 
 
-
-
-
-
-
-
-
         public bool KiemTraThongTinAdmin(string idUser)
         {
             string query = "SELECT COUNT(*) FROM ThongTinAdmin WHERE IdUser = @IdUser";
@@ -95,10 +88,10 @@ namespace DAL
         public bool ThemThongTinAdmin(ThongTinAdminDTO adminInfo)
         {
             string query = @"
-    INSERT INTO ThongTinAdmin 
-    (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, QueQuan, ChuKy, IdUser, TrangThai) 
-    VALUES 
-    (@MaAdmin, @HoTen, @GioiTinh, @NgaySinh, @Cccd, @Phone, @QueQuan, @ChuKy, @IdUser, @TrangThai)";
+            INSERT INTO ThongTinAdmin 
+            (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, QueQuan, ChuKy, IdUser, TrangThai) 
+            VALUES 
+            (@MaAdmin, @HoTen, @GioiTinh, @NgaySinh, @Cccd, @Phone, @QueQuan, @ChuKy, @IdUser, @TrangThai)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -193,6 +186,25 @@ namespace DAL
                 return count > 0; // Trả về true nếu tồn tại, ngược lại false
             }
         }
+
+
+        // Phương thức để cập nhật chữ ký của Admin
+        public void CapNhatChuKy(string idUser, string chuKy)
+        {
+            string query = "UPDATE ThongTinAdmin SET ChuKy = @ChuKy WHERE IdUser = @IdUser";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ChuKy", (object)chuKy ?? DBNull.Value);
+                command.Parameters.AddWithValue("@IdUser", idUser);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+
 
     }
 }

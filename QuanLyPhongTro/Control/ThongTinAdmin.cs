@@ -112,45 +112,107 @@ namespace QuanLyPhongTro.Control
         }
 
 
-        private void ThongTinAdmin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelThongTinDanCu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtMaAdmin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonChonChuKy_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //{
+            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+            //    openFileDialog.Title = "Chọn hình ảnh";
+
+            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        // Ẩn ảnh mặc định trong PictureBox
+            //        pictureBoxChuKy.Image = null;
+
+            //        // Hiển thị ảnh trong PictureBox
+            //        try
+            //        {
+            //            Image selectedImage = Image.FromFile(openFileDialog.FileName);
+            //            pictureBoxChuKy.Image = selectedImage;
+            //            isChuKyUpdated = true; // Đánh dấu rằng người dùng đã chọn ảnh mới
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+            //        }
+            //    }
+            //}
+
+            try
             {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                openFileDialog.Title = "Chọn hình ảnh";
+                // Khai báo đường dẫn tới thư mục chứa ảnh chữ ký
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+                imagesFolderPath = Path.GetFullPath(imagesFolderPath); // Đảm bảo đường dẫn chính xác
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                // Lấy thông tin admin hiện tại để kiểm tra ảnh chữ ký
+                ThongTinAdminDTO adminInfo = thongTinAdminBLL.LayThongTinAdminTheoIdUser(txtIDUserAdmin.Text);
+
+                // Kiểm tra xem Admin đã có chữ ký hay chưa
+                if (!string.IsNullOrEmpty(adminInfo?.ChuKy))
                 {
-                    // Ẩn ảnh mặc định trong PictureBox
-                    pictureBoxChuKy.Image = null;
+                    // Hiển thị thông báo xác nhận xóa ảnh cũ
+                    var confirmResult = MessageBox.Show("Admin đã có ảnh chữ ký. Bạn có muốn xóa ảnh cũ để cập nhật ảnh mới không?",
+                                                         "Xác nhận xóa ảnh chữ ký",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Warning);
 
-                    // Hiển thị ảnh trong PictureBox
-                    try
+                    if (confirmResult == DialogResult.Yes)
                     {
-                        Image selectedImage = Image.FromFile(openFileDialog.FileName);
-                        pictureBoxChuKy.Image = selectedImage;
-                        isChuKyUpdated = true; // Đánh dấu rằng người dùng đã chọn ảnh mới
+                        // Lấy tên ảnh cũ từ cơ sở dữ liệu
+                        string oldSignatureFileName = adminInfo.ChuKy;
+
+                        // Xóa ảnh cũ
+                        string oldFilePath = Path.Combine(imagesFolderPath, oldSignatureFileName);
+
+                        // Giải phóng tài nguyên ảnh nếu cần
+                        pictureBoxChuKy.Image?.Dispose();
+                        pictureBoxChuKy.Image = null;
+
+                        // Đảm bảo file không còn được sử dụng
+                        GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
+                        GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+
+                        // Xóa file ảnh nếu tồn tại
+                        if (File.Exists(oldFilePath))
+                        {
+                            File.Delete(oldFilePath);
+                        }
+
+                        // Cập nhật tên ảnh trong cơ sở dữ liệu thành null
+                        thongTinAdminBLL.CapNhatChuKy(txtIDUserAdmin.Text, null);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Không thể tải ảnh: " + ex.Message);
+                        // Nếu người dùng chọn Hủy, không làm gì cả
+                        return;
                     }
                 }
+
+                // Bước này sẽ luôn thực hiện để cho phép chọn ảnh mới
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                    openFileDialog.Title = "Chọn hình ảnh";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Hiển thị ảnh mới trong PictureBox
+                        Image selectedImage = Image.FromFile(openFileDialog.FileName);
+                        pictureBoxChuKy.Image = selectedImage;
+
+                        // Đánh dấu rằng có ảnh chữ ký mới đã được chọn
+                        isChuKyUpdated = true; // Biến này cần được khai báo ở nơi khác trong class
+                    }
+                }
+            }
+            catch (IOException ioEx)
+            {
+                MessageBox.Show("Lỗi khi xóa file ảnh: " + ioEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể cập nhật chữ ký: " + ex.Message);
             }
         }
         private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
@@ -201,7 +263,108 @@ namespace QuanLyPhongTro.Control
         private void btnCapNhatThongTin_Click(object sender, EventArgs e)
         {
 
-           
+
+
+
+            //try
+            //{
+            //    // Lấy thông tin từ các điều khiển
+            //    string idUser = txtIDUserAdmin.Text;
+            //    string maAdmin = txtMaAdmin.Text;
+            //    string hoTen = txtHoTenAdmin.Text;
+            //    string gioiTinh = comboBoxGioiTinhAdmin.SelectedItem != null ? comboBoxGioiTinhAdmin.SelectedItem.ToString() : "";
+            //    string cccd = txtCCCDAdmin.Text;
+            //    string queQuan = txtQueQuanAdmin.Text;
+            //    string phone = txtPhoneAdmin.Text;
+            //    DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
+
+            //    // Lưu ảnh chữ ký mới nếu có
+            //    string chuKyFileName = null;
+
+            //    if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
+            //    {
+            //        // Lưu ảnh chữ ký mới và lấy tên tệp
+            //        chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
+            //    }
+
+            //    // Tạo đối tượng DTO với các thông tin mới
+            //    ThongTinAdminDTO adminInfo = new ThongTinAdminDTO
+            //    {
+            //        MaAdmin = maAdmin,
+            //        HoTen = hoTen,
+            //        GioiTinh = gioiTinh,
+            //        NgaySinh = ngaySinh,
+            //        Cccd = cccd,
+            //        Phone = phone,
+            //        QueQuan = queQuan,
+            //        ChuKy = chuKyFileName, // Cập nhật ảnh chữ ký nếu có
+            //        IdUser = idUser
+            //    };
+
+            //    // Kiểm tra xem Admin đã tồn tại chưa
+            //    bool adminExists = thongTinAdminBLL.KiemTraThongTinAdmin(idUser);
+
+            //    if (adminExists)
+            //    {
+            //        // Nếu tồn tại, cập nhật thông tin Admin
+            //        bool isUpdated = thongTinAdminBLL.CapNhatThongTinAdmin(adminInfo);
+
+            //        if (isUpdated)
+            //        {
+            //            MessageBox.Show("Cập nhật thông tin Admin thành công!");
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Cập nhật thông tin Admin thất bại!");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        // Thêm mới Admin
+            //        bool isAdded = thongTinAdminBLL.ThemAdmin(adminInfo);
+
+            //        if (isAdded)
+            //        {
+            //            MessageBox.Show("Thêm mới thông tin Admin thành công!");
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Thêm mới thông tin Admin thất bại!");
+            //        }
+            //    }
+
+            //    // Kiểm tra và cập nhật mật khẩu
+            //    string password = txtPassword.Text;
+            //    string rePass = txtRePass.Text;
+
+            //    if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(rePass))
+            //    {
+            //        if (password == rePass)
+            //        {
+            //            // Gọi phương thức cập nhật mật khẩu trong BLL
+            //            DangNhapAdminBLL dangNhapBLL = new DangNhapAdminBLL();
+            //            bool isPasswordUpdated = dangNhapBLL.CapNhatMatKhau(idUser, password);
+
+            //            if (isPasswordUpdated)
+            //            {
+            //                MessageBox.Show("Cập nhật mật khẩu Admin thành công!");
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Cập nhật mật khẩu Admin thất bại!");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Cập nhật mật khẩu Admin thất bại! Nhập lại mật khẩu");
+            //        }
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
+            //}
             try
             {
                 // Lấy thông tin từ các điều khiển
@@ -214,30 +377,14 @@ namespace QuanLyPhongTro.Control
                 string phone = txtPhoneAdmin.Text;
                 DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
 
-                // Kiểm tra nếu có ảnh chữ ký trong PictureBox
+                // Lưu ảnh chữ ký mới nếu có
                 string chuKyFileName = null;
-                bool isChuKyUpdated = false; // Đánh dấu xem ảnh chữ ký có được cập nhật hay không
 
-                //if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
-                //{
-                //    // Lưu ảnh chữ ký mới và lấy tên tệp
-                //    chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
-                //    isChuKyUpdated = true; // Đánh dấu rằng ảnh đã được cập nhật
-                //}
-
-                if (pictureBoxChuKy.Image != null) // Nếu có ảnh trong PictureBox
+                if (isChuKyUpdated && pictureBoxChuKy.Image != null) // Nếu có ảnh mới và được đánh dấu
                 {
-                    if (isChuKyUpdated) // Chỉ thực hiện nếu có cập nhật ảnh
-                    {
-                        // Giải phóng tài nguyên của ảnh hiện tại trong PictureBox trước khi lưu
-                        pictureBoxChuKy.Image.Dispose();
-                        pictureBoxChuKy.Image = null;
-
-                        // Lưu ảnh chữ ký mới và lấy tên tệp
-                        chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
-                    }
+                    // Lưu ảnh chữ ký mới và lấy tên tệp
+                    chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
                 }
-
 
                 // Tạo đối tượng DTO với các thông tin mới
                 ThongTinAdminDTO adminInfo = new ThongTinAdminDTO
@@ -249,7 +396,7 @@ namespace QuanLyPhongTro.Control
                     Cccd = cccd,
                     Phone = phone,
                     QueQuan = queQuan,
-                    ChuKy = isChuKyUpdated ? chuKyFileName : null, // Cập nhật ảnh chữ ký nếu có
+                    ChuKy = chuKyFileName ?? labelAnhChuKy.Text, // Nếu không có ảnh mới, giữ lại tên cũ
                     IdUser = idUser
                 };
 
@@ -311,27 +458,13 @@ namespace QuanLyPhongTro.Control
                         MessageBox.Show("Cập nhật mật khẩu Admin thất bại! Nhập lại mật khẩu");
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
             }
-        }
-
-        private void pictureBoxIcon_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

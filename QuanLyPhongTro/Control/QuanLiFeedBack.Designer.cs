@@ -39,11 +39,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNoiDungPhanHoi = new System.Windows.Forms.TextBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLoc = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxLocPhong = new System.Windows.Forms.ComboBox();
@@ -80,11 +80,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(587, 16);
+            this.label1.Location = new System.Drawing.Point(617, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(434, 29);
+            this.label1.Size = new System.Drawing.Size(325, 29);
             this.label1.TabIndex = 30;
-            this.label1.Text = "QUẢN LÍ PHẢN HỒI CỦA CƯ DÂN";
+            this.label1.Text = " PHẢN HỒI CỦA CƯ DÂN";
             // 
             // txtTimKiemFeedBack
             // 
@@ -179,24 +179,29 @@
             this.panelThongTinDanCu.TabIndex = 40;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
-            // panel1
+            // button1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonLoc);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.comboBoxLocPhong);
-            this.panel1.Controls.Add(this.buttonRefeshFB);
-            this.panel1.Controls.Add(this.panelThongTinDanCu);
-            this.panel1.Controls.Add(this.buttonTimKiemFeedBack);
-            this.panel1.Controls.Add(this.dataGridViewFeedBack);
-            this.panel1.Controls.Add(this.txtTimKiemFeedBack);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBoxIcon);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(15, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1656, 968);
-            this.panel1.TabIndex = 41;
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(696, 281);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 35);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "Gửi phản hồi";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label6.Location = new System.Drawing.Point(13, 176);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 20);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Trả lời phản hồi ";
             // 
             // label5
             // 
@@ -217,29 +222,24 @@
             this.textBox1.Size = new System.Drawing.Size(1517, 55);
             this.textBox1.TabIndex = 41;
             // 
-            // label6
+            // panel1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(13, 176);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 20);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Trả lời phản hồi ";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(696, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 35);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Gửi phản hồi";
-            this.button1.UseVisualStyleBackColor = false;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonLoc);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.comboBoxLocPhong);
+            this.panel1.Controls.Add(this.buttonRefeshFB);
+            this.panel1.Controls.Add(this.panelThongTinDanCu);
+            this.panel1.Controls.Add(this.buttonTimKiemFeedBack);
+            this.panel1.Controls.Add(this.dataGridViewFeedBack);
+            this.panel1.Controls.Add(this.txtTimKiemFeedBack);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBoxIcon);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(15, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1656, 968);
+            this.panel1.TabIndex = 41;
             // 
             // buttonLoc
             // 
@@ -287,7 +287,7 @@
             // 
             this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.feedback;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(1022, 12);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(948, 10);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
             this.pictureBoxIcon.Size = new System.Drawing.Size(29, 36);
             this.pictureBoxIcon.TabIndex = 33;
