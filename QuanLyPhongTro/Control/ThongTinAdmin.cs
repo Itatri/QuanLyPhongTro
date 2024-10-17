@@ -95,7 +95,7 @@ namespace QuanLyPhongTro.Control
                         }
                         else
                         {
-                            MessageBox.Show("Không tìm thấy ảnh chữ ký.");
+                            //MessageBox.Show("Không tìm thấy ảnh chữ ký.");
                             pictureBoxChuKy.Image = null; // Xóa ảnh nếu không tìm thấy
                         }
                     }
