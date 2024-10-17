@@ -17,5 +17,9 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
         }
 
+        private void QuanLiThongKe_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

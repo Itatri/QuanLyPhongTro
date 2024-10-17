@@ -50,6 +50,7 @@
     <Compile Include="FeedBackDAL.cs" />
     <Compile Include="KhuVucDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLiPhongDAL.cs" />
     <Compile Include="QuanLyDichVuDAL.cs" />
     <Compile Include="TaoQuanLyPhongDAL.cs" />
     <Compile Include="ThongTinAdminDAL.cs" />
