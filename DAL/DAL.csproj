@@ -51,7 +51,9 @@
     <Compile Include="KhuVucDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyDichVuDAL.cs" />
+    <Compile Include="QuanLyPhieuThuDAL.cs" />
     <Compile Include="TaoQuanLyPhongDAL.cs" />
+    <Compile Include="ThongKeDAL.cs" />
     <Compile Include="ThongTinAdminDAL.cs" />
     <Compile Include="ThongTinKhachDAL.cs" />
     <Compile Include="ThongTinPhongDAL.cs" />
