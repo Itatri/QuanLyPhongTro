@@ -128,6 +128,12 @@
     <Compile Include="Control\ThongTinAdmin.Designer.cs">
       <DependentUpon>ThongTinAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\ThongTinPhieuThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ThongTinPhieuThu.Designer.cs">
+      <DependentUpon>ThongTinPhieuThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\ThongTinPhong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ThongTinAdmin.resx">
       <DependentUpon>ThongTinAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ThongTinPhieuThu.resx">
+      <DependentUpon>ThongTinPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ThongTinPhong.resx">
       <DependentUpon>ThongTinPhong.cs</DependentUpon>

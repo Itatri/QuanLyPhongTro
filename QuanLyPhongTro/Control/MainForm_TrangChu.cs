@@ -19,6 +19,7 @@ namespace QuanLyPhongTro.Control
         private TaoQuanLyPhong1 controltaoQuanLyPhong1;
         private QuanLiPhong controlquanLiPhong;
         private QuanLiDichVu controlquanLiDichVu;
+        private QuanLyPhieuThu controlquanlyphieuthu;
         private string makhuvuc; // Khai báo biến lưu thông tin makhuvuc
 
         private KhuVucBLL khuVucBLL;
@@ -40,6 +41,9 @@ namespace QuanLyPhongTro.Control
 
             controlquanLiDichVu = new QuanLiDichVu();
             controlquanLiDichVu.Dock = DockStyle.Fill;
+
+            controlquanlyphieuthu = new QuanLyPhieuThu();
+            controlquanlyphieuthu.Dock = DockStyle.Fill;
 
             khuVucBLL = new KhuVucBLL(); // Khởi tạo BLL để gọi DAL
             thongTinAdminBLL = new ThongTinAdminBLL();
@@ -126,6 +130,13 @@ namespace QuanLyPhongTro.Control
             this.Controls.Clear(); // Xóa các control hiện có
             //controlquanLiDichVu.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
             this.Controls.Add(controlquanLiDichVu); // Thêm control QuanLyPhong
+        }
+
+        private void btnQLGiaoDich_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            controlquanlyphieuthu.khuvuc = makhuvuc;
+            this.Controls.Add(controlquanlyphieuthu); 
         }
     }
 }
