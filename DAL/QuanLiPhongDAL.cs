@@ -44,10 +44,8 @@ namespace DAL
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
-
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
-
                 try
                 {
                     connection.Open();
@@ -90,6 +88,8 @@ namespace DAL
                 return dt;
             }
         }
+
+
 
 
         public DataTable LayDichVuPhong(string maPhong)

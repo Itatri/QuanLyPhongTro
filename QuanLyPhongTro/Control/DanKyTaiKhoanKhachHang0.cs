@@ -87,8 +87,6 @@ namespace QuanLyPhongTro.Control
 
                 // Set default status
             }
-
-
         }
 
         private void LoadUserPhongData()
@@ -131,6 +129,8 @@ namespace QuanLyPhongTro.Control
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                //string query = "UPDATE Phong SET NgayVao = @ngayvao, TrangThai = 1 WHERE MaPhong = @MaPhong";
+
                 string query = "UPDATE Phong SET NgayVao = @ngayvao WHERE MaPhong = @MaPhong";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ngayvao", ngayvao);
