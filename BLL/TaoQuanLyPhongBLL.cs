@@ -13,10 +13,7 @@ namespace BLL
     {
         private TaoQuanLyPhongDAL dal = new TaoQuanLyPhongDAL();
 
-        //public List<TaoQuanLyPhongDTO> LayDanhSachPhong()
-        //{
-        //    return dal.LayDanhSachThonTinPhong();
-        //}
+    
 
         public DataTable LayDanhSachPhong()
         {
@@ -50,18 +47,56 @@ namespace BLL
         }
 
 
-        public bool ínertDichVuPhong(List<DichVuPhongDTO> lst)
-        {
-            bool a1 = true;
-            foreach (DichVuPhongDTO item in lst)
-            {
-                a1 = dal.InsertDichVuPhong(item.maphong, item.madichvu);
+        //public bool insertDichVuPhong(List<DichVuPhongDTO> lst)
+        //{
+        //    bool a1 = true;
+        //    foreach (DichVuPhongDTO item in lst)
+        //    {
+        //        a1 = dal.InsertDichVuPhong(item.maphong, item.madichvu);
 
+        //    }
+        //    return a1;
+        //}
+
+        public bool InsertDichVuPhong(DataTable dt)
+        {
+            bool allSuccess = true;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                bool result = dal.InsertDichVuPhong(row["MaPhong"].ToString(), row["MaDichVu"].ToString());
+                if (!result)
+                {
+                    allSuccess = false;
+                    break; // Nếu một lần chèn thất bại, dừng lại và trả về false
+                }
             }
-            return a1;
+
+            return allSuccess;
         }
 
-        //-----------------------------------------------------------------------------------------------------
+
+
+
+        //public DataTable GetDichVuByMaPhong(string maPhong)
+        //{
+        //    return dal.GetDichVuByMaPhong(maPhong);
+        //}
+
+        //public DataTable GetAllDichVu()
+        //{
+        //    return dal.GetAllDichVu(); // Bạn cần thêm phương thức này trong lớp DAL
+        //}
+
+        public DataTable GetAllDichVu()
+        {
+            return dal.GetAllDichVu();
+        }
+
+        public DataTable GetDichVuByMaPhong(string maPhong)
+        {
+            return dal.GetDichVuByMaPhong(maPhong);
+        }
 
     }
 }

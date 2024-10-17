@@ -41,25 +41,47 @@ namespace DAL
 
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+
+            //    string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu ,trangthai, makhuvuc, CongNo, TrangThai)  " +
+            //                   "VALUES (@MaPhong, @TenPhong, @TienPhong, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0, 1)";
+
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
+            //    command.Parameters.AddWithValue("@makhuvuc", phong.MaKhuVuc);
+            //    command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
+            //    command.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
+            //    command.Parameters.AddWithValue("@Dien", phong.Dien);
+            //    command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
+            //    command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+            //    //command.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value);
+            //    command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
+
+            //    return command.ExecuteNonQuery() > 0;
+            //}
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu ,trangthai, makhuvuc, CongNo)  " +
+                string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, trangthai, makhuvuc, CongNo) " +
                                "VALUES (@MaPhong, @TenPhong, @TienPhong, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0)";
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
-                command.Parameters.AddWithValue("@makhuvuc", phong.MaKhuVuc);
-                command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
-                command.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
-                command.Parameters.AddWithValue("@Dien", phong.Dien);
-                command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
-                command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
-                //command.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
+                    command.Parameters.AddWithValue("@makhuvuc", phong.MaKhuVuc);
+                    command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
+                    command.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
+                    command.Parameters.AddWithValue("@Dien", phong.Dien);
+                    command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
+                    command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+                    command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
 
-                return command.ExecuteNonQuery() > 0;
+                    return command.ExecuteNonQuery() > 0;
+                }
             }
         }
 
@@ -149,6 +171,23 @@ namespace DAL
             }
         }
 
+        //public bool InsertDichVuPhong(string maPhong, string maDichVu)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        string query = "INSERT INTO DichVuPhong (MaPhong, MaDichVu) VALUES (@MaPhong, @MaDichVu)";
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@MaPhong", maPhong);
+        //            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
+        //            connection.Open();
+        //            int result = command.ExecuteNonQuery();
+        //            return result > 0; // Trả về true nếu thành công
+        //        }
+        //    }
+        //}
+
+
         public bool InsertDichVuPhong(string maPhong, string maDichVu)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -164,6 +203,102 @@ namespace DAL
                 }
             }
         }
+
+
+        //public DataTable GetDichVuByMaPhong(string maPhong)
+        //{
+        //    DataTable dataTable = new DataTable();
+
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        string query = @"
+        //    SELECT dv.TenDichVu, dv.DonGia, dvp.MaDichVu
+        //    FROM DichVu dv
+        //    INNER JOIN DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
+        //    WHERE dvp.MaPhong = @MaPhong";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@MaPhong", maPhong);
+        //            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+        //            {
+        //                adapter.Fill(dataTable);
+        //            }
+        //        }
+        //    }
+
+        //    return dataTable;
+        //}
+
+        public DataTable GetDichVuByMaPhong(string maPhong)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"
+            SELECT dv.TenDichVu, dv.DonGia, dvp.MaDichVu
+            FROM DichVu dv
+            INNER JOIN DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
+            WHERE dvp.MaPhong = @MaPhong";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MaPhong", maPhong);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
+
+        //public DataTable GetAllDichVu()
+        //{
+        //    DataTable dataTable = new DataTable();
+
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        string query = "SELECT * FROM DichVu";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+        //            {
+        //                adapter.Fill(dataTable);
+        //            }
+        //        }
+        //    }
+
+        //    return dataTable;
+        //}
+        public DataTable GetAllDichVu()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT MaDichVu, TenDichVu, DonGia FROM DichVu";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
 
 
     }

@@ -49,6 +49,7 @@
     <Compile Include="DanKyTaiKhoanKH_BLL.cs" />
     <Compile Include="FeedBackBLL.cs" />
     <Compile Include="KhuVucBLL.cs" />
+    <Compile Include="QuanLiPhongBLL.cs" />
     <Compile Include="QuanLyDichVuBLL.cs" />
     <Compile Include="QuanLyPhieuThuBLL.cs" />
     <Compile Include="TaoQuanLyPhongBLL.cs" />

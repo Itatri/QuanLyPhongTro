@@ -16,11 +16,16 @@ namespace DAL
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
 
+        //--------------------------------------------------------------------- 15/10/2024
         public DataTable GetAllServices()
         {
-            string query = "SELECT * FROM DichVu";
+            string query = "SELECT MaDichVu,TenDichVu ,DonGia ,TrangThai  FROM DichVu;";
+            //string query = "SELECT MaDichVu,TenDichVu as [TÊN DỊCH VỤ],DonGia AS [ĐƠN GIÁ] ,TrangThai [TRẠNG THÁI]  FROM DichVu;";
             return ExecuteQuery(query);
+
+            
         }
+        //--------------------------------------------------------------------- 15/10/2024
 
         public DataTable GetDichVuFormQLPhong()
         {
@@ -145,11 +150,33 @@ namespace DAL
 
         public DataTable TimKiemDichVu(string keyword)
         {
-            string query = "SELECT MaDichVu, TenDichVu, DonGia, TrangThai FROM DichVu WHERE MaDichVu LIKE @Keyword OR TenDichVu LIKE @Keyword";
+            string query = "SELECT MaDichVu, TenDichVu, DonGia, TrangThai FROM DichVu WHERE TenDichVu LIKE '%' + @Keyword + '%'";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    connection.Open();
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error: " + ex.Message);
+                }
+                return dataTable;
+            }
+        }
+
+        public DataTable SapXepDichVuTheoTrangThai()
+        {
+            string query = "SELECT MaDichVu, TenDichVu, DonGia, TrangThai FROM DichVu ORDER BY TrangThai";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 try
