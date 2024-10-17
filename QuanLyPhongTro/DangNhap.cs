@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 
@@ -31,6 +32,9 @@ namespace QuanLyPhongTro
             cbbChungCu.DropDownStyle = ComboBoxStyle.DropDownList;
             //cbbChungCu.BackColor = Color.LightBlue; // Đặt màu nền
             //cbbChungCu.ForeColor = Color.Aqua; // Đặt màu chữ
+            txtTaiKhoan.MaxLength = 15;
+            txtMatKhau.MaxLength = 15;
+            
             LoadComboBoxKhuVuc();
         }
 
@@ -55,18 +59,26 @@ namespace QuanLyPhongTro
             using (SqlConnection connection = new SqlConnection(chuoiketnoi))
             {
                 connection.Open();
-                string query = "SELECT COUNT(*) FROM DangNhap WHERE ID = @ID AND PassWord = @Password AND MaKhuVuc = @MaKhuVuc AND TrangThai = 1";
+                string query = "SELECT ID, PassWord FROM DangNhap WHERE MaKhuVuc = @MaKhuVuc AND TrangThai = 1";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ID", id);
-                    command.Parameters.AddWithValue("@Password", password);
                     command.Parameters.AddWithValue("@MaKhuVuc", region);
 
-                    int count = (int)command.ExecuteScalar();
-                    if (count > 0)
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        isValid = true;
+                        while (reader.Read())
+                        {
+                            string dbID = reader["ID"].ToString();
+                            string dbPassword = reader["PassWord"].ToString();
+
+                            // So sánh ID và Password với sự phân biệt chữ hoa chữ thường
+                            if (string.Equals(dbID, id, StringComparison.Ordinal) && string.Equals(dbPassword, password, StringComparison.Ordinal))
+                            {
+                                isValid = true;
+                                break; // Thoát khỏi vòng lặp khi tìm thấy một tài khoản hợp lệ
+                            }
+                        }
                     }
                 }
             }
@@ -102,8 +114,6 @@ namespace QuanLyPhongTro
             }
         }
 
-
-
         private void OpenUserControl1(string khuVuc)
         {
             TaoQuanLyPhong1 userControl = new TaoQuanLyPhong1();
@@ -118,7 +128,6 @@ namespace QuanLyPhongTro
             userControlForm.Show();
         }
 
-
         private void cbbKhuVucChungCu_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedRegion = cbbChungCu.SelectedItem?.ToString();
@@ -130,7 +139,12 @@ namespace QuanLyPhongTro
 
         private void DangNhap_Load(object sender, EventArgs e)
         {
+            txtTaiKhoan.MaxLength = 20; // Giới hạn 20 ký tự
+            txtTaiKhoan.KeyPress += new KeyPressEventHandler(txtTaiKhoan_KeyPress); // Đăng ký sự kiện KeyPress
 
+
+            txtMatKhau.MaxLength = 20; // Giới hạn 20 ký tự
+            txtMatKhau.KeyPress += new KeyPressEventHandler(txtMatKhau_KeyPress); // Đăng ký sự kiện KeyPress
         }
 
         private void cbbChungCu_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,6 +155,43 @@ namespace QuanLyPhongTro
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnDangNhap_Enter(object sender, EventArgs e)
+        {
+            //// Đổi màu khi button được chọn
+            //btnDangNhap.BackColor = Color.BlueViolet; // Màu bạn muốn khi tab tới
+        }
+
+        private void btnDangNhap_Leave(object sender, EventArgs e)
+        {
+            //btnDangNhap.BackColor = Color.Red;
+        }
+
+        private void DangNhap_Load_1(object sender, EventArgs e)
+        {
+            //btnDangNhap.BackColor = Color.Red;
+        }
+
+        private void txtTaiKhoan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) // Kiểm tra nếu phím Enter được nhấn
+            {
+                e.Handled = true; // Ngăn chặn Enter xuống dòng
+            }
+        }
+
+        private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) // Kiểm tra nếu phím Enter được nhấn
+            {
+                e.Handled = true; // Ngăn chặn Enter xuống dòng
+            }
         }
     }
 }

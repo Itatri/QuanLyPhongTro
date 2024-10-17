@@ -45,8 +45,8 @@ namespace QuanLyPhongTro.Control
 
         private void LoadPhongComboBox()
         {
-            ThongTinPhongBLL phongBLL = new ThongTinPhongBLL();
-            DataTable dt = phongBLL.LayTatCaPhong();
+            QuanLiPhongBLL phongBLL = new QuanLiPhongBLL();
+            DataTable dt = phongBLL.LayTatCaPhong(); 
 
             comboBoxPhong.DisplayMember = "TenPhong";
             comboBoxPhong.ValueMember = "MaPhong";

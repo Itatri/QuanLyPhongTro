@@ -75,6 +75,11 @@ namespace BLL
             return dal.TimKiemDichVu(keyword);
         }
 
+        public DataTable SapXepDichVuTheoTrangThai()
+        {
+            return dal.SapXepDichVuTheoTrangThai();
+        }
 
+  
     }
 }

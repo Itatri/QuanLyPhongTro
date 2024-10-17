@@ -23,9 +23,10 @@ namespace BLL
             return dal.InsertUserPhong(userPhong);
         }
 
-        public bool UpdateUserPhong(DanKyTaiKhoanKH_DTO userPhong)
+        public bool UpdatePassword(string accountId, string newPassword)
         {
-            return dal.UpdateUserPhong(userPhong);
+            // Thêm các logic kiểm tra nếu cần thiết (ví dụ: độ dài mật khẩu, ký tự đặc biệt, v.v.)
+            return dal.UpdatePassword(accountId, newPassword);
         }
 
         public bool DeleteUserPhong(string id)
