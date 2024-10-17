@@ -89,22 +89,16 @@ namespace DAL
         }
 
 
-        public bool UpdateUserPhong(DanKyTaiKhoanKH_DTO userPhong)
+        //Phương thức cập nhật chỉ cho người dùng cập nhật mật khẩu tài khoản
+        public bool UpdatePassword(string accountId, string newPassword)
         {
-            // Kiểm tra xem mã phòng có tồn tại hay không
-            if (!IsMaPhongExists(userPhong.MaPhong))
-            {
-                return false; // Trả về false nếu mã phòng không tồn tại
-            }
-
-            string query = "UPDATE UserPhong SET MatKhau = @MatKhau, MaPhong = @MaPhong, TrangThai = 1 WHERE ID = @ID";
+            string query = "UPDATE UserPhong SET MatKhau = @MatKhau WHERE ID = @ID";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", userPhong.ID);
-                command.Parameters.AddWithValue("@MatKhau", userPhong.MatKhau);
-                command.Parameters.AddWithValue("@MaPhong", userPhong.MaPhong);
-                //command.Parameters.AddWithValue("@TrangThai", userPhong.TrangThai);
+                command.Parameters.AddWithValue("@ID", accountId);
+                command.Parameters.AddWithValue("@MatKhau", newPassword);
+
                 try
                 {
                     connection.Open();
@@ -117,11 +111,6 @@ namespace DAL
                 }
             }
         }
-
-
-
-
-
 
         public bool DeleteUserPhong(string id)
         {

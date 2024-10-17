@@ -20,10 +20,15 @@ namespace QuanLyPhongTro.Control
     {
         private QuanLyDichVuBLL bll = new QuanLyDichVuBLL();
 
+
         public QuanLiDichVu()
         {
             InitializeComponent();
             InitializeComboBox();
+
+
+
+
         }
         private void InitializeComboBox()
         {
@@ -43,12 +48,26 @@ namespace QuanLyPhongTro.Control
             AnHienTextBox(false);
             AnHienButton(true);
             txtMaDV.Enabled = (false);
+
+            //-------------------------------------------------------------------------------- 15/10/2024
+            // Định dạng cột DonGia hiển thị số kiểu tiền tệ
+            dataGridView1.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+
+            //-------------------------------------------------------------------------------- 15/10/2024
         }
 
         private void RefreshDataGridView()
         {
+           
             dataGridView1.DataSource = bll.GetAllServices();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Định dạng cột DonGia hiển thị số kiểu tiền tệ
+            dataGridView1.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+
+            // Ẩn cột MaDichVu
+            dataGridView1.Columns["MaDichVu"].Visible = false;
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -123,7 +142,15 @@ namespace QuanLyPhongTro.Control
                 DataGridViewRow selectedRow = dataGridView1.Rows[index];
                 txtMaDV.Text = selectedRow.Cells["MaDichVu"].Value.ToString();
                 txtTenDV.Text = selectedRow.Cells["TenDichVu"].Value.ToString();
-                txtDonGia.Text = selectedRow.Cells["DonGia"].Value.ToString();
+
+                //-------------------------------------------------------------------------------- 15/10/2024
+
+                //txtDonGia.Text = selectedRow.Cells["DonGia"].Value.ToString();
+
+                // Định dạng lại giá trị DonGia để hiển thị đúng trong txtDonGia
+                decimal donGia = decimal.Parse(selectedRow.Cells["DonGia"].Value.ToString());
+                txtDonGia.Text = string.Format("{0:N0}", donGia);
+                //-------------------------------------------------------------------------------- 15/10/2024
 
                 bool trangThai = bool.Parse(selectedRow.Cells["TrangThai"].Value.ToString());
 
@@ -141,15 +168,10 @@ namespace QuanLyPhongTro.Control
 
         private void txtDonGia_TextChanged(object sender, EventArgs e)
         {
-            string input = txtDonGia.Text;
-            if (!System.Text.RegularExpressions.Regex.IsMatch(input, @"^[0-9]*$"))
-            {
-                MessageBox.Show("Vui lòng chỉ nhập số vào trường này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDonGia.Text = ""; // Reset text
-            }
-
-
+            
         }
+
+
 
         private void LoadNewServiceCode()
         {
@@ -295,7 +317,6 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-            //----------------------------------------------
             AnHienButton(true);
             RefreshDataGridView();
             txtMaDV.Clear();
@@ -362,38 +383,32 @@ namespace QuanLyPhongTro.Control
             return m;
         }
 
-   
-
-        //private void btnLoad_Click(object sender, EventArgs e)
-        //{
-        //    AnHienButton(true);
-        //    RefreshDataGridView();
-        //    txtMaDV.Clear();
-        //    txtTenDV.Clear();
-        //    txtDonGia.Clear();
-
-        //    // Đặt giá trị mặc định cho ComboBox trạng thái
-        //    int index = cbbTrangThai.Items.IndexOf("Đang hoat động");
-        //    if (index != -1)
-        //    {
-        //        cbbTrangThai.SelectedIndex = index; // Chọn "Đang hoat động"
-        //    }
-        //    else
-        //    {
-        //        // Nếu giá trị "Đang hoat động" không tồn tại trong danh sách, thêm nó vào và chọn nó
-        //        if (!cbbTrangThai.Items.Contains("Đang hoat động"))
-        //        {
-        //            cbbTrangThai.Items.Add("Đang hoat động");
-        //            cbbTrangThai.SelectedIndex = cbbTrangThai.Items.Count - 1; // Chọn phần tử cuối cùng (đã thêm)
-        //        }
-        //    }
-        //}
 
         private void textBoxTimDichVu_TextChanged(object sender, EventArgs e)
         {
             TimKiemDichVu();
+
+
         }
 
+
+        //private void TimKiemDichVu()
+        //{
+        //    string keyword = textBoxTimDichVu.Text.Trim();
+        //    DataTable result = bll.TimKiemDichVu(keyword);
+
+        //    if (result.Rows.Count > 0)
+        //    {
+        //        dataGridView1.DataSource = result;
+        //    }
+        //    else
+        //    {
+        //        dataGridView1.DataSource = null;
+        //        MessageBox.Show("Không tìm thấy dịch vụ nào với từ khóa này.");
+        //        RefreshDataGridView();
+        //        textBoxTimDichVu.Clear();
+        //    }
+        //}
 
         private void TimKiemDichVu()
         {
@@ -408,8 +423,50 @@ namespace QuanLyPhongTro.Control
             {
                 dataGridView1.DataSource = null;
                 MessageBox.Show("Không tìm thấy dịch vụ nào với từ khóa này.");
+                RefreshDataGridView();
+                textBoxTimDichVu.Clear();
             }
         }
+
+        //-------------------------------------------------------------------------------- 15/10/2024
+
+        private void txtDonGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Ngăn không cho ký tự được nhập vào TextBox
+                e.Handled = true;
+            }
+        }
+
+        private void LoadDichVuSapXepTheoTrangThai()
+        {
+            try
+            {
+                DataTable dataTable = bll.SapXepDichVuTheoTrangThai();
+                dataGridView1.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        
+        private void cbbSapXepDichVu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (cbbSapXepDichVu.SelectedIndex == 0) // Assuming 0 is the index for sorting by status
+            //{
+            //    LoadDichVuSapXepTheoTrangThai();
+            //}
+            //else
+            //{
+            //    RefreshDataGridView(); // Load unsorted or default data
+            //}
+        }
+
+  
+        //-------------------------------------------------------------------------------- 15/10/2024
     }
 }
 
