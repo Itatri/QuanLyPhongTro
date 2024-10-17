@@ -36,6 +36,7 @@ namespace QuanLyPhongTro.Control
             LoadData();
             SetComboBoxGioiTinh();
             SetComboBoxTrangThai();
+            PopulateComboBoxQuanHe();
         }
         private void SetComboBoxTrangThai()
         {
@@ -43,6 +44,38 @@ namespace QuanLyPhongTro.Control
             comboBoxTrangThai.Items.Add("Đang cư trú"); // Chỉ mục 0
             comboBoxTrangThai.Items.Add("Đã rời đi"); // Chỉ mục 1
         }
+
+        private void PopulateComboBoxQuanHe()
+        {
+            comboboxQuanHe.Items.Clear();
+            comboboxQuanHe.Items.AddRange(new string[]
+            {
+                "Cha",
+                "Mẹ",
+                "Anh",
+                "Chị",
+                "Em",
+                "Vợ",
+                "Chồng",
+                "Bạn bè",
+                "Khác",
+                "Ông",
+                "Bà",
+                "Cô",
+                "Chú",
+                "Dì",
+                "Bác",
+                "Con",
+                "Cháu",
+                "Người yêu",
+                "Người giám hộ"
+            });
+
+
+            comboboxQuanHe.SelectedIndex = -1; // Set no selection by default
+        }
+
+
 
         private void LoadPhongComboBox()
         {
@@ -93,10 +126,12 @@ namespace QuanLyPhongTro.Control
             txtEmail.Enabled = enabled;
             txtNoiCap.Enabled = enabled;
             dateTimePickerNgayCap.Enabled = enabled;
-            txtQuanHe.Enabled = enabled;
+            //txtQuanHe.Enabled = enabled;
+            comboboxQuanHe.Enabled = enabled;
+
         }
 
-   
+
 
         private void LoadData()
         {
@@ -189,7 +224,9 @@ namespace QuanLyPhongTro.Control
             txtEmail.Clear();
             txtNoiCap.Clear();
             dateTimePickerNgayCap.Value = DateTime.Now;
-            txtQuanHe.Clear();
+            //txtQuanHe.Clear();
+            comboboxQuanHe.SelectedIndex = -1;
+
 
 
         }
@@ -379,7 +416,9 @@ namespace QuanLyPhongTro.Control
                 string email = txtEmail.Text;
                 string noiCap = txtNoiCap.Text;
                 DateTime ngayCap = dateTimePickerNgayCap.Value;
-                string quanHe = txtQuanHe.Text;
+                //string quanHe = txtQuanHe.Text;
+                string quanHe = comboboxQuanHe.SelectedItem?.ToString();
+
                 string newImagePathChuKy = null;
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
 
@@ -468,7 +507,9 @@ namespace QuanLyPhongTro.Control
                 txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
                 labelTenAnhChuKy.Text = selectedRow.Cells["ChuKy"].Value.ToString();
                 txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-                txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+                //txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+                comboboxQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+
                 txtNoiCap.Text = selectedRow.Cells["NoiCap"].Value.ToString(); // Assuming "NoiCap" is a column in your DataGridView.
 
                 if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
