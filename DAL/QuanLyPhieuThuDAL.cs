@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,224 +12,382 @@ namespace DAL
 {
     public class QuanLyPhieuThuDAL
     {
-        string strConn = "Data Source=DESKTOP-OJ39RBQ;Initial Catalog=Test;User ID=sa;Password=123;Encrypt=False;";
+        private string strConn = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
         SqlConnection conn;
-        public QuanLyPhieuThuDAL()
+
+        public DataTable GetPTTheoThangNam(int thang, int nam, string maKhuVuc)
         {
-            conn = new SqlConnection(strConn);
-        }
-        public DataTable GetThongKePhieuThu()
-        {
-            DataTable dataTable = new DataTable();
-            string query = "GetThongKePhieuThu";
+            DataTable dt = new DataTable();
+            string query = "EXEC GETPTTHeoThangNam @Thang, @Nam, @MaKhuVuc";
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Thang", thang);
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
 
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                    dataAdapter.Fill(dataTable);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("An error occurred: " + ex.Message);
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
+        /////////////Tạo PT
+        public DataTable GetPhong(string khuvuc)
+        {
+            string query = "SELECT MaPhong FROM Phong WHERE MaKhuVuc = @KhuVuc";
+
+            // Tạo một DataTable để chứa kết quả
+            DataTable dt = new DataTable();
+
+            // Sử dụng SqlConnection và SqlCommand để kết nối và thực thi truy vấn
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    // Thêm tham số vào câu lệnh SQL
+                    cmd.Parameters.AddWithValue("@KhuVuc", khuvuc);
+
+                    // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    // Mở kết nối, thực thi truy vấn và điền dữ liệu
+                    conn.Open();
+                    da.Fill(dt);
+                }
+            }
+
+            // Trả về DataTable kết quả
+            return dt;
+        }
+        public DataTable LoadPhong(string phong)
+        {
+            string query = "SELECT * FROM Phong WHERE MaPhong = @MaPhong";
+            DataTable dt = new DataTable();
+
+            // Sử dụng SqlConnection và SqlCommand để kết nối và thực thi truy vấn
+            using (SqlConnection conn = new SqlConnection(strConn)) // Đặt chuỗi kết nối của bạn ở đây
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    // Thêm tham số vào câu lệnh SQL
+                    cmd.Parameters.AddWithValue("@MaPhong", phong);
+
+                    // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    // Mở kết nối, thực thi truy vấn và điền dữ liệu
+                    conn.Open();
+                    da.Fill(dt);
+                }
+            }
+
+            // Trả về DataTable chứa dữ liệu
+            return dt;
+        }
+        public DataTable LoadDVPhong(string phong)
+        {
+            DataTable dataTable = new DataTable();
+            string query = @"
+                            SELECT dv.MaDichVu, dv.TenDichVu, dv.DonGia 
+                            FROM DichVu dv
+                            JOIN DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
+                            WHERE dvp.MaPhong = @MaPhong AND dv.TrangThai = 1";
+
+            using (SqlConnection connection = new SqlConnection(strConn))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số vào câu lệnh
+                    command.Parameters.AddWithValue("@MaPhong", phong);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dataTable);
                 }
             }
 
             return dataTable;
         }
-        public int CountPT()
+        public bool CreatePhieuThu(PhieuThu phieu)
         {
-            int count = 0;
-            string query = "SELECT COUNT(*) FROM PhieuThu";
-
             using (SqlConnection conn = new SqlConnection(strConn))
             {
-                try
+                string query = @"INSERT INTO PhieuThu 
+                         (MaPT, MaPhong, NgayLap, NgayThu, TienNha, DienCu, DienMoi, TienDien, NuocCu, NuocMoi, TienNuoc, TienDV, TongTien, ThanhToan, TrangThai)
+                         VALUES 
+                         (@MaPT, @MaPhong, @NgayLap, @NgayThu, @TienNha, @DienCu, @DienMoi, @TienDien, @NuocCu, @NuocMoi, @TienNuoc, @TienDV, @TongTien, @ThanhToan, @TrangThai)";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    // Thêm tham số vào câu lệnh
+                    command.Parameters.AddWithValue("@MaPT", phieu.MaPT);
+                    command.Parameters.AddWithValue("@MaPhong", phieu.MaPhong);
+                    command.Parameters.AddWithValue("@NgayLap", phieu.NgayLap);
+                    command.Parameters.AddWithValue("@NgayThu", phieu.NgayThu);
+                    command.Parameters.AddWithValue("@TienNha", phieu.TienNha);
+                    command.Parameters.AddWithValue("@DienCu", phieu.DienCu);
+                    command.Parameters.AddWithValue("@DienMoi", phieu.DienMoi);
+                    command.Parameters.AddWithValue("@TienDien", phieu.TienDien);
+                    command.Parameters.AddWithValue("@NuocCu", phieu.NuocCu);
+                    command.Parameters.AddWithValue("@NuocMoi", phieu.NuocMoi);
+                    command.Parameters.AddWithValue("@TienNuoc", phieu.TienNuoc);
+                    command.Parameters.AddWithValue("@TienDV", phieu.TienDV);
+                    command.Parameters.AddWithValue("@TongTien", phieu.TongTien);
+                    command.Parameters.AddWithValue("@ThanhToan", phieu.ThanhToan.HasValue ? (object)phieu.ThanhToan.Value : DBNull.Value); // Xử lý ThanhToan có thể là null
+                    command.Parameters.AddWithValue("@TrangThai", phieu.TrangThai);
+
+                    try
                     {
-                        count = (int)cmd.ExecuteScalar();
+                        conn.Open();
+                        int result = command.ExecuteNonQuery(); // Thực thi câu lệnh
+                        return result > 0; // Trả về true nếu đã thêm thành công
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred while counting the records: " + ex.Message);
-                }
-            }
-
-            return count;
-        }
-        public string getMaP(string tenPhong)
-        {
-            string ma = null;
-            string query = "SELECT MaPhong FROM Phong WHERE TenPhong = @TenPhong";
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@TenPhong", tenPhong);
-
-                    object result = cmd.ExecuteScalar();
-                    if (result != null)
+                    catch (SqlException ex)
                     {
-                        ma = result.ToString();
+                        // Xử lý lỗi (ghi log, hiển thị thông báo, v.v.)
+                        Console.WriteLine("Error: " + ex.Message);
+                        return false; // Trả về false nếu có lỗi
                     }
-                }
-            }
-
-            return ma;
-        }
-
-        public void XoaPT(string ma)
-        {
-            string query = "DELETE FROM PhieuThu WHERE MaPT = @MaPT";
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@MaPT", ma);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred while deleting the record: " + ex.Message);
                 }
             }
         }
-        public List<DichVu> GetDichVu()
+        public void CreateDichVuPhieuThu(ChiTietDichVuPT ct)
         {
-            List<DichVu> dichVuList = new List<DichVu>();
-            string query = "SELECT MaDichVu, TenDichVu, DonGia FROM DichVu where TrangThai = 1";
+            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            {
+                string query = "INSERT INTO DichVuPhieuThu (MaPT, TenDichVu, DonGia) " +
+                               "VALUES (@MaPT, @TenDV, @DonGia)";
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm các tham số vào truy vấn
+                    command.Parameters.AddWithValue("@MaPT", ct.MaPT);
+                    command.Parameters.AddWithValue("@TenDV", ct.TenDV); // Ký tự có dấu
+                    command.Parameters.AddWithValue("@DonGia", ct.DonGia);
+
+                    try
+                    {
+                        connection.Open(); // Mở kết nối
+                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi nếu có
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+        public void UpdatePhong(string maPhong, float dien, float nuoc, float congno)
+        {
+            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            {
+                string query = "UPDATE Phong SET Dien = @Dien, Nuoc = @Nuoc, CongNo = @CongNo WHERE MaPhong = @MaPhong";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm các tham số vào truy vấn
+                    command.Parameters.AddWithValue("@Dien", dien);
+                    command.Parameters.AddWithValue("@Nuoc", nuoc);
+                    command.Parameters.AddWithValue("@CongNo", congno);
+                    command.Parameters.AddWithValue("@MaPhong", maPhong);
+
+                    try
+                    {
+                        connection.Open(); // Mở kết nối
+                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi nếu có
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        ////////////Thông tin phiếu thu
+        public DataTable LoadPhieuThu(string maPhieu)
+        {
+            // Tạo đối tượng DataTable để lưu kết quả
+            DataTable dt = new DataTable();
+
+            // Tạo truy vấn SQL để lấy thông tin chi tiết từ bảng PhieuThu
+            string query = "SELECT * FROM PhieuThu WHERE MaPT = @MaPT";
+
+            // Sử dụng try-catch để xử lý ngoại lệ
             try
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                // Mở kết nối đến cơ sở dữ liệu
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+
+                    // Tạo đối tượng SqlCommand và thiết lập truy vấn, kết nối
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        while (reader.Read())
+                        // Thêm tham số vào truy vấn
+                        cmd.Parameters.AddWithValue("@MaPT", maPhieu);
+
+                        // Thực hiện truy vấn và lưu kết quả vào DataTable
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
-                            DichVu dichVu = new DichVu
-                            {
-                                MaDichVu = reader["MaDichVu"].ToString(),
-                                TenDichVu = reader["TenDichVu"].ToString(),
-                                Gia = reader["DonGia"].ToString()
-                            };
-                            dichVuList.Add(dichVu);
+                            da.Fill(dt);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occurred while retrieving DichVu data: " + ex.Message);
-            }
-            conn.Close();
-            return dichVuList;
-        }
-        public DataTable GetPhongByName(string ten)
-        {
-            DataTable dt = new DataTable();
-            string query = "GetPhongByName ";
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TenPhong", ten);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                // Hiển thị lỗi hoặc xử lý ngoại lệ nếu có
+                Console.WriteLine("Error: " + ex.Message);
             }
 
+            // Trả về kết quả
             return dt;
         }
 
-        public bool CreatePhieuThu(PhieuThu phieuThu)
+        public DataTable LoadDichVuPhieuThu(string maPhong, string maPT)
         {
-            using (SqlConnection connection = new SqlConnection(strConn))
+            DataTable dt = new DataTable();
+
+            // Chuỗi kết nối SQL của bạn
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                string query = @"
-                    INSERT INTO PhieuThu (MaPT, MaPhong, NgayLap, NgayThu, TienNha, SkDien, TienDien, SkNuoc, TienNuoc, TienDV, TongTien, TrangThai)
-                    VALUES (@MaPT, @MaPhong, @NgayLap, @NgayThu, @TienNha, @SkDien, @TienDien, @SkNuoc, @TienNuoc, @TienDV, @TongTien, @TrangThai)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@MaPT", phieuThu.MaPT);
-                    command.Parameters.AddWithValue("@MaPhong", phieuThu.MaPhong);
-                    command.Parameters.AddWithValue("@NgayLap", phieuThu.NgayLap);
-                    command.Parameters.AddWithValue("@NgayThu", phieuThu.NgayThu);
-                    command.Parameters.AddWithValue("@TienNha", phieuThu.TienNha);
-                    command.Parameters.AddWithValue("@SkDien", phieuThu.SkDien);
-                    command.Parameters.AddWithValue("@TienDien", phieuThu.TienDien);
-                    command.Parameters.AddWithValue("@SkNuoc", phieuThu.SkNuoc);
-                    command.Parameters.AddWithValue("@TienNuoc", phieuThu.TienNuoc);
-                    command.Parameters.AddWithValue("@TienDV", phieuThu.TienDV);
-                    command.Parameters.AddWithValue("@TongTien", phieuThu.TongTien);
-                    command.Parameters.AddWithValue("@TrangThai", phieuThu.TrangThai);
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetDichVuByPhongAndPhieuThu", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                        // Thêm các tham số
+                        cmd.Parameters.AddWithValue("@MaPhong", maPhong);
+                        cmd.Parameters.AddWithValue("@MaPT", maPT);
+
+                        // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ (nếu có)
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                finally
+                {
+                    // Đảm bảo kết nối được đóng
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
                 }
             }
+
+            // Trả về DataTable chứa thông tin dịch vụ của phiếu thu
+            return dt;
         }
-
-        public bool CreateChiTietDichVu(ChiTietDichVu chiTietDichVu)
+        public bool UpdatePhieuThu(PhieuThu phieuThu)
         {
-            using (SqlConnection connection = new SqlConnection(strConn))
+            try
             {
-                string query = @"INSERT INTO ChiTietDichVu (MaPhong, MaDichVu, SoLuong, TongTien) VALUES (@MaPhong, @MaDichVu, @SoLuong, @TongTien)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                // Chuỗi kết nối tới cơ sở dữ liệu
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
-                    command.Parameters.AddWithValue("@MaPhong", chiTietDichVu.MaPhong);
-                    command.Parameters.AddWithValue("@MaDichVu", chiTietDichVu.MaDichVu);
-                    command.Parameters.AddWithValue("@SoLuong", chiTietDichVu.SoLuong);
-                    command.Parameters.AddWithValue("@TongTien", chiTietDichVu.TongTien);
+                    // Mở kết nối
+                    conn.Open();
 
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                    // Tạo câu lệnh SQL để cập nhật thông tin phiếu thu
+                    string query = @"
+                UPDATE PhieuThu
+                SET NgayThu = @NgayThu,
+                    DienMoi = @DienMoi,
+                    TienDien = @TienDien,
+                    NuocMoi = @NuocMoi,
+                    TienNuoc = @TienNuoc,
+                    TienDV = @TienDV,
+                    TongTien = @TongTien,
+                    ThanhToan = @ThanhToan,
+                    TrangThai = @TrangThai
+                WHERE MaPT = @MaPT";
+
+                    // Tạo đối tượng SqlCommand
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Thêm các tham số
+                        cmd.Parameters.AddWithValue("@MaPT", phieuThu.MaPT);
+                        cmd.Parameters.AddWithValue("@NgayThu", phieuThu.NgayThu);
+                        cmd.Parameters.AddWithValue("@DienMoi", phieuThu.DienMoi);
+                        cmd.Parameters.AddWithValue("@TienDien", phieuThu.TienDien);
+                        cmd.Parameters.AddWithValue("@NuocMoi", phieuThu.NuocMoi);
+                        cmd.Parameters.AddWithValue("@TienNuoc", phieuThu.TienNuoc);
+                        cmd.Parameters.AddWithValue("@TienDV", phieuThu.TienDV);
+                        cmd.Parameters.AddWithValue("@TongTien", phieuThu.TongTien);
+                        cmd.Parameters.AddWithValue("@ThanhToan", phieuThu.ThanhToan.HasValue ? (object)phieuThu.ThanhToan.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@TrangThai", phieuThu.TrangThai);
+
+                        // Thực thi lệnh
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Kiểm tra số lượng bản ghi được cập nhật
+                        return rowsAffected > 0;    
+                    }
                 }
             }
-        }
-
-        public bool CheckChiTietDichVuExists(string maPhong, string maDichVu)
-        {
-            using (SqlConnection connection = new SqlConnection(strConn))
+            catch (Exception ex)
             {
-                string query = @"SELECT COUNT(*) FROM ChiTietDichVu WHERE MaPhong = @MaPhong AND MaDichVu = @MaDichVu";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@MaPhong", maPhong ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@MaDichVu", maDichVu ?? (object)DBNull.Value);
-
-                    connection.Open();
-                    int count = (int)command.ExecuteScalar();
-                    return count > 0;
-                }
+                // Xử lý lỗi
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
-
-
-        public void UpdateDienNuoc(string maPhong, float dien, float nuoc)
+        public void DeleteDichVuPhieuThu(string mapt)
         {
-            string query = "UPDATE Phong SET Dien = @Dien, Nuoc = @Nuoc WHERE MaPhong = @MaPhong";
+            try
+            {
+                // Chuỗi kết nối tới cơ sở dữ liệu
+                using (SqlConnection conn = new SqlConnection(strConn))
+                {
+                    // Mở kết nối
+                    conn.Open();
+
+                    // Tạo câu lệnh SQL để xóa dịch vụ phiếu thu dựa trên MaPT
+                    string query = "DELETE FROM DichVuPhieuThu WHERE MaPT = @MaPT";
+
+                    // Tạo đối tượng SqlCommand
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Thêm tham số
+                        cmd.Parameters.AddWithValue("@MaPT", mapt);
+
+                        // Thực thi lệnh
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+        public DataTable GetCongNo(string phong)
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT CongNo FROM Phong WHERE MaPhong = @MaPhong";
 
             using (SqlConnection connection = new SqlConnection(strConn))
             {
@@ -237,59 +396,24 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Dien", dien);
-                        command.Parameters.AddWithValue("@Nuoc", nuoc);
-                        command.Parameters.AddWithValue("@MaPhong", maPhong);
+                        // Thêm tham số @MaPhong vào câu lệnh SQL
+                        command.Parameters.AddWithValue("@MaPhong", phong);
 
-                        command.ExecuteNonQuery();
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            // Điền kết quả vào DataTable
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("An error occurred while updating Dien and Nuoc: " + ex.Message);
+                    // Xử lý lỗi (ghi log, hiển thị thông báo, v.v.)
+                    Console.WriteLine("Lỗi: " + ex.Message);
                 }
             }
-        }
-        public DataTable GetPhieuThuByMaPT(string maPT)
-        {
-            using (SqlConnection connection = new SqlConnection(strConn)) 
-            {
-                string query = @"SELECT *  FROM PhieuThu  WHERE MaPT = @MaPT";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@MaPT", maPT ?? (object)DBNull.Value);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-
-                    connection.Open();
-                    adapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-            }
-        }
-
-        public DataTable GetDichVuByMaPhong(string maPhong)
-        {
-            using (SqlConnection connection = new SqlConnection(strConn))
-            {
-                string query = @"SELECT MaPhong, MaDichVu, SoLuong, ThanhTien FROM ChiTietDichVu WHERE MaPhong = @MaPhong";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@MaPhong", maPhong ?? (object)DBNull.Value);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-
-                    connection.Open();
-                    adapter.Fill(dataTable);
-
-                    return dataTable;
-                }
-            }
+            return dataTable;
         }
 
 
