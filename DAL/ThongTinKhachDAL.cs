@@ -135,6 +135,7 @@ namespace DAL
         }
 
 
+       
         //public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
         //{
         //    try
@@ -143,8 +144,8 @@ namespace DAL
         //        {
         //            conn.Open();
 
-        //            string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy) " +
-        //                           "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh,@ChuKy )";
+        //            string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy, Email, NoiCap, NgayCap, QuanHe) " +
+        //                           "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @ChuKy, @Email, @NoiCap, @NgayCap, @QuanHe)";
 
         //            using (SqlCommand cmd = new SqlCommand(query, conn))
         //            {
@@ -157,8 +158,11 @@ namespace DAL
         //                cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
         //                cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
         //                cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-        //                //cmd.Parameters.AddWithValue("@AnhNhanDien", khachDTO.AnhNhanDien);
         //                cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+        //                cmd.Parameters.AddWithValue("@Email", khachDTO.Email);
+        //                cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
+        //                cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
+        //                cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
 
         //                cmd.ExecuteNonQuery();
         //            }
@@ -169,6 +173,7 @@ namespace DAL
         //        throw new Exception("Lỗi khi thêm khách hàng vào cơ sở dữ liệu: " + ex.Message);
         //    }
         //}
+
         public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
         {
             try
@@ -177,8 +182,18 @@ namespace DAL
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, ChuKy, Email, NoiCap, NgayCap, QuanHe) " +
-                                   "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @ChuKy, @Email, @NoiCap, @NgayCap, @QuanHe)";
+                    // Prepare the base query
+                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe";
+                    string values = "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @Email, @NoiCap, @NgayCap, @QuanHe";
+
+                    // Include ChuKy only if it is not null
+                    if (!string.IsNullOrEmpty(khachDTO.ChuKy))
+                    {
+                        query += ", ChuKy";
+                        values += ", @ChuKy";
+                    }
+
+                    query += ") " + values + ")";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -191,11 +206,15 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@TrangThai", khachDTO.TrangThai);
                         cmd.Parameters.AddWithValue("@MaPhong", khachDTO.MaPhong);
                         cmd.Parameters.AddWithValue("@NgaySinh", khachDTO.NgaySinh);
-                        cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
                         cmd.Parameters.AddWithValue("@Email", khachDTO.Email);
                         cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
                         cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
                         cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
+
+                        if (!string.IsNullOrEmpty(khachDTO.ChuKy))
+                        {
+                            cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
+                        }
 
                         cmd.ExecuteNonQuery();
                     }
@@ -206,7 +225,6 @@ namespace DAL
                 throw new Exception("Lỗi khi thêm khách hàng vào cơ sở dữ liệu: " + ex.Message);
             }
         }
-
 
 
         public ThongTinKhachDTO LayThongTinKhachTheoMa(string maKhachTro)
