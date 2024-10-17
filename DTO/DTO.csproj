@@ -45,11 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietDichVuPT.cs" />
     <Compile Include="DangNhapAdminDTO.cs" />
     <Compile Include="DanKyTaiKhoanKH_DTO.cs" />
+    <Compile Include="DichVu.cs" />
     <Compile Include="DichVuPhongDTO.cs" />
     <Compile Include="FeedBackDTO.cs" />
     <Compile Include="KhuVucDTO.cs" />
+    <Compile Include="PhieuThu.cs" />
     <Compile Include="TaoQuanLyPhongDTO.cs" />
     <Compile Include="ThongTinAdminDTO.cs" />
     <Compile Include="ThongTinDichVuDTO.cs" />
