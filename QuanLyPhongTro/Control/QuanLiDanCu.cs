@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace QuanLyPhongTro.Control
             LoadData();
             SetComboBoxGioiTinh();
             SetComboBoxTrangThai();
+            PopulateComboBoxQuanHe();
         }
         private void SetComboBoxTrangThai()
         {
@@ -42,6 +44,38 @@ namespace QuanLyPhongTro.Control
             comboBoxTrangThai.Items.Add("Đang cư trú"); // Chỉ mục 0
             comboBoxTrangThai.Items.Add("Đã rời đi"); // Chỉ mục 1
         }
+
+        private void PopulateComboBoxQuanHe()
+        {
+            comboboxQuanHe.Items.Clear();
+            comboboxQuanHe.Items.AddRange(new string[]
+            {
+                "Cha",
+                "Mẹ",
+                "Anh",
+                "Chị",
+                "Em",
+                "Vợ",
+                "Chồng",
+                "Bạn bè",
+                "Khác",
+                "Ông",
+                "Bà",
+                "Cô",
+                "Chú",
+                "Dì",
+                "Bác",
+                "Con",
+                "Cháu",
+                "Người yêu",
+                "Người giám hộ"
+            });
+
+
+            comboboxQuanHe.SelectedIndex = -1; // Set no selection by default
+        }
+
+
 
         private void LoadPhongComboBox()
         {
@@ -92,10 +126,12 @@ namespace QuanLyPhongTro.Control
             txtEmail.Enabled = enabled;
             txtNoiCap.Enabled = enabled;
             dateTimePickerNgayCap.Enabled = enabled;
-            txtQuanHe.Enabled = enabled;
+            //txtQuanHe.Enabled = enabled;
+            comboboxQuanHe.Enabled = enabled;
+
         }
 
-   
+
 
         private void LoadData()
         {
@@ -188,7 +224,9 @@ namespace QuanLyPhongTro.Control
             txtEmail.Clear();
             txtNoiCap.Clear();
             dateTimePickerNgayCap.Value = DateTime.Now;
-            txtQuanHe.Clear();
+            //txtQuanHe.Clear();
+            comboboxQuanHe.SelectedIndex = -1;
+
 
 
         }
@@ -286,7 +324,84 @@ namespace QuanLyPhongTro.Control
         private void buttonLuuCD_Click(object sender, EventArgs e)
         {
 
-           
+
+
+            ////try
+            ////{
+            ////    string maKhachTro = txtMaCuDan.Text;
+            ////    string hoTen = txtHoTenCuDan.Text;
+            ////    string gioiTinh = comboBoxGioiTinh.Text;
+            ////    string cccd = txtCCCD.Text;
+            ////    string phone = txtSDT.Text;
+            ////    string queQuan = txtQueQuan.Text;
+            ////    int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Đã rời đi") ? 0 : 1;
+            ////    //string maPhong = comboBoxPhong.SelectedValue.ToString();
+            ////    DateTime ngaySinh = dateTimePickerNgaySinh.Value;
+            ////    string email = txtEmail.Text;
+            ////    string noiCap = txtNoiCap.Text;
+            ////    DateTime ngayCap = dateTimePickerNgayCap.Value;
+            ////    string quanHe = txtQuanHe.Text;
+            ////    string newImagePathChuKy = null;
+            ////    // Lấy giá trị maPhong nếu SelectedValue không phải là null
+            ////    string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
+
+            ////    // Check if a new signature image is selected in pictureBoxChuKy
+            ////    if (pictureBoxChuKy.Image != null)
+            ////    {
+            ////        using (MemoryStream ms = new MemoryStream())
+            ////        {
+            ////            pictureBoxChuKy.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ////            using (Image img = Image.FromStream(ms))
+            ////            {
+            ////                newImagePathChuKy = SaveImageToFolderChuKy(img, maKhachTro, hoTen);
+            ////            }
+            ////        }
+            ////    }
+
+            ////    var khachDTO = new ThongTinKhachDTO
+            ////    {
+            ////        MaKhachTro = maKhachTro,
+            ////        HoTen = hoTen,
+            ////        GioiTinh = gioiTinh,
+            ////        CCCD = cccd,
+            ////        Phone = phone,
+            ////        QueQuan = queQuan,
+            ////        TrangThai = trangThai,
+            ////        MaPhong = maPhong,
+            ////        NgaySinh = ngaySinh,
+            ////        ChuKy = newImagePathChuKy, // Set the new signature path
+            ////        Email = email,
+            ////        NoiCap = noiCap,
+            ////        NgayCap = ngayCap,
+            ////        QuanHe = quanHe
+            ////    };
+
+            ////    if (!isAddingNew)
+            ////    {
+            ////        // If editing and no new image was selected, keep the existing ChuKy
+            ////        var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
+            ////        if (currentCustomer != null && newImagePathChuKy == null)
+            ////        {
+            ////            khachDTO.ChuKy = currentCustomer.ChuKy;
+            ////        }
+
+            ////        // Update the customer's information
+            ////        thongTinKhachBLL.CapNhatThongTinKhach(khachDTO);
+            ////    }
+            ////    else
+            ////    {
+            ////        // Add the new customer information
+            ////        thongTinKhachBLL.ThemThongTinKhach(khachDTO);
+            ////    }
+
+            ////    LoadData();
+            ////    MessageBox.Show("Thông tin đã được lưu thành công.");
+            ////}
+            ////catch (Exception ex)
+            ////{
+            ////    MessageBox.Show("Không thể lưu thông tin: " + ex.Message);
+            ////}
+            ///
 
             try
             {
@@ -297,17 +412,17 @@ namespace QuanLyPhongTro.Control
                 string phone = txtSDT.Text;
                 string queQuan = txtQueQuan.Text;
                 int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Đã rời đi") ? 0 : 1;
-                //string maPhong = comboBoxPhong.SelectedValue.ToString();
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
                 string email = txtEmail.Text;
                 string noiCap = txtNoiCap.Text;
                 DateTime ngayCap = dateTimePickerNgayCap.Value;
-                string quanHe = txtQuanHe.Text;
+                //string quanHe = txtQuanHe.Text;
+                string quanHe = comboboxQuanHe.SelectedItem?.ToString();
+
                 string newImagePathChuKy = null;
-                // Lấy giá trị maPhong nếu SelectedValue không phải là null
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
 
-                // Check if a new signature image is selected in pictureBoxChuKy
+                // Chỉ lưu ảnh chữ ký nếu có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
                 {
                     using (MemoryStream ms = new MemoryStream())
@@ -331,28 +446,33 @@ namespace QuanLyPhongTro.Control
                     TrangThai = trangThai,
                     MaPhong = maPhong,
                     NgaySinh = ngaySinh,
-                    ChuKy = newImagePathChuKy, // Set the new signature path
                     Email = email,
                     NoiCap = noiCap,
                     NgayCap = ngayCap,
                     QuanHe = quanHe
                 };
 
+                // Nếu có đường dẫn ảnh chữ ký mới, thêm vào DTO
+                if (newImagePathChuKy != null)
+                {
+                    khachDTO.ChuKy = newImagePathChuKy;
+                }
+
                 if (!isAddingNew)
                 {
-                    // If editing and no new image was selected, keep the existing ChuKy
+                    // Nếu đang cập nhật và không có ảnh mới, giữ nguyên ảnh cũ
                     var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
                     if (currentCustomer != null && newImagePathChuKy == null)
                     {
                         khachDTO.ChuKy = currentCustomer.ChuKy;
                     }
 
-                    // Update the customer's information
+                    // Cập nhật thông tin khách hàng
                     thongTinKhachBLL.CapNhatThongTinKhach(khachDTO);
                 }
                 else
                 {
-                    // Add the new customer information
+                    // Thêm thông tin khách hàng mới
                     thongTinKhachBLL.ThemThongTinKhach(khachDTO);
                 }
 
@@ -363,6 +483,7 @@ namespace QuanLyPhongTro.Control
             {
                 MessageBox.Show("Không thể lưu thông tin: " + ex.Message);
             }
+
         }
 
         private void dataGridViewDanCu_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -386,7 +507,9 @@ namespace QuanLyPhongTro.Control
                 txtQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
                 labelTenAnhChuKy.Text = selectedRow.Cells["ChuKy"].Value.ToString();
                 txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-                txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+                //txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+                comboboxQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
+
                 txtNoiCap.Text = selectedRow.Cells["NoiCap"].Value.ToString(); // Assuming "NoiCap" is a column in your DataGridView.
 
                 if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
@@ -440,8 +563,54 @@ namespace QuanLyPhongTro.Control
         private void dataGridViewDanCu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }      
-       
+        }
+
+
+        //private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
+        //{
+        //    try
+        //    {
+        //        // Lấy thư mục gốc của ứng dụng
+        //        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+        //        // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
+        //        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+
+        //        // Chuyển đường dẫn lên thư mục gốc của dự án
+        //        imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+
+        //        // Tạo thư mục nếu chưa tồn tại
+        //        if (!Directory.Exists(imagesFolderPath))
+        //        {
+        //            Directory.CreateDirectory(imagesFolderPath);
+        //        }
+
+        //        // Tạo tên tệp ảnh
+        //        //string fileName = $"CK_{maKhachTro}_{hoTen}.jpg";
+        //        string fileName = $"CK_{maKhachTro}_{hoTen}.jpg";
+        //        string filePath = Path.Combine(imagesFolderPath, fileName);
+
+        //        // Kiểm tra nếu tệp đã tồn tại
+        //        if (File.Exists(filePath))
+        //        {
+        //            File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+        //        }
+
+        //        // Lưu ảnh
+        //        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+        //        {
+        //            image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //        }
+
+        //        // Trả về tên tệp ảnh cho cơ sở dữ liệu
+        //        return fileName;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Không thể lưu ảnh: " + ex.Message);
+        //        return null;
+        //    }
+        //}
 
         private string SaveImageToFolderChuKy(Image image, string maKhachTro, string hoTen)
         {
@@ -462,8 +631,11 @@ namespace QuanLyPhongTro.Control
                     Directory.CreateDirectory(imagesFolderPath);
                 }
 
+                // Chuyển hoTen thành không dấu
+                string hoTenKhongDau = RemoveDiacritics(hoTen);
+
                 // Tạo tên tệp ảnh
-                string fileName = $"CK_{maKhachTro}_{hoTen}.jpg";
+                string fileName = $"CK_{maKhachTro}_{hoTenKhongDau}.jpg";
                 string filePath = Path.Combine(imagesFolderPath, fileName);
 
                 // Kiểm tra nếu tệp đã tồn tại
@@ -487,6 +659,25 @@ namespace QuanLyPhongTro.Control
                 return null;
             }
         }
+
+        // Phương thức chuyển đổi chuỗi có dấu thành không dấu
+        private string RemoveDiacritics(string text)
+        {
+            string normalizedString = text.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (char c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
+
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
