@@ -121,27 +121,66 @@ namespace DAL
         }
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-     
+
+
+        //public void UpdatePhong(TaoQuanLyPhongDTO phong)
+        //{
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        string query = @"
+        //    UPDATE Phong 
+        //    SET 
+        //        MaKhuVuc = @MaKhuVuc, 
+        //        TenPhong = @TenPhong, 
+        //        NgayVao = @NgayVao, 
+        //        TienCoc = @TienCoc, 
+        //        TienPhong = @TienPhong, 
+        //        Dien = @Dien, 
+        //        Nuoc = @Nuoc, 
+        //        CongNo = @CongNo, 
+        //        HanTro = @HanTro, 
+        //        TrangThai = @TrangThai, 
+        //        GhiChu = @GhiChu 
+        //    WHERE MaPhong = @MaPhong";
+
+        //        SqlCommand cmd = new SqlCommand(query, conn);
+        //        cmd.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
+        //        cmd.Parameters.AddWithValue("@MaKhuVuc", phong.MaKhuVuc);
+        //        cmd.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
+        //        cmd.Parameters.AddWithValue("@NgayVao", phong.NgayVao ?? (object)DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
+        //        cmd.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
+        //        cmd.Parameters.AddWithValue("@Dien", phong.Dien);
+        //        cmd.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
+        //        cmd.Parameters.AddWithValue("@CongNo", phong.CongNo ?? (object)DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@HanTro", phong.HanTro); // Cập nhật trường HanTro
+        //        cmd.Parameters.AddWithValue("@TrangThai", phong.TrangThai ?? (object)DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
+
+        //        conn.Open();
+        //        cmd.ExecuteNonQuery();
+        //    }
+        //}
 
         public void UpdatePhong(TaoQuanLyPhongDTO phong)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = @"
-            UPDATE Phong 
-            SET 
-                MaKhuVuc = @MaKhuVuc, 
-                TenPhong = @TenPhong, 
-                NgayVao = @NgayVao, 
-                TienCoc = @TienCoc, 
-                TienPhong = @TienPhong, 
-                Dien = @Dien, 
-                Nuoc = @Nuoc, 
-                CongNo = @CongNo, 
-                HanTro = @HanTro, 
-                TrangThai = @TrangThai, 
-                GhiChu = @GhiChu 
-            WHERE MaPhong = @MaPhong";
+        UPDATE Phong 
+        SET 
+            MaKhuVuc = @MaKhuVuc, 
+            TenPhong = @TenPhong, 
+            NgayVao = @NgayVao, 
+            TienCoc = @TienCoc, 
+            TienPhong = @TienPhong, 
+            Dien = @Dien, 
+            Nuoc = @Nuoc, 
+            CongNo = @CongNo, 
+            HanTro = @HanTro, 
+            TrangThai = @TrangThai, 
+            GhiChu = @GhiChu 
+        WHERE MaPhong = @MaPhong";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
@@ -153,7 +192,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Dien", phong.Dien);
                 cmd.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
                 cmd.Parameters.AddWithValue("@CongNo", phong.CongNo ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@HanTro", phong.HanTro); // Cập nhật trường HanTro
+                cmd.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value); // Cập nhật trường HanTro
                 cmd.Parameters.AddWithValue("@TrangThai", phong.TrangThai ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
 
@@ -161,6 +200,7 @@ namespace DAL
                 cmd.ExecuteNonQuery();
             }
         }
+
 
 
 

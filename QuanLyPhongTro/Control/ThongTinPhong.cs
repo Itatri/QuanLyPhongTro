@@ -253,6 +253,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonLuu_Click(object sender, EventArgs e)
         {
+
             //// Kiểm tra giá trị của các trường nhập liệu
             //if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
             //{
@@ -281,6 +282,9 @@ namespace QuanLyPhongTro.Control
             //        GhiChu = RtxtGhiChu.Text
             //    };
 
+            //    // Kiểm tra giá trị hạn trọ
+            //    MessageBox.Show($"Giá trị hạn trọ: {phong.HanTro}");
+
             //    // Cập nhật thông tin phòng
             //    try
             //    {
@@ -288,7 +292,7 @@ namespace QuanLyPhongTro.Control
             //        // Cập nhật thông tin dịch vụ
             //        List<DichVuPhongDTO> dichVuPhongs = chuyendoidichvu();
             //        thongtinphongBLL.UpdateDichVuPhong(phong.MaPhong, dichVuPhongs);
-
+            //        MessageBox.Show($"Giá trị hạn trọ: {dateTimePickerHanTro.Value}");
             //        MessageBox.Show("Cập nhật thông tin phòng thành công!");
             //    }
             //    catch (Exception ex)
@@ -296,6 +300,7 @@ namespace QuanLyPhongTro.Control
             //        MessageBox.Show("Cập nhật không thành công: " + ex.Message);
             //    }
             //}
+
 
             // Kiểm tra giá trị của các trường nhập liệu
             if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
@@ -309,6 +314,12 @@ namespace QuanLyPhongTro.Control
 
             if (result == DialogResult.Yes)
             {
+                DateTime? hanTro = dateTimePickerHanTro.Value;
+                if (hanTro == dateTimePickerHanTro.MinDate) // Kiểm tra nếu người dùng không chọn ngày hạn trọ
+                {
+                    hanTro = null; // Đặt giá trị null để trigger tự động cập nhật
+                }
+
                 TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
                 {
                     MaPhong = txtMaPhong.Text,
@@ -320,7 +331,7 @@ namespace QuanLyPhongTro.Control
                     Dien = Convert.ToSingle(txtSodien.Text),
                     Nuoc = Convert.ToSingle(txtSoNuoc.Text),
                     CongNo = 0, // Hoặc giá trị khác
-                    HanTro = dateTimePickerHanTro.Value, // Lấy giá trị từ DateTimePicker
+                    HanTro = hanTro, // Sử dụng giá trị từ DateTimePicker
                     TrangThai = true, // Hoặc giá trị khác
                     GhiChu = RtxtGhiChu.Text
                 };
@@ -343,7 +354,6 @@ namespace QuanLyPhongTro.Control
                     MessageBox.Show("Cập nhật không thành công: " + ex.Message);
                 }
             }
-
         }
     }
 }
