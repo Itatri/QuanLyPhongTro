@@ -407,10 +407,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.dataGridViewDichVu);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.dataGridViewDichVu);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.labelMaPhong);
             this.panel3.Controls.Add(this.label6);
