@@ -26,6 +26,9 @@ namespace DAL
                 connection.Open();
                 string query = "SELECT MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
 
+                //string query = "SELECT TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
+
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))

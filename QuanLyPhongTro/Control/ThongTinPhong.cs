@@ -96,19 +96,7 @@ namespace QuanLyPhongTro.Control
 
         // Phương thức để cập nhật thông tin phòng từ DataTable
         public void UpdateThongTinPhong(DataRow dataRow)
-        {
-            //if (dataRow != null)
-            //{
-            //    taoquanliphongDTO.MaPhong = dataRow["MaPhong"].ToString();
-            //    taoquanliphongDTO.TenPhong = dataRow["TenPhong"].ToString();
-            //    taoquanliphongDTO.TienPhong = dataRow["TienPhong"].ToString();
-            //    taoquanliphongDTO.Dien = dataRow["Dien"].ToString();
-            //    taoquanliphongDTO.Nuoc = dataRow["Nuoc"].ToString();
-            //    taoquanliphongDTO.TienCoc = dataRow["TienCoc"].ToString();
-            //    taoquanliphongDTO.HanTro = Convert.ToDateTime(dataRow["HanTro"]);
-            //    taoquanliphongDTO.GhiChu = dataRow["GhiChu"].ToString();
-            //}
-
+        {   
             if (dataRow != null)
             {
                 taoquanliphongDTO.MaPhong = dataRow["MaPhong"].ToString();
