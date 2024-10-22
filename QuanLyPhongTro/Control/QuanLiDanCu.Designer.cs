@@ -49,9 +49,9 @@
             this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.comboboxQuanHe = new System.Windows.Forms.ComboBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtQuanHe = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtNoiCap = new System.Windows.Forms.TextBox();
@@ -287,9 +287,9 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThongTinDanCu.Controls.Add(this.comboboxQuanHe);
             this.panelThongTinDanCu.Controls.Add(this.txtEmail);
             this.panelThongTinDanCu.Controls.Add(this.label18);
-            this.panelThongTinDanCu.Controls.Add(this.txtQuanHe);
             this.panelThongTinDanCu.Controls.Add(this.label17);
             this.panelThongTinDanCu.Controls.Add(this.label16);
             this.panelThongTinDanCu.Controls.Add(this.txtNoiCap);
@@ -324,6 +324,15 @@
             this.panelThongTinDanCu.TabIndex = 28;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
+            // comboboxQuanHe
+            // 
+            this.comboboxQuanHe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.comboboxQuanHe.FormattingEnabled = true;
+            this.comboboxQuanHe.Location = new System.Drawing.Point(116, 148);
+            this.comboboxQuanHe.Name = "comboboxQuanHe";
+            this.comboboxQuanHe.Size = new System.Drawing.Size(153, 24);
+            this.comboboxQuanHe.TabIndex = 51;
+            // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -342,15 +351,6 @@
             this.label18.Size = new System.Drawing.Size(37, 13);
             this.label18.TabIndex = 49;
             this.label18.Text = "Email";
-            // 
-            // txtQuanHe
-            // 
-            this.txtQuanHe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtQuanHe.Location = new System.Drawing.Point(117, 144);
-            this.txtQuanHe.Multiline = true;
-            this.txtQuanHe.Name = "txtQuanHe";
-            this.txtQuanHe.Size = new System.Drawing.Size(152, 30);
-            this.txtQuanHe.TabIndex = 48;
             // 
             // label17
             // 
@@ -696,9 +696,9 @@
         private System.Windows.Forms.TextBox txtNoiCap;
         private System.Windows.Forms.DateTimePicker dateTimePickerNgayCap;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtQuanHe;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboboxQuanHe;
     }
 }
