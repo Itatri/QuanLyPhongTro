@@ -108,7 +108,6 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(440, 26);
             this.txtMatKhau.TabIndex = 3;
-            this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
             // 
             // txtID
             // 
@@ -118,7 +117,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(440, 26);
             this.txtID.TabIndex = 2;
-            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // label2
             // 
