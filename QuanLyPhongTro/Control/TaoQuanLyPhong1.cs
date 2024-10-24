@@ -61,7 +61,8 @@ namespace QuanLyPhongTro.Control
         int flag = 0;
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            txtTenPhong.Enabled = false;
+            SetNewMaPhong();
+            txtTenPhong.Enabled = true;
             AnHienTextBox(true);
             AnHienButton(false);
             flag = 1;
@@ -105,6 +106,12 @@ namespace QuanLyPhongTro.Control
             var phongs = phongBLL.LayDanhSachPhong();
             dataGridView1.DataSource  =    phongs;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Ẩn cột "MaPhong"
+            if (dataGridView1.Columns["MaPhong"] != null)
+            {
+                dataGridView1.Columns["MaPhong"].Visible = false;
+            }
         }
 
 
@@ -119,12 +126,46 @@ namespace QuanLyPhongTro.Control
 
         private void txtSodien_TextChanged(object sender, EventArgs e)
         {
-          
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtSodien.SelectionStart;
+            int selectionLength = txtSodien.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtSodien.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtSodien.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtSodien.SelectionStart = Math.Max(0, selectionStart + txtSodien.Text.Length - text.Length);
+                txtSodien.SelectionLength = selectionLength;
+            }
+
         }
 
         private void txtSoNuoc_TextChanged(object sender, EventArgs e)
         {
-            
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtSoNuoc.SelectionStart;
+            int selectionLength = txtSoNuoc.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtSoNuoc.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtSoNuoc.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtSoNuoc.SelectionStart = Math.Max(0, selectionStart + txtSoNuoc.Text.Length - text.Length);
+                txtSoNuoc.SelectionLength = selectionLength;
+            }
+
         }
 
 
@@ -133,18 +174,29 @@ namespace QuanLyPhongTro.Control
             txtMaPhong.Visible = false;
             labelMaPhong.Visible=false;
             // Gán giá trị tên phòng bằng mã phòng cho minh dễ quản lý người dùng dễ sử dụng
-            txtTenPhong.Text = txtMaPhong.Text;
-            txtTenPhong.Enabled = false;
+            //txtTenPhong.Text = txtMaPhong.Text;
+            //txtTenPhong.Enabled = ;
 
             RefreshDataGridView();
             AnHienTextBox(false);
             AnHienButton(true);
             txtTenPhong.Enabled=false;
+
             SetNewMaPhong();
 
 
             LoadDichVu();
-           
+
+
+            dataGridView1.Columns["TienCoc"].DefaultCellStyle.Format = "N0";
+            dataGridView1.Columns["TienPhong"].DefaultCellStyle.Format = "N0";
+
+            dataGridView1.Columns["Nuoc"].DefaultCellStyle.Format = "N0";
+            dataGridView1.Columns["Dien"].DefaultCellStyle.Format = "N0";
+
+
+            dataGridViewDichVu.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+
         }
 
 
@@ -160,11 +212,11 @@ namespace QuanLyPhongTro.Control
         private void AnHienTextBox(bool t)
         {
             txtSodien.Enabled = t;
-            //txtTienphong.en
+            txtTenPhong.Enabled = t;
             textBoxTienCoc.Enabled = t;
             textBoxTienPhong.Enabled = t;
             txtSoNuoc.Enabled = t;
-            txtTenPhong.Enabled = !t;
+            //txtTenPhong.Enabled = !t;
             RtxtGhiChu.Enabled = t;
 
         }
@@ -175,62 +227,7 @@ namespace QuanLyPhongTro.Control
         {
             txtMaPhong.Enabled = false;
             txtMaPhong.Enabled = false;
-            //if (flag == 1)
-            //{
-            //    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thêm dịch vụ này?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //    if (dialogResult == DialogResult.No)
-            //    {
-            //        return;
-            //    }
-
-            //    if (!ValidateServiceInputs())
-            //    {
-            //        return;
-            //    }
-
-            //    try
-            //    {
-            //        //MessageBox.Show(makhuvuc);
-            //        var phong = new TaoQuanLyPhongDTO
-            //        {
-            //            MaPhong = txtMaPhong.Text,
-            //            TenPhong = txtTenPhong.Text,
-            //            TienPhong = float.TryParse(textBoxTienPhong.Text, out float tienphong) ? tienphong : 0,
-            //            Dien = float.TryParse(txtSodien.Text, out float dien) ? dien : 0,
-            //            Nuoc = float.TryParse(txtSoNuoc.Text, out float nuoc) ? nuoc : 0,
-            //            TienCoc = float.TryParse(textBoxTienCoc.Text, out float tienCoc) ? tienCoc : 0,
-            //            //HanTro = dateTimePickerHanTro.Value,
-            //            GhiChu = RtxtGhiChu.Text,
-            //            MaKhuVuc = makhuvuc // Ensure makhuvuc is valid
-            //        };
-
-            //        bool insertResult = phongBLL.InsertPhong(phong);
-            //        MessageBox.Show(insertResult ? "Thêm phòng thành công!" : "Thêm phòng thất bại!");
-
-            //        if (insertResult)
-            //        {
-            //            // Chuyển đổi danh sách dịch vụ thành DataTable
-            //            DataTable dtDichVuPhong = chuyendoidichvu();
-
-            //            // Gọi phương thức insertDichVuPhong trong BLL
-            //            bool insertDichVuResult = phongBLL.InsertDichVuPhong(dtDichVuPhong);
-
-            //            if (insertDichVuResult)
-            //            {
-            //                MessageBox.Show("Thành công");
-            //                RefreshDataGridView();
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Thêm dịch vụ thất bại!");
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
-            //    }
-            //}
+          
 
 
             if (flag == 1)
@@ -286,6 +283,7 @@ namespace QuanLyPhongTro.Control
                 {
                     MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
                 }
+            
             }
             if (flag == 3)
             {
@@ -315,29 +313,65 @@ namespace QuanLyPhongTro.Control
             txtSodien.Clear ();
             textBoxTienPhong.Clear();
             textBoxTienCoc.Clear();
+            RtxtGhiChu.Clear();
             AnHienButton(true);
-            //AnHienTextBox(false);
+            txtTenPhong.Clear();
 
-            
+
+            AnHienTextBox(false);
+            RtxtGhiChu.Enabled = false;
+
+
+            // Xóa toàn bộ dịch vụ trong dataGridViewDichVu
+            dataGridViewDichVu.Rows.Clear();
+            LoadDichVu();
+
         }
 
 
         private void textBoxTienPhong_TextChanged(object sender, EventArgs e)
         {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienPhong.SelectionStart;
+            int selectionLength = textBoxTienPhong.SelectionLength;
 
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienPhong.Text.Replace(",", "");
 
-          
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienPhong.Text = string.Format("{0:N0}", value);
 
+                // Đặt lại vị trí con trỏ
+                textBoxTienPhong.SelectionStart = Math.Max(0, selectionStart + textBoxTienPhong.Text.Length - text.Length);
+                textBoxTienPhong.SelectionLength = selectionLength;
+            }
         }
 
         private void textBoxTienCoc_TextChanged(object sender, EventArgs e)
         {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienCoc.SelectionStart;
+            int selectionLength = textBoxTienCoc.SelectionLength;
 
-           
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienCoc.Text.Replace(",", "");
 
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienCoc.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                textBoxTienCoc.SelectionStart = Math.Max(0, selectionStart + textBoxTienCoc.Text.Length - text.Length);
+                textBoxTienCoc.SelectionLength = selectionLength;
+            }
         }
 
-      
+
 
 
 
@@ -517,51 +551,76 @@ namespace QuanLyPhongTro.Control
 
         private void textBoxTienPhong_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
 
         private void txtSodien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void txtSoNuoc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void textBoxTienCoc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            //if (e.RowIndex >= 0)
+            //{
+            //    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+            //    txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString();
+            //    txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
+            //    textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
+            //    txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
+            //    txtSoNuoc.Text = selectedRow.Cells["Nuoc"].Value?.ToString();
+            //    textBoxTienCoc.Text = selectedRow.Cells["TienCoc"].Value?.ToString();
+            //    RtxtGhiChu.Text = selectedRow.Cells["GhiChu"].Value?.ToString();
+
+            //    // Gọi phương thức LoadDichVuByMaPhong
+            //    LoadDichVuByMaPhong(txtMaPhong.Text);
+            //}
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
-                txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString();
+                txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString(); // Lấy giá trị từ cột "MaPhong"
                 txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
                 textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
                 txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
@@ -574,38 +633,11 @@ namespace QuanLyPhongTro.Control
             }
         }
 
-        //private void LoadDichVuByMaPhong(string maPhong)
-        //{
-        //    // Lấy tất cả dịch vụ
-        //    DataTable allDichVuData = phongBLL.GetAllDichVu(); // Phương thức này sẽ được thêm vào BLL
-        //                                                       // Lấy các dịch vụ đã đăng ký cho mã phòng cụ thể
-        //    DataTable registeredDichVuData = phongBLL.GetDichVuByMaPhong(maPhong);
 
-        //    // Tạo danh sách để lưu các mã dịch vụ đã đăng ký
-        //    HashSet<string> registeredDichVuMa = new HashSet<string>();
-        //    foreach (DataRow row in registeredDichVuData.Rows)
-        //    {
-        //        registeredDichVuMa.Add(row["MaDichVu"].ToString());
-        //    }
 
-        //    // Xóa dữ liệu cũ trong dataGridViewDichVu
-        //    dataGridViewDichVu.Rows.Clear();
 
-        //    foreach (DataRow item in allDichVuData.Rows)
-        //    {
-        //        // Thêm hàng với checkbox
-        //        int rowIndex = dataGridViewDichVu.Rows.Add();
-        //        DataGridViewRow row = dataGridViewDichVu.Rows[rowIndex];
 
-        //        // Đánh dấu checkbox nếu dịch vụ đã đăng ký
-        //        row.Cells["chon"].Value = registeredDichVuMa.Contains(item["MaDichVu"].ToString());
 
-        //        // Thêm các thông tin khác
-        //        row.Cells["TenDichVu"].Value = item["TenDichVu"];
-        //        row.Cells["DonGia"].Value = item["DonGia"];
-        //        row.Cells["MaDichVu"].Value = item["MaDichVu"];
-        //    }
-        //}
 
 
         private void LoadDichVuByMaPhong(string maPhong)

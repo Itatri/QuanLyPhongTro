@@ -16,9 +16,35 @@ namespace DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
+        //public DataTable GetUserPhongData()
+        //{
+        //    string query = "SELECT  MaPhong as [TÊN PHÒNG],ID, MatKhau as [Mật Khẩu] FROM UserPhong WHERE TRANGTHAI = 1";
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //        DataTable dataTable = new DataTable();
+        //        try
+        //        {
+        //            connection.Open();
+        //            adapter.Fill(dataTable);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw new Exception("Error: " + ex.Message);
+        //        }
+        //        return dataTable;
+        //    }
+        //}
+
         public DataTable GetUserPhongData()
         {
-            string query = "SELECT  MaPhong as [TÊN PHÒNG],ID, MatKhau as [Mật Khẩu] FROM UserPhong WHERE TRANGTHAI = 1";
+            string query = @"
+        SELECT p.TenPhong as [TÊN PHÒNG], up.ID, up.MatKhau as [Mật Khẩu]
+        FROM UserPhong up
+        INNER JOIN Phong p ON up.MaPhong = p.MaPhong
+        WHERE up.TRANGTHAI = 1";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -36,6 +62,7 @@ namespace DAL
                 return dataTable;
             }
         }
+
 
         public bool InsertUserPhong(DanKyTaiKhoanKH_DTO userPhong)
         {
@@ -152,12 +179,60 @@ namespace DAL
             }
         }
 
-        // hiển thị danh sách mã phòng lên combobox
+        //// hiển thị danh sách mã phòng lên combobox
+        //public DataTable GetPhongData()
+        //{
+
+        //    // trạng thái 0 là phòng chưa đc kích hoạt sau khi tạo tài khoản phòng thì cập nhật trang thái phòng là 1
+        //    string query = "SELECT MaPhong FROM Phong where trangthai = 0";
+        //    DataTable dataTable = new DataTable();
+
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            SqlCommand command = new SqlCommand(query, connection);
+        //            SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //            adapter.Fill(dataTable);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error fetching room data: " + ex.Message);
+        //    }
+
+        //    return dataTable;
+        //}
+
+
+        //---------22/10/2024
+        //// DAL: Lấy tên phòng
+        //public DataTable GetPhongData()   
+        //{
+        //    string query = "SELECT TenPhong FROM Phong WHERE TrangThai = 0";
+        //    DataTable dataTable = new DataTable();
+
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            SqlCommand command = new SqlCommand(query, connection);
+        //            SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //            adapter.Fill(dataTable);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error fetching room data: " + ex.Message);
+        //    }
+
+        //    return dataTable;
+        //}
+
+        //----22/10/2024
         public DataTable GetPhongData()
         {
-
-            // trạng thái 0 là phòng chưa đc kích hoạt sau khi tạo tài khoản phòng thì cập nhật trang thái phòng là 1
-            string query = "SELECT MaPhong FROM Phong where trangthai = 0";
+            string query = "SELECT MaPhong, TenPhong FROM Phong WHERE trangthai = 0";
             DataTable dataTable = new DataTable();
 
             try
@@ -176,6 +251,8 @@ namespace DAL
 
             return dataTable;
         }
+
+
 
 
         public DataTable GetUserPhongByMaPhong(string keyword)

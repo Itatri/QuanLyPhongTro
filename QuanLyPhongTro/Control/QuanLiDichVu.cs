@@ -166,9 +166,26 @@ namespace QuanLyPhongTro.Control
             }
         }
 
+        // Hiển thị phan cấp giá tiền người dung nhập vào
         private void txtDonGia_TextChanged(object sender, EventArgs e)
         {
-            
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtDonGia.SelectionStart;
+            int selectionLength = txtDonGia.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtDonGia.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtDonGia.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtDonGia.SelectionStart = Math.Max(0, selectionStart + txtDonGia.Text.Length - text.Length);
+                txtDonGia.SelectionLength = selectionLength;
+            }
         }
 
 
@@ -316,7 +333,7 @@ namespace QuanLyPhongTro.Control
                     MessageBox.Show("Xóa dịch vụ thất bại");
                 }
             }
-
+            AnHienTextBox(false);
             AnHienButton(true);
             RefreshDataGridView();
             txtMaDV.Clear();
@@ -429,7 +446,6 @@ namespace QuanLyPhongTro.Control
         }
 
         //-------------------------------------------------------------------------------- 15/10/2024
-
         private void txtDonGia_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
@@ -437,8 +453,12 @@ namespace QuanLyPhongTro.Control
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void LoadDichVuSapXepTheoTrangThai()
         {
