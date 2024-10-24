@@ -174,6 +174,7 @@ namespace QuanLyPhongTro.Control
         private void btnThem_Click(object sender, EventArgs e)
         {
             flag = 1;
+            LoadTenPhongComboBox();
             AnHienTextBox(true);
             AnHienButton(false);
             dataGridView1.Enabled = false;
@@ -422,14 +423,22 @@ namespace QuanLyPhongTro.Control
                     }
                 }
             }
+
+
+            // Sau khi lưu, thiết lập định dạng hiển thị của dtpkNgayBatDau
+            dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
+            dtpkNgayBatDau.CustomFormat = "dd/MM/yyyy";
+
+
+
             LoadTenPhongComboBox();
             LoadUserPhongData();
             AnHienTextBox(false);
             AnHienButton(true);
             txtID.Clear();
             txtMatKhau.Clear();
-            dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
-            dtpkNgayBatDau.CustomFormat = "ddMMyyyy";
+        
+            dataGridView1.Enabled = true;
         }
 
         private void textBoxTimKiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -461,6 +470,13 @@ namespace QuanLyPhongTro.Control
 
         private void buttonSua_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem có hàng nào được chọn trong DataGridView không
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn phòng để cập nhật thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             AnHienTextBox(false);
             txtID.Enabled = false;
             txtMatKhau.Enabled= true;
@@ -480,6 +496,7 @@ namespace QuanLyPhongTro.Control
             AnHienButton(true);
             AnHienTextBox(false);
             LoadUserPhongData();
+            dataGridView1.Enabled = true;
 
         }
 

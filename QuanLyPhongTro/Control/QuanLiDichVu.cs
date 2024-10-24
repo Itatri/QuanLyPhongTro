@@ -333,7 +333,7 @@ namespace QuanLyPhongTro.Control
                     MessageBox.Show("Xóa dịch vụ thất bại");
                 }
             }
-
+            AnHienTextBox(false);
             AnHienButton(true);
             RefreshDataGridView();
             txtMaDV.Clear();

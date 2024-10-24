@@ -36,7 +36,7 @@ namespace DAL
 
             string query = "SELECT TrangThai AS [Đã thuê], TenPhong AS [Tên Phòng]," +
              "NgayVao AS [Ngày Vào], HanTro AS [Hạn trọ], TienCoc AS [Tiền cọc], " +
-                 "TienPhong AS [Tiền phòng]" +
+                 "TienPhong AS [Tiền phòng]," +
                  "CongNo AS [Công nợ], GhiChu AS [Ghi chú] " +
                  "FROM Phong " +
                  "WHERE MaPhong LIKE @Keyword OR TenPhong LIKE @Keyword";

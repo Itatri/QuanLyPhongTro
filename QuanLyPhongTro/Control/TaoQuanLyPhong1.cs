@@ -61,6 +61,8 @@ namespace QuanLyPhongTro.Control
         int flag = 0;
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+
+            SetNewMaPhong();
             txtTenPhong.Enabled = true;
             AnHienTextBox(true);
             AnHienButton(false);
@@ -125,12 +127,46 @@ namespace QuanLyPhongTro.Control
 
         private void txtSodien_TextChanged(object sender, EventArgs e)
         {
-          
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtSodien.SelectionStart;
+            int selectionLength = txtSodien.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtSodien.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtSodien.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtSodien.SelectionStart = Math.Max(0, selectionStart + txtSodien.Text.Length - text.Length);
+                txtSodien.SelectionLength = selectionLength;
+            }
+
         }
 
         private void txtSoNuoc_TextChanged(object sender, EventArgs e)
         {
-            
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtSoNuoc.SelectionStart;
+            int selectionLength = txtSoNuoc.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtSoNuoc.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtSoNuoc.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtSoNuoc.SelectionStart = Math.Max(0, selectionStart + txtSoNuoc.Text.Length - text.Length);
+                txtSoNuoc.SelectionLength = selectionLength;
+            }
+
         }
 
 
@@ -151,7 +187,17 @@ namespace QuanLyPhongTro.Control
 
 
             LoadDichVu();
-           
+
+
+            dataGridView1.Columns["TienCoc"].DefaultCellStyle.Format = "N0";
+            dataGridView1.Columns["TienPhong"].DefaultCellStyle.Format = "N0";
+
+            dataGridView1.Columns["Nuoc"].DefaultCellStyle.Format = "N0";
+            dataGridView1.Columns["Dien"].DefaultCellStyle.Format = "N0";
+
+
+            dataGridViewDichVu.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+
         }
 
 
@@ -270,28 +316,63 @@ namespace QuanLyPhongTro.Control
             textBoxTienCoc.Clear();
             RtxtGhiChu.Clear();
             AnHienButton(true);
-            //AnHienTextBox(false);
+            txtTenPhong.Clear();
 
-            
+
+            AnHienTextBox(false);
+            RtxtGhiChu.Enabled = false;
+
+
+            // Xóa toàn bộ dịch vụ trong dataGridViewDichVu
+            dataGridViewDichVu.Rows.Clear();
+            LoadDichVu();
+
         }
 
 
         private void textBoxTienPhong_TextChanged(object sender, EventArgs e)
         {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienPhong.SelectionStart;
+            int selectionLength = textBoxTienPhong.SelectionLength;
 
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienPhong.Text.Replace(",", "");
 
-          
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienPhong.Text = string.Format("{0:N0}", value);
 
+                // Đặt lại vị trí con trỏ
+                textBoxTienPhong.SelectionStart = Math.Max(0, selectionStart + textBoxTienPhong.Text.Length - text.Length);
+                textBoxTienPhong.SelectionLength = selectionLength;
+            }
         }
 
         private void textBoxTienCoc_TextChanged(object sender, EventArgs e)
         {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienCoc.SelectionStart;
+            int selectionLength = textBoxTienCoc.SelectionLength;
 
-           
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienCoc.Text.Replace(",", "");
 
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienCoc.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                textBoxTienCoc.SelectionStart = Math.Max(0, selectionStart + textBoxTienCoc.Text.Length - text.Length);
+                textBoxTienCoc.SelectionLength = selectionLength;
+            }
         }
 
-      
+
 
 
 
@@ -471,41 +552,50 @@ namespace QuanLyPhongTro.Control
 
         private void textBoxTienPhong_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
 
         private void txtSodien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void txtSoNuoc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void textBoxTienCoc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Kiểm tra nếu ký tự không phải là chữ số hoặc không phải là ký tự điều khiển (như backspace)
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 // Ngăn không cho ký tự được nhập vào TextBox
                 e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

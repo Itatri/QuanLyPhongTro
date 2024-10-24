@@ -25,53 +25,53 @@ namespace QuanLyPhongTro.Control
         public DataTable DichVuPhongTable { get; set; }
 
         // Các thuộc tính để lưu thông tin phòng
-        public string MaPhong
-        {
-            get { return txtMaPhong.Text; }
-            set { txtMaPhong.Text = value; }
-        }
+        //public string MaPhong
+        //{
+        //    get { return txtMaPhong.Text; }
+        //    set { txtMaPhong.Text = value; }
+        //}
 
-        public string TenPhong
-        {
-            get { return txtTenPhong.Text; }
-            set { txtTenPhong.Text = value; }
-        }
+        //public string TenPhong
+        //{
+        //    get { return txtTenPhong.Text; }
+        //    set { txtTenPhong.Text = value; }
+        //}
 
-        public string TienPhong
-        {
-            get { return textBoxTienPhong.Text; }
-            set { textBoxTienPhong.Text = value; }
-        }
+        //public string TienPhong
+        //{
+        //    get { return textBoxTienPhong.Text; }
+        //    set { textBoxTienPhong.Text = value; }
+        //}
 
-        public string SoDien
-        {
-            get { return txtSodien.Text; }
-            set { txtSodien.Text = value; }
-        }
+        //public string SoDien
+        //{
+        //    get { return txtSodien.Text; }
+        //    set { txtSodien.Text = value; }
+        //}
 
-        public string SoNuoc
-        {
-            get { return txtSoNuoc.Text; }
-            set { txtSoNuoc.Text = value; }
-        }
+        //public string SoNuoc
+        //{
+        //    get { return txtSoNuoc.Text; }
+        //    set { txtSoNuoc.Text = value; }
+        //}
 
-        public string TienCoc
-        {
-            get { return textBoxTienCoc.Text; }
-            set { textBoxTienCoc.Text = value; }
-        }
+        //public string TienCoc
+        //{
+        //    get { return textBoxTienCoc.Text; }
+        //    set { textBoxTienCoc.Text = value; }
+        //}
 
-        public DateTime HanTro
-        {
-            get { return dateTimePickerHanTro.Value; }
-            set { dateTimePickerHanTro.Value = value; }
-        }
+        //public DateTime HanTro
+        //{
+        //    get { return dateTimePickerHanTro.Value; }
+        //    set { dateTimePickerHanTro.Value = value; }
+        //}
 
-        public string GhiChu
-        {
-            get { return RtxtGhiChu.Text; }
-            set { RtxtGhiChu.Text = value; }
-        }
+        //public string GhiChu
+        //{
+        //    get { return RtxtGhiChu.Text; }
+        //    set { RtxtGhiChu.Text = value; }
+        //}
 
         public ThongTinPhong()
         {
@@ -160,6 +160,15 @@ namespace QuanLyPhongTro.Control
             LoadPhong();
             LoadDichVuByMaPhong(MAPHONG);
             buttonLuu.Enabled = false;
+            
+            txtMaPhong.Enabled = false;
+            txtTenPhong.Enabled = false;
+            txtSodien.Enabled = false;
+            txtSoNuoc.Enabled = false;
+            RtxtGhiChu.Enabled = false;
+            dateTimePickerHanTro.Enabled = false;
+            textBoxTienCoc.Enabled = false;
+            textBoxTienPhong.Enabled = false;
         }
         private void LoadPhong()
         {
@@ -237,6 +246,15 @@ namespace QuanLyPhongTro.Control
            buttonLuu.Enabled =  true;
 
             btnUpdate.Enabled = false;
+
+            //txtMaPhong.Enabled = true;
+            txtTenPhong.Enabled = true;
+            txtSodien.Enabled = true;
+            txtSoNuoc.Enabled = true;
+            RtxtGhiChu.Enabled = true;
+            dateTimePickerHanTro.Enabled = true;
+            textBoxTienCoc.Enabled = true;
+            textBoxTienPhong.Enabled = true;
         }
 
         private void buttonLuu_Click(object sender, EventArgs e)
