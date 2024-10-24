@@ -1,5 +1,3 @@
-Phần mềm Winform C# quản lý thông tin thuê căn hộ ( Admin ) 
-
 ## Phần mềm Winform C# quản lý thông tin thuê căn hộ ( Admin ) 
 
 
