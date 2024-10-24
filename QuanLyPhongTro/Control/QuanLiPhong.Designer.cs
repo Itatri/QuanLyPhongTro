@@ -34,15 +34,15 @@
             this.btnDangKyTaiKhoan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTaoPhong = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonTraPhong = new System.Windows.Forms.Button();
             this.cbbSapXep = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBoxTimPhong = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,18 +114,19 @@
             this.btnTaoPhong.UseVisualStyleBackColor = false;
             this.btnTaoPhong.Click += new System.EventHandler(this.btnTaoPhong_Click);
             // 
-            // button4
+            // buttonTraPhong
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(1422, 20);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(217, 42);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Trả phòng";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonTraPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
+            this.buttonTraPhong.Location = new System.Drawing.Point(1422, 20);
+            this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTraPhong.Name = "buttonTraPhong";
+            this.buttonTraPhong.Size = new System.Drawing.Size(217, 42);
+            this.buttonTraPhong.TabIndex = 5;
+            this.buttonTraPhong.Text = "Trả phòng";
+            this.buttonTraPhong.UseVisualStyleBackColor = false;
+            this.buttonTraPhong.Click += new System.EventHandler(this.buttonTraPhong_Click);
             // 
             // cbbSapXep
             // 
@@ -147,6 +148,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1620, 722);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // label2
             // 
@@ -172,8 +174,18 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1656, 968);
+            this.panel1.Size = new System.Drawing.Size(1656, 972);
             this.panel1.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(1585, 113);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 38);
+            this.button1.TabIndex = 25;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxTimPhong
             // 
@@ -197,7 +209,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btnDangKyTaiKhoan);
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.buttonTraPhong);
             this.panel2.Controls.Add(this.btnTaoPhong);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -205,16 +217,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1650, 77);
             this.panel2.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1585, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 38);
-            this.button1.TabIndex = 25;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // QuanLiPhong
             // 
@@ -239,7 +241,7 @@
         private System.Windows.Forms.Button btnDangKyTaiKhoan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTaoPhong;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonTraPhong;
         private System.Windows.Forms.ComboBox cbbSapXep;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;

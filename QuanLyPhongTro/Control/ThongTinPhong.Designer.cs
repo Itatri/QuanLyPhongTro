@@ -153,6 +153,7 @@
             // RtxtGhiChu
             // 
             this.RtxtGhiChu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RtxtGhiChu.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RtxtGhiChu.Location = new System.Drawing.Point(11, 534);
             this.RtxtGhiChu.Margin = new System.Windows.Forms.Padding(2);
             this.RtxtGhiChu.Name = "RtxtGhiChu";
@@ -452,7 +453,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxTienPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
-        private System.Windows.Forms.TextBox txtMaPhong;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -463,5 +463,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMaPhong;
     }
 }

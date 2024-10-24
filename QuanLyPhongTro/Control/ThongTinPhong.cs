@@ -25,53 +25,53 @@ namespace QuanLyPhongTro.Control
         public DataTable DichVuPhongTable { get; set; }
 
         // Các thuộc tính để lưu thông tin phòng
-        public string MaPhong
-        {
-            get { return txtMaPhong.Text; }
-            set { txtMaPhong.Text = value; }
-        }
+        //public string MaPhong
+        //{
+        //    get { return txtMaPhong.Text; }
+        //    set { txtMaPhong.Text = value; }
+        //}
 
-        public string TenPhong
-        {
-            get { return txtTenPhong.Text; }
-            set { txtTenPhong.Text = value; }
-        }
+        //public string TenPhong
+        //{
+        //    get { return txtTenPhong.Text; }
+        //    set { txtTenPhong.Text = value; }
+        //}
 
-        public string TienPhong
-        {
-            get { return textBoxTienPhong.Text; }
-            set { textBoxTienPhong.Text = value; }
-        }
+        //public string TienPhong
+        //{
+        //    get { return textBoxTienPhong.Text; }
+        //    set { textBoxTienPhong.Text = value; }
+        //}
 
-        public string SoDien
-        {
-            get { return txtSodien.Text; }
-            set { txtSodien.Text = value; }
-        }
+        //public string SoDien
+        //{
+        //    get { return txtSodien.Text; }
+        //    set { txtSodien.Text = value; }
+        //}
 
-        public string SoNuoc
-        {
-            get { return txtSoNuoc.Text; }
-            set { txtSoNuoc.Text = value; }
-        }
+        //public string SoNuoc
+        //{
+        //    get { return txtSoNuoc.Text; }
+        //    set { txtSoNuoc.Text = value; }
+        //}
 
-        public string TienCoc
-        {
-            get { return textBoxTienCoc.Text; }
-            set { textBoxTienCoc.Text = value; }
-        }
+        //public string TienCoc
+        //{
+        //    get { return textBoxTienCoc.Text; }
+        //    set { textBoxTienCoc.Text = value; }
+        //}
 
-        public DateTime HanTro
-        {
-            get { return dateTimePickerHanTro.Value; }
-            set { dateTimePickerHanTro.Value = value; }
-        }
+        //public DateTime HanTro
+        //{
+        //    get { return dateTimePickerHanTro.Value; }
+        //    set { dateTimePickerHanTro.Value = value; }
+        //}
 
-        public string GhiChu
-        {
-            get { return RtxtGhiChu.Text; }
-            set { RtxtGhiChu.Text = value; }
-        }
+        //public string GhiChu
+        //{
+        //    get { return RtxtGhiChu.Text; }
+        //    set { RtxtGhiChu.Text = value; }
+        //}
 
         public ThongTinPhong()
         {
@@ -96,19 +96,7 @@ namespace QuanLyPhongTro.Control
 
         // Phương thức để cập nhật thông tin phòng từ DataTable
         public void UpdateThongTinPhong(DataRow dataRow)
-        {
-            //if (dataRow != null)
-            //{
-            //    taoquanliphongDTO.MaPhong = dataRow["MaPhong"].ToString();
-            //    taoquanliphongDTO.TenPhong = dataRow["TenPhong"].ToString();
-            //    taoquanliphongDTO.TienPhong = dataRow["TienPhong"].ToString();
-            //    taoquanliphongDTO.Dien = dataRow["Dien"].ToString();
-            //    taoquanliphongDTO.Nuoc = dataRow["Nuoc"].ToString();
-            //    taoquanliphongDTO.TienCoc = dataRow["TienCoc"].ToString();
-            //    taoquanliphongDTO.HanTro = Convert.ToDateTime(dataRow["HanTro"]);
-            //    taoquanliphongDTO.GhiChu = dataRow["GhiChu"].ToString();
-            //}
-
+        {   
             if (dataRow != null)
             {
                 taoquanliphongDTO.MaPhong = dataRow["MaPhong"].ToString();
@@ -172,6 +160,15 @@ namespace QuanLyPhongTro.Control
             LoadPhong();
             LoadDichVuByMaPhong(MAPHONG);
             buttonLuu.Enabled = false;
+            
+            txtMaPhong.Enabled = false;
+            txtTenPhong.Enabled = false;
+            txtSodien.Enabled = false;
+            txtSoNuoc.Enabled = false;
+            RtxtGhiChu.Enabled = false;
+            dateTimePickerHanTro.Enabled = false;
+            textBoxTienCoc.Enabled = false;
+            textBoxTienPhong.Enabled = false;
         }
         private void LoadPhong()
         {
@@ -249,10 +246,20 @@ namespace QuanLyPhongTro.Control
            buttonLuu.Enabled =  true;
 
             btnUpdate.Enabled = false;
+
+            //txtMaPhong.Enabled = true;
+            txtTenPhong.Enabled = true;
+            txtSodien.Enabled = true;
+            txtSoNuoc.Enabled = true;
+            RtxtGhiChu.Enabled = true;
+            dateTimePickerHanTro.Enabled = true;
+            textBoxTienCoc.Enabled = true;
+            textBoxTienPhong.Enabled = true;
         }
 
         private void buttonLuu_Click(object sender, EventArgs e)
         {
+
             //// Kiểm tra giá trị của các trường nhập liệu
             //if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
             //{
@@ -281,6 +288,9 @@ namespace QuanLyPhongTro.Control
             //        GhiChu = RtxtGhiChu.Text
             //    };
 
+            //    // Kiểm tra giá trị hạn trọ
+            //    MessageBox.Show($"Giá trị hạn trọ: {phong.HanTro}");
+
             //    // Cập nhật thông tin phòng
             //    try
             //    {
@@ -288,7 +298,7 @@ namespace QuanLyPhongTro.Control
             //        // Cập nhật thông tin dịch vụ
             //        List<DichVuPhongDTO> dichVuPhongs = chuyendoidichvu();
             //        thongtinphongBLL.UpdateDichVuPhong(phong.MaPhong, dichVuPhongs);
-
+            //        MessageBox.Show($"Giá trị hạn trọ: {dateTimePickerHanTro.Value}");
             //        MessageBox.Show("Cập nhật thông tin phòng thành công!");
             //    }
             //    catch (Exception ex)
@@ -296,6 +306,7 @@ namespace QuanLyPhongTro.Control
             //        MessageBox.Show("Cập nhật không thành công: " + ex.Message);
             //    }
             //}
+
 
             // Kiểm tra giá trị của các trường nhập liệu
             if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
@@ -309,6 +320,12 @@ namespace QuanLyPhongTro.Control
 
             if (result == DialogResult.Yes)
             {
+                DateTime? hanTro = dateTimePickerHanTro.Value;
+                if (hanTro == dateTimePickerHanTro.MinDate) // Kiểm tra nếu người dùng không chọn ngày hạn trọ
+                {
+                    hanTro = null; // Đặt giá trị null để trigger tự động cập nhật
+                }
+
                 TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
                 {
                     MaPhong = txtMaPhong.Text,
@@ -320,7 +337,7 @@ namespace QuanLyPhongTro.Control
                     Dien = Convert.ToSingle(txtSodien.Text),
                     Nuoc = Convert.ToSingle(txtSoNuoc.Text),
                     CongNo = 0, // Hoặc giá trị khác
-                    HanTro = dateTimePickerHanTro.Value, // Lấy giá trị từ DateTimePicker
+                    HanTro = hanTro, // Sử dụng giá trị từ DateTimePicker
                     TrangThai = true, // Hoặc giá trị khác
                     GhiChu = RtxtGhiChu.Text
                 };
@@ -343,7 +360,6 @@ namespace QuanLyPhongTro.Control
                     MessageBox.Show("Cập nhật không thành công: " + ex.Message);
                 }
             }
-
         }
     }
 }

@@ -37,12 +37,14 @@ namespace QuanLyPhongTro.Control
             // Thêm sự kiện SelectedIndexChanged
             cbbSapXep.SelectedIndexChanged += new EventHandler(cbbSapXep_SelectedIndexChanged);
 
+            buttonTraPhong.Click += new EventHandler(buttonTraPhong_Click); // Thêm sự kiện Click cho buttonTraPhong
+
             LoadData();
         }
 
         private void LoadData()
         {
-           
+
             if (dataGridView1.Columns["btnXemChiTiet"] == null)
             {
                 DataGridViewButtonColumn btnXemChiTiet = new DataGridViewButtonColumn();
@@ -76,6 +78,9 @@ namespace QuanLyPhongTro.Control
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.ForeColor = Color.White;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionBackColor = Color.Green;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionForeColor = Color.White;
+
+
+         
         }
 
 
@@ -87,18 +92,52 @@ namespace QuanLyPhongTro.Control
             {
                 con = new SqlConnection(connectionString);
                 RefreshDataGridView();
+
+                // Định dạng tiền
+                dataGridView1.Columns["Công nợ"].DefaultCellStyle.Format = "N0";
+                dataGridView1.Columns["Giá phòng"].DefaultCellStyle.Format = "N0";
+                dataGridView1.Columns["Tiền cọc"].DefaultCellStyle.Format = "N0";
+
+                // Định dạng ngày tháng
+                dataGridView1.Columns["Ngày Vào"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dataGridView1.Columns["Hạn trọ"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
             }
             else
             {
                 MessageBox.Show("Khu vực chưa được thiết lập.");
             }
+
+
+            ///////////// Định dạng tiền 
+            //dataGridView1.Columns["Công nợ"].DefaultCellStyle.Format = "N0";
+            //dataGridView1.Columns["Giá phòng"].DefaultCellStyle.Format = "N0";
+            //dataGridView1.Columns["Tiền cọc"].DefaultCellStyle.Format = "N0";
+
+
         }
+
+
 
 
         private void RefreshDataGridView()
         {
-            // Cập nhật câu truy vấn SQL để bao gồm cột MaPhong
-            string query = "SELECT MaPhong, TrangThai AS [Đã thuê], TenPhong As [Tên Phòng], NgayVao as [Ngày Vào], HanTro as [Hạn trọ], TienCoc as [Tiền cọc], TienPhong as [Tiền phòng], Dien as [Điện], Nuoc as [Nước], CongNo as [Công nợ], GhiChu as [Ghi chú] FROM Phong WHERE MaKhuVuc = @MaKhuVuc";
+            string query = @"
+    SELECT p.MaPhong, 
+           p.TrangThai AS [Đã thuê], 
+           p.TenPhong AS [Tên Phòng], 
+ COUNT(k.MaKhachTro) AS [Số lượng người],
+           p.NgayVao AS [Ngày Vào], 
+           p.HanTro AS [Hạn trọ], 
+           p.TienCoc AS [Tiền cọc], 
+           p.TienPhong AS [Giá phòng], 
+           p.CongNo AS [Công nợ], 
+           p.GhiChu AS [Ghi chú]
+          
+    FROM Phong p
+    LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
+    WHERE p.MaKhuVuc = @MaKhuVuc
+    GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
 
             DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
             dataGridView1.DataSource = dataTable;
@@ -112,7 +151,30 @@ namespace QuanLyPhongTro.Control
 
             LoadData(); // Gọi LoadData để thêm các nút
         }
-        //
+
+
+
+
+
+        private DataTable ExecuteQuery(string query, SqlParameter parameter)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(parameter);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
 
         public DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
         {
@@ -193,6 +255,9 @@ namespace QuanLyPhongTro.Control
             }
         }
 
+
+
+        //------------------------ Do này lấy tên phòng bổ vô để truyền dữ liệu vì ban ddaaud mã phòng và tên phòng giống nhau
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem người dùng có nhấn vào cột nút hay không
@@ -209,8 +274,9 @@ namespace QuanLyPhongTro.Control
                         {
                             KhuVuc = this.khuvuc,
                             // Truyền lại giá trị khu vực
-                            MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
 
+                            //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
+                            MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
                         };
                         mainForm.ShowControl(ThongTinPhongControl);
                     }
@@ -220,6 +286,12 @@ namespace QuanLyPhongTro.Control
                     // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
                     TaoHopDongPhong(maPhong);
                 }
+
+                //// Cập nhật trạng thái tài khoản phòng
+                //UpdateRoomAccountStatus(maPhong, false);
+
+                // Xóa tài khoản phòng
+                DeleteRoomAccount(maPhong);
             }
         }
 
@@ -237,7 +309,7 @@ namespace QuanLyPhongTro.Control
             // Thực hiện các hành động cần thiết để tạo hợp đồng
         }
 
-     
+
 
 
 
@@ -245,7 +317,7 @@ namespace QuanLyPhongTro.Control
 
         private void TimKiemPhong()
         {
-            
+
             string keyword = textBoxTimPhong.Text.Trim();
 
             if (!string.IsNullOrEmpty(keyword))
@@ -266,7 +338,7 @@ namespace QuanLyPhongTro.Control
             }
             else if (textBoxTimPhong.Text.Length == 0)
             {
-                
+
                 textBoxTimPhong.Clear();
                 RefreshDataGridView();
             }
@@ -281,6 +353,70 @@ namespace QuanLyPhongTro.Control
         private void textBoxTimPhong_TextChanged(object sender, EventArgs e)
         {
             TimKiemPhong(); // Gọi phương thức tìm kiếm khi văn bản thay đổi
+        }
+
+        private void buttonTraPhong_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string maPhong = dataGridView1.SelectedRows[0].Cells["MaPhong"].Value.ToString();
+                UpdateRoomStatus(maPhong, false); // Cập nhật trạng thái phòng thành false
+                DeleteRoomAccount(maPhong); // Xóa tài khoản phòng
+                CapNhatthongtinkhach(maPhong, 0); // Cập nhật trạng thái khách trọ thành đã rời đi
+                RefreshDataGridView(); // Làm mới DataGridView
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một phòng để trả.");
+            }
+        }
+
+
+
+        private void UpdateRoomStatus(string maPhong, bool trangThai)
+        {
+            string query = "UPDATE Phong SET TrangThai = @TrangThai WHERE MaPhong = @MaPhong";
+            SqlParameter[] parameters = { new SqlParameter("@TrangThai", trangThai), new SqlParameter("@MaPhong", maPhong) };
+            ExecuteNonQuery(query, parameters);
+        }
+
+
+
+        private void DeleteRoomAccount(string maPhong)
+        {
+            string query = "DELETE FROM UserPhong WHERE MaPhong = @MaPhong";
+            SqlParameter[] parameters = { new SqlParameter("@MaPhong", maPhong) };
+            ExecuteNonQuery(query, parameters);
+        }
+
+        private void CapNhatthongtinkhach(string maPhong, int trangThai)
+        {
+            string query = "UPDATE ThongTinKhach SET TrangThai = @TrangThai WHERE MaPhong = @MaPhong";
+            SqlParameter[] parameters = {
+        new SqlParameter("@TrangThai", trangThai),
+        new SqlParameter("@MaPhong", maPhong)
+    };
+            ExecuteNonQuery(query, parameters);
+        }
+
+
+
+        ///-------------22_10_2024
+        // tô màu cho datagirdview
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            //DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            //int trangThai = Convert.ToInt32(row.Cells["Đã thuê"].Value);
+
+            //if (trangThai == 0)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Blue;
+            //}
+            //else if (trangThai == 1)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Gray;
+            //}
         }
     }
 }

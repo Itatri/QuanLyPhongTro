@@ -39,10 +39,17 @@ namespace BLL
             return dal.PhongExists(maPhong);
         }
 
-        public DataTable GetPhongData()
+        //public DataTable GetPhongData()
+        //{
+        //    return dal.GetPhongData();
+        //}
+
+        // BLL: Gọi phương thức DAL
+        public DataTable GetPhongData() //-----22/10/2024
         {
             return dal.GetPhongData();
         }
+
 
         //Tìm tài khoản phòng theo mã phòng
         public DataTable TimTaiKhoanPhong(string keyword)

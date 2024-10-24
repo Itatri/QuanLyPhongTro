@@ -74,7 +74,7 @@
             this.txtSoNuoc.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoNuoc.Name = "txtSoNuoc";
             this.txtSoNuoc.Size = new System.Drawing.Size(305, 26);
-            this.txtSoNuoc.TabIndex = 3;
+            this.txtSoNuoc.TabIndex = 4;
             this.txtSoNuoc.TextChanged += new System.EventHandler(this.txtSoNuoc_TextChanged);
             this.txtSoNuoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNuoc_KeyPress);
             // 
@@ -85,7 +85,7 @@
             this.txtSodien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSodien.Name = "txtSodien";
             this.txtSodien.Size = new System.Drawing.Size(305, 26);
-            this.txtSodien.TabIndex = 2;
+            this.txtSodien.TabIndex = 3;
             this.txtSodien.TextChanged += new System.EventHandler(this.txtSodien_TextChanged);
             this.txtSodien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSodien_KeyPress);
             // 
@@ -130,7 +130,7 @@
             this.txtTenPhong.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(305, 26);
-            this.txtTenPhong.TabIndex = 12;
+            this.txtTenPhong.TabIndex = 1;
             this.txtTenPhong.TextChanged += new System.EventHandler(this.txtTenPhong_TextChanged);
             // 
             // label1
@@ -219,7 +219,7 @@
             this.textBoxTienCoc.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTienCoc.Name = "textBoxTienCoc";
             this.textBoxTienCoc.Size = new System.Drawing.Size(305, 26);
-            this.textBoxTienCoc.TabIndex = 4;
+            this.textBoxTienCoc.TabIndex = 5;
             this.textBoxTienCoc.TextChanged += new System.EventHandler(this.textBoxTienCoc_TextChanged);
             this.textBoxTienCoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTienCoc_KeyPress);
             // 
@@ -255,7 +255,7 @@
             this.textBoxTienPhong.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTienPhong.Name = "textBoxTienPhong";
             this.textBoxTienPhong.Size = new System.Drawing.Size(305, 26);
-            this.textBoxTienPhong.TabIndex = 1;
+            this.textBoxTienPhong.TabIndex = 2;
             this.textBoxTienPhong.TextChanged += new System.EventHandler(this.textBoxTienPhong_TextChanged);
             this.textBoxTienPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTienPhong_KeyPress);
             // 
@@ -407,10 +407,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.dataGridViewDichVu);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.dataGridViewDichVu);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.labelMaPhong);
             this.panel3.Controls.Add(this.label6);

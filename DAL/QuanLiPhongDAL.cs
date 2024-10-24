@@ -32,22 +32,22 @@ namespace DAL
 
         public DataTable TimKiemPhong(string keyword)
         {
+            
+
             string query = "SELECT TrangThai AS [Đã thuê], TenPhong AS [Tên Phòng]," +
-                "NgayVao AS [Ngày Vào], HanTro AS [Hạn trọ], TienCoc AS [Tiền cọc], " +
-                    "TienPhong AS [Tiền phòng], Dien AS [Điện], Nuoc AS [Nước], " +
-                    "CongNo AS [Công nợ], GhiChu AS [Ghi chú] " +
-                    "FROM Phong " +
-                    "WHERE MaPhong LIKE @Keyword OR TenPhong LIKE @Keyword";
+             "NgayVao AS [Ngày Vào], HanTro AS [Hạn trọ], TienCoc AS [Tiền cọc], " +
+                 "TienPhong AS [Tiền phòng]," +
+                 "CongNo AS [Công nợ], GhiChu AS [Ghi chú] " +
+                 "FROM Phong " +
+                 "WHERE MaPhong LIKE @Keyword OR TenPhong LIKE @Keyword";
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
-
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
-
                 try
                 {
                     connection.Open();
@@ -90,6 +90,8 @@ namespace DAL
                 return dt;
             }
         }
+
+
 
 
         public DataTable LayDichVuPhong(string maPhong)
