@@ -108,7 +108,6 @@
             this.cbbChungCu.Name = "cbbChungCu";
             this.cbbChungCu.Size = new System.Drawing.Size(350, 28);
             this.cbbChungCu.TabIndex = 1;
-            this.cbbChungCu.SelectedIndexChanged += new System.EventHandler(this.cbbChungCu_SelectedIndexChanged);
             // 
             // btnDangNhap
             // 
@@ -123,8 +122,6 @@
             this.btnDangNhap.Text = "Đăng nhập ";
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-            this.btnDangNhap.Enter += new System.EventHandler(this.btnDangNhap_Enter);
-            this.btnDangNhap.Leave += new System.EventHandler(this.btnDangNhap_Leave);
             // 
             // panel1
             // 
@@ -142,7 +139,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(394, 379);
             this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtTaiKhoan
             // 
@@ -154,7 +150,6 @@
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(350, 28);
             this.txtTaiKhoan.TabIndex = 2;
-            this.txtTaiKhoan.TextChanged += new System.EventHandler(this.txtTaiKhoan_TextChanged);
             this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
             // 
             // panel2
@@ -199,7 +194,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.DangNhap_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

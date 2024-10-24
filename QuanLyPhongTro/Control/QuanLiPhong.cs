@@ -78,6 +78,9 @@ namespace QuanLyPhongTro.Control
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.ForeColor = Color.White;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionBackColor = Color.Green;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionForeColor = Color.White;
+
+
+         
         }
 
 
@@ -89,11 +92,29 @@ namespace QuanLyPhongTro.Control
             {
                 con = new SqlConnection(connectionString);
                 RefreshDataGridView();
+
+                // Định dạng tiền
+                dataGridView1.Columns["Công nợ"].DefaultCellStyle.Format = "N0";
+                dataGridView1.Columns["Giá phòng"].DefaultCellStyle.Format = "N0";
+                dataGridView1.Columns["Tiền cọc"].DefaultCellStyle.Format = "N0";
+
+                // Định dạng ngày tháng
+                dataGridView1.Columns["Ngày Vào"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dataGridView1.Columns["Hạn trọ"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
             }
             else
             {
                 MessageBox.Show("Khu vực chưa được thiết lập.");
             }
+
+
+            ///////////// Định dạng tiền 
+            //dataGridView1.Columns["Công nợ"].DefaultCellStyle.Format = "N0";
+            //dataGridView1.Columns["Giá phòng"].DefaultCellStyle.Format = "N0";
+            //dataGridView1.Columns["Tiền cọc"].DefaultCellStyle.Format = "N0";
+
+
         }
 
 
@@ -377,6 +398,26 @@ namespace QuanLyPhongTro.Control
         new SqlParameter("@MaPhong", maPhong)
     };
             ExecuteNonQuery(query, parameters);
+        }
+
+
+
+
+        ///-------------22_10_2024
+        // tô màu cho datagirdview
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            //DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            //int trangThai = Convert.ToInt32(row.Cells["Đã thuê"].Value);
+
+            //if (trangThai == 0)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Blue;
+            //}
+            //else if (trangThai == 1)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Gray;
+            //}
         }
 
     }
