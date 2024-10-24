@@ -424,9 +424,11 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
+
             // Sau khi lưu, thiết lập định dạng hiển thị của dtpkNgayBatDau
             dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
             dtpkNgayBatDau.CustomFormat = "dd/MM/yyyy";
+
 
 
             LoadTenPhongComboBox();

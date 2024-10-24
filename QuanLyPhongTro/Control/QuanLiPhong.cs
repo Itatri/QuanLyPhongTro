@@ -402,6 +402,7 @@ namespace QuanLyPhongTro.Control
 
 
 
+
         ///-------------22_10_2024
         // tô màu cho datagirdview
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -418,5 +419,6 @@ namespace QuanLyPhongTro.Control
             //    row.DefaultCellStyle.BackColor = Color.Gray;
             //}
         }
+
     }
 }

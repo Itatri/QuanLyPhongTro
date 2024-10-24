@@ -61,6 +61,7 @@ namespace QuanLyPhongTro.Control
         int flag = 0;
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+
             SetNewMaPhong();
             txtTenPhong.Enabled = true;
             AnHienTextBox(true);
