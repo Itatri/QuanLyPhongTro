@@ -3,7 +3,9 @@
 
 ### Các chức năng
 
-- Cho phép Admin ...
+- Quản lý thông tin cư dân
+- Quản lí thông tin phản hồi
+- ...
 
 
 
