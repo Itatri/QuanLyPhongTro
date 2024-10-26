@@ -59,6 +59,8 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDienTich = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu)).BeginInit();
@@ -126,7 +128,7 @@
             // txtTenPhong
             // 
             this.txtTenPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenPhong.Location = new System.Drawing.Point(222, 122);
+            this.txtTenPhong.Location = new System.Drawing.Point(222, 91);
             this.txtTenPhong.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(305, 26);
@@ -136,12 +138,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("UTM American Sans", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(685, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 38);
+            this.label1.Size = new System.Drawing.Size(248, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "TẠO PHÒNG MỚI";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -170,7 +172,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 122);
+            this.label5.Location = new System.Drawing.Point(26, 91);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
@@ -191,6 +193,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtDienTich);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBoxTienCoc);
             this.panel1.Controls.Add(this.RtxtGhiChu);
             this.panel1.Controls.Add(this.txtSoNuoc);
@@ -430,6 +434,22 @@
             this.panel4.Size = new System.Drawing.Size(1653, 61);
             this.panel4.TabIndex = 0;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(26, 147);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 20);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Diện tích phòng";
+            // 
+            // txtDienTich
+            // 
+            this.txtDienTich.Location = new System.Drawing.Point(222, 146);
+            this.txtDienTich.Name = "txtDienTich";
+            this.txtDienTich.Size = new System.Drawing.Size(305, 26);
+            this.txtDienTich.TabIndex = 23;
+            // 
             // TaoQuanLyPhong1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,5 +504,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDienTich;
+        private System.Windows.Forms.Label label7;
     }
 }

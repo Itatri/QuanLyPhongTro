@@ -128,7 +128,7 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgayCap.Enabled = enabled;
             //txtQuanHe.Enabled = enabled;
             comboboxQuanHe.Enabled = enabled;
-
+            txtThuongTru.Enabled = enabled;
         }
 
 
@@ -155,7 +155,7 @@ namespace QuanLyPhongTro.Control
             dataGridViewDanCu.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
             dataGridViewDanCu.Columns["NgayCap"].HeaderText = "Ngày Cấp";
             dataGridViewDanCu.Columns["NoiCap"].HeaderText = "Nơi Cấp";
-
+            dataGridViewDanCu.Columns["ThuongTru"].HeaderText = "Thường Trú";
             // Tạo cột "TrangThai" mới nếu chưa tồn tại
             if (dataGridViewDanCu.Columns["TrangThai"] == null)
             {
@@ -226,7 +226,7 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgayCap.Value = DateTime.Now;
             //txtQuanHe.Clear();
             comboboxQuanHe.SelectedIndex = -1;
-
+            txtThuongTru.Clear();
 
 
         }
@@ -418,7 +418,7 @@ namespace QuanLyPhongTro.Control
                 DateTime ngayCap = dateTimePickerNgayCap.Value;
                 //string quanHe = txtQuanHe.Text;
                 string quanHe = comboboxQuanHe.SelectedItem?.ToString();
-
+                string thuongtru = txtThuongTru.Text;
                 string newImagePathChuKy = null;
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
 
@@ -449,7 +449,8 @@ namespace QuanLyPhongTro.Control
                     Email = email,
                     NoiCap = noiCap,
                     NgayCap = ngayCap,
-                    QuanHe = quanHe
+                    QuanHe = quanHe,
+                    ThuongTru = thuongtru
                 };
 
                 // Nếu có đường dẫn ảnh chữ ký mới, thêm vào DTO
@@ -509,7 +510,7 @@ namespace QuanLyPhongTro.Control
                 txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
                 //txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
                 comboboxQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
-
+                txtThuongTru.Text = selectedRow.Cells["ThuongTru"].Value.ToString();
                 txtNoiCap.Text = selectedRow.Cells["NoiCap"].Value.ToString(); // Assuming "NoiCap" is a column in your DataGridView.
 
                 if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
@@ -875,7 +876,10 @@ namespace QuanLyPhongTro.Control
 
         private void QuanLiDanCu_Load(object sender, EventArgs e)
         {
-
+            dateTimePickerNgayCap.Format = DateTimePickerFormat.Custom;
+            dateTimePickerNgayCap.CustomFormat = "dd/MM/yyyy";
+            dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
+            dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

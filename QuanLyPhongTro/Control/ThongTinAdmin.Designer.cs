@@ -39,7 +39,7 @@
             this.txtHoTenAdmin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtQueQuanAdmin = new System.Windows.Forms.TextBox();
+            this.txtThuongTruAdmin = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxGioiTinhAdmin = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -175,14 +175,14 @@
             this.label6.TabIndex = 55;
             this.label6.Text = "Ngày sinh";
             // 
-            // txtQueQuanAdmin
+            // txtThuongTruAdmin
             // 
-            this.txtQueQuanAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtQueQuanAdmin.Location = new System.Drawing.Point(178, 287);
-            this.txtQueQuanAdmin.Multiline = true;
-            this.txtQueQuanAdmin.Name = "txtQueQuanAdmin";
-            this.txtQueQuanAdmin.Size = new System.Drawing.Size(856, 40);
-            this.txtQueQuanAdmin.TabIndex = 62;
+            this.txtThuongTruAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtThuongTruAdmin.Location = new System.Drawing.Point(178, 287);
+            this.txtThuongTruAdmin.Multiline = true;
+            this.txtThuongTruAdmin.Name = "txtThuongTruAdmin";
+            this.txtThuongTruAdmin.Size = new System.Drawing.Size(856, 40);
+            this.txtThuongTruAdmin.TabIndex = 62;
             // 
             // label9
             // 
@@ -190,9 +190,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label9.Location = new System.Drawing.Point(49, 287);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 20);
+            this.label9.Size = new System.Drawing.Size(100, 20);
             this.label9.TabIndex = 61;
-            this.label9.Text = "Quê quán ";
+            this.label9.Text = "Thường Trú";
             // 
             // comboBoxGioiTinhAdmin
             // 
@@ -320,7 +320,7 @@
             this.panelThongTinDanCu.Controls.Add(this.label10);
             this.panelThongTinDanCu.Controls.Add(this.label9);
             this.panelThongTinDanCu.Controls.Add(this.label2);
-            this.panelThongTinDanCu.Controls.Add(this.txtQueQuanAdmin);
+            this.panelThongTinDanCu.Controls.Add(this.txtThuongTruAdmin);
             this.panelThongTinDanCu.Controls.Add(this.dateTimePickerNgaySinhAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label6);
             this.panelThongTinDanCu.Controls.Add(this.label5);
@@ -382,6 +382,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1684, 1002);
+            this.Load += new System.EventHandler(this.ThongTinAdmin_Load);
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
@@ -405,7 +406,7 @@
         private System.Windows.Forms.TextBox txtHoTenAdmin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtQueQuanAdmin;
+        private System.Windows.Forms.TextBox txtThuongTruAdmin;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxGioiTinhAdmin;
         private System.Windows.Forms.Label label7;
