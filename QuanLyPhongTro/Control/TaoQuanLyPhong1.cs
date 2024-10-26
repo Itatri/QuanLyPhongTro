@@ -251,6 +251,7 @@ namespace QuanLyPhongTro.Control
                         MaPhong = txtMaPhong.Text,
                         TenPhong = txtTenPhong.Text,
                         TienPhong = float.TryParse(textBoxTienPhong.Text, out float tienphong) ? tienphong : 0,
+                        DienTich = float.TryParse(txtDienTich.Text,out float dienTich) ? dienTich : 0,
                         Dien = float.TryParse(txtSodien.Text, out float dien) ? dien : 0,
                         Nuoc = float.TryParse(txtSoNuoc.Text, out float nuoc) ? nuoc : 0,
                         TienCoc = float.TryParse(textBoxTienCoc.Text, out float tienCoc) ? tienCoc : 0,
@@ -623,6 +624,7 @@ namespace QuanLyPhongTro.Control
 
                 txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString(); // Lấy giá trị từ cột "MaPhong"
                 txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
+                txtDienTich.Text = selectedRow.Cells["DienTich"].Value?.ToString();
                 textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
                 txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
                 txtSoNuoc.Text = selectedRow.Cells["Nuoc"].Value?.ToString();

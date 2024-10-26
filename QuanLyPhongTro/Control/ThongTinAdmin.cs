@@ -56,7 +56,7 @@ namespace QuanLyPhongTro.Control
                     txtHoTenAdmin.Text = string.Empty;
                     comboBoxGioiTinhAdmin.SelectedItem = null;
                     txtCCCDAdmin.Text = string.Empty;
-                    txtQueQuanAdmin.Text = string.Empty;
+                    txtThuongTruAdmin.Text = string.Empty;
                     txtPhoneAdmin.Text = string.Empty;
                     dateTimePickerNgaySinhAdmin.Value = DateTime.Now;  // Đặt giá trị ngày hiện tại
                     labelAnhChuKy.Text = string.Empty;
@@ -71,7 +71,7 @@ namespace QuanLyPhongTro.Control
                     txtHoTenAdmin.Text = adminInfo.HoTen;
                     comboBoxGioiTinhAdmin.SelectedItem = adminInfo.GioiTinh;
                     txtCCCDAdmin.Text = adminInfo.Cccd;
-                    txtQueQuanAdmin.Text = adminInfo.QueQuan;
+                    txtThuongTruAdmin.Text = adminInfo.ThuongTru;
                     txtPhoneAdmin.Text = adminInfo.Phone;
                     dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
                     txtIDUserAdmin.Text = adminInfo.IdUser;
@@ -318,7 +318,7 @@ namespace QuanLyPhongTro.Control
                 string hoTen = txtHoTenAdmin.Text;
                 string gioiTinh = comboBoxGioiTinhAdmin.SelectedItem != null ? comboBoxGioiTinhAdmin.SelectedItem.ToString() : "";
                 string cccd = txtCCCDAdmin.Text;
-                string queQuan = txtQueQuanAdmin.Text;
+                string thuongTru = txtThuongTruAdmin.Text;
                 string phone = txtPhoneAdmin.Text;
                 DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
 
@@ -340,7 +340,7 @@ namespace QuanLyPhongTro.Control
                     NgaySinh = ngaySinh,
                     Cccd = cccd,
                     Phone = phone,
-                    QueQuan = queQuan,
+                    ThuongTru = thuongTru,
                     ChuKy = chuKyFileName ?? labelAnhChuKy.Text, // Nếu không có ảnh mới, giữ lại tên cũ
                     IdUser = idUser
                 };
@@ -411,5 +411,10 @@ namespace QuanLyPhongTro.Control
 
         }
 
+        private void ThongTinAdmin_Load(object sender, EventArgs e)
+        {
+            dateTimePickerNgaySinhAdmin.Format = DateTimePickerFormat.Custom;
+            dateTimePickerNgaySinhAdmin.CustomFormat = "dd/MM/yyyy";
+        }
     }
 }

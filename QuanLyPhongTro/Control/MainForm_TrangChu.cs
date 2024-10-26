@@ -21,7 +21,7 @@ namespace QuanLyPhongTro.Control
         private QuanLiDichVu controlquanLiDichVu;
         private QuanLyPhieuThu controlquanlyphieuthu;
         private string makhuvuc; // Khai báo biến lưu thông tin makhuvuc
-
+        private string id;
         private KhuVucBLL khuVucBLL;
         private ThongTinAdminBLL thongTinAdminBLL;
         public MainForm_TrangChu()
@@ -55,6 +55,7 @@ namespace QuanLyPhongTro.Control
         public void SetUserInfo(string id, string region, string makhuvuc)
         {
             lbTaiKhoan.Text = id;
+            this.id = id;
             this.makhuvuc = makhuvuc; // Gán giá trị makhuvuc vào biến lưu
             // Lấy thông tin khu vực từ maKhuVuc và hiển thị lên labelKhuVuc
             KhuVucDTO khuVuc = khuVucBLL.GetKhuVucByMaKhuVuc(region);
@@ -117,6 +118,7 @@ namespace QuanLyPhongTro.Control
         {
             this.Controls.Clear(); // Xóa các control hiện có
             controlquanLiPhong.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
+            controlquanLiPhong.id = id;
             this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
         }
 

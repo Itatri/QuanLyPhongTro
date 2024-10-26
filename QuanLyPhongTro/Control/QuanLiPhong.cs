@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using BLL;
 using System.Configuration;
 using DAL;
-
+using QuanLyPhongTro;
 namespace QuanLyPhongTro.Control
 {
     public partial class QuanLiPhong : UserControl
@@ -20,7 +20,7 @@ namespace QuanLyPhongTro.Control
         //private ThongTinPhongBLL thongTinPhongBLL = new ThongTinPhongBLL();
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private SqlConnection con;
-
+        public string id {  get; set; }
         public string khuvuc { get; set; }
 
 
@@ -125,7 +125,8 @@ namespace QuanLyPhongTro.Control
             string query = @"
     SELECT p.MaPhong, 
            p.TrangThai AS [Đã thuê], 
-           p.TenPhong AS [Tên Phòng], 
+           p.TenPhong AS [Tên Phòng],
+            p.DienTich AS [Diện Tích],
  COUNT(k.MaKhachTro) AS [Số lượng người],
            p.NgayVao AS [Ngày Vào], 
            p.HanTro AS [Hạn trọ], 
@@ -137,7 +138,7 @@ namespace QuanLyPhongTro.Control
     FROM Phong p
     LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
     WHERE p.MaKhuVuc = @MaKhuVuc
-    GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
+    GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu, p.DienTich";
 
             DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
             dataGridView1.DataSource = dataTable;
@@ -284,7 +285,20 @@ namespace QuanLyPhongTro.Control
                 else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
                 {
                     // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
-                    TaoHopDongPhong(maPhong);
+                    TaoCT01 tao = new TaoCT01();
+                    tao.maphong = maPhong;
+                    tao.idadmin = this.id;
+                    tao.makhuvuc = khuvuc;
+                    int check = tao.TaoTamTru();
+                    if (check == 0)
+                        MessageBox.Show("Xong");
+                    else if (check == 1)
+                        MessageBox.Show("không có chủ hộ");
+                    else if (check == 2)
+                        MessageBox.Show("trùng lập folder phòng");
+                    //TaoHopDongPhong(maPhong);
+
+
                 }
 
                 //// Cập nhật trạng thái tài khoản phòng

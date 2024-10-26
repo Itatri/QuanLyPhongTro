@@ -51,6 +51,7 @@ namespace DAL
                             NgayCap = (DateTime)reader["NgayCap"],
                             NoiCap = reader["NoiCap"].ToString(),
                             Phone = reader["Phone"].ToString(),
+                            ThuongTru = reader["ThuongTru"].ToString(),
                             QueQuan = reader["QueQuan"].ToString(),
                             QuanHe = reader["QuanHe"].ToString(),
                             ChuKy = reader["ChuKy"].ToString(),
@@ -112,7 +113,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
                 cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
                 cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
-
+                cmd.Parameters.AddWithValue("@ThuongTru", khachDTO.ThuongTru);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -183,8 +184,8 @@ namespace DAL
                     conn.Open();
 
                     // Prepare the base query
-                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe";
-                    string values = "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @Email, @NoiCap, @NgayCap, @QuanHe";
+                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe,ThuongTru";
+                    string values = "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @Email, @NoiCap, @NgayCap, @QuanHe, @ThuongTru";
 
                     // Include ChuKy only if it is not null
                     if (!string.IsNullOrEmpty(khachDTO.ChuKy))
@@ -210,7 +211,7 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@NoiCap", khachDTO.NoiCap);
                         cmd.Parameters.AddWithValue("@NgayCap", khachDTO.NgayCap);
                         cmd.Parameters.AddWithValue("@QuanHe", khachDTO.QuanHe);
-
+                        cmd.Parameters.AddWithValue("@ThuongTru", khachDTO.ThuongTru);
                         if (!string.IsNullOrEmpty(khachDTO.ChuKy))
                         {
                             cmd.Parameters.AddWithValue("@ChuKy", khachDTO.ChuKy);
@@ -253,6 +254,7 @@ namespace DAL
                         TrangThai = Convert.ToInt32(reader["TrangThai"]),
                         MaPhong = reader["MaPhong"].ToString(),
                         NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
+                        ThuongTru = reader["ThuongTru"].ToString(),
                         //AnhNhanDien = reader["AnhNhanDien"].ToString(),
                         ChuKy = reader["ChuKy"].ToString()
                     };
@@ -318,7 +320,8 @@ namespace DAL
                                 Email = reader["Email"].ToString(),
                                 QuanHe = reader["QuanHe"].ToString(),
                                 NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"])
+                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
+                                ThuongTru = reader["ThuongTru"].ToString(),
                             };
 
                             results.Add(item);
@@ -366,8 +369,8 @@ namespace DAL
                                 Email = reader["Email"].ToString(),
                                 QuanHe = reader["QuanHe"].ToString(),
                                 NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"])
-                                
+                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
+                                ThuongTru = reader["ThuongTru"].ToString(),
                             };
 
                             results.Add(item);

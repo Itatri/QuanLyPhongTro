@@ -102,6 +102,7 @@ namespace QuanLyPhongTro.Control
                 taoquanliphongDTO.MaPhong = dataRow["MaPhong"].ToString();
                 taoquanliphongDTO.TenPhong = dataRow["TenPhong"].ToString();
                 taoquanliphongDTO.TienPhong = Convert.ToSingle(dataRow["TienPhong"]);
+                taoquanliphongDTO.DienTich = Convert.ToSingle(dataRow["DienTich"]);
                 taoquanliphongDTO.Dien = Convert.ToSingle(dataRow["Dien"]);
                 taoquanliphongDTO.Nuoc = Convert.ToSingle(dataRow["Nuoc"]);
                 taoquanliphongDTO.TienCoc = Convert.ToSingle(dataRow["TienCoc"]);
@@ -178,6 +179,7 @@ namespace QuanLyPhongTro.Control
                 txtMaPhong.Text = dt.Rows[0]["MaPhong"].ToString();
                 txtTenPhong.Text = dt.Rows[0]["TenPhong"].ToString();
                 textBoxTienPhong.Text = dt.Rows[0]["TienPhong"].ToString();
+                txtDienTich.Text = dt.Rows[0]["DienTich"].ToString();
                 txtSodien.Text = dt.Rows[0]["Dien"].ToString();
                 txtSoNuoc.Text = dt.Rows[0]["Nuoc"].ToString();
                 textBoxTienCoc.Text = dt.Rows[0]["TienCoc"].ToString();
