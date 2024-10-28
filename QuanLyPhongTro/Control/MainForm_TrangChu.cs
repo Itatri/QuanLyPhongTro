@@ -116,9 +116,13 @@ namespace QuanLyPhongTro.Control
 
         private void btnQuanLyPhong_Click(object sender, EventArgs e)
         {
+            //this.Controls.Clear(); // Xóa các control hiện có
+            //controlquanLiPhong.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
+            //controlquanLiPhong.id = id;
+            //this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
+
             this.Controls.Clear(); // Xóa các control hiện có
             controlquanLiPhong.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
-            controlquanLiPhong.id = id;
             this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
         }
 

@@ -23,7 +23,7 @@ namespace DAL
             //string query = "SELECT MaDichVu,TenDichVu as [TÊN DỊCH VỤ],DonGia AS [ĐƠN GIÁ] ,TrangThai [TRẠNG THÁI]  FROM DichVu;";
             return ExecuteQuery(query);
 
-            
+
         }
         //--------------------------------------------------------------------- 15/10/2024
 

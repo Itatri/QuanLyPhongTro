@@ -24,55 +24,6 @@ namespace QuanLyPhongTro.Control
         public string KhuVuc { get; set; }
         public DataTable DichVuPhongTable { get; set; }
 
-        // Các thuộc tính để lưu thông tin phòng
-        //public string MaPhong
-        //{
-        //    get { return txtMaPhong.Text; }
-        //    set { txtMaPhong.Text = value; }
-        //}
-
-        //public string TenPhong
-        //{
-        //    get { return txtTenPhong.Text; }
-        //    set { txtTenPhong.Text = value; }
-        //}
-
-        //public string TienPhong
-        //{
-        //    get { return textBoxTienPhong.Text; }
-        //    set { textBoxTienPhong.Text = value; }
-        //}
-
-        //public string SoDien
-        //{
-        //    get { return txtSodien.Text; }
-        //    set { txtSodien.Text = value; }
-        //}
-
-        //public string SoNuoc
-        //{
-        //    get { return txtSoNuoc.Text; }
-        //    set { txtSoNuoc.Text = value; }
-        //}
-
-        //public string TienCoc
-        //{
-        //    get { return textBoxTienCoc.Text; }
-        //    set { textBoxTienCoc.Text = value; }
-        //}
-
-        //public DateTime HanTro
-        //{
-        //    get { return dateTimePickerHanTro.Value; }
-        //    set { dateTimePickerHanTro.Value = value; }
-        //}
-
-        //public string GhiChu
-        //{
-        //    get { return RtxtGhiChu.Text; }
-        //    set { RtxtGhiChu.Text = value; }
-        //}
-
         public ThongTinPhong()
         {
             InitializeComponent();
@@ -165,12 +116,15 @@ namespace QuanLyPhongTro.Control
             txtMaPhong.Enabled = false;
             txtTenPhong.Enabled = false;
             txtSodien.Enabled = false;
+            txtDienTich.Enabled = false;
             txtSoNuoc.Enabled = false;
             RtxtGhiChu.Enabled = false;
             dateTimePickerHanTro.Enabled = false;
             textBoxTienCoc.Enabled = false;
             textBoxTienPhong.Enabled = false;
         }
+   
+
         private void LoadPhong()
         {
             DataTable dt = thongtinphongBLL.GetAllPhong(MAPHONG);
@@ -179,7 +133,7 @@ namespace QuanLyPhongTro.Control
                 txtMaPhong.Text = dt.Rows[0]["MaPhong"].ToString();
                 txtTenPhong.Text = dt.Rows[0]["TenPhong"].ToString();
                 textBoxTienPhong.Text = dt.Rows[0]["TienPhong"].ToString();
-                txtDienTich.Text = dt.Rows[0]["DienTich"].ToString();
+                txtDienTich.Text = dt.Rows[0]["DienTich"].ToString(); // Ensure DienTich is loaded
                 txtSodien.Text = dt.Rows[0]["Dien"].ToString();
                 txtSoNuoc.Text = dt.Rows[0]["Nuoc"].ToString();
                 textBoxTienCoc.Text = dt.Rows[0]["TienCoc"].ToString();
@@ -253,6 +207,7 @@ namespace QuanLyPhongTro.Control
             txtTenPhong.Enabled = true;
             txtSodien.Enabled = true;
             txtSoNuoc.Enabled = true;
+            txtDienTich.Enabled = true;
             RtxtGhiChu.Enabled = true;
             dateTimePickerHanTro.Enabled = true;
             textBoxTienCoc.Enabled = true;
@@ -335,6 +290,7 @@ namespace QuanLyPhongTro.Control
                     TenPhong = txtTenPhong.Text,
                     NgayVao = DateTime.Now, // Hoặc giá trị khác
                     TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
+                    DienTich   = Convert.ToSingle(txtDienTich.Text),
                     TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
                     Dien = Convert.ToSingle(txtSodien.Text),
                     Nuoc = Convert.ToSingle(txtSoNuoc.Text),

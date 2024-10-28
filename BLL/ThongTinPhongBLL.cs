@@ -19,7 +19,7 @@ namespace BLL
             return dal.LayDichVuPhong(maPhong);
         }
 
- 
+
         public DataTable GetDichVuByMaPhong(string maPhong)
         {
             return dal.GetDichVuByMaPhong(maPhong);
@@ -28,7 +28,7 @@ namespace BLL
 
         public DataTable GetAllPhong(string maPhong)
         {
-           return dal.GetAllPhong(maPhong);
+            return dal.GetAllPhong(maPhong);
         }
 
         public DataTable GetAllDichVu()

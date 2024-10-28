@@ -32,7 +32,7 @@ namespace DAL
 
         public DataTable TimKiemPhong(string keyword)
         {
-            
+
 
             string query = "SELECT TrangThai AS [Đã thuê], TenPhong AS [Tên Phòng]," +
              "NgayVao AS [Ngày Vào], HanTro AS [Hạn trọ], TienCoc AS [Tiền cọc], " +
