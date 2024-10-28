@@ -10,7 +10,7 @@ namespace BLL
 {
     public class DangNhapAdminBLL
     {
-         private DangNhapAdminDAL dangNhapDAL;
+        private DangNhapAdminDAL dangNhapDAL;
 
         public DangNhapAdminBLL()
         {

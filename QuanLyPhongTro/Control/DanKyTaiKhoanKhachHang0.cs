@@ -187,7 +187,7 @@ namespace QuanLyPhongTro.Control
             {
                 //string query = "UPDATE Phong SET NgayVao = @ngayvao, TrangThai = 1 WHERE MaPhong = @MaPhong";
 
-                string query = "UPDATE Phong SET NgayVao = @ngayvao WHERE MaPhong = @MaPhong";
+                string query = "UPDATE Phong SET NgayVao = @ngayvao, TrangThai = 1 WHERE MaPhong = @MaPhong";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ngayvao", ngayvao);
                 command.Parameters.AddWithValue("@MaPhong", MaPhong); // Chuyển đổi thành string
@@ -424,11 +424,9 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-
             // Sau khi lưu, thiết lập định dạng hiển thị của dtpkNgayBatDau
             dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
             dtpkNgayBatDau.CustomFormat = "dd/MM/yyyy";
-
 
 
             LoadTenPhongComboBox();

@@ -24,7 +24,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT MaPhong, TenPhong, TienPhong, DienTich, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
+                string query = "SELECT MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
 
                 //string query = "SELECT TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG";
 
@@ -44,33 +44,14 @@ namespace DAL
 
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
 
-            //    string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, Dien, Nuoc, TienCoc, GhiChu ,trangthai, makhuvuc, CongNo, TrangThai)  " +
-            //                   "VALUES (@MaPhong, @TenPhong, @TienPhong, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0, 1)";
-
-            //    SqlCommand command = new SqlCommand(query, connection);
-            //    command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
-            //    command.Parameters.AddWithValue("@makhuvuc", phong.MaKhuVuc);
-            //    command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
-            //    command.Parameters.AddWithValue("@TienPhong", phong.TienPhong);
-            //    command.Parameters.AddWithValue("@Dien", phong.Dien);
-            //    command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
-            //    command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
-            //    //command.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value);
-            //    command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
-
-            //    return command.ExecuteNonQuery() > 0;
-            //}
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
                 string query = "INSERT INTO Phong (MaPhong, TenPhong, TienPhong, DienTich, Dien, Nuoc, TienCoc, GhiChu, trangthai, makhuvuc, CongNo) " +
-                               "VALUES (@MaPhong, @TenPhong, @TienPhong, @DienTich, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0)";
+                               "VALUES (@MaPhong, @TenPhong, @TienPhong,@DienTich, @Dien, @Nuoc, @TienCoc, @GhiChu, 0, @makhuvuc, 0)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -139,17 +120,18 @@ namespace DAL
 
                 //, NgayVao = @NgayVao, HanTro = @HanTro, TrangThai = @TrangThai
                 connection.Open();
-                string query = "UPDATE PHONG SET TenPhong = @TenPhong, Dien = @Dien, Nuoc = @Nuoc, GhiChu = @GhiChu, DienTich = @DienTich " +
+                string query = "UPDATE PHONG SET TenPhong = @TenPhong, Dien = @Dien, Nuoc = @Nuoc, GhiChu = @GhiChu " +
                                "WHERE MaPhong = @MaPhong";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaPhong", phong.MaPhong);
                 //command.Parameters.AddWithValue("@MaLoaiPhong", phong.MaLoaiPhong);
                 command.Parameters.AddWithValue("@TenPhong", phong.TenPhong);
+
+
                 //command.Parameters.AddWithValue("@TienCoc", phong.TienCoc);
                 command.Parameters.AddWithValue("@Dien", phong.Dien);
                 command.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
-                command.Parameters.AddWithValue("@DienTich", phong.DienTich);
                 command.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
                 //command.Parameters.AddWithValue("@NgayVao", phong.NgayVao);
                 //command.Parameters.AddWithValue("@HanTro", phong.HanTro);
@@ -303,9 +285,6 @@ namespace DAL
 
             return dataTable;
         }
-
-
-
     }
 }
 

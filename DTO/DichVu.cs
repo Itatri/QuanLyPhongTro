@@ -23,9 +23,9 @@ namespace DTO
             this.tenDichVu = tenDichVu;
             this.gia = gia;
         }
-        public DichVu() 
-        { 
-        
+        public DichVu()
+        {
+
         }
     }
 }
