@@ -17,7 +17,7 @@ namespace BLL
             khuVucDAL = new KhuVucDAL();
         }
 
-        
+
         public KhuVucDTO GetKhuVucByMaKhuVuc(string maKhuVuc)
         {
             return khuVucDAL.GetKhuVucByMaKhuVuc(maKhuVuc);

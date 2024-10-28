@@ -14,6 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 
+
 namespace QuanLyPhongTro
 {
     public partial class DangNhap : Form
@@ -26,6 +27,7 @@ namespace QuanLyPhongTro
         private string chuoiketnoi = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         string lenh;
 
+
         public DangNhap()
         {
             InitializeComponent();
@@ -34,8 +36,9 @@ namespace QuanLyPhongTro
             //cbbChungCu.ForeColor = Color.Aqua; // Đặt màu chữ
             txtTaiKhoan.MaxLength = 15;
             txtMatKhau.MaxLength = 15;
-            
+
             LoadComboBoxKhuVuc();
+
         }
 
         private void LoadComboBoxKhuVuc()
@@ -50,6 +53,7 @@ namespace QuanLyPhongTro
                 cbbChungCu.Items.Add(DocDuLieu[0].ToString());
             }
             ketnoi.Close();
+
         }
 
         private bool ValidateLogin(string id, string password, string region)
@@ -84,6 +88,12 @@ namespace QuanLyPhongTro
             }
             return isValid;
         }
+        private bool ValidateSpecialLogin(string id, string password)
+        {
+            return string.Equals(id, "DN01", StringComparison.Ordinal) &&
+                   string.Equals(password, "pass123", StringComparison.Ordinal);
+        }
+
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
@@ -92,16 +102,32 @@ namespace QuanLyPhongTro
             string password = txtMatKhau.Text;
             string region = cbbChungCu.SelectedItem?.ToString();
 
-            if (string.IsNullOrEmpty(region))
+            if (ValidateSpecialLogin(id, password))
             {
-                MessageBox.Show("Vui lòng chọn khu vực!");
-                return;
-            }
+                //// Đăng nhập đặc biệt thành công, mở QuanLiChungCuControl
+                //QuanLiChungCuControl quanLiChungCuControl = new QuanLiChungCuControl();
+                //Form quanLiChungCuForm = new Form
+                //{
+                //    Text = "Quản lý chung cư",
+                //    Size = new Size(1200, 1200)
+                //};
+                //quanLiChungCuForm.Controls.Add(quanLiChungCuControl);
+                //quanLiChungCuControl.Dock = DockStyle.Fill;
+                //quanLiChungCuForm.Show();
 
-            if (ValidateLogin(id, password, region))
+                //// Ẩn form đăng nhập
+                //this.Hide();
+                // Đăng nhập đặc biệt thành công, mở form QuanLyChungCuKV
+                QuanLyChungCuKV quanLyChungCuKV = new QuanLyChungCuKV();
+                quanLyChungCuKV.Show();
+
+                // Ẩn form đăng nhập
+                this.Hide();
+
+            }
+            else if (!string.IsNullOrEmpty(region) && ValidateLogin(id, password, region))
             {
                 // Đăng nhập thành công, mở MainForm và truyền id, region, makhuvuc
-                //MessageBox.Show("Đăng nhập thành công!");
                 MainForm mainForm = new MainForm(id, region, makhuvuc);
                 mainForm.Show();
 
@@ -126,6 +152,7 @@ namespace QuanLyPhongTro
             userControlForm.Controls.Add(userControl);
             userControl.Dock = DockStyle.Fill;
             userControlForm.Show();
+
         }
 
         private void cbbKhuVucChungCu_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +162,7 @@ namespace QuanLyPhongTro
             {
                 //taoQuanLyPhongForm.UpdateMaKhuVuc(selectedRegion);
             }
+
         }
 
         private void DangNhap_Load(object sender, EventArgs e)
@@ -145,6 +173,7 @@ namespace QuanLyPhongTro
 
             txtMatKhau.MaxLength = 20; // Giới hạn 20 ký tự
             txtMatKhau.KeyPress += new KeyPressEventHandler(txtMatKhau_KeyPress); // Đăng ký sự kiện KeyPress
+
         }
 
         private void cbbChungCu_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,6 +213,7 @@ namespace QuanLyPhongTro
             {
                 e.Handled = true; // Ngăn chặn Enter xuống dòng
             }
+
         }
 
         private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)
@@ -192,6 +222,7 @@ namespace QuanLyPhongTro
             {
                 e.Handled = true; // Ngăn chặn Enter xuống dòng
             }
+
         }
     }
 }

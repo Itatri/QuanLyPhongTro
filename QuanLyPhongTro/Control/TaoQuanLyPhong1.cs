@@ -20,7 +20,7 @@ namespace QuanLyPhongTro.Control
 
         private TaoQuanLyPhongBLL phongBLL = new TaoQuanLyPhongBLL();
         private TaoQuanLyPhongDAL phongDAL = new TaoQuanLyPhongDAL(); // Khai báo phongDAL
- 
+
 
         public string makhuvuc { get; set; }
 
@@ -61,7 +61,6 @@ namespace QuanLyPhongTro.Control
         int flag = 0;
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-
             SetNewMaPhong();
             txtTenPhong.Enabled = true;
             AnHienTextBox(true);
@@ -105,7 +104,7 @@ namespace QuanLyPhongTro.Control
         private void RefreshDataGridView()
         {
             var phongs = phongBLL.LayDanhSachPhong();
-            dataGridView1.DataSource  =    phongs;
+            dataGridView1.DataSource = phongs;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Ẩn cột "MaPhong"
@@ -116,7 +115,7 @@ namespace QuanLyPhongTro.Control
         }
 
 
-     
+
 
         private void SetNewMaPhong()
         {
@@ -173,7 +172,7 @@ namespace QuanLyPhongTro.Control
         private void TaoQuanLyPhong_Load(object sender, EventArgs e)
         {
             txtMaPhong.Visible = false;
-            labelMaPhong.Visible=false;
+            labelMaPhong.Visible = false;
             // Gán giá trị tên phòng bằng mã phòng cho minh dễ quản lý người dùng dễ sử dụng
             //txtTenPhong.Text = txtMaPhong.Text;
             //txtTenPhong.Enabled = ;
@@ -181,7 +180,7 @@ namespace QuanLyPhongTro.Control
             RefreshDataGridView();
             AnHienTextBox(false);
             AnHienButton(true);
-            txtTenPhong.Enabled=false;
+            txtTenPhong.Enabled = false;
 
             SetNewMaPhong();
 
@@ -214,6 +213,7 @@ namespace QuanLyPhongTro.Control
         {
             txtSodien.Enabled = t;
             txtTenPhong.Enabled = t;
+            textBoxDienTich.Enabled = t;
             textBoxTienCoc.Enabled = t;
             textBoxTienPhong.Enabled = t;
             txtSoNuoc.Enabled = t;
@@ -228,7 +228,7 @@ namespace QuanLyPhongTro.Control
         {
             txtMaPhong.Enabled = false;
             txtMaPhong.Enabled = false;
-          
+
 
 
             if (flag == 1)
@@ -250,8 +250,8 @@ namespace QuanLyPhongTro.Control
                     {
                         MaPhong = txtMaPhong.Text,
                         TenPhong = txtTenPhong.Text,
+                        DienTich = float.TryParse(textBoxDienTich.Text, out float dientich) ? dientich : 0,
                         TienPhong = float.TryParse(textBoxTienPhong.Text, out float tienphong) ? tienphong : 0,
-                        DienTich = float.TryParse(txtDienTich.Text,out float dienTich) ? dienTich : 0,
                         Dien = float.TryParse(txtSodien.Text, out float dien) ? dien : 0,
                         Nuoc = float.TryParse(txtSoNuoc.Text, out float nuoc) ? nuoc : 0,
                         TienCoc = float.TryParse(textBoxTienCoc.Text, out float tienCoc) ? tienCoc : 0,
@@ -285,7 +285,7 @@ namespace QuanLyPhongTro.Control
                 {
                     MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
                 }
-            
+
             }
             if (flag == 3)
             {
@@ -312,9 +312,10 @@ namespace QuanLyPhongTro.Control
             }
 
             txtSoNuoc.Clear();
-            txtSodien.Clear ();
+            txtSodien.Clear();
             textBoxTienPhong.Clear();
             textBoxTienCoc.Clear();
+            textBoxDienTich.Clear();
             RtxtGhiChu.Clear();
             AnHienButton(true);
             txtTenPhong.Clear();
@@ -385,7 +386,7 @@ namespace QuanLyPhongTro.Control
             var dichVuBLL = new QuanLyDichVuBLL();
             DataTable dichVuData = dichVuBLL.GetDichVuFormQLPhong(); // Lấy tất cả dịch vụ từ BLL
 
-            foreach ( DataRow item in dichVuData.Rows)
+            foreach (DataRow item in dichVuData.Rows)
             {
                 dataGridViewDichVu.Rows.Add
                     (1, item["TenDichVu"], item["DonGia"], item["MaDichVu"]);
@@ -600,6 +601,8 @@ namespace QuanLyPhongTro.Control
             }
         }
 
+
+
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             //if (e.RowIndex >= 0)
@@ -624,7 +627,6 @@ namespace QuanLyPhongTro.Control
 
                 txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString(); // Lấy giá trị từ cột "MaPhong"
                 txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
-                txtDienTich.Text = selectedRow.Cells["DienTich"].Value?.ToString();
                 textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
                 txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
                 txtSoNuoc.Text = selectedRow.Cells["Nuoc"].Value?.ToString();
@@ -677,5 +679,16 @@ namespace QuanLyPhongTro.Control
             }
         }
 
+        private void textBoxDienTich_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Ngăn không cho ký tự được nhập vào TextBox
+                e.Handled = true;
+
+                // Hiển thị thông báo cho người dùng biết phải nhập số
+                MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

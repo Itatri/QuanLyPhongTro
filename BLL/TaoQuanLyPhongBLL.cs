@@ -13,7 +13,7 @@ namespace BLL
     {
         private TaoQuanLyPhongDAL dal = new TaoQuanLyPhongDAL();
 
-    
+
 
         public DataTable LayDanhSachPhong()
         {
