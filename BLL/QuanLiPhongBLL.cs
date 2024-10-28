@@ -40,7 +40,7 @@ namespace BLL
 
         public DataTable LayDichVuTheoMaPhong(string maPhong)
         {
-            return phongDAL.LayDichVuTheoMaPhong(maPhong) ;
+            return phongDAL.LayDichVuTheoMaPhong(maPhong);
         }
     }
 }

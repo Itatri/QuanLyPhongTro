@@ -59,8 +59,8 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxDienTich = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDienTich = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu)).BeginInit();
@@ -72,7 +72,7 @@
             // txtSoNuoc
             // 
             this.txtSoNuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoNuoc.Location = new System.Drawing.Point(222, 356);
+            this.txtSoNuoc.Location = new System.Drawing.Point(222, 366);
             this.txtSoNuoc.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoNuoc.Name = "txtSoNuoc";
             this.txtSoNuoc.Size = new System.Drawing.Size(305, 26);
@@ -83,7 +83,7 @@
             // txtSodien
             // 
             this.txtSodien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSodien.Location = new System.Drawing.Point(222, 278);
+            this.txtSodien.Location = new System.Drawing.Point(222, 305);
             this.txtSodien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSodien.Name = "txtSodien";
             this.txtSodien.Size = new System.Drawing.Size(305, 26);
@@ -95,7 +95,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(26, 278);
+            this.label12.Location = new System.Drawing.Point(26, 311);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(137, 20);
@@ -107,7 +107,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(26, 356);
+            this.label13.Location = new System.Drawing.Point(26, 372);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(141, 20);
@@ -128,7 +128,7 @@
             // txtTenPhong
             // 
             this.txtTenPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenPhong.Location = new System.Drawing.Point(222, 91);
+            this.txtTenPhong.Location = new System.Drawing.Point(222, 122);
             this.txtTenPhong.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(305, 26);
@@ -138,12 +138,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("UTM American Sans", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(685, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 31);
+            this.label1.Size = new System.Drawing.Size(227, 38);
             this.label1.TabIndex = 3;
             this.label1.Text = "TẠO PHÒNG MỚI";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -172,7 +172,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 91);
+            this.label5.Location = new System.Drawing.Point(24, 128);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
@@ -193,7 +193,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtDienTich);
+            this.panel1.Controls.Add(this.textBoxDienTich);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBoxTienCoc);
             this.panel1.Controls.Add(this.RtxtGhiChu);
@@ -231,7 +231,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(26, 434);
+            this.label8.Location = new System.Drawing.Point(26, 433);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 20);
@@ -255,7 +255,7 @@
             // textBoxTienPhong
             // 
             this.textBoxTienPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTienPhong.Location = new System.Drawing.Point(222, 200);
+            this.textBoxTienPhong.Location = new System.Drawing.Point(222, 183);
             this.textBoxTienPhong.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTienPhong.Name = "textBoxTienPhong";
             this.textBoxTienPhong.Size = new System.Drawing.Size(305, 26);
@@ -267,7 +267,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 200);
+            this.label3.Location = new System.Drawing.Point(24, 189);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 20);
@@ -434,21 +434,26 @@
             this.panel4.Size = new System.Drawing.Size(1653, 61);
             this.panel4.TabIndex = 0;
             // 
+            // textBoxDienTich
+            // 
+            this.textBoxDienTich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDienTich.Location = new System.Drawing.Point(222, 244);
+            this.textBoxDienTich.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDienTich.Name = "textBoxDienTich";
+            this.textBoxDienTich.Size = new System.Drawing.Size(305, 26);
+            this.textBoxDienTich.TabIndex = 22;
+            this.textBoxDienTich.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDienTich_KeyPress);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 147);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(26, 250);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 20);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Diện tích phòng";
-            // 
-            // txtDienTich
-            // 
-            this.txtDienTich.Location = new System.Drawing.Point(222, 146);
-            this.txtDienTich.Name = "txtDienTich";
-            this.txtDienTich.Size = new System.Drawing.Size(305, 26);
-            this.txtDienTich.TabIndex = 23;
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Diện Tich:";
             // 
             // TaoQuanLyPhong1
             // 
@@ -504,7 +509,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDienTich;
+        private System.Windows.Forms.TextBox textBoxDienTich;
         private System.Windows.Forms.Label label7;
     }
 }

@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using BLL;
 using System.Configuration;
 using DAL;
-using QuanLyPhongTro;
+
 namespace QuanLyPhongTro.Control
 {
     public partial class QuanLiPhong : UserControl
@@ -20,7 +20,7 @@ namespace QuanLyPhongTro.Control
         //private ThongTinPhongBLL thongTinPhongBLL = new ThongTinPhongBLL();
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private SqlConnection con;
-        public string id {  get; set; }
+
         public string khuvuc { get; set; }
 
 
@@ -80,7 +80,7 @@ namespace QuanLyPhongTro.Control
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionForeColor = Color.White;
 
 
-         
+
         }
 
 
@@ -120,25 +120,56 @@ namespace QuanLyPhongTro.Control
 
 
 
+        //private void RefreshDataGridView()
+        //{
+        //    string query = @"
+        //   SELECT p.MaPhong, 
+        //          p.TrangThai AS [Đã thuê], 
+        //          p.TenPhong AS [Tên Phòng], 
+        //COUNT(k.MaKhachTro) AS [Số lượng người],
+        //          p.NgayVao AS [Ngày Vào], 
+        //          p.HanTro AS [Hạn trọ], 
+        //          p.TienCoc AS [Tiền cọc], 
+        //          p.TienPhong AS [Giá phòng], 
+        //          p.CongNo AS [Công nợ], 
+        //          p.GhiChu AS [Ghi chú]
+
+        //   FROM Phong p
+        //   LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
+        //   WHERE p.MaKhuVuc = @MaKhuVuc
+        //   GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
+
+        //    DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
+        //    dataGridView1.DataSource = dataTable;
+        //    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+        //    // Ẩn cột MaPhong
+        //    if (dataGridView1.Columns["MaPhong"] != null)
+        //    {
+        //        dataGridView1.Columns["MaPhong"].Visible = false; // Ẩn cột bằng tên
+        //    }
+
+        //    LoadData(); // Gọi LoadData để thêm các nút
+        //}
+        //-------------------------------------------------------------
         private void RefreshDataGridView()
         {
             string query = @"
-    SELECT p.MaPhong, 
-           p.TrangThai AS [Đã thuê], 
-           p.TenPhong AS [Tên Phòng],
-            p.DienTich AS [Diện Tích],
- COUNT(k.MaKhachTro) AS [Số lượng người],
-           p.NgayVao AS [Ngày Vào], 
-           p.HanTro AS [Hạn trọ], 
-           p.TienCoc AS [Tiền cọc], 
-           p.TienPhong AS [Giá phòng], 
-           p.CongNo AS [Công nợ], 
-           p.GhiChu AS [Ghi chú]
-          
-    FROM Phong p
-    LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
-    WHERE p.MaKhuVuc = @MaKhuVuc
-    GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu, p.DienTich";
+        SELECT p.MaPhong, 
+               p.TrangThai AS [Đã thuê], 
+               p.TenPhong AS [Tên Phòng], 
+               COUNT(k.MaKhachTro) AS [Số lượng người],
+               p.DienTich AS [Diện tích],  -- Thêm cột Diện tích
+               p.NgayVao AS [Ngày Vào], 
+               p.HanTro AS [Hạn trọ], 
+               p.TienCoc AS [Tiền cọc], 
+               p.TienPhong AS [Giá phòng], 
+               p.CongNo AS [Công nợ], 
+               p.GhiChu AS [Ghi chú]
+        FROM Phong p
+        LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
+        WHERE p.MaKhuVuc = @MaKhuVuc
+        GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.DienTich, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
 
             DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
             dataGridView1.DataSource = dataTable;
@@ -152,6 +183,7 @@ namespace QuanLyPhongTro.Control
 
             LoadData(); // Gọi LoadData để thêm các nút
         }
+
 
 
 
@@ -285,20 +317,7 @@ namespace QuanLyPhongTro.Control
                 else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
                 {
                     // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
-                    TaoCT01 tao = new TaoCT01();
-                    tao.maphong = maPhong;
-                    tao.idadmin = this.id;
-                    tao.makhuvuc = khuvuc;
-                    int check = tao.TaoTamTru();
-                    if (check == 0)
-                        MessageBox.Show("Xong");
-                    else if (check == 1)
-                        MessageBox.Show("không có chủ hộ");
-                    else if (check == 2)
-                        MessageBox.Show("trùng lập folder phòng");
-                    //TaoHopDongPhong(maPhong);
-
-
+                    TaoHopDongPhong(maPhong);
                 }
 
                 //// Cập nhật trạng thái tài khoản phòng
@@ -416,7 +435,6 @@ namespace QuanLyPhongTro.Control
 
 
 
-
         ///-------------22_10_2024
         // tô màu cho datagirdview
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -433,6 +451,5 @@ namespace QuanLyPhongTro.Control
             //    row.DefaultCellStyle.BackColor = Color.Gray;
             //}
         }
-
     }
 }

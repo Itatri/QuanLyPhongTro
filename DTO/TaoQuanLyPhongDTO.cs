@@ -14,7 +14,6 @@ namespace DTO
         public string MaKhuVuc { get; set; }
         public string TenPhong { get; set; }
         public float TienPhong { get; set; }
-        public float DienTich { get; set; }
         public DateTime? NgayVao { get; set; }
         public float TienCoc { get; set; }
         public float Dien { get; set; }
@@ -23,6 +22,7 @@ namespace DTO
         public DateTime? HanTro { get; set; }
         public bool? TrangThai { get; set; }
         public string GhiChu { get; set; }
+        public float DienTich { get; set; }
 
 
         public TaoQuanLyPhongDTO()
@@ -30,13 +30,12 @@ namespace DTO
 
         }
         // Constructor with parameters
-        public TaoQuanLyPhongDTO(string maPhong, string maKhuVuc, string tenPhong,float dientich, float tienPhong, DateTime? ngayVao, float tienCoc, float dien, float nuoc, float? congNo, DateTime? hanTro, bool? trangThai, string ghiChu)
+        public TaoQuanLyPhongDTO(string maPhong, string maKhuVuc, string tenPhong, float tienPhong, DateTime? ngayVao, float tienCoc, float dien, float nuoc, float? congNo, DateTime? hanTro, bool? trangThai, string ghiChu, float dienTich)
         {
             MaPhong = maPhong;
             MaKhuVuc = maKhuVuc;
             TenPhong = tenPhong;
             TienPhong = tienPhong;
-            DienTich = dientich;
             NgayVao = ngayVao;
             TienCoc = tienCoc;
             Dien = dien;
@@ -45,6 +44,7 @@ namespace DTO
             HanTro = hanTro;
             TrangThai = trangThai;
             GhiChu = ghiChu;
+            DienTich = dienTich;
         }
 
     }

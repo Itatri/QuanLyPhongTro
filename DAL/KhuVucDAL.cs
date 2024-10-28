@@ -14,7 +14,7 @@ namespace DAL
         // Lấy chuỗi kết nối từ tệp App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
-       
+
         public KhuVucDTO GetKhuVucByMaKhuVuc(string maKhuVuc)
         {
             KhuVucDTO khuVuc = null;
