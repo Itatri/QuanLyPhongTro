@@ -16,7 +16,9 @@
 - Microsoft SQL Server
 - Windows Forms App .Net Framework
 
+### Mô hình 
 
+- Mô hình 3 lớp ( GUI , BLL , DAL )
 
 
 ### Demo
