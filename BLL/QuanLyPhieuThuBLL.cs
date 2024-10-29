@@ -54,7 +54,14 @@ namespace BLL
         {
             tkDal.UpdatePhong(maPhong, dien, nuoc, congno);
         }
-
+        public int CountKhach(string phong)
+        {
+            return tkDal.CountKhach(phong);
+        }
+        public string GetMAByTenPhong(string phong)
+        {
+            return tkDal.GetMAByTenPhong(phong);
+        }
 
 
 

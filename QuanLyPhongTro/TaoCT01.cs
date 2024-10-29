@@ -141,7 +141,7 @@ namespace QuanLyPhongTro
                 {
                     dic.Add("HotenMe", "(7) Họ và tên: " + me.HoTen);
                     dic.Add("CCCDMe", "(7) Số định danh cá nhân:" + me.CCCD);
-                    chukyMe = xuly.XuLy(chuho.ChuKy);
+                    chukyMe = xuly.XuLy(me.ChuKy);
                     if (chukyMe != null)
                     {
                         wd.ReplaceFieldWithImage("ChuKyMe", chukyMe);
@@ -193,7 +193,7 @@ namespace QuanLyPhongTro
             dic.Add("MM", MM);
             dic.Add("yyyy", yyyy);
             dic.Add("DienTichPhong", dt.Rows[0]["DienTich"].ToString());
-            dic.Add("TienPhong", dt.Rows[0]["TienPhong"].ToString());
+            dic.Add("TienPhong", Convert.ToDecimal(dt.Rows[0]["TienPhong"]).ToString("N0"));
             khach.Clear();
             khach.Add(chuho.MaKhachTro);
             System.Data.DataTable bang = BangHopDong(lst);
