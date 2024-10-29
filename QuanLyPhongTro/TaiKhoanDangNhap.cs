@@ -475,5 +475,12 @@ namespace QuanLyPhongTro
             textBoxMatKhau.Enabled = false;
             comboBoxKhuVuc.Enabled = false;
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DangNhap dangNhapForm = new DangNhap();
+            dangNhapForm.Show();
+            this.Hide(); // Ẩn MainForm
+        }
     }
 }

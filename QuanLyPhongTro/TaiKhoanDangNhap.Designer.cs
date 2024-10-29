@@ -41,6 +41,7 @@
             this.dataGridViewTaiKhoan = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTaiKhoan)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +51,9 @@
             this.buttonLuu.BackColor = System.Drawing.Color.Blue;
             this.buttonLuu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.buttonLuu.ForeColor = System.Drawing.Color.White;
-            this.buttonLuu.Location = new System.Drawing.Point(677, 390);
+            this.buttonLuu.Location = new System.Drawing.Point(214, 390);
             this.buttonLuu.Name = "buttonLuu";
-            this.buttonLuu.Size = new System.Drawing.Size(149, 34);
+            this.buttonLuu.Size = new System.Drawing.Size(134, 34);
             this.buttonLuu.TabIndex = 23;
             this.buttonLuu.Text = "Lưu";
             this.buttonLuu.UseVisualStyleBackColor = false;
@@ -63,9 +64,9 @@
             this.buttonXoa.BackColor = System.Drawing.Color.Blue;
             this.buttonXoa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.buttonXoa.ForeColor = System.Drawing.Color.White;
-            this.buttonXoa.Location = new System.Drawing.Point(470, 390);
+            this.buttonXoa.Location = new System.Drawing.Point(536, 390);
             this.buttonXoa.Name = "buttonXoa";
-            this.buttonXoa.Size = new System.Drawing.Size(149, 34);
+            this.buttonXoa.Size = new System.Drawing.Size(134, 34);
             this.buttonXoa.TabIndex = 22;
             this.buttonXoa.Text = "Xóa";
             this.buttonXoa.UseVisualStyleBackColor = false;
@@ -76,9 +77,9 @@
             this.buttonSua.BackColor = System.Drawing.Color.Blue;
             this.buttonSua.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.buttonSua.ForeColor = System.Drawing.Color.White;
-            this.buttonSua.Location = new System.Drawing.Point(263, 390);
+            this.buttonSua.Location = new System.Drawing.Point(375, 390);
             this.buttonSua.Name = "buttonSua";
-            this.buttonSua.Size = new System.Drawing.Size(149, 34);
+            this.buttonSua.Size = new System.Drawing.Size(134, 34);
             this.buttonSua.TabIndex = 21;
             this.buttonSua.Text = "Cập nhật";
             this.buttonSua.UseVisualStyleBackColor = false;
@@ -91,7 +92,7 @@
             this.buttonThem.ForeColor = System.Drawing.Color.White;
             this.buttonThem.Location = new System.Drawing.Point(53, 390);
             this.buttonThem.Name = "buttonThem";
-            this.buttonThem.Size = new System.Drawing.Size(149, 34);
+            this.buttonThem.Size = new System.Drawing.Size(134, 34);
             this.buttonThem.TabIndex = 20;
             this.buttonThem.Text = "Thêm";
             this.buttonThem.UseVisualStyleBackColor = false;
@@ -179,6 +180,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnThoat);
             this.panel1.Controls.Add(this.buttonThem);
             this.panel1.Controls.Add(this.buttonSua);
             this.panel1.Controls.Add(this.buttonLuu);
@@ -191,6 +193,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(863, 455);
             this.panel1.TabIndex = 24;
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.BackColor = System.Drawing.Color.Blue;
+            this.btnThoat.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Location = new System.Drawing.Point(697, 390);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(134, 34);
+            this.btnThoat.TabIndex = 24;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // TaiKhoanDangNhap
             // 
@@ -229,5 +244,6 @@
         private System.Windows.Forms.DataGridView dataGridViewTaiKhoan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

@@ -41,6 +41,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labelMaPhong = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxDienTich = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBoxTienCoc = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxDienTich = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu)).BeginInit();
@@ -76,7 +76,7 @@
             this.txtSoNuoc.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoNuoc.Name = "txtSoNuoc";
             this.txtSoNuoc.Size = new System.Drawing.Size(305, 26);
-            this.txtSoNuoc.TabIndex = 4;
+            this.txtSoNuoc.TabIndex = 5;
             this.txtSoNuoc.TextChanged += new System.EventHandler(this.txtSoNuoc_TextChanged);
             this.txtSoNuoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoNuoc_KeyPress);
             // 
@@ -87,7 +87,7 @@
             this.txtSodien.Margin = new System.Windows.Forms.Padding(2);
             this.txtSodien.Name = "txtSodien";
             this.txtSodien.Size = new System.Drawing.Size(305, 26);
-            this.txtSodien.TabIndex = 3;
+            this.txtSodien.TabIndex = 4;
             this.txtSodien.TextChanged += new System.EventHandler(this.txtSodien_TextChanged);
             this.txtSodien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSodien_KeyPress);
             // 
@@ -121,7 +121,7 @@
             this.RtxtGhiChu.Margin = new System.Windows.Forms.Padding(2);
             this.RtxtGhiChu.Name = "RtxtGhiChu";
             this.RtxtGhiChu.Size = new System.Drawing.Size(599, 162);
-            this.RtxtGhiChu.TabIndex = 6;
+            this.RtxtGhiChu.TabIndex = 7;
             this.RtxtGhiChu.Text = "";
             this.RtxtGhiChu.TextChanged += new System.EventHandler(this.RtxtGhiChu_TextChanged);
             // 
@@ -216,6 +216,27 @@
             this.panel1.TabIndex = 21;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // textBoxDienTich
+            // 
+            this.textBoxDienTich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDienTich.Location = new System.Drawing.Point(222, 244);
+            this.textBoxDienTich.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDienTich.Name = "textBoxDienTich";
+            this.textBoxDienTich.Size = new System.Drawing.Size(305, 26);
+            this.textBoxDienTich.TabIndex = 3;
+            this.textBoxDienTich.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDienTich_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(26, 250);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Diện Tich:";
+            // 
             // textBoxTienCoc
             // 
             this.textBoxTienCoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -223,7 +244,7 @@
             this.textBoxTienCoc.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTienCoc.Name = "textBoxTienCoc";
             this.textBoxTienCoc.Size = new System.Drawing.Size(305, 26);
-            this.textBoxTienCoc.TabIndex = 5;
+            this.textBoxTienCoc.TabIndex = 6;
             this.textBoxTienCoc.TextChanged += new System.EventHandler(this.textBoxTienCoc_TextChanged);
             this.textBoxTienCoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTienCoc_KeyPress);
             // 
@@ -371,7 +392,7 @@
             this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(348, 40);
-            this.btnQuayLai.TabIndex = 27;
+            this.btnQuayLai.TabIndex = 10;
             this.btnQuayLai.Text = "Quay lại";
             this.btnQuayLai.UseVisualStyleBackColor = false;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
@@ -387,7 +408,7 @@
             this.buttonLuu.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLuu.Name = "buttonLuu";
             this.buttonLuu.Size = new System.Drawing.Size(348, 40);
-            this.buttonLuu.TabIndex = 8;
+            this.buttonLuu.TabIndex = 9;
             this.buttonLuu.Text = "Lưu";
             this.buttonLuu.UseVisualStyleBackColor = false;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
@@ -403,7 +424,7 @@
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(348, 40);
-            this.btnDangKy.TabIndex = 7;
+            this.btnDangKy.TabIndex = 8;
             this.btnDangKy.Text = "Thêm";
             this.btnDangKy.UseVisualStyleBackColor = false;
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
@@ -433,27 +454,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1653, 61);
             this.panel4.TabIndex = 0;
-            // 
-            // textBoxDienTich
-            // 
-            this.textBoxDienTich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDienTich.Location = new System.Drawing.Point(222, 244);
-            this.textBoxDienTich.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDienTich.Name = "textBoxDienTich";
-            this.textBoxDienTich.Size = new System.Drawing.Size(305, 26);
-            this.textBoxDienTich.TabIndex = 22;
-            this.textBoxDienTich.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDienTich_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 250);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 20);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Diện Tich:";
             // 
             // TaoQuanLyPhong1
             // 

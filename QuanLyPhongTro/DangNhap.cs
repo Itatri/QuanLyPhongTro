@@ -90,8 +90,19 @@ namespace QuanLyPhongTro
         }
         private bool ValidateSpecialLogin(string id, string password)
         {
-            return string.Equals(id, "DN01", StringComparison.Ordinal) &&
-                   string.Equals(password, "pass123", StringComparison.Ordinal);
+            
+
+            // Giả sử cbbChungCu là tên của ComboBox
+            if (string.Equals(id, "DN01", StringComparison.Ordinal) &&
+                string.Equals(password, "pass123", StringComparison.Ordinal) &&
+                string.IsNullOrEmpty(cbbChungCu.Text))
+            {
+                return true;
+            }
+
+            return false;
+
+
         }
 
 

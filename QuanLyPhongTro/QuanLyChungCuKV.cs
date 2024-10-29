@@ -45,8 +45,8 @@ namespace QuanLyPhongTro
             buttonXoa.Enabled = false;
             buttonCapNhat.Enabled = false;
             buttonThem.Enabled = false;
-           
-         
+
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -68,7 +68,7 @@ namespace QuanLyPhongTro
         {
 
             LoadKhuVucData(); // Gọi phương thức để tải dữ liệu khi form tải
-            
+
             // Ẩn hiển textbox
             textBoxMaChungCu.Enabled = false;
             textBoxTenChungCu.Enabled = false;
@@ -84,21 +84,59 @@ namespace QuanLyPhongTro
 
         private void LoadKhuVucData()
         {
+            //using (SqlConnection connection = new SqlConnection(chuoiketnoi))
+            //{
+            //    connection.Open();
+
+            //    // Truy vấn để lấy thông tin khu vực, số lượng phòng và số người trong khu vực
+            //    string query = @"
+            //SELECT kv.MaKhuVuc, 
+            //       kv.TenKhuVuc, 
+            //       COUNT(DISTINCT p.MaPhong) AS SoLuongPhong,  -- Đếm số phòng trong khu vực
+            //       COUNT(DISTINCT ttk.MaKhachTro) AS SoNguoiO,   -- Đếm số người ở trong khu vực
+            //       kv.TrangThai
+            //FROM KhuVuc kv
+            //LEFT JOIN Phong p ON kv.MaKhuVuc = p.MaKhuVuc
+            //LEFT JOIN ThongTinKhach ttk ON p.MaPhong = ttk.MaPhong
+            //GROUP BY kv.MaKhuVuc, kv.TenKhuVuc, kv.TrangThai";
+
+            //    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            //    DataTable dataTable = new DataTable();
+            //    adapter.Fill(dataTable);
+
+            //    // Gán dữ liệu vào DataGridView
+            //    dataGridView1.DataSource = dataTable;
+
+            //    // Đặt tên hiển thị cho các cột mới
+            //    dataGridView1.Columns["MaKhuVuc"].HeaderText = "Mã khu vực";
+            //    dataGridView1.Columns["TenKhuVuc"].HeaderText = "Tên khu vực";
+            //    dataGridView1.Columns["SoLuongPhong"].HeaderText = "Số phòng";
+            //    dataGridView1.Columns["SoNguoiO"].HeaderText = "Số người";
+            //    dataGridView1.Columns["TrangThai"].HeaderText = "Trạng thái";
+
+            //    // Sắp xếp lại thứ tự cột
+            //    dataGridView1.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã khu vực
+            //    dataGridView1.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên khu vực
+            //    dataGridView1.Columns["SoLuongPhong"].DisplayIndex = 2; // Số phòng
+            //    dataGridView1.Columns["SoNguoiO"].DisplayIndex = 3; // Số người
+            //    dataGridView1.Columns["TrangThai"].DisplayIndex = 4; // Trạng thái
+            //}
+
             using (SqlConnection connection = new SqlConnection(chuoiketnoi))
             {
                 connection.Open();
 
                 // Truy vấn để lấy thông tin khu vực, số lượng phòng và số người trong khu vực
                 string query = @"
-            SELECT kv.MaKhuVuc, 
-                   kv.TenKhuVuc, 
-                   COUNT(DISTINCT p.MaPhong) AS SoLuongPhong,  -- Đếm số phòng trong khu vực
-                   COUNT(DISTINCT ttk.MaKhachTro) AS SoNguoiO,   -- Đếm số người ở trong khu vực
-                   kv.TrangThai
-            FROM KhuVuc kv
-            LEFT JOIN Phong p ON kv.MaKhuVuc = p.MaKhuVuc
-            LEFT JOIN ThongTinKhach ttk ON p.MaPhong = ttk.MaPhong
-            GROUP BY kv.MaKhuVuc, kv.TenKhuVuc, kv.TrangThai";
+    SELECT kv.MaKhuVuc, 
+           kv.TenKhuVuc, 
+           COUNT(DISTINCT p.MaPhong) AS SoLuongPhong,  -- Đếm số phòng trong khu vực
+           COUNT(DISTINCT ttk.MaKhachTro) AS SoNguoiO,   -- Đếm số người ở trong khu vực
+           kv.TrangThai
+    FROM KhuVuc kv
+    LEFT JOIN Phong p ON kv.MaKhuVuc = p.MaKhuVuc
+    LEFT JOIN ThongTinKhach ttk ON p.MaPhong = ttk.MaPhong
+    GROUP BY kv.MaKhuVuc, kv.TenKhuVuc, kv.TrangThai";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dataTable = new DataTable();
@@ -108,15 +146,15 @@ namespace QuanLyPhongTro
                 dataGridView1.DataSource = dataTable;
 
                 // Đặt tên hiển thị cho các cột mới
-                dataGridView1.Columns["MaKhuVuc"].HeaderText = "Mã khu vực";
-                dataGridView1.Columns["TenKhuVuc"].HeaderText = "Tên khu vực";
+                dataGridView1.Columns["MaKhuVuc"].HeaderText = "Mã chung cư";
+                dataGridView1.Columns["TenKhuVuc"].HeaderText = "Tên chung cư";
                 dataGridView1.Columns["SoLuongPhong"].HeaderText = "Số phòng";
                 dataGridView1.Columns["SoNguoiO"].HeaderText = "Số người";
                 dataGridView1.Columns["TrangThai"].HeaderText = "Trạng thái";
 
                 // Sắp xếp lại thứ tự cột
-                dataGridView1.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã khu vực
-                dataGridView1.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên khu vực
+                dataGridView1.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã chung cư
+                dataGridView1.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên chung cư
                 dataGridView1.Columns["SoLuongPhong"].DisplayIndex = 2; // Số phòng
                 dataGridView1.Columns["SoNguoiO"].DisplayIndex = 3; // Số người
                 dataGridView1.Columns["TrangThai"].DisplayIndex = 4; // Trạng thái
@@ -179,7 +217,7 @@ namespace QuanLyPhongTro
 
             // Hiển thị form dưới dạng không modal (người dùng có thể tương tác với các form khác)
             taiKhoanForm.Show();
-
+            this.Hide(); // Ẩn MainForm
             // Nếu muốn hiển thị form dưới dạng modal (người dùng không thể tương tác với form khác)
             // taiKhoanForm.ShowDialog();
         }

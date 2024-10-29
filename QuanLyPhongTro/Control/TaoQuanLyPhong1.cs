@@ -22,7 +22,8 @@ namespace QuanLyPhongTro.Control
         private TaoQuanLyPhongDAL phongDAL = new TaoQuanLyPhongDAL(); // Khai báo phongDAL
 
 
-        public string makhuvuc { get; set; }
+
+        public string makhuvuctaophong { get; set; }
 
 
         public TaoQuanLyPhong1()
@@ -30,7 +31,7 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
             phongDAL = new TaoQuanLyPhongDAL(); // Initialize DAL
             phongBLL = new TaoQuanLyPhongBLL();
-            this.makhuvuc = region; // Set the region
+            this.makhuvuctaophong = region; // Set the region
             SetNewMaPhong(); // Tạo mã phòng mới ngay khi khởi tạo
 
         }
@@ -74,7 +75,7 @@ namespace QuanLyPhongTro.Control
             if (this.ParentForm is MainForm mainForm)
             {
                 QuanLiPhong f = new QuanLiPhong();
-                f.khuvuc = makhuvuc;
+                f.khuvuc = makhuvuctaophong;
                 mainForm.ShowControl(f);
             }
         }
@@ -233,11 +234,11 @@ namespace QuanLyPhongTro.Control
 
             if (flag == 1)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thêm dịch vụ này?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
+                //DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thêm dịch vụ này?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //if (dialogResult == DialogResult.No)
+                //{
+                //    return;
+                //}
 
                 if (!ValidateServiceInputs())
                 {
@@ -256,11 +257,11 @@ namespace QuanLyPhongTro.Control
                         Nuoc = float.TryParse(txtSoNuoc.Text, out float nuoc) ? nuoc : 0,
                         TienCoc = float.TryParse(textBoxTienCoc.Text, out float tienCoc) ? tienCoc : 0,
                         GhiChu = RtxtGhiChu.Text,
-                        MaKhuVuc = makhuvuc // Ensure makhuvuc is valid
+                        MaKhuVuc = makhuvuctaophong // Ensure makhuvuc is valid
                     };
 
                     bool insertResult = phongBLL.InsertPhong(phong);
-                    MessageBox.Show(insertResult ? "Thêm phòng thành công!" : "Thêm phòng thất bại!");
+                    //MessageBox.Show(insertResult ? "Thêm phòng thành công!" : "Thêm phòng thất bại!");
 
                     if (insertResult)
                     {
@@ -272,7 +273,7 @@ namespace QuanLyPhongTro.Control
 
                         if (insertDichVuResult)
                         {
-                            MessageBox.Show("Thành công");
+                            //MessageBox.Show("Thành công");
                             RefreshDataGridView();
                         }
                         else
@@ -605,22 +606,6 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-            //    txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString();
-            //    txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
-            //    textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
-            //    txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
-            //    txtSoNuoc.Text = selectedRow.Cells["Nuoc"].Value?.ToString();
-            //    textBoxTienCoc.Text = selectedRow.Cells["TienCoc"].Value?.ToString();
-            //    RtxtGhiChu.Text = selectedRow.Cells["GhiChu"].Value?.ToString();
-
-            //    // Gọi phương thức LoadDichVuByMaPhong
-            //    LoadDichVuByMaPhong(txtMaPhong.Text);
-            //}
-
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
@@ -628,6 +613,9 @@ namespace QuanLyPhongTro.Control
                 txtMaPhong.Text = selectedRow.Cells["MaPhong"].Value?.ToString(); // Lấy giá trị từ cột "MaPhong"
                 txtTenPhong.Text = selectedRow.Cells["TenPhong"].Value?.ToString();
                 textBoxTienPhong.Text = selectedRow.Cells["TienPhong"].Value?.ToString();
+
+                textBoxDienTich.Text = selectedRow.Cells["dientich"].Value?.ToString();
+
                 txtSodien.Text = selectedRow.Cells["Dien"].Value?.ToString();
                 txtSoNuoc.Text = selectedRow.Cells["Nuoc"].Value?.ToString();
                 textBoxTienCoc.Text = selectedRow.Cells["TienCoc"].Value?.ToString();

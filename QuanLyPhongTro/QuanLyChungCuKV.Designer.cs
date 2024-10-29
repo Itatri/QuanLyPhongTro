@@ -42,8 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonTaiKhoan = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.buttonTaiKhoan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -135,7 +135,7 @@
             this.textBoxTenChungCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTenChungCu.Location = new System.Drawing.Point(146, 140);
             this.textBoxTenChungCu.Name = "textBoxTenChungCu";
-            this.textBoxTenChungCu.Size = new System.Drawing.Size(344, 26);
+            this.textBoxTenChungCu.Size = new System.Drawing.Size(477, 26);
             this.textBoxTenChungCu.TabIndex = 16;
             this.textBoxTenChungCu.TextChanged += new System.EventHandler(this.textBoxTenChungCu_TextChanged);
             // 
@@ -154,7 +154,7 @@
             this.textBoxMaChungCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMaChungCu.Location = new System.Drawing.Point(146, 85);
             this.textBoxMaChungCu.Name = "textBoxMaChungCu";
-            this.textBoxMaChungCu.Size = new System.Drawing.Size(344, 26);
+            this.textBoxMaChungCu.Size = new System.Drawing.Size(477, 26);
             this.textBoxMaChungCu.TabIndex = 14;
             this.textBoxMaChungCu.TextChanged += new System.EventHandler(this.textBoxMaChungCu_TextChanged);
             // 
@@ -203,6 +203,16 @@
             this.panel1.Size = new System.Drawing.Size(1064, 528);
             this.panel1.TabIndex = 20;
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
+            this.btnLoad.Location = new System.Drawing.Point(969, 123);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(48, 46);
+            this.btnLoad.TabIndex = 21;
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // buttonTaiKhoan
             // 
             this.buttonTaiKhoan.BackColor = System.Drawing.Color.Blue;
@@ -215,16 +225,6 @@
             this.buttonTaiKhoan.Text = "Tài Khoản";
             this.buttonTaiKhoan.UseVisualStyleBackColor = false;
             this.buttonTaiKhoan.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
-            this.btnLoad.Location = new System.Drawing.Point(969, 123);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(48, 46);
-            this.btnLoad.TabIndex = 21;
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // QuanLyChungCuKV
             // 
