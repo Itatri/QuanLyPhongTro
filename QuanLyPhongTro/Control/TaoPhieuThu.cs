@@ -1,11 +1,13 @@
 ﻿using BLL;
 using DTO;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +18,9 @@ namespace QuanLyPhongTro.Control
     {
         public string khuvuc {  get; set; }
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
-        DataTable datatable;
+        System.Data.DataTable datatable;
+        const int sokhoinuoc = 2;
+        string maphong = string.Empty;
         public TaoPhieuThu()
         {
             InitializeComponent();
@@ -24,11 +28,13 @@ namespace QuanLyPhongTro.Control
 
         private void TaoPhieuThu_Load(object sender, EventArgs e)
         {
+            dtpNgayLap.Format = DateTimePickerFormat.Custom;
+            dtpNgayLap.CustomFormat = "dd/MM/yyyy";
             LoadPhong(khuvuc);
         }
         private void LoadPhong (string khuvuc)
         {
-            DataTable dt = bll.GetPhong(khuvuc);
+            System.Data.DataTable dt = bll.GetPhong(khuvuc);
             foreach (DataRow dr in dt.Rows)
             {
                 cboPhong.Items.Add(dr[0].ToString());
@@ -36,7 +42,7 @@ namespace QuanLyPhongTro.Control
         }
         private void LoadDVPhong(string phong)
         {
-            datatable = new DataTable();
+            datatable = new System.Data.DataTable();
             // Gọi phương thức lấy dữ liệu dịch vụ từ lớp BLL
             datatable = bll.LoadDVPhong(phong);
             // Xóa tất cả các dòng hiện có trong DataGridView trước khi thêm mới
@@ -45,7 +51,7 @@ namespace QuanLyPhongTro.Control
             foreach (DataRow dr in datatable.Rows)
             {
 
-                if (dr["TenDichVu"].Equals("Điện") || dr["TenDichVu"].Equals("Nước"))
+                if (dr["TenDichVu"].Equals("Dịch vụ điện") || dr["TenDichVu"].Equals("Dịch vụ nước"))
                     continue;
                 else dgvDichVu.Rows.Add(1, dr["TenDichVu"], dr["DonGia"], dr["MaDichVu"]);
             }
@@ -64,15 +70,18 @@ namespace QuanLyPhongTro.Control
             {
                 OpenCloseText(true);
                 txtma.Text = "PT_" + cboPhong.Text + DateTime.Now.ToString("ddMMyy");
-                DataTable dt = bll.LoadPhong(cboPhong.Text);
+                maphong = bll.GetMAByTenPhong(cboPhong.Text);
+                int dem = bll.CountKhach(maphong);
+                System.Data.DataTable dt = bll.LoadPhong(maphong);
                 if (dt.Rows.Count > 0)
                 {
                     txtCongNo.Text = dt.Rows[0]["CongNo"].ToString();
                     txtTienNha.Text = dt.Rows[0]["TienPhong"].ToString();
                     txtDC.Text = dt.Rows[0]["Dien"].ToString();
                     txtNC.Text = dt.Rows[0]["Nuoc"].ToString();
+                    txtNM.Text = (float.Parse(dt.Rows[0]["Nuoc"].ToString()) + (sokhoinuoc * dem)).ToString();
                 }
-                LoadDVPhong(cboPhong.Text);
+                LoadDVPhong(maphong);
             }
         }
 
@@ -111,7 +120,7 @@ namespace QuanLyPhongTro.Control
                 float dongia = 0;
                 foreach(DataRow dr in datatable.Rows)
                 {
-                    if (dr["TenDichVu"].Equals("Điện"))
+                    if (dr["TenDichVu"].Equals("Dịch vụ điện"))
                         dongia = float.Parse(dr["DonGia"].ToString());
                 }
                 txtTienDien.Text = (dien * dongia).ToString();
@@ -127,7 +136,7 @@ namespace QuanLyPhongTro.Control
                 float dongia = 0;
                 foreach (DataRow dr in datatable.Rows)
                 {
-                    if (dr["TenDichVu"].Equals("Nước"))
+                    if (dr["TenDichVu"].Equals("Dịch vụ nước"))
                         dongia = float.Parse(dr["DonGia"].ToString());
                 }
                 txtTienNuoc.Text = (nuoc * dongia).ToString();
@@ -180,10 +189,10 @@ namespace QuanLyPhongTro.Control
                 return pt = null;
             }
             pt.MaPT = txtma.Text;
-            pt.MaPhong = cboPhong.Text;
+            pt.MaPhong = maphong;
             pt.TienNha = float.Parse(txtTienNha.Text);
-            pt.NgayLap = DateTime.Now;
-            pt.NgayThu = DateTime.Now;
+            pt.NgayLap = dtpNgayLap.Value;
+            pt.NgayThu = dtpNgayLap.Value;
             pt.DienCu = float.Parse(txtDC.Text);
             pt.DienMoi = float.Parse(txtDM.Text);
             pt.TienDien = float.Parse(txtTienDien.Text);
@@ -217,7 +226,18 @@ namespace QuanLyPhongTro.Control
                     lst.Add(ct);
                 }
             }
-            return lst;
+            foreach (DataRow dr in datatable.Rows)
+            {
+                if(dr["TenDichVu"].Equals("Dịch vụ nước")|| dr["TenDichVu"].Equals("Dịch vụ điện"))
+                {
+                    ChiTietDichVuPT ct = new ChiTietDichVuPT();
+                    ct.MaPT = txtma.Text;
+                    ct.TenDV = dr["TenDichVu"].ToString();
+                    ct.DonGia = float.Parse(dr["DonGia"].ToString());
+                    lst.Add(ct);
+                }
+            }
+                return lst;
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
@@ -242,7 +262,7 @@ namespace QuanLyPhongTro.Control
                     float.TryParse(txtKhachTra.Text, out khachtra);
                     float congno = float.Parse(txtCongNo.Text) - (khachtra - float.Parse(txtTongTien.Text));
                     bll.CreateDichVuPhieuThu(lst);
-                    bll.UpdatePhong(cboPhong.Text, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
+                    bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
                     MessageBox.Show("Thành Công");
                 }
 
@@ -285,6 +305,11 @@ namespace QuanLyPhongTro.Control
                 TongTien();
             }
 
+        }
+
+        private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
+        {
+            txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
         }
     }
 }

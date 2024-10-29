@@ -303,7 +303,8 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+            // Convert back to FormC and remove all spaces
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC).Replace(" ", "");
         }
 
 
