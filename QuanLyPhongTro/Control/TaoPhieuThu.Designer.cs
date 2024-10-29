@@ -259,6 +259,7 @@
             this.txtNM.Size = new System.Drawing.Size(210, 30);
             this.txtNM.TabIndex = 17;
             this.txtNM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNM.TextChanged += new System.EventHandler(this.txtNM_TextChanged);
             this.txtNM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNM_KeyPress);
             this.txtNM.Leave += new System.EventHandler(this.txtNM_Leave);
             // 
@@ -272,6 +273,7 @@
             this.txtDM.Size = new System.Drawing.Size(210, 30);
             this.txtDM.TabIndex = 11;
             this.txtDM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDM.TextChanged += new System.EventHandler(this.txtDM_TextChanged);
             this.txtDM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDM_KeyPress);
             this.txtDM.Leave += new System.EventHandler(this.txtDM_Leave);
             // 
