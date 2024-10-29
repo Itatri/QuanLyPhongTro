@@ -20,6 +20,7 @@ namespace QuanLyPhongTro.Control
         //private ThongTinPhongBLL thongTinPhongBLL = new ThongTinPhongBLL();
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private SqlConnection con;
+        public string id { get; set; }
 
         public string khuvuc { get; set; }
 
@@ -294,38 +295,39 @@ namespace QuanLyPhongTro.Control
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem người dùng có nhấn vào cột nút hay không
-            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index || e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index))
-            {
-                // Lấy giá trị của cột MaPhong từ hàng được chọn
-                string maPhong = dataGridView1.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
+            //if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index || e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index))
+            //{
+            //    // Lấy giá trị của cột MaPhong từ hàng được chọn
+            //    string maPhong = dataGridView1.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
 
-                if (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index)
-                {
-                    if (this.ParentForm is MainForm mainForm)
-                    {
-                        ThongTinPhong ThongTinPhongControl = new ThongTinPhong
-                        {
-                            KhuVuc = this.khuvuc,
-                            // Truyền lại giá trị khu vực
+            //    if (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index)
+            //    {
+            //        if (this.ParentForm is MainForm mainForm)
+            //        {
+            //            ThongTinPhong ThongTinPhongControl = new ThongTinPhong
+            //            {
+            //                KhuVuc = this.khuvuc,
+            //                // Truyền lại giá trị khu vực
 
-                            //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
-                            MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
-                        };
-                        mainForm.ShowControl(ThongTinPhongControl);
-                    }
-                }
-                else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
-                {
-                    // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
-                    TaoHopDongPhong(maPhong);
-                }
+            //                //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
+            //                MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
+            //            };
+            //            mainForm.ShowControl(ThongTinPhongControl);
+            //        }
+            //    }
+            //    else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
+            //    {
 
-                //// Cập nhật trạng thái tài khoản phòng
-                //UpdateRoomAccountStatus(maPhong, false);
+            //        // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
+            //        TaoHopDongPhong(maPhong);
+            //    }
 
-                // Xóa tài khoản phòng
-                DeleteRoomAccount(maPhong);
-            }
+            //    //// Cập nhật trạng thái tài khoản phòng
+            //    //UpdateRoomAccountStatus(maPhong, false);
+
+            //    // Xóa tài khoản phòng
+            //    DeleteRoomAccount(maPhong);
+            //}
         }
 
         // Phương thức để xem chi tiết phòng
@@ -450,6 +452,59 @@ namespace QuanLyPhongTro.Control
             //{
             //    row.DefaultCellStyle.BackColor = Color.Gray;
             //}
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Lấy giá trị của cột MaPhong từ hàng được chọn
+                string maPhong = dataGridView1.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
+
+                if (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index)
+                {
+                    if (this.ParentForm is MainForm mainForm)
+                    {
+                        ThongTinPhong ThongTinPhongControl = new ThongTinPhong
+                        {
+                            KhuVuc = this.khuvuc,
+                            // Truyền lại giá trị khu vực
+
+                            //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
+                            MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
+                        };
+                        mainForm.ShowControl(ThongTinPhongControl);
+                    }
+                }
+                else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
+                {
+                    // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
+                    if ((bool)dataGridView1.Rows[e.RowIndex].Cells["Đã thuê"].Value == true)
+                    {
+                        if ((int)dataGridView1.Rows[e.RowIndex].Cells["Số lượng người"].Value > 0)
+                        {
+                            TaoCT01 tao = new TaoCT01();
+                            tao.maphong = maPhong;
+                            tao.idadmin = this.id;
+                            tao.makhuvuc = khuvuc;
+                            int check = tao.TaoTamTru();
+                            if (check == 0)
+                                MessageBox.Show("Xong");
+                            else if (check == 1)
+                                MessageBox.Show("không có chủ hộ");
+                            else if (check == 2)
+                                MessageBox.Show("trùng lập folder phòng");
+                        }
+                    }
+
+                }
+
+                //// Cập nhật trạng thái tài khoản phòng
+                //UpdateRoomAccountStatus(maPhong, false);
+
+                // Xóa tài khoản phòng
+                //DeleteRoomAccount(maPhong);
+            }
         }
     }
 }

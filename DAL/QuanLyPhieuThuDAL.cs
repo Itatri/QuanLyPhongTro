@@ -49,7 +49,7 @@ namespace DAL
         /////////////Tạo PT
         public DataTable GetPhong(string khuvuc)
         {
-            string query = "SELECT MaPhong FROM Phong WHERE MaKhuVuc = @KhuVuc";
+            string query = "SELECT TenPhong FROM Phong WHERE MaKhuVuc = @KhuVuc AND TrangThai = 1";
 
             // Tạo một DataTable để chứa kết quả
             DataTable dt = new DataTable();
@@ -218,6 +218,71 @@ namespace DAL
                     }
                 }
             }
+        }
+
+        public int CountKhach(string phong)
+        {
+            int count = 0;
+            string query = "SELECT COUNT(*) FROM ThongTinKhach WHERE MaPhong = @MaPhong AND TrangThai = 1";
+
+            // Sử dụng đối tượng kết nối và lệnh (ví dụ SqlConnection, SqlCommand)
+            using (SqlConnection connection = new SqlConnection(strConn))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số để tránh lỗi SQL Injection
+                    command.Parameters.AddWithValue("@MaPhong", phong);
+
+                    try
+                    {
+                        connection.Open();
+                        // Thực thi truy vấn và ép kiểu kết quả về int
+                        count = (int)command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi, ghi log hoặc hiển thị thông báo nếu cần
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return count;
+        }
+        public string GetMAByTenPhong(string phong)
+        {
+            string maPhong = string.Empty;
+            string query = "SELECT MaPhong FROM Phong WHERE TenPhong = @TenPhong";
+
+            // Sử dụng đối tượng kết nối và lệnh (ví dụ SqlConnection, SqlCommand)
+            using (SqlConnection connection = new SqlConnection(strConn))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số để tránh lỗi SQL Injection
+                    command.Parameters.AddWithValue("@TenPhong", phong);
+
+                    try
+                    {
+                        connection.Open();
+                        // Thực thi truy vấn và lấy kết quả
+                        object result = command.ExecuteScalar();
+
+                        // Kiểm tra nếu kết quả không phải là null, chuyển thành chuỗi
+                        if (result != null)
+                        {
+                            maPhong = result.ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi, ghi log hoặc hiển thị thông báo nếu cần
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return maPhong;
         }
 
         ////////////Thông tin phiếu thu

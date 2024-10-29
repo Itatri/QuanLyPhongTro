@@ -122,6 +122,7 @@ namespace QuanLyPhongTro.Control
             //this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
 
             this.Controls.Clear(); // Xóa các control hiện có
+            controlquanLiPhong.id = id;
             controlquanLiPhong.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
             this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
         }
