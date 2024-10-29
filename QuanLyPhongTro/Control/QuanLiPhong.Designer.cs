@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiPhong));
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnDangKyTaiKhoan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,25 +47,12 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(1071, 20);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(217, 42);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Tạo hợp đồng";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(720, 20);
+            this.button2.Location = new System.Drawing.Point(830, 20);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(217, 42);
@@ -79,7 +65,7 @@
             this.btnDangKyTaiKhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKyTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(369, 20);
+            this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(424, 20);
             this.btnDangKyTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKyTaiKhoan.Name = "btnDangKyTaiKhoan";
             this.btnDangKyTaiKhoan.Size = new System.Drawing.Size(217, 42);
@@ -119,7 +105,7 @@
             this.buttonTraPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
-            this.buttonTraPhong.Location = new System.Drawing.Point(1422, 20);
+            this.buttonTraPhong.Location = new System.Drawing.Point(1236, 20);
             this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTraPhong.Name = "buttonTraPhong";
             this.buttonTraPhong.Size = new System.Drawing.Size(217, 42);
@@ -212,7 +198,6 @@
             this.panel2.Controls.Add(this.btnDangKyTaiKhoan);
             this.panel2.Controls.Add(this.buttonTraPhong);
             this.panel2.Controls.Add(this.btnTaoPhong);
-            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Location = new System.Drawing.Point(3, 888);
             this.panel2.Name = "panel2";
@@ -237,7 +222,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnDangKyTaiKhoan;
         private System.Windows.Forms.Label label1;

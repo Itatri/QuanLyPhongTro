@@ -15,8 +15,6 @@ namespace DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
-
-
         public DataTable LayDanhSachThonTinPhong()
         {
             DataTable dataTable = new DataTable();
@@ -41,11 +39,35 @@ namespace DAL
             return dataTable;
         }
 
+        // Láy danh sách ơhongf thoe khu vực (29/10/2024)
+        public DataTable LayDanhSachThonTinPhong1(string makhuvuc)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT MaPhong, TenPhong, TienPhong, dientich, Dien, Nuoc, TienCoc, GhiChu, TrangThai FROM PHONG WHERE makhuvuc = @makhuvuc";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số cho câu lệnh SQL
+                    command.Parameters.AddWithValue("@makhuvuc", makhuvuc);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
+
 
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
-
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -158,23 +180,6 @@ namespace DAL
             }
         }
 
-        //public bool InsertDichVuPhong(string maPhong, string maDichVu)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string query = "INSERT INTO DichVuPhong (MaPhong, MaDichVu) VALUES (@MaPhong, @MaDichVu)";
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@MaPhong", maPhong);
-        //            command.Parameters.AddWithValue("@MaDichVu", maDichVu);
-        //            connection.Open();
-        //            int result = command.ExecuteNonQuery();
-        //            return result > 0; // Trả về true nếu thành công
-        //        }
-        //    }
-        //}
-
-
         public bool InsertDichVuPhong(string maPhong, string maDichVu)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -190,33 +195,6 @@ namespace DAL
                 }
             }
         }
-
-
-        //public DataTable GetDichVuByMaPhong(string maPhong)
-        //{
-        //    DataTable dataTable = new DataTable();
-
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-        //        string query = @"
-        //    SELECT dv.TenDichVu, dv.DonGia, dvp.MaDichVu
-        //    FROM DichVu dv
-        //    INNER JOIN DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
-        //    WHERE dvp.MaPhong = @MaPhong";
-
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@MaPhong", maPhong);
-        //            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-        //            {
-        //                adapter.Fill(dataTable);
-        //            }
-        //        }
-        //    }
-
-        //    return dataTable;
-        //}
 
         public DataTable GetDichVuByMaPhong(string maPhong)
         {
@@ -244,27 +222,6 @@ namespace DAL
             return dataTable;
         }
 
-
-        //public DataTable GetAllDichVu()
-        //{
-        //    DataTable dataTable = new DataTable();
-
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-        //        string query = "SELECT * FROM DichVu";
-
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-        //            {
-        //                adapter.Fill(dataTable);
-        //            }
-        //        }
-        //    }
-
-        //    return dataTable;
-        //}
         public DataTable GetAllDichVu()
         {
             DataTable dataTable = new DataTable();
@@ -287,6 +244,3 @@ namespace DAL
         }
     }
 }
-
-
-

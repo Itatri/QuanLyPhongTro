@@ -18,6 +18,12 @@ namespace BLL
             return dal.GetUserPhongData();
         }
 
+        public DataTable GetUserPhongData1(string makhuvuc)
+        {
+            return dal.GetUserPhongData1(makhuvuc);
+        }
+
+
         public bool InsertUserPhong(DanKyTaiKhoanKH_DTO userPhong)
         {
             return dal.InsertUserPhong(userPhong);
@@ -39,11 +45,7 @@ namespace BLL
             return dal.PhongExists(maPhong);
         }
 
-        //public DataTable GetPhongData()
-        //{
-        //    return dal.GetPhongData();
-        //}
-
+  
         // BLL: Gọi phương thức DAL
         public DataTable GetPhongData() //-----22/10/2024
         {
@@ -56,8 +58,5 @@ namespace BLL
         {
             return dal.GetUserPhongByMaPhong(keyword);
         }
-
-
-
     }
 }

@@ -24,36 +24,28 @@ namespace QuanLyPhongTro.Control
     {
         private DanKyTaiKhoanKH_BLL bll = new DanKyTaiKhoanKH_BLL();
 
-        public string makhuvuc { get; set; }
+        public string makhuvucuserphong { get; set; }
 
         private string connectionString = ConfigManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private Dictionary<string, string> tenPhongToMaPhong = new Dictionary<string, string>();
 
-
         int flag = 0;
-        
+
         public DanKyTaiKhoanKhachHang()
         {
             InitializeComponent();
         }
 
-
         private void DanKyTaiKhoanKhachHang_Load(object sender, EventArgs e)
         {
-
-
             LoadTenPhongComboBox();
             LoadUserPhongData();
             AnHienTextBox(false);
             AnHienButton(true);
 
-    
-
-            //------------22/10/2024
             // Thiết lập định dạng ngày tháng cho DateTimePicker
             dtpkNgayBatDau.Format = DateTimePickerFormat.Custom;
             dtpkNgayBatDau.CustomFormat = "dd/MM/yyyy"; // Định dạng ngày tháng theo chuẩn Việt Nam
-
         }
 
         private void LoadTenPhongComboBox()
@@ -109,37 +101,9 @@ namespace QuanLyPhongTro.Control
             }
         }
 
-
-
-
         private void LoadUserPhongData()
         {
-            //DataTable dataTable = bll.GetUserPhongData(); // Lấy dữ liệu từ cơ sở dữ liệu
-
-            //// Thêm cột "NgayThang" tạm thời vào DataTable nếu chưa có
-            //if (!dataTable.Columns.Contains("NgayThang"))
-            //{
-            //    dataTable.Columns.Add("NgayThang", typeof(DateTime));
-            //}
-
-            //// Nếu bạn cần gán giá trị mặc định cho cột này, có thể làm như sau:
-            //foreach (DataRow row in dataTable.Rows)
-            //{
-            //    if (row["NgayThang"] == DBNull.Value)
-            //    {
-            //        row["NgayThang"] = DateTime.Now; // Hoặc giá trị bạn muốn
-            //    }
-            //}
-
-            //dataGridView1.DataSource = dataTable; // Gán DataTable cho DataGridView
-
-            //// Ẩn cột "NgayThang" không cho hiển thị
-            //if (dataGridView1.Columns["NgayThang"] != null)
-            //{
-            //    dataGridView1.Columns["NgayThang"].Visible = false;
-            //}
-
-            DataTable dataTable = bll.GetUserPhongData(); // Lấy dữ liệu từ cơ sở dữ liệu
+            DataTable dataTable = bll.GetUserPhongData1(makhuvucuserphong); // Lấy dữ liệu từ cơ sở dữ liệu
 
             // Thêm cột "NgayThang" tạm thời vào DataTable nếu chưa có
             if (!dataTable.Columns.Contains("NgayThang"))
@@ -178,7 +142,7 @@ namespace QuanLyPhongTro.Control
             AnHienTextBox(true);
             AnHienButton(false);
             dataGridView1.Enabled = false;
-           
+
         }
 
         private void UpdateNgayVao(string MaPhong, DateTime ngayvao)
@@ -196,14 +160,14 @@ namespace QuanLyPhongTro.Control
                 {
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Cập nhật ngày vào cho phòng thành công.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy phòng với mã số đã chọn.");
-                    }
+                    //if (rowsAffected > 0)
+                    //{
+                    //    MessageBox.Show("Cập nhật ngày vào cho phòng thành công.");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Không tìm thấy phòng với mã số đã chọn.");
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -251,7 +215,7 @@ namespace QuanLyPhongTro.Control
 
         private void dtpkNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
-          
+
             // Chỉ cập nhật nếu có một hàng hiện tại được chọn trong DataGridView
             if (dataGridView1.CurrentRow != null)
             {
@@ -265,7 +229,7 @@ namespace QuanLyPhongTro.Control
                     dataTable.Rows[dataGridView1.CurrentRow.Index]["NgayThang"] = dtpkNgayBatDau.Value;
                 }
             }
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -273,7 +237,7 @@ namespace QuanLyPhongTro.Control
             if (this.ParentForm is MainForm mainForm)
             {
                 QuanLiPhong f = new QuanLiPhong();
-                f.khuvuc = makhuvuc;
+                f.khuvuc = makhuvucuserphong;
                 mainForm.ShowControl(f);
             }
         }
@@ -288,7 +252,7 @@ namespace QuanLyPhongTro.Control
             if (this.ParentForm is MainForm mainForm)
             {
                 QuanLiPhong f = new QuanLiPhong();
-                f.khuvuc = makhuvuc;
+                f.khuvuc = makhuvucuserphong;
                 mainForm.ShowControl(f);
             }
         }
@@ -337,34 +301,36 @@ namespace QuanLyPhongTro.Control
                 string id = ab;
                 string password = id; // Set password to be the same as ID
 
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm bản ghi này không?", "Xác nhận bổ sung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
-                    {
-                        ID = id,
-                        MatKhau = password,
-                        MaPhong = selectedMaPhong,
-                        NgayCapNhat = dtpkNgayBatDau.Value // Lấy giá trị từ DateTimePicker
-                    };
+                //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm bản ghi này không?", "Xác nhận bổ sung", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //if (result == DialogResult.Yes)
+                //{
 
-                    try
+                //}
+
+                DanKyTaiKhoanKH_DTO userPhong = new DanKyTaiKhoanKH_DTO
+                {
+                    ID = id,
+                    MatKhau = password,
+                    MaPhong = selectedMaPhong,
+                    NgayCapNhat = dtpkNgayBatDau.Value // Lấy giá trị từ DateTimePicker
+                };
+
+                try
+                {
+                    if (bll.InsertUserPhong(userPhong))
                     {
-                        if (bll.InsertUserPhong(userPhong))
-                        {
-                            UpdateNgayVao(selectedMaPhong, dtpkNgayBatDau.Value);
-                            LoadUserPhongData();
-                            MessageBox.Show("Đã thêm bản ghi thành công.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Mã phòng đã tồn tại. Vui lòng chọn mã phòng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        UpdateNgayVao(selectedMaPhong, dtpkNgayBatDau.Value);
+                        LoadUserPhongData();
+                        MessageBox.Show("Đã thêm bản ghi thành công.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show("Mã phòng đã tồn tại. Vui lòng chọn mã phòng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
 
@@ -429,14 +395,21 @@ namespace QuanLyPhongTro.Control
             dtpkNgayBatDau.CustomFormat = "dd/MM/yyyy";
 
 
+            // Xóa dữ liệu trong ComboBox và tải lại dữ liệu
+            cbbTenPhong.Items.Clear();
             LoadTenPhongComboBox();
+
             LoadUserPhongData();
             AnHienTextBox(false);
             AnHienButton(true);
             txtID.Clear();
             txtMatKhau.Clear();
-        
+
             dataGridView1.Enabled = true;
+            //cbbTenPhong.SelectedIndex = -1;
+
+
+
         }
 
         private void textBoxTimKiem_KeyPress(object sender, KeyPressEventArgs e)
@@ -477,7 +450,7 @@ namespace QuanLyPhongTro.Control
 
             AnHienTextBox(false);
             txtID.Enabled = false;
-            txtMatKhau.Enabled= true;
+            txtMatKhau.Enabled = true;
             AnHienButton(false);
 
             dataGridView1.Enabled = false;

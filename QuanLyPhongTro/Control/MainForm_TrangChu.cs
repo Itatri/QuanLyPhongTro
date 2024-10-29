@@ -14,6 +14,7 @@ namespace QuanLyPhongTro.Control
 {
     public partial class MainForm_TrangChu : UserControl
     {
+
         private QuanLiDanCu controlQuanLyDanCu;
         private QuanLiFeedBack controlQuanLyPhanHoi;
         private TaoQuanLyPhong1 controltaoQuanLyPhong1;
