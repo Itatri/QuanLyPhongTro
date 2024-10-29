@@ -121,38 +121,6 @@ namespace QuanLyPhongTro.Control
 
 
 
-        //private void RefreshDataGridView()
-        //{
-        //    string query = @"
-        //   SELECT p.MaPhong, 
-        //          p.TrangThai AS [Đã thuê], 
-        //          p.TenPhong AS [Tên Phòng], 
-        //COUNT(k.MaKhachTro) AS [Số lượng người],
-        //          p.NgayVao AS [Ngày Vào], 
-        //          p.HanTro AS [Hạn trọ], 
-        //          p.TienCoc AS [Tiền cọc], 
-        //          p.TienPhong AS [Giá phòng], 
-        //          p.CongNo AS [Công nợ], 
-        //          p.GhiChu AS [Ghi chú]
-
-        //   FROM Phong p
-        //   LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
-        //   WHERE p.MaKhuVuc = @MaKhuVuc
-        //   GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
-
-        //    DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
-        //    dataGridView1.DataSource = dataTable;
-        //    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-        //    // Ẩn cột MaPhong
-        //    if (dataGridView1.Columns["MaPhong"] != null)
-        //    {
-        //        dataGridView1.Columns["MaPhong"].Visible = false; // Ẩn cột bằng tên
-        //    }
-
-        //    LoadData(); // Gọi LoadData để thêm các nút
-        //}
-        //-------------------------------------------------------------
         private void RefreshDataGridView()
         {
             string query = @"
@@ -244,17 +212,18 @@ namespace QuanLyPhongTro.Control
             if (this.ParentForm is MainForm mainForm)
             {
                 DanKyTaiKhoanKhachHang f = new DanKyTaiKhoanKhachHang();
-                f.makhuvuc = khuvuc;
+                f.makhuvucuserphong = khuvuc;
                 mainForm.ShowControl(f); // Truyền đối tượng f vào phương thức ShowControl
             }
         }
 
         private void btnTaoPhong_Click(object sender, EventArgs e)
         {
+            // Láy danh sách phòng theo khu vực (29/10/2024)
             if (this.ParentForm is MainForm mainForm)
             {
                 TaoQuanLyPhong1 f = new TaoQuanLyPhong1();
-                f.makhuvuc = khuvuc;
+                f.makhuvuctaophong = khuvuc;
                 mainForm.ShowControl(f);
             }
         }
@@ -295,39 +264,37 @@ namespace QuanLyPhongTro.Control
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem người dùng có nhấn vào cột nút hay không
-            //if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index || e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index))
-            //{
-            //    // Lấy giá trị của cột MaPhong từ hàng được chọn
-            //    string maPhong = dataGridView1.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
+            if (e.RowIndex >= 0 && (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index || e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index))
+            {
+                // Lấy giá trị của cột MaPhong từ hàng được chọn
+                string maPhong = dataGridView1.Rows[e.RowIndex].Cells["MaPhong"].Value.ToString();
 
-            //    if (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index)
-            //    {
-            //        if (this.ParentForm is MainForm mainForm)
-            //        {
-            //            ThongTinPhong ThongTinPhongControl = new ThongTinPhong
-            //            {
-            //                KhuVuc = this.khuvuc,
-            //                // Truyền lại giá trị khu vực
+                if (e.ColumnIndex == dataGridView1.Columns["btnXemChiTiet"].Index)
+                {
+                    if (this.ParentForm is MainForm mainForm)
+                    {
+                        ThongTinPhong ThongTinPhongControl = new ThongTinPhong
+                        {
+                            KhuVuc = this.khuvuc,
+                            // Truyền lại giá trị khu vực
 
-            //                //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
-            //                MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
-            //            };
-            //            mainForm.ShowControl(ThongTinPhongControl);
-            //        }
-            //    }
-            //    else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
-            //    {
+                            //MAPHONG = dataGridView1.Rows[e.RowIndex].Cells["Tên Phòng"].Value.ToString(),
+                            MAPHONG = maPhong, // Sử dụng giá trị của MaPhong
+                        };
+                        mainForm.ShowControl(ThongTinPhongControl);
+                    }
+                }
+                else if (e.ColumnIndex == dataGridView1.Columns["btnTaoHopDong"].Index)
+                {
+                    // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
+                    TaoHopDongPhong(maPhong);
+                }
 
-            //        // Xử lý logic khi nhấn nút "Tạo Hợp Đồng"
-            //        TaoHopDongPhong(maPhong);
-            //    }
+                //// Cập nhật trạng thái tài khoản phòng
+                //UpdateRoomAccountStatus(maPhong, false);
 
-            //    //// Cập nhật trạng thái tài khoản phòng
-            //    //UpdateRoomAccountStatus(maPhong, false);
 
-            //    // Xóa tài khoản phòng
-            //    DeleteRoomAccount(maPhong);
-            //}
+            }
         }
 
         // Phương thức để xem chi tiết phòng

@@ -25,10 +25,6 @@ namespace QuanLyPhongTro.Control
         {
             InitializeComponent();
             InitializeComboBox();
-
-
-
-
         }
         private void InitializeComboBox()
         {
@@ -72,7 +68,7 @@ namespace QuanLyPhongTro.Control
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
+
             // Gọi phương thức sinh mã dịch vụ mới
             LoadNewServiceCode();
             // Hiển thị các TextBox và ẩn các nút không cần thiết
@@ -409,23 +405,6 @@ namespace QuanLyPhongTro.Control
         }
 
 
-        //private void TimKiemDichVu()
-        //{
-        //    string keyword = textBoxTimDichVu.Text.Trim();
-        //    DataTable result = bll.TimKiemDichVu(keyword);
-
-        //    if (result.Rows.Count > 0)
-        //    {
-        //        dataGridView1.DataSource = result;
-        //    }
-        //    else
-        //    {
-        //        dataGridView1.DataSource = null;
-        //        MessageBox.Show("Không tìm thấy dịch vụ nào với từ khóa này.");
-        //        RefreshDataGridView();
-        //        textBoxTimDichVu.Clear();
-        //    }
-        //}
 
         private void TimKiemDichVu()
         {
@@ -475,18 +454,10 @@ namespace QuanLyPhongTro.Control
         
         private void cbbSapXepDichVu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (cbbSapXepDichVu.SelectedIndex == 0) // Assuming 0 is the index for sorting by status
-            //{
-            //    LoadDichVuSapXepTheoTrangThai();
-            //}
-            //else
-            //{
-            //    RefreshDataGridView(); // Load unsorted or default data
-            //}
+           
         }
 
   
-        //-------------------------------------------------------------------------------- 15/10/2024
     }
 }
 
