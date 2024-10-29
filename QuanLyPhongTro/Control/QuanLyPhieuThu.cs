@@ -64,7 +64,15 @@ namespace QuanLyPhongTro.Control
             {
                 dgvPT.Columns["TrangThai"].DisplayIndex = 1;
             }
-
+            dgvPT.Columns["CSC Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSC Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền DV"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tổng Tiền"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Thanh Toán"].DefaultCellStyle.Format = "N0";
             // Làm mới DataGridView
             dgvPT.Refresh();
         }
