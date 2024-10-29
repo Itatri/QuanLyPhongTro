@@ -36,7 +36,7 @@ namespace DAL
                         NgaySinh = reader["NgaySinh"] != DBNull.Value ? Convert.ToDateTime(reader["NgaySinh"]) : DateTime.MinValue,
                         Cccd = reader["Cccd"].ToString(),
                         Phone = reader["Phone"].ToString(),
-                        ThuongTru = reader["ThuongTru"].ToString(),
+                        DiaChi = reader["DiaChi"].ToString(),
                         ChuKy = reader["ChuKy"].ToString(),
                         ////ChuKyXacNhan = reader["ChuKyXacNhan"].ToString(),
                         IdUser = reader["IdUser"].ToString(),
@@ -89,9 +89,9 @@ namespace DAL
         {
             string query = @"
             INSERT INTO ThongTinAdmin 
-            (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, ThuongTru, ChuKy, IdUser, TrangThai) 
+            (MaAdmin, HoTen, GioiTinh, NgaySinh, Cccd, Phone, DiaChi, ChuKy, IdUser, TrangThai) 
             VALUES 
-            (@MaAdmin, @HoTen, @GioiTinh, @NgaySinh, @Cccd, @Phone, @ThuongTru, @ChuKy, @IdUser, @TrangThai)";
+            (@MaAdmin, @HoTen, @GioiTinh, @NgaySinh, @Cccd, @Phone, @DiaChi, @ChuKy, @IdUser, @TrangThai)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -104,7 +104,7 @@ namespace DAL
                 command.Parameters.AddWithValue("@NgaySinh", adminInfo.NgaySinh);
                 command.Parameters.AddWithValue("@Cccd", adminInfo.Cccd);
                 command.Parameters.AddWithValue("@Phone", adminInfo.Phone);
-                command.Parameters.AddWithValue("@ThuongTru", adminInfo.ThuongTru);
+                command.Parameters.AddWithValue("@DiaChi", adminInfo.DiaChi);
                 command.Parameters.AddWithValue("@ChuKy", adminInfo.ChuKy ?? (object)DBNull.Value); // Đảm bảo không cập nhật nếu không có ảnh chữ ký
                 command.Parameters.AddWithValue("@IdUser", adminInfo.IdUser);
                 command.Parameters.AddWithValue("@TrangThai", 1); // Set TrangThai to 1
@@ -133,7 +133,7 @@ namespace DAL
                         NgaySinh = @NgaySinh,
                         Cccd = @Cccd,
                         Phone = @Phone,
-                        ThuongTru = @ThuongTru, " +
+                        DiaChi = @DiaChi, " +
                                     (admin.ChuKy != null ? "ChuKy = @ChuKy, " : "") +
                                 @"   TrangThai = @TrangThai
                     WHERE IdUser = @IdUser";
@@ -150,7 +150,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@NgaySinh", admin.NgaySinh != DateTime.MinValue ? (object)admin.NgaySinh : DBNull.Value);
                     command.Parameters.AddWithValue("@Cccd", admin.Cccd);
                     command.Parameters.AddWithValue("@Phone", admin.Phone);
-                    command.Parameters.AddWithValue("@ThuongTru", admin.ThuongTru);
+                    command.Parameters.AddWithValue("@DiaChi", admin.DiaChi);
 
                     if (admin.ChuKy != null)
                     {

@@ -48,8 +48,8 @@ namespace QuanLyPhongTro
 
             // Đường dẫn tới file Word trong thư mục bin
             string binPath = AppDomain.CurrentDomain.BaseDirectory;
-            string sourceFilePath = Path.Combine(binPath, "CT01.dotx");
-            string sourceFileHongDong = Path.Combine(binPath, "HopDong.dotx");
+            string sourceFilePath = Path.Combine(binPath, @"..\..\..\CT01.dotx");
+            string sourceFileHongDong = Path.Combine(binPath, @"..\..\..\HopDong.dotx");
             XuatPDF(chuho, chuho, sourceFilePath, duongdan);
             foreach (ThongTinKhachDTO k in lst)
             {
@@ -185,7 +185,7 @@ namespace QuanLyPhongTro
             dic.Add("HoTenChuSoHuu", ttadmin.HoTen);
             dic.Add("CCCDChuSoHuu", ttadmin.Cccd);
             dic.Add("DiaChi", khuvuc.TenKhuVuc);
-            dic.Add("NoiSongChuSoHuu", ttadmin.ThuongTru);
+            dic.Add("NoiSongChuSoHuu", ttadmin.DiaChi);
             dic.Add("HoTenChuHo", chuho.HoTen);
             dic.Add("CCCDChuHo", chuho.CCCD);
             dic.Add("ThuongTruChuHo", chuho.ThuongTru);
