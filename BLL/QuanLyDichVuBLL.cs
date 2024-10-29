@@ -13,9 +13,6 @@ namespace BLL
     {
         private QuanLyDichVuDAL dal = new QuanLyDichVuDAL();
 
-        //private DichVu_DAL dal = new DichVu_DAL();
-
-
         public DataTable GetAllServices()
         {
             return dal.GetAllServices();
@@ -79,7 +76,5 @@ namespace BLL
         {
             return dal.SapXepDichVuTheoTrangThai();
         }
-
-
     }
 }

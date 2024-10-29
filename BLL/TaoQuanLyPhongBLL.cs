@@ -13,13 +13,16 @@ namespace BLL
     {
         private TaoQuanLyPhongDAL dal = new TaoQuanLyPhongDAL();
 
-
-
         public DataTable LayDanhSachPhong()
         {
             return dal.LayDanhSachThonTinPhong();
         }
 
+        // Láy danh sách phòng theo khu vực (29/10/2024)
+        public DataTable LayDanhSachPhong1(string makhuvuc)
+        {
+            return dal.LayDanhSachThonTinPhong1(makhuvuc);
+        }
 
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
@@ -46,18 +49,6 @@ namespace BLL
             return dal.TatCaDichVu();
         }
 
-
-        //public bool insertDichVuPhong(List<DichVuPhongDTO> lst)
-        //{
-        //    bool a1 = true;
-        //    foreach (DichVuPhongDTO item in lst)
-        //    {
-        //        a1 = dal.InsertDichVuPhong(item.maphong, item.madichvu);
-
-        //    }
-        //    return a1;
-        //}
-
         public bool InsertDichVuPhong(DataTable dt)
         {
             bool allSuccess = true;
@@ -74,19 +65,6 @@ namespace BLL
 
             return allSuccess;
         }
-
-
-
-
-        //public DataTable GetDichVuByMaPhong(string maPhong)
-        //{
-        //    return dal.GetDichVuByMaPhong(maPhong);
-        //}
-
-        //public DataTable GetAllDichVu()
-        //{
-        //    return dal.GetAllDichVu(); // Bạn cần thêm phương thức này trong lớp DAL
-        //}
 
         public DataTable GetAllDichVu()
         {

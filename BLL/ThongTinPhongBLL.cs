@@ -14,17 +14,16 @@ namespace BLL
     {
         private ThongTinPhongDAL dal = new ThongTinPhongDAL();
         private TaoQuanLyPhongDTO dto = new TaoQuanLyPhongDTO();
+        
         public DataTable LayDichVuPhong(string maPhong)
         {
             return dal.LayDichVuPhong(maPhong);
         }
 
-
         public DataTable GetDichVuByMaPhong(string maPhong)
         {
             return dal.GetDichVuByMaPhong(maPhong);
         }
-
 
         public DataTable GetAllPhong(string maPhong)
         {
@@ -45,6 +44,5 @@ namespace BLL
         {
             dal.UpdateDichVuPhong(maPhong, dichVuPhongs);
         }
-
     }
 }
