@@ -8,6 +8,7 @@
 - Quản lý thông tin cư dân
 - Quản lí thông tin phản hồi
 - Quản lí thông tin giao dịch
+- Tạo hợp đồng thuê , CT01
 
 
 
