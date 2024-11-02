@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Abstractions, Version=2.0.2.45, Culture=neutral, processorArchitecture=MSIL">
@@ -45,6 +48,9 @@
       <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +67,12 @@
     </Compile>
     <Compile Include="Control\DanKyTaiKhoanKhachHang0.Designer.cs">
       <DependentUpon>DanKyTaiKhoanKhachHang0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainForm2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\MainForm_TrangChu.cs">
       <SubType>UserControl</SubType>
@@ -171,6 +183,9 @@
     <Compile Include="XuLyAnh.cs" />
     <EmbeddedResource Include="Control\DanKyTaiKhoanKhachHang0.resx">
       <DependentUpon>DanKyTaiKhoanKhachHang0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\MainForm_TrangChu.resx">
       <DependentUpon>MainForm_TrangChu.cs</DependentUpon>

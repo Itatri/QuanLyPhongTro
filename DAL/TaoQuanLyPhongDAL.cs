@@ -66,6 +66,7 @@ namespace DAL
 
 
 
+
         public bool InsertPhong(TaoQuanLyPhongDTO phong)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

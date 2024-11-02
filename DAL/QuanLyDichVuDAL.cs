@@ -20,7 +20,7 @@ namespace DAL
         public DataTable GetAllServices()
         {
             string query = "SELECT MaDichVu,TenDichVu ,DonGia ,TrangThai  FROM DichVu;";
-            //string query = "SELECT MaDichVu,TenDichVu as [TÊN DỊCH VỤ],DonGia AS [ĐƠN GIÁ] ,TrangThai [TRẠNG THÁI]  FROM DichVu;";
+          
             return ExecuteQuery(query);
 
 
