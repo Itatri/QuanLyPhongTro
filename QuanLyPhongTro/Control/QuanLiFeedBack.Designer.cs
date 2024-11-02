@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewFeedBack = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,11 +47,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.comboboxTrangThai = new System.Windows.Forms.ComboBox();
             this.buttonRefeshFB = new System.Windows.Forms.Button();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -58,7 +57,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(17, 46);
+            this.label2.Location = new System.Drawing.Point(17, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(197, 24);
             this.label2.TabIndex = 32;
@@ -67,9 +66,17 @@
             // dataGridViewFeedBack
             // 
             this.dataGridViewFeedBack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFeedBack.Location = new System.Drawing.Point(21, 84);
+            this.dataGridViewFeedBack.Location = new System.Drawing.Point(21, 132);
             this.dataGridViewFeedBack.Name = "dataGridViewFeedBack";
-            this.dataGridViewFeedBack.Size = new System.Drawing.Size(1620, 529);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFeedBack.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewFeedBack.Size = new System.Drawing.Size(1620, 486);
             this.dataGridViewFeedBack.TabIndex = 31;
             this.dataGridViewFeedBack.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFeedBack_CellContentClick);
             this.dataGridViewFeedBack.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewFeedBack_CellFormatting);
@@ -78,11 +85,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(617, 16);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(556, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 29);
+            this.label1.Size = new System.Drawing.Size(545, 52);
             this.label1.TabIndex = 30;
             this.label1.Text = " PHẢN HỒI CỦA CƯ DÂN";
             // 
@@ -212,7 +219,6 @@
             this.panel1.Controls.Add(this.panelThongTinDanCu);
             this.panel1.Controls.Add(this.dataGridViewFeedBack);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(15, 17);
             this.panel1.Name = "panel1";
@@ -225,7 +231,7 @@
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLoc.Location = new System.Drawing.Point(1472, 47);
+            this.buttonLoc.Location = new System.Drawing.Point(1472, 99);
             this.buttonLoc.Name = "buttonLoc";
             this.buttonLoc.Size = new System.Drawing.Size(117, 27);
             this.buttonLoc.TabIndex = 44;
@@ -237,7 +243,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(1222, 53);
+            this.label12.Location = new System.Drawing.Point(1222, 105);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 13);
             this.label12.TabIndex = 45;
@@ -246,7 +252,7 @@
             // comboboxTrangThai
             // 
             this.comboboxTrangThai.FormattingEnabled = true;
-            this.comboboxTrangThai.Location = new System.Drawing.Point(1307, 50);
+            this.comboboxTrangThai.Location = new System.Drawing.Point(1307, 102);
             this.comboboxTrangThai.Name = "comboboxTrangThai";
             this.comboboxTrangThai.Size = new System.Drawing.Size(153, 21);
             this.comboboxTrangThai.TabIndex = 43;
@@ -255,22 +261,12 @@
             // 
             this.buttonRefeshFB.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.RefeshIcon;
             this.buttonRefeshFB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRefeshFB.Location = new System.Drawing.Point(1605, 47);
+            this.buttonRefeshFB.Location = new System.Drawing.Point(1605, 99);
             this.buttonRefeshFB.Name = "buttonRefeshFB";
             this.buttonRefeshFB.Size = new System.Drawing.Size(36, 27);
             this.buttonRefeshFB.TabIndex = 39;
             this.buttonRefeshFB.UseVisualStyleBackColor = true;
             this.buttonRefeshFB.Click += new System.EventHandler(this.buttonRefeshFB_Click);
-            // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.feedback;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(948, 10);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(29, 36);
-            this.pictureBoxIcon.TabIndex = 33;
-            this.pictureBoxIcon.TabStop = false;
             // 
             // QuanLiFeedBack
             // 
@@ -285,7 +281,6 @@
             this.panelThongTinDanCu.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,7 +289,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewFeedBack;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.Button buttonRefeshFB;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label3;

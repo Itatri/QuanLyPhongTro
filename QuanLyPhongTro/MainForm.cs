@@ -37,7 +37,9 @@ namespace QuanLyPhongTro
             this.makhuvuc = makhuvuc;
 
             // Hiển thị trang chủ và truyền id, region, makhuvuc
-            var trangchuControl = new MainForm_TrangChu();
+            //var trangchuControl = new MainForm_TrangChu();
+            var trangchuControl = new MainForm2();
+
             trangchuControl.SetUserInfo(id, region, makhuvuc); // Truyền id, region và makhuvuc vào trang chủ
             var thongtinAdmin = new ThongTinAdmin();
             thongtinAdmin.SetUserInfo(id, region); // Truyền id và region
@@ -112,7 +114,9 @@ namespace QuanLyPhongTro
         private void buttonTrangChu_Click(object sender, EventArgs e)
         {
             // Khi nhấn nút Trang Chủ, truyền id và region vào trang chủ
-            var trangchuControl = new MainForm_TrangChu();
+            //var trangchuControl = new MainForm_TrangChu();
+            var trangchuControl = new MainForm2();
+
             trangchuControl.SetUserInfo(id, region, makhuvuc); // Truyền id và region vào trang chủ
             ShowControl(trangchuControl);
 
