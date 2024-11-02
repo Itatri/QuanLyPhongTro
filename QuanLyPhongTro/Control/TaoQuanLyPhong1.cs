@@ -68,6 +68,14 @@ namespace QuanLyPhongTro.Control
             AnHienButton(false);
             flag = 1;
 
+            dataGridViewDichVu.Enabled = true;
+
+          
+
+
+
+
+
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
@@ -104,7 +112,7 @@ namespace QuanLyPhongTro.Control
 
         private void RefreshDataGridView()
         {
-            var phongs = phongBLL.LayDanhSachPhong();
+            var phongs = phongBLL.LayDanhSachPhong1(makhuvuctaophong);
             dataGridView1.DataSource = phongs;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -112,6 +120,49 @@ namespace QuanLyPhongTro.Control
             if (dataGridView1.Columns["MaPhong"] != null)
             {
                 dataGridView1.Columns["MaPhong"].Visible = false;
+            }
+
+            // Đổi tên các cột thành tiếng Việt
+            //if (dataGridView1.Columns["MaPhong"] != null)
+            //{
+            //    dataGridView1.Columns["MaPhong"].HeaderText = "Mã Phòng";
+            //    dataGridView1.Columns["MaPhong"].Visible = false; // Ẩn cột "Mã Phòng" nếu cần
+            //}
+            if (dataGridView1.Columns["TenPhong"] != null)
+            {
+                dataGridView1.Columns["TenPhong"].HeaderText = "Tên Phòng";
+            }
+            if (dataGridView1.Columns["TienPhong"] != null)
+            {
+                dataGridView1.Columns["TienPhong"].HeaderText = "Tiền Phòng";
+                dataGridView1.Columns["TienPhong"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns["dientich"] != null)
+            {
+                dataGridView1.Columns["dientich"].HeaderText = "Diện Tích";
+            }
+            if (dataGridView1.Columns["Dien"] != null)
+            {
+                dataGridView1.Columns["Dien"].HeaderText = "Điện";
+                dataGridView1.Columns["Dien"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns["Nuoc"] != null)
+            {
+                dataGridView1.Columns["Nuoc"].HeaderText = "Nước";
+                dataGridView1.Columns["Nuoc"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns["TienCoc"] != null)
+            {
+                dataGridView1.Columns["TienCoc"].HeaderText = "Tiền Cọc";
+                dataGridView1.Columns["TienCoc"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns["GhiChu"] != null)
+            {
+                dataGridView1.Columns["GhiChu"].HeaderText = "Ghi Chú";
+            }
+            if (dataGridView1.Columns["TrangThai"] != null)
+            {
+                dataGridView1.Columns["TrangThai"].HeaderText = "Trạng Thái";
             }
         }
 
@@ -197,6 +248,8 @@ namespace QuanLyPhongTro.Control
 
 
             dataGridViewDichVu.Columns["DonGia"].DefaultCellStyle.Format = "N0";
+
+            dataGridViewDichVu.Enabled = false;
 
         }
 
@@ -329,6 +382,8 @@ namespace QuanLyPhongTro.Control
             // Xóa toàn bộ dịch vụ trong dataGridViewDichVu
             dataGridViewDichVu.Rows.Clear();
             LoadDichVu();
+
+            dataGridViewDichVu.Enabled = false;
 
         }
 

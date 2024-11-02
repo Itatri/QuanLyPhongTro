@@ -18,8 +18,15 @@ namespace QuanLyPhongTro.Control
     {
         private ThongTinKhachBLL thongTinKhachBLL = new ThongTinKhachBLL();
         private bool isAddingNew = false; // Biến trạng thái để theo dõi chế độ thêm mới hay sửa
+
+
+        public string makhuvucdancu { get; set; }
+
+
         public QuanLiDanCu()
         {
+
+
             InitializeComponent();
            
             LoadPhongComboBox();
@@ -192,6 +199,7 @@ namespace QuanLyPhongTro.Control
 
         private void LoadData()
         {
+            //var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach1(makhuvucdancu);
             var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach();
             dataGridViewDanCu.DataSource = danhSachKhach;
 

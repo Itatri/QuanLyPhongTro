@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewDanCu = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +50,8 @@
             this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.txtThuongTru = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.comboboxQuanHe = new System.Windows.Forms.ComboBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -74,35 +77,39 @@
             this.buttonLoc = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonRefesh = new System.Windows.Forms.Button();
-            this.txtThuongTru = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.panelCRUDThongTinDanCu.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(691, 19);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(640, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 29);
+            this.label1.Size = new System.Drawing.Size(392, 52);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÍ DÂN CƯ";
             // 
             // dataGridViewDanCu
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDanCu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDanCu.Location = new System.Drawing.Point(11, 89);
+            this.dataGridViewDanCu.Location = new System.Drawing.Point(11, 141);
             this.dataGridViewDanCu.Name = "dataGridViewDanCu";
-            this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 517);
+            this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 467);
             this.dataGridViewDanCu.TabIndex = 1;
             this.dataGridViewDanCu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanCu_CellClick);
             this.dataGridViewDanCu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewDanCu_CellFormatting);
@@ -112,7 +119,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Location = new System.Drawing.Point(7, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(179, 24);
             this.label2.TabIndex = 2;
@@ -327,6 +334,24 @@
             this.panelThongTinDanCu.Size = new System.Drawing.Size(1633, 278);
             this.panelThongTinDanCu.TabIndex = 28;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
+            // 
+            // txtThuongTru
+            // 
+            this.txtThuongTru.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtThuongTru.Location = new System.Drawing.Point(1135, 217);
+            this.txtThuongTru.Name = "txtThuongTru";
+            this.txtThuongTru.Size = new System.Drawing.Size(250, 27);
+            this.txtThuongTru.TabIndex = 54;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label19.Location = new System.Drawing.Point(1046, 227);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(73, 13);
+            this.label19.TabIndex = 53;
+            this.label19.Text = "Thường Trú";
             // 
             // comboboxQuanHe
             // 
@@ -543,7 +568,7 @@
             this.buttonTimKiemCuDan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTimKiemCuDan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonTimKiemCuDan.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonTimKiemCuDan.Location = new System.Drawing.Point(1451, 54);
+            this.buttonTimKiemCuDan.Location = new System.Drawing.Point(1451, 106);
             this.buttonTimKiemCuDan.Name = "buttonTimKiemCuDan";
             this.buttonTimKiemCuDan.Size = new System.Drawing.Size(141, 27);
             this.buttonTimKiemCuDan.TabIndex = 37;
@@ -553,7 +578,7 @@
             // 
             // txtTimKiemCuDan
             // 
-            this.txtTimKiemCuDan.Location = new System.Drawing.Point(1011, 57);
+            this.txtTimKiemCuDan.Location = new System.Drawing.Point(1011, 109);
             this.txtTimKiemCuDan.Multiline = true;
             this.txtTimKiemCuDan.Name = "txtTimKiemCuDan";
             this.txtTimKiemCuDan.Size = new System.Drawing.Size(421, 24);
@@ -562,7 +587,7 @@
             // comboBoxLocPhong
             // 
             this.comboBoxLocPhong.FormattingEnabled = true;
-            this.comboBoxLocPhong.Location = new System.Drawing.Point(282, 57);
+            this.comboBoxLocPhong.Location = new System.Drawing.Point(282, 109);
             this.comboBoxLocPhong.Name = "comboBoxLocPhong";
             this.comboBoxLocPhong.Size = new System.Drawing.Size(218, 21);
             this.comboBoxLocPhong.TabIndex = 39;
@@ -574,7 +599,7 @@
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLoc.Location = new System.Drawing.Point(520, 54);
+            this.buttonLoc.Location = new System.Drawing.Point(520, 106);
             this.buttonLoc.Name = "buttonLoc";
             this.buttonLoc.Size = new System.Drawing.Size(117, 27);
             this.buttonLoc.TabIndex = 40;
@@ -586,7 +611,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(224, 61);
+            this.label12.Location = new System.Drawing.Point(224, 113);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 42;
@@ -595,7 +620,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.buttonTimKiemCuDan);
             this.panel1.Controls.Add(this.buttonLoc);
             this.panel1.Controls.Add(this.txtTimKiemCuDan);
@@ -612,44 +636,16 @@
             this.panel1.Size = new System.Drawing.Size(1656, 968);
             this.panel1.TabIndex = 43;
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.icon_cudan;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(932, 15);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(29, 36);
-            this.pictureBoxIcon.TabIndex = 43;
-            this.pictureBoxIcon.TabStop = false;
-            // 
             // buttonRefesh
             // 
             this.buttonRefesh.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.RefeshIcon;
             this.buttonRefesh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRefesh.Location = new System.Drawing.Point(1608, 53);
+            this.buttonRefesh.Location = new System.Drawing.Point(1608, 105);
             this.buttonRefesh.Name = "buttonRefesh";
             this.buttonRefesh.Size = new System.Drawing.Size(36, 27);
             this.buttonRefesh.TabIndex = 38;
             this.buttonRefesh.UseVisualStyleBackColor = true;
             this.buttonRefesh.Click += new System.EventHandler(this.buttonRefesh_Click);
-            // 
-            // txtThuongTru
-            // 
-            this.txtThuongTru.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThuongTru.Location = new System.Drawing.Point(1135, 217);
-            this.txtThuongTru.Name = "txtThuongTru";
-            this.txtThuongTru.Size = new System.Drawing.Size(250, 27);
-            this.txtThuongTru.TabIndex = 54;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label19.Location = new System.Drawing.Point(1046, 227);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(73, 13);
-            this.label19.TabIndex = 53;
-            this.label19.Text = "Thường Trú";
             // 
             // QuanLiDanCu
             // 
@@ -667,7 +663,6 @@
             this.panelCRUDThongTinDanCu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -713,7 +708,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtNoiCap;
         private System.Windows.Forms.DateTimePicker dateTimePickerNgayCap;

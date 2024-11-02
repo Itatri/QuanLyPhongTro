@@ -370,7 +370,7 @@ namespace QuanLyPhongTro.Control
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một phòng để trả.");
+                //MessageBox.Show("Vui lòng chọn một phòng để trả.");
             }
         }
 
