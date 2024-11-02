@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaoQuanLyPhong1));
             this.txtSoNuoc = new System.Windows.Forms.TextBox();
             this.txtSodien = new System.Windows.Forms.TextBox();
@@ -36,7 +38,6 @@
             this.RtxtGhiChu = new System.Windows.Forms.RichTextBox();
             this.txtTenPhong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.txtMaPhong = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.labelMaPhong = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@
             this.btnDangKy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -138,25 +138,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("UTM American Sans", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(685, 12);
+            this.label1.Location = new System.Drawing.Point(606, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 38);
+            this.label1.Size = new System.Drawing.Size(390, 52);
             this.label1.TabIndex = 3;
             this.label1.Text = "TẠO PHÒNG MỚI";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(3, 21);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1651, 64);
-            this.panel2.TabIndex = 22;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtMaPhong
             // 
@@ -333,6 +323,14 @@
             this.dataGridViewDichVu.Location = new System.Drawing.Point(648, 576);
             this.dataGridViewDichVu.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewDichVu.Name = "dataGridViewDichVu";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDichVu.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDichVu.RowHeadersWidth = 51;
             this.dataGridViewDichVu.RowTemplate.Height = 24;
             this.dataGridViewDichVu.Size = new System.Drawing.Size(986, 296);
@@ -374,6 +372,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(648, 121);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(986, 407);
@@ -432,10 +438,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.dataGridViewDichVu);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.labelMaPhong);
             this.panel3.Controls.Add(this.label6);
@@ -465,8 +471,6 @@
             this.Name = "TaoQuanLyPhong1";
             this.Size = new System.Drawing.Size(1684, 1002);
             this.Load += new System.EventHandler(this.TaoQuanLyPhong_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu)).EndInit();
@@ -487,7 +491,6 @@
         private System.Windows.Forms.RichTextBox RtxtGhiChu;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtMaPhong;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelMaPhong;

@@ -17,6 +17,12 @@ namespace BLL
             return thongTinKhachDAL.LayTatCaThongTinKhach();
         }
 
+
+        //public List<ThongTinKhachDTO> LayTatCaThongTinKhach1(string MaKhuVuc)
+        //{
+        //    return thongTinKhachDAL.LayTatCaThongTinKhach1(MaKhuVuc);
+        //}
+
         public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
         {
             thongTinKhachDAL.CapNhatThongTinKhach(khachDTO);

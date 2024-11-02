@@ -397,16 +397,15 @@ namespace QuanLyPhongTro.Control
 
             // Xóa dữ liệu trong ComboBox và tải lại dữ liệu
             cbbTenPhong.Items.Clear();
-            LoadTenPhongComboBox();
-
-            LoadUserPhongData();
+            //LoadTenPhongComboBox();
+            //cbbTenPhong.SelectedIndex = -1;
             AnHienTextBox(false);
             AnHienButton(true);
             txtID.Clear();
             txtMatKhau.Clear();
 
             dataGridView1.Enabled = true;
-            //cbbTenPhong.SelectedIndex = -1;
+          
 
 
 

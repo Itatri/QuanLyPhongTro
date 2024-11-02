@@ -64,9 +64,12 @@ namespace DAL
                     }
                 }
             }
-
             return danhSachKhach;
         }
+
+
+
+
 
         //public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
         //{
