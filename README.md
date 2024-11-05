@@ -17,7 +17,7 @@
 
 ### Mô hình 
 
-- Mô hình 3 lớp ( GUI , BLL , DAL )
+- Mô hình 3 lớp C# ( GUI , BLL , DAL )
 
 
 ### Demo
