@@ -5,8 +5,8 @@
 
 ### Các chức năng
 
-- Quản lí các thông tin cơ bản  
-- Tạo hợp đồng thuê nhà , CT01
+- Quản lí các thông tin cơ bản của hệ thống căn hộ 
+- Tạo hợp đồng thuê nhà , CT01  dành cho căn hộ
 
 
 
