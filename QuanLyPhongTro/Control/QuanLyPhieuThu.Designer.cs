@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPT = new System.Windows.Forms.DataGridView();
             this.XemChiTiet = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -54,18 +53,10 @@
             this.ThanhToan});
             this.dgvPT.Location = new System.Drawing.Point(38, 153);
             this.dgvPT.Name = "dgvPT";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPT.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPT.RowHeadersWidth = 51;
             this.dgvPT.RowTemplate.Height = 24;
             this.dgvPT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPT.Size = new System.Drawing.Size(1579, 612);
+            this.dgvPT.Size = new System.Drawing.Size(1579, 760);
             this.dgvPT.TabIndex = 0;
             this.dgvPT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPT_CellContentClick);
             // 

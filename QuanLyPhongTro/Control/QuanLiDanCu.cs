@@ -18,7 +18,7 @@ namespace QuanLyPhongTro.Control
     {
         private ThongTinKhachBLL thongTinKhachBLL = new ThongTinKhachBLL();
         private bool isAddingNew = false; // Biến trạng thái để theo dõi chế độ thêm mới hay sửa
-
+        public string khuvuc {  get; set; }
 
         public string makhuvucdancu { get; set; }
 
@@ -200,7 +200,7 @@ namespace QuanLyPhongTro.Control
         private void LoadData()
         {
             //var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach1(makhuvucdancu);
-            var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach();
+            var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach(khuvuc);
             dataGridViewDanCu.DataSource = danhSachKhach;
 
             // Đặt lại tên các cột
@@ -263,10 +263,10 @@ namespace QuanLyPhongTro.Control
         private void buttonThemCD_Click(object sender, EventArgs e)
         {
             isAddingNew = true; // Đặt chế độ thêm mới
-
+            
             // Làm mới các trường dữ liệu để nhập thông tin
             SetControlsEnabled(true);
-
+            
             // Đếm số lượng khách hiện tại
             int soLuongKhach = thongTinKhachBLL.DemSoLuongKhach();
 
@@ -292,7 +292,7 @@ namespace QuanLyPhongTro.Control
             //txtQuanHe.Clear();
             comboboxQuanHe.SelectedIndex = -1;
             txtThuongTru.Clear();
-
+            comboBoxTrangThai.SelectedIndex = 0;
 
         }
 
