@@ -15,7 +15,7 @@ namespace DAL
         // Lấy chuỗi kết nối từ tệp App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
-        public List<ThongTinKhachDTO> LayTatCaThongTinKhach()
+        public List<ThongTinKhachDTO> LayTatCaThongTinKhach(string makhuvuc)
         {
             List<ThongTinKhachDTO> danhSachKhach = new List<ThongTinKhachDTO>();
 

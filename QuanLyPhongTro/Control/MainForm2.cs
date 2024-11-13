@@ -23,6 +23,7 @@ namespace QuanLyPhongTro.Control
         private QuanLiPhong controlquanLiPhong;
         private QuanLiDichVu controlquanLiDichVu;
         private QuanLyPhieuThu controlquanlyphieuthu;
+        private QuanLiThongKe controlthongke;
         private string makhuvuc; // Khai báo biến lưu thông tin makhuvuc
         private string id;
         private KhuVucBLL khuVucBLL;
@@ -48,8 +49,12 @@ namespace QuanLyPhongTro.Control
             controlquanlyphieuthu = new QuanLyPhieuThu();
             controlquanlyphieuthu.Dock = DockStyle.Fill;
 
+            controlthongke = new QuanLiThongKe();
+            controlthongke.Dock = DockStyle.Fill;
+
             khuVucBLL = new KhuVucBLL(); // Khởi tạo BLL để gọi DAL
             thongTinAdminBLL = new ThongTinAdminBLL();
+
 
             //this.Load += MainForm2_Load;
 
@@ -104,12 +109,6 @@ namespace QuanLyPhongTro.Control
             this.Controls.Add(controlquanLiPhong); // Thêm control QuanLyPhong
         }
 
-        private void btnQLDichVu_Click(object sender, EventArgs e)
-        {
-            this.Controls.Clear(); // Xóa các control hiện có
-            //controlquanLiDichVu.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
-            this.Controls.Add(controlquanLiDichVu); // Thêm control QuanLyPhong
-        }
 
         private void btnQLGiaoDich_Click(object sender, EventArgs e)
         {
@@ -136,16 +135,11 @@ namespace QuanLyPhongTro.Control
         private void btnQLDanCu_Click_1(object sender, EventArgs e)
         {
             this.Controls.Clear(); // Xóa các control hiện có
+            controlQuanLyDanCu.khuvuc = makhuvuc;
             this.Controls.Add(controlQuanLyDanCu); // Thêm control QuanLyDanCu
         }
 
-        private void btnQLDichVu_Click_1(object sender, EventArgs e)
-        {
-            this.Controls.Clear(); // Xóa các control hiện có
-            //controlquanLiDichVu.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
-            this.Controls.Add(controlquanLiDichVu); // Thêm control QuanLyPhong
-
-        }
+        
 
         private void btnQLGiaoDich_Click_1(object sender, EventArgs e)
         {
@@ -237,6 +231,20 @@ namespace QuanLyPhongTro.Control
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnQLDichVu_Click_1(object sender, EventArgs e)
+        {
+            this.Controls.Clear(); // Xóa các control hiện có
+            //controlquanLiDichVu.khuvuc = makhuvuc; // Truyền thông tin khu vực từ biến makhuvuc
+            this.Controls.Add(controlquanLiDichVu); // Thêm control QuanLyPhong
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear(); // Xóa các control hiện có
+            controlthongke.khuvuc = makhuvuc;
+            this.Controls.Add(controlthongke); // Thêm control QuanLyPhong
         }
     }
 }

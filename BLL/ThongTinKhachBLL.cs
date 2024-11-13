@@ -12,9 +12,9 @@ namespace BLL
     {
         private ThongTinKhachDAL thongTinKhachDAL = new ThongTinKhachDAL();
 
-        public List<ThongTinKhachDTO> LayTatCaThongTinKhach()
+        public List<ThongTinKhachDTO> LayTatCaThongTinKhach(string khuvuc)
         {
-            return thongTinKhachDAL.LayTatCaThongTinKhach();
+            return thongTinKhachDAL.LayTatCaThongTinKhach(khuvuc);
         }
 
 
