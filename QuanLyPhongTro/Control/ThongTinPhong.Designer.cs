@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinPhong));
             this.MaDichVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +107,7 @@
             this.textBoxTienCoc.Name = "textBoxTienCoc";
             this.textBoxTienCoc.Size = new System.Drawing.Size(336, 26);
             this.textBoxTienCoc.TabIndex = 7;
+            this.textBoxTienCoc.TextChanged += new System.EventHandler(this.textBoxTienCoc_TextChanged);
             // 
             // panel1
             // 
@@ -196,6 +198,7 @@
             this.txtSoNuoc.Name = "txtSoNuoc";
             this.txtSoNuoc.Size = new System.Drawing.Size(336, 26);
             this.txtSoNuoc.TabIndex = 6;
+            this.txtSoNuoc.TextChanged += new System.EventHandler(this.txtSoNuoc_TextChanged);
             // 
             // label8
             // 
@@ -217,6 +220,7 @@
             this.txtSodien.Name = "txtSodien";
             this.txtSodien.Size = new System.Drawing.Size(336, 26);
             this.txtSodien.TabIndex = 5;
+            this.txtSodien.TextChanged += new System.EventHandler(this.txtSodien_TextChanged);
             // 
             // label7
             // 
@@ -260,6 +264,7 @@
             this.textBoxTienPhong.Name = "textBoxTienPhong";
             this.textBoxTienPhong.Size = new System.Drawing.Size(336, 26);
             this.textBoxTienPhong.TabIndex = 3;
+            this.textBoxTienPhong.TextChanged += new System.EventHandler(this.textBoxTienPhong_TextChanged);
             // 
             // txtTenPhong
             // 
@@ -329,20 +334,28 @@
             // dataGridViewDichVu1
             // 
             this.dataGridViewDichVu1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDichVu1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDichVu1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewDichVu1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDichVu1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Chon,
             this.TenDichVu,
             this.DonGia,
             this.MaDichVu});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDichVu1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewDichVu1.Location = new System.Drawing.Point(675, 172);
             this.dataGridViewDichVu1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewDichVu1.Name = "dataGridViewDichVu1";
@@ -366,7 +379,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnUpdate.BackColor = System.Drawing.Color.Blue;
             this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
@@ -382,7 +395,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnQuayLai.BackColor = System.Drawing.Color.Blue;
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
@@ -398,7 +411,7 @@
             // 
             // buttonLuu
             // 
-            this.buttonLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.buttonLuu.BackColor = System.Drawing.Color.Blue;
             this.buttonLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLuu.ForeColor = System.Drawing.Color.White;
             this.buttonLuu.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuu.Image")));

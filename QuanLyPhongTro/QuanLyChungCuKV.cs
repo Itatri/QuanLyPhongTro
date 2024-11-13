@@ -42,7 +42,7 @@ namespace QuanLyPhongTro
 
             //Ẩn hiển button
             buttonLuu.Enabled = true;
-            buttonXoa.Enabled = false;
+            //buttonXoa.Enabled = false;
             buttonCapNhat.Enabled = false;
             buttonThem.Enabled = false;
 
@@ -76,10 +76,15 @@ namespace QuanLyPhongTro
 
             // Ẩn hiện button 
             buttonThem.Enabled = true;
-            buttonXoa.Enabled = true;
+            //buttonXoa.Enabled = true;
             buttonCapNhat.Enabled = true;
             buttonTaiKhoan.Enabled = true;
             buttonLuu.Enabled = false;
+
+            // Hiển thị form toàn màn hình
+            this.WindowState = FormWindowState.Maximized;
+            //this.FormBorderStyle = FormBorderStyle.None;
+            this.TopMost = true;
         }
 
         private void LoadKhuVucData()
@@ -204,7 +209,7 @@ namespace QuanLyPhongTro
             //Ẩn hiển button
             buttonLuu.Enabled = true;
             buttonThem.Enabled = false;
-            buttonXoa.Enabled = false;
+            //buttonXoa.Enabled = false;
             buttonCapNhat.Enabled = false;
 
 
@@ -369,13 +374,18 @@ namespace QuanLyPhongTro
 
             // Ẩn hiện button 
             buttonThem.Enabled = true;
-            buttonXoa.Enabled = true;
+            //buttonXoa.Enabled = true;
             buttonCapNhat.Enabled = true;
             buttonTaiKhoan.Enabled = true;
             buttonLuu.Enabled = false;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
+        {
+            LoadKhuVucData(); // Gọi phương thức để tải dữ liệu khi form tải
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             LoadKhuVucData(); // Gọi phương thức để tải dữ liệu khi form tải
         }
