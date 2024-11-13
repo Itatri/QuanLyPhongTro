@@ -251,6 +251,12 @@ namespace QuanLyPhongTro.Control
 
             dataGridViewDichVu.Enabled = false;
 
+            // Bật tính năng AutoFilter cho các cột trong DataGridView, tạo các sort cho các cột trong datagirdview
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
+
         }
 
 
@@ -731,6 +737,21 @@ namespace QuanLyPhongTro.Control
 
                 // Hiển thị thông báo cho người dùng biết phải nhập số
                 MessageBox.Show("Vui lòng nhập số.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            int trangThai = Convert.ToInt32(row.Cells["TrangThai"].Value); // Sửa tên cột từ "Trạng thái" thành "TrangThai"
+
+            if (trangThai == 0)
+            {
+                row.DefaultCellStyle.BackColor = Color.PowderBlue; // Màu nhạt tương ứng với màu blue chủ đạo
+            }
+            else if (trangThai == 1)
+            {
+                row.DefaultCellStyle.BackColor = Color.Lavender; // Màu nhạt tương ứng với màu white chủ đạo
             }
         }
     }

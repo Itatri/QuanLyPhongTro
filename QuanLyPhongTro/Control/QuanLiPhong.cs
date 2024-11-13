@@ -76,12 +76,9 @@ namespace QuanLyPhongTro.Control
             dataGridView1.CellClick += dataGridView1_CellClick;
 
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.BackColor = Color.Blue;
-            dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionBackColor = Color.Green;
             dataGridView1.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionForeColor = Color.White;
-
-
-
         }
 
 
@@ -115,6 +112,23 @@ namespace QuanLyPhongTro.Control
             //dataGridView1.Columns["Giá phòng"].DefaultCellStyle.Format = "N0";
             //dataGridView1.Columns["Tiền cọc"].DefaultCellStyle.Format = "N0";
 
+            //// Đặt AutoSizeMode cho các cột trong DataGridView để độ rộng của cột phù hợp với nội dung cửa cột thôi
+            //foreach (DataGridViewColumn column in dataGridView1.Columns)
+            //{
+            //    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //}
+
+
+            // Bật tính năng AutoFilter cho các cột trong DataGridView, tạo các sort cho các cột trong datagirdview
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
+
+            //// Hiển thị form toàn màn hình
+            //this.WindowState = FormWindowState.Maximized;
+            ////this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
 
         }
 
@@ -408,17 +422,17 @@ namespace QuanLyPhongTro.Control
         // tô màu cho datagirdview
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            //DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-            //int trangThai = Convert.ToInt32(row.Cells["Đã thuê"].Value);
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            int trangThai = Convert.ToInt32(row.Cells["Đã thuê"].Value);
 
-            //if (trangThai == 0)
-            //{
-            //    row.DefaultCellStyle.BackColor = Color.Blue;
-            //}
-            //else if (trangThai == 1)
-            //{
-            //    row.DefaultCellStyle.BackColor = Color.Gray;
-            //}
+            if (trangThai == 0)
+            {
+                row.DefaultCellStyle.BackColor = Color.PowderBlue;  // Màu nền cho dòng chưa thuê
+            }
+            else if (trangThai == 1)
+            {
+                row.DefaultCellStyle.BackColor = Color.Lavender;  // Màu nền cho dòng đã thuê
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiPhong));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button2 = new System.Windows.Forms.Button();
             this.btnDangKyTaiKhoan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,9 +51,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.BackColor = System.Drawing.Color.Blue;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(900, 20);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
@@ -63,9 +66,11 @@
             // 
             // btnDangKyTaiKhoan
             // 
-            this.btnDangKyTaiKhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangKyTaiKhoan.BackColor = System.Drawing.Color.Blue;
+            this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKyTaiKhoan.ForeColor = System.Drawing.Color.White;
+            this.btnDangKyTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKyTaiKhoan.Image")));
+            this.btnDangKyTaiKhoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(459, 20);
             this.btnDangKyTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKyTaiKhoan.Name = "btnDangKyTaiKhoan";
@@ -89,9 +94,11 @@
             // 
             // btnTaoPhong
             // 
-            this.btnTaoPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnTaoPhong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoPhong.BackColor = System.Drawing.Color.Blue;
+            this.btnTaoPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoPhong.ForeColor = System.Drawing.Color.White;
+            this.btnTaoPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoPhong.Image")));
+            this.btnTaoPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTaoPhong.Location = new System.Drawing.Point(18, 20);
             this.btnTaoPhong.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoPhong.Name = "btnTaoPhong";
@@ -103,9 +110,11 @@
             // 
             // buttonTraPhong
             // 
-            this.buttonTraPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTraPhong.BackColor = System.Drawing.Color.Blue;
+            this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
+            this.buttonTraPhong.Image = ((System.Drawing.Image)(resources.GetObject("buttonTraPhong.Image")));
+            this.buttonTraPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTraPhong.Location = new System.Drawing.Point(1341, 20);
             this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTraPhong.Name = "buttonTraPhong";
@@ -119,7 +128,7 @@
             // 
             this.cbbSapXep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSapXep.FormattingEnabled = true;
-            this.cbbSapXep.Location = new System.Drawing.Point(1310, 124);
+            this.cbbSapXep.Location = new System.Drawing.Point(1271, 259);
             this.cbbSapXep.Margin = new System.Windows.Forms.Padding(2);
             this.cbbSapXep.Name = "cbbSapXep";
             this.cbbSapXep.Size = new System.Drawing.Size(261, 25);
@@ -130,6 +139,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(21, 160);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -151,7 +168,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1235, 130);
+            this.label2.Location = new System.Drawing.Point(1196, 265);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 19);
@@ -165,10 +182,10 @@
             this.panel1.Controls.Add(this.textBoxTimPhong);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cbbSapXep);
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cbbSapXep);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1656, 972);
@@ -177,9 +194,9 @@
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1585, 113);
+            this.button1.Location = new System.Drawing.Point(588, 113);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 38);
+            this.button1.Size = new System.Drawing.Size(45, 36);
             this.button1.TabIndex = 25;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

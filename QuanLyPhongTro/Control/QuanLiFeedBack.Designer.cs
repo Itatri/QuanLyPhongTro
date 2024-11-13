@@ -167,7 +167,7 @@
             // 
             // btnGuiPhanHoi
             // 
-            this.btnGuiPhanHoi.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnGuiPhanHoi.BackColor = System.Drawing.Color.Blue;
             this.btnGuiPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuiPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnGuiPhanHoi.ForeColor = System.Drawing.Color.White;
@@ -227,7 +227,7 @@
             // 
             // buttonLoc
             // 
-            this.buttonLoc.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLoc.BackColor = System.Drawing.Color.Blue;
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
@@ -242,19 +242,20 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(1222, 105);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.Location = new System.Drawing.Point(1213, 102);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.Size = new System.Drawing.Size(88, 18);
             this.label12.TabIndex = 45;
             this.label12.Text = "Trạng Thái";
             // 
             // comboboxTrangThai
             // 
+            this.comboboxTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxTrangThai.FormattingEnabled = true;
-            this.comboboxTrangThai.Location = new System.Drawing.Point(1307, 102);
+            this.comboboxTrangThai.Location = new System.Drawing.Point(1307, 98);
             this.comboboxTrangThai.Name = "comboboxTrangThai";
-            this.comboboxTrangThai.Size = new System.Drawing.Size(153, 21);
+            this.comboboxTrangThai.Size = new System.Drawing.Size(153, 26);
             this.comboboxTrangThai.TabIndex = 43;
             // 
             // buttonRefeshFB
@@ -272,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BackColor = System.Drawing.Color.Blue;
             this.Controls.Add(this.panel1);
             this.Name = "QuanLiFeedBack";
             this.Size = new System.Drawing.Size(1684, 1002);

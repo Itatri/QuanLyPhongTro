@@ -106,6 +106,11 @@ namespace QuanLyPhongTro
             buttonXoa.Enabled = true;
             buttonSua.Enabled = true;
             buttonLuu.Enabled = false;
+
+            // Hiển thị form toàn màn hình
+            this.WindowState = FormWindowState.Maximized;
+            //this.FormBorderStyle = FormBorderStyle.None;
+            this.TopMost = true;
         }
 
         private void comboBoxKhuVuc_SelectedIndexChanged(object sender, EventArgs e)

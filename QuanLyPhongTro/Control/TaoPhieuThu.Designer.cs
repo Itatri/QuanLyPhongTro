@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaoPhieuThu));
             this.txtCongNo = new System.Windows.Forms.TextBox();
             this.txtDu = new System.Windows.Forms.TextBox();
@@ -439,7 +438,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(833, 115);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 808);
+            this.groupBox2.Size = new System.Drawing.Size(776, 755);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách dịch vụ đang sử dụng";
@@ -457,17 +456,9 @@
             this.dgvDichVu.Location = new System.Drawing.Point(21, 38);
             this.dgvDichVu.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDichVu.Name = "dgvDichVu";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDichVu.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDichVu.RowHeadersWidth = 51;
             this.dgvDichVu.RowTemplate.Height = 24;
-            this.dgvDichVu.Size = new System.Drawing.Size(736, 736);
+            this.dgvDichVu.Size = new System.Drawing.Size(736, 664);
             this.dgvDichVu.TabIndex = 3;
             this.dgvDichVu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichVu_CellContentClick);
             // 
@@ -520,7 +511,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnQuayLai.BackColor = System.Drawing.Color.Blue;
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
@@ -528,7 +519,7 @@
             this.btnQuayLai.Location = new System.Drawing.Point(97, 64);
             this.btnQuayLai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(147, 49);
+            this.btnQuayLai.Size = new System.Drawing.Size(175, 49);
             this.btnQuayLai.TabIndex = 33;
             this.btnQuayLai.Text = "Quay lại";
             this.btnQuayLai.UseVisualStyleBackColor = false;
@@ -536,7 +527,7 @@
             // 
             // btnTao
             // 
-            this.btnTao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTao.BackColor = System.Drawing.Color.Blue;
             this.btnTao.Enabled = false;
             this.btnTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTao.ForeColor = System.Drawing.Color.White;
@@ -545,7 +536,7 @@
             this.btnTao.Location = new System.Drawing.Point(293, 64);
             this.btnTao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTao.Name = "btnTao";
-            this.btnTao.Size = new System.Drawing.Size(122, 49);
+            this.btnTao.Size = new System.Drawing.Size(150, 49);
             this.btnTao.TabIndex = 31;
             this.btnTao.Text = "Tạo";
             this.btnTao.UseVisualStyleBackColor = false;
@@ -553,7 +544,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnHuy.BackColor = System.Drawing.Color.Blue;
             this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.White;
             this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
@@ -561,7 +552,7 @@
             this.btnHuy.Location = new System.Drawing.Point(459, 64);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(122, 49);
+            this.btnHuy.Size = new System.Drawing.Size(150, 49);
             this.btnHuy.TabIndex = 32;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;

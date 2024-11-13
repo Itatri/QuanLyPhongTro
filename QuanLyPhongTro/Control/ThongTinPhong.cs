@@ -131,6 +131,8 @@ namespace QuanLyPhongTro.Control
 
             // ẩn datagirdview
             dataGridViewDichVu1.Enabled = false;
+
+            dataGridViewDichVu1.Columns["DonGia"].DefaultCellStyle.Format = "N0";
         }
 
 
@@ -330,6 +332,74 @@ namespace QuanLyPhongTro.Control
             catch (Exception ex)
             {
                 MessageBox.Show("Cập nhật không thành công: " + ex.Message);
+            }
+        }
+
+        private void textBoxTienPhong_TextChanged(object sender, EventArgs e)
+        {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienPhong.SelectionStart;
+            int selectionLength = textBoxTienPhong.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienPhong.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienPhong.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                textBoxTienPhong.SelectionStart = Math.Max(0, selectionStart + textBoxTienPhong.Text.Length - text.Length);
+                textBoxTienPhong.SelectionLength = selectionLength;
+            }
+        }
+
+        private void txtSodien_TextChanged(object sender, EventArgs e)
+        {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = txtSodien.SelectionStart;
+            int selectionLength = txtSodien.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtSodien.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtSodien.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtSodien.SelectionStart = Math.Max(0, selectionStart + txtSodien.Text.Length - text.Length);
+                txtSodien.SelectionLength = selectionLength;
+            }
+        }
+
+        private void txtSoNuoc_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBoxTienCoc_TextChanged(object sender, EventArgs e)
+        {
+            // Lưu vị trí con trỏ hiện tại
+            int selectionStart = textBoxTienCoc.SelectionStart;
+            int selectionLength = textBoxTienCoc.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = textBoxTienCoc.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                textBoxTienCoc.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                textBoxTienCoc.SelectionStart = Math.Max(0, selectionStart + textBoxTienCoc.Text.Length - text.Length);
+                textBoxTienCoc.SelectionLength = selectionLength;
             }
         }
     }

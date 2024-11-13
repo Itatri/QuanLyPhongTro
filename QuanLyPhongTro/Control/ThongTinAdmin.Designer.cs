@@ -281,7 +281,7 @@
             // 
             // btnCapNhatThongTin
             // 
-            this.btnCapNhatThongTin.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCapNhatThongTin.BackColor = System.Drawing.Color.Blue;
             this.btnCapNhatThongTin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCapNhatThongTin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnCapNhatThongTin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -365,7 +365,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.BackColor = System.Drawing.Color.Blue;
             this.Controls.Add(this.panelThongTinDanCu);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1684, 1002);
