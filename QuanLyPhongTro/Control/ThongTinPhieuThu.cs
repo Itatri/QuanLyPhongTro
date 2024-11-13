@@ -48,10 +48,11 @@ namespace QuanLyPhongTro.Control
                 txtTienNuoc.Text = Convert.ToDecimal(dt.Rows[0]["TienNuoc"]).ToString("N0");
                 txtTongTien.Text = Convert.ToDecimal(dt.Rows[0]["TongTien"]).ToString("N0");
                 txtDC.Text = Convert.ToDecimal(dt.Rows[0]["DienCu"]).ToString("N0");
-                txtDM.Text = Convert.ToDecimal(dt.Rows[0]["DienMoi"]).ToString("N0");
+                txtDM.Text = dt.Rows[0]["DienMoi"].ToString();
                 txtNC.Text = Convert.ToDecimal(dt.Rows[0]["NuocCu"]).ToString("N0");
-                txtNM.Text = Convert.ToDecimal(dt.Rows[0]["NuocMoi"]).ToString("N0");
-                txtKhachTra.Text = Convert.ToDecimal(dt.Rows[0]["ThanhToan"]).ToString("N0");
+                txtNM.Text = dt.Rows[0]["NuocMoi"].ToString();
+                txtKhachTra.Text = dt.Rows[0]["ThanhToan"].ToString();
+
                 if (txtKhachTra.Text.Length != 0 )
                 {
                     txtDu.Text = ((decimal)(float.Parse(dt.Rows[0]["ThanhToan"].ToString()) - float.Parse(dt.Rows[0]["TongTien"].ToString()))).ToString("N0");

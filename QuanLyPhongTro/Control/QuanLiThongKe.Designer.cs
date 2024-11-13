@@ -28,103 +28,137 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnXuat = new System.Windows.Forms.Button();
+            this.dgvDT = new System.Windows.Forms.DataGridView();
+            this.btnTK = new System.Windows.Forms.Button();
+            this.cboNam = new System.Windows.Forms.ComboBox();
+            this.cboThang = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cboTK = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDT)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvDT
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 158);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(899, 604);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvDT.AllowUserToAddRows = false;
+            this.dgvDT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDT.Location = new System.Drawing.Point(53, 213);
+            this.dgvDT.Name = "dgvDT";
+            this.dgvDT.RowHeadersWidth = 51;
+            this.dgvDT.RowTemplate.Height = 24;
+            this.dgvDT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDT.Size = new System.Drawing.Size(1579, 733);
+            this.dgvDT.TabIndex = 40;
             // 
-            // btnXuat
+            // btnTK
             // 
-            this.btnXuat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuat.Location = new System.Drawing.Point(753, 92);
-            this.btnXuat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXuat.Name = "btnXuat";
-            this.btnXuat.Size = new System.Drawing.Size(105, 45);
-            this.btnXuat.TabIndex = 0;
-            this.btnXuat.Text = "Xuất";
-            this.btnXuat.UseVisualStyleBackColor = true;
+            this.btnTK.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTK.Location = new System.Drawing.Point(1114, 152);
+            this.btnTK.Name = "btnTK";
+            this.btnTK.Size = new System.Drawing.Size(100, 32);
+            this.btnTK.TabIndex = 46;
+            this.btnTK.Text = "Thống kê";
+            this.btnTK.UseVisualStyleBackColor = true;
+            this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
+            // 
+            // cboNam
+            // 
+            this.cboNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNam.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboNam.FormattingEnabled = true;
+            this.cboNam.Location = new System.Drawing.Point(956, 152);
+            this.cboNam.Name = "cboNam";
+            this.cboNam.Size = new System.Drawing.Size(124, 27);
+            this.cboNam.TabIndex = 44;
+            // 
+            // cboThang
+            // 
+            this.cboThang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboThang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboThang.FormattingEnabled = true;
+            this.cboThang.Location = new System.Drawing.Point(771, 153);
+            this.cboThang.Name = "cboThang";
+            this.cboThang.Size = new System.Drawing.Size(124, 27);
+            this.cboThang.TabIndex = 45;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(899, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 19);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Năm";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(699, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 19);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Tháng";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(232, 16);
+            this.label1.Location = new System.Drawing.Point(627, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 52);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Quản Lý Thống Kê";
+            this.label1.Size = new System.Drawing.Size(526, 52);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "THỐNG KÊ DOANH THU";
             // 
-            // button1
+            // cboTK
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(607, 92);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 45);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Thống kê theo ";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(471, 92);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 45);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Thống kê theo ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cboTK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTK.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.cboTK.FormattingEnabled = true;
+            this.cboTK.Items.AddRange(new object[] {
+            "Thống kê doanh thu trong năm",
+            "Thống kê dịch vụ theo tháng",
+            "Thống kê dịch vụ theo năm"});
+            this.cboTK.Location = new System.Drawing.Point(468, 155);
+            this.cboTK.Name = "cboTK";
+            this.cboTK.Size = new System.Drawing.Size(225, 27);
+            this.cboTK.TabIndex = 51;
             // 
             // QuanLiThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cboTK);
+            this.Controls.Add(this.dgvDT);
+            this.Controls.Add(this.btnTK);
+            this.Controls.Add(this.cboNam);
+            this.Controls.Add(this.cboThang);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnXuat);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QuanLiThongKe";
-            this.Size = new System.Drawing.Size(935, 780);
+            this.Size = new System.Drawing.Size(1684, 1002);
             this.Load += new System.EventHandler(this.QuanLiThongKe_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnXuat;
+
+        private System.Windows.Forms.DataGridView dgvDT;
+        private System.Windows.Forms.Button btnTK;
+        private System.Windows.Forms.ComboBox cboNam;
+        private System.Windows.Forms.ComboBox cboThang;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cboTK;
     }
 }

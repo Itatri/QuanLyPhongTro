@@ -247,7 +247,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(511, 255);
             this.guna2Button1.TabIndex = 9;
             this.guna2Button1.Text = "THỐNG KÊ";
-            this.guna2Button1.Click += new System.EventHandler(this.btnQLDichVu_Click_1);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // MainForm2
             // 
