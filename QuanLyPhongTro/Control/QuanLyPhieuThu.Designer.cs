@@ -95,7 +95,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(469, 107);
+            this.label2.Location = new System.Drawing.Point(407, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 19);
             this.label2.TabIndex = 6;
@@ -105,7 +105,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(669, 106);
+            this.label3.Location = new System.Drawing.Point(641, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 19);
             this.label3.TabIndex = 6;
@@ -115,36 +115,38 @@
             // 
             this.cboThang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboThang.FormattingEnabled = true;
-            this.cboThang.Location = new System.Drawing.Point(541, 104);
+            this.cboThang.Location = new System.Drawing.Point(467, 100);
             this.cboThang.Name = "cboThang";
-            this.cboThang.Size = new System.Drawing.Size(124, 27);
+            this.cboThang.Size = new System.Drawing.Size(155, 27);
             this.cboThang.TabIndex = 7;
             // 
             // cboNam
             // 
             this.cboNam.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboNam.FormattingEnabled = true;
-            this.cboNam.Location = new System.Drawing.Point(726, 103);
+            this.cboNam.Location = new System.Drawing.Point(689, 96);
             this.cboNam.Name = "cboNam";
-            this.cboNam.Size = new System.Drawing.Size(124, 27);
+            this.cboNam.Size = new System.Drawing.Size(144, 27);
             this.cboNam.TabIndex = 7;
             // 
             // btnLoc
             // 
-            this.btnLoc.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoc.Location = new System.Drawing.Point(856, 103);
+            this.btnLoc.BackColor = System.Drawing.Color.Blue;
+            this.btnLoc.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoc.ForeColor = System.Drawing.Color.Snow;
+            this.btnLoc.Location = new System.Drawing.Point(853, 94);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.Size = new System.Drawing.Size(100, 32);
             this.btnLoc.TabIndex = 8;
             this.btnLoc.Text = "Lọc";
-            this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.UseVisualStyleBackColor = false;
             this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1286, 108);
+            this.label4.Location = new System.Drawing.Point(1220, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 19);
             this.label4.TabIndex = 9;
@@ -152,28 +154,31 @@
             // 
             // textBox1
             // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1387, 104);
+            this.textBox1.Location = new System.Drawing.Point(1303, 112);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 27);
+            this.textBox1.Size = new System.Drawing.Size(314, 27);
             this.textBox1.TabIndex = 10;
             // 
             // btnTao
             // 
-            this.btnTao.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTao.BackColor = System.Drawing.Color.Blue;
+            this.btnTao.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTao.ForeColor = System.Drawing.Color.Snow;
             this.btnTao.Location = new System.Drawing.Point(38, 102);
             this.btnTao.Name = "btnTao";
             this.btnTao.Size = new System.Drawing.Size(133, 37);
             this.btnTao.TabIndex = 11;
             this.btnTao.Text = "Tạo Phiếu Thu";
-            this.btnTao.UseVisualStyleBackColor = true;
+            this.btnTao.UseVisualStyleBackColor = false;
             this.btnTao.Click += new System.EventHandler(this.btnTao_Click);
             // 
             // buttonRefesh
             // 
             this.buttonRefesh.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.RefeshIcon;
             this.buttonRefesh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRefesh.Location = new System.Drawing.Point(963, 104);
+            this.buttonRefesh.Location = new System.Drawing.Point(963, 93);
             this.buttonRefesh.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRefesh.Name = "buttonRefesh";
             this.buttonRefesh.Size = new System.Drawing.Size(48, 33);

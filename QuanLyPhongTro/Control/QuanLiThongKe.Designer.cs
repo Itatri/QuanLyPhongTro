@@ -53,13 +53,15 @@
             // 
             // btnTK
             // 
-            this.btnTK.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTK.Location = new System.Drawing.Point(1114, 152);
+            this.btnTK.BackColor = System.Drawing.Color.Blue;
+            this.btnTK.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTK.ForeColor = System.Drawing.Color.White;
+            this.btnTK.Location = new System.Drawing.Point(1121, 147);
             this.btnTK.Name = "btnTK";
             this.btnTK.Size = new System.Drawing.Size(100, 32);
             this.btnTK.TabIndex = 46;
             this.btnTK.Text = "Thống kê";
-            this.btnTK.UseVisualStyleBackColor = true;
+            this.btnTK.UseVisualStyleBackColor = false;
             this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
             // 
             // cboNam
