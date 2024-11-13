@@ -104,7 +104,7 @@ namespace QuanLyPhongTro
 
             System.Data.DataTable dt = KhachCungThuongTru(lst, tt);
             // Xuất dữ liệu vào file Word
-            WordExport wd = new WordExport(sourceFilePath, false);
+            WordExport wd = new WordExport(sourceFilePath, true);
             
             if(chukychuho != null)
             {
@@ -197,7 +197,7 @@ namespace QuanLyPhongTro
             khach.Clear();
             khach.Add(chuho.MaKhachTro);
             System.Data.DataTable bang = BangHopDong(lst);
-            WordExport wd = new WordExport(sourceFilePath, false);
+            WordExport wd = new WordExport(sourceFilePath, true);
             wd.WriteFields(dic);
             wd.WriteDataTableToWordTable(bang, 1);
             Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
