@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiDanCu));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewDanCu = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -107,6 +109,14 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDanCu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDanCu.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewDanCu.Location = new System.Drawing.Point(11, 141);
             this.dataGridViewDanCu.Name = "dataGridViewDanCu";
             this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 467);
@@ -508,13 +518,15 @@
             // 
             // buttonLuuCD
             // 
-            this.buttonLuuCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLuuCD.BackColor = System.Drawing.Color.Blue;
             this.buttonLuuCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLuuCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonLuuCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
+            this.buttonLuuCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuuCD.Image")));
+            this.buttonLuuCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLuuCD.Location = new System.Drawing.Point(1315, 13);
             this.buttonLuuCD.Name = "buttonLuuCD";
-            this.buttonLuuCD.Size = new System.Drawing.Size(200, 30);
+            this.buttonLuuCD.Size = new System.Drawing.Size(200, 35);
             this.buttonLuuCD.TabIndex = 3;
             this.buttonLuuCD.Text = "Lưu thông tin ";
             this.buttonLuuCD.UseVisualStyleBackColor = false;
@@ -522,13 +534,15 @@
             // 
             // buttonSuaCD
             // 
-            this.buttonSuaCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonSuaCD.BackColor = System.Drawing.Color.Blue;
             this.buttonSuaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSuaCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonSuaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
+            this.buttonSuaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuaCD.Image")));
+            this.buttonSuaCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSuaCD.Location = new System.Drawing.Point(872, 13);
             this.buttonSuaCD.Name = "buttonSuaCD";
-            this.buttonSuaCD.Size = new System.Drawing.Size(200, 30);
+            this.buttonSuaCD.Size = new System.Drawing.Size(200, 35);
             this.buttonSuaCD.TabIndex = 2;
             this.buttonSuaCD.Text = "Sửa thông tin ";
             this.buttonSuaCD.UseVisualStyleBackColor = false;
@@ -536,13 +550,15 @@
             // 
             // buttonXoaCD
             // 
-            this.buttonXoaCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonXoaCD.BackColor = System.Drawing.Color.Blue;
             this.buttonXoaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonXoaCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonXoaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
+            this.buttonXoaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoaCD.Image")));
+            this.buttonXoaCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonXoaCD.Location = new System.Drawing.Point(482, 13);
             this.buttonXoaCD.Name = "buttonXoaCD";
-            this.buttonXoaCD.Size = new System.Drawing.Size(200, 30);
+            this.buttonXoaCD.Size = new System.Drawing.Size(200, 35);
             this.buttonXoaCD.TabIndex = 1;
             this.buttonXoaCD.Text = "Xóa thông tin ";
             this.buttonXoaCD.UseVisualStyleBackColor = false;
@@ -550,13 +566,15 @@
             // 
             // buttonThemCD
             // 
-            this.buttonThemCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonThemCD.BackColor = System.Drawing.Color.Blue;
             this.buttonThemCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonThemCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonThemCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonThemCD.ForeColor = System.Drawing.Color.White;
+            this.buttonThemCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonThemCD.Image")));
+            this.buttonThemCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonThemCD.Location = new System.Drawing.Point(95, 13);
             this.buttonThemCD.Name = "buttonThemCD";
-            this.buttonThemCD.Size = new System.Drawing.Size(200, 30);
+            this.buttonThemCD.Size = new System.Drawing.Size(200, 35);
             this.buttonThemCD.TabIndex = 0;
             this.buttonThemCD.Text = "Thêm thông tin ";
             this.buttonThemCD.UseVisualStyleBackColor = false;
@@ -564,10 +582,12 @@
             // 
             // buttonTimKiemCuDan
             // 
-            this.buttonTimKiemCuDan.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonTimKiemCuDan.BackColor = System.Drawing.Color.Blue;
             this.buttonTimKiemCuDan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTimKiemCuDan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonTimKiemCuDan.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonTimKiemCuDan.Image = ((System.Drawing.Image)(resources.GetObject("buttonTimKiemCuDan.Image")));
+            this.buttonTimKiemCuDan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTimKiemCuDan.Location = new System.Drawing.Point(1451, 106);
             this.buttonTimKiemCuDan.Name = "buttonTimKiemCuDan";
             this.buttonTimKiemCuDan.Size = new System.Drawing.Size(141, 27);
@@ -578,6 +598,7 @@
             // 
             // txtTimKiemCuDan
             // 
+            this.txtTimKiemCuDan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimKiemCuDan.Location = new System.Drawing.Point(1011, 109);
             this.txtTimKiemCuDan.Multiline = true;
             this.txtTimKiemCuDan.Name = "txtTimKiemCuDan";
@@ -595,7 +616,7 @@
             // 
             // buttonLoc
             // 
-            this.buttonLoc.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLoc.BackColor = System.Drawing.Color.Blue;
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
@@ -610,10 +631,10 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(224, 113);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.Location = new System.Drawing.Point(220, 111);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.Size = new System.Drawing.Size(56, 18);
             this.label12.TabIndex = 42;
             this.label12.Text = "Phòng";
             // 
@@ -651,7 +672,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BackColor = System.Drawing.Color.Blue;
             this.Controls.Add(this.panel1);
             this.Name = "QuanLiDanCu";
             this.Size = new System.Drawing.Size(1684, 1002);
