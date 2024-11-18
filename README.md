@@ -12,7 +12,7 @@
 
 ### Công nghệ
 
-- Microsoft SQL Server ( SQL ) 
+- Microsoft SQL Server (Database SQL) 
 - Windows Forms App .Net Framework
 
 ### Mô hình 
