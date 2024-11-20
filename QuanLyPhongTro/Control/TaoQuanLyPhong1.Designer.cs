@@ -394,13 +394,14 @@
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
-            this.btnQuayLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuayLai.Location = new System.Drawing.Point(7, 13);
             this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(348, 40);
+            this.btnQuayLai.Size = new System.Drawing.Size(348, 45);
             this.btnQuayLai.TabIndex = 10;
             this.btnQuayLai.Text = "Quay lại";
+            this.btnQuayLai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnQuayLai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuayLai.UseVisualStyleBackColor = false;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
             // 
@@ -410,13 +411,14 @@
             this.buttonLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLuu.ForeColor = System.Drawing.Color.White;
             this.buttonLuu.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuu.Image")));
-            this.buttonLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLuu.Location = new System.Drawing.Point(1283, 13);
             this.buttonLuu.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLuu.Name = "buttonLuu";
-            this.buttonLuu.Size = new System.Drawing.Size(348, 40);
+            this.buttonLuu.Size = new System.Drawing.Size(348, 45);
             this.buttonLuu.TabIndex = 9;
             this.buttonLuu.Text = "Lưu";
+            this.buttonLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonLuu.UseVisualStyleBackColor = false;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
@@ -426,13 +428,14 @@
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
             this.btnDangKy.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKy.Image")));
-            this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDangKy.Location = new System.Drawing.Point(645, 13);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(348, 40);
+            this.btnDangKy.Size = new System.Drawing.Size(348, 45);
             this.btnDangKy.TabIndex = 8;
             this.btnDangKy.Text = "Thêm";
+            this.btnDangKy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDangKy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangKy.UseVisualStyleBackColor = false;
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
             // 

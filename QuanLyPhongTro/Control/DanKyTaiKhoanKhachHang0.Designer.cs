@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DanKyTaiKhoanKhachHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DanKyTaiKhoanKhachHang));
             this.btnLuu = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
@@ -64,15 +64,15 @@
             this.btnLuu.BackColor = System.Drawing.Color.Blue;
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.ImageKey = "(none)";
-            this.btnLuu.Location = new System.Drawing.Point(719, 17);
+            this.btnLuu.Location = new System.Drawing.Point(724, 17);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(195, 40);
+            this.btnLuu.Size = new System.Drawing.Size(195, 46);
             this.btnLuu.TabIndex = 9;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
@@ -91,15 +91,15 @@
             this.btnThem.BackColor = System.Drawing.Color.Blue;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.ImageKey = "(none)";
             this.btnThem.Location = new System.Drawing.Point(364, 17);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(195, 40);
+            this.btnThem.Size = new System.Drawing.Size(195, 46);
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -245,13 +245,14 @@
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
-            this.btnQuayLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuayLai.Location = new System.Drawing.Point(16, 17);
             this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(188, 40);
+            this.btnQuayLai.Size = new System.Drawing.Size(195, 46);
             this.btnQuayLai.TabIndex = 50;
             this.btnQuayLai.Text = "Quay lại";
+            this.btnQuayLai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnQuayLai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuayLai.UseVisualStyleBackColor = false;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
             // 
@@ -296,13 +297,14 @@
             this.buttonSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.buttonSua.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.buttonSua.Image = ((System.Drawing.Image)(resources.GetObject("buttonSua.Image")));
-            this.buttonSua.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.buttonSua.Location = new System.Drawing.Point(1074, 17);
             this.buttonSua.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSua.Name = "buttonSua";
-            this.buttonSua.Size = new System.Drawing.Size(195, 40);
+            this.buttonSua.Size = new System.Drawing.Size(195, 46);
             this.buttonSua.TabIndex = 52;
             this.buttonSua.Text = "Cập Nhât";
+            this.buttonSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSua.UseVisualStyleBackColor = false;
             this.buttonSua.Click += new System.EventHandler(this.buttonSua_Click);
             // 
@@ -312,13 +314,14 @@
             this.buttonHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHuy.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.buttonHuy.Image = ((System.Drawing.Image)(resources.GetObject("buttonHuy.Image")));
-            this.buttonHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHuy.Location = new System.Drawing.Point(1429, 17);
             this.buttonHuy.Margin = new System.Windows.Forms.Padding(2);
             this.buttonHuy.Name = "buttonHuy";
-            this.buttonHuy.Size = new System.Drawing.Size(195, 40);
+            this.buttonHuy.Size = new System.Drawing.Size(195, 46);
             this.buttonHuy.TabIndex = 53;
             this.buttonHuy.Text = "Hủy";
+            this.buttonHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonHuy.UseVisualStyleBackColor = false;
             this.buttonHuy.Click += new System.EventHandler(this.buttonHuy_Click);
             // 

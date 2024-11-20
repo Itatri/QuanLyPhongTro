@@ -513,7 +513,7 @@
             this.panelCRUDThongTinDanCu.Controls.Add(this.buttonThemCD);
             this.panelCRUDThongTinDanCu.Location = new System.Drawing.Point(11, 900);
             this.panelCRUDThongTinDanCu.Name = "panelCRUDThongTinDanCu";
-            this.panelCRUDThongTinDanCu.Size = new System.Drawing.Size(1633, 57);
+            this.panelCRUDThongTinDanCu.Size = new System.Drawing.Size(1633, 72);
             this.panelCRUDThongTinDanCu.TabIndex = 29;
             // 
             // buttonLuuCD
@@ -523,12 +523,15 @@
             this.buttonLuuCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
             this.buttonLuuCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuuCD.Image")));
-            this.buttonLuuCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLuuCD.Location = new System.Drawing.Point(1315, 13);
             this.buttonLuuCD.Name = "buttonLuuCD";
-            this.buttonLuuCD.Size = new System.Drawing.Size(200, 35);
+            this.buttonLuuCD.Size = new System.Drawing.Size(200, 42);
             this.buttonLuuCD.TabIndex = 3;
             this.buttonLuuCD.Text = "Lưu thông tin ";
+            this.buttonLuuCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLuuCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLuuCD.UseCompatibleTextRendering = true;
+            this.buttonLuuCD.UseMnemonic = false;
             this.buttonLuuCD.UseVisualStyleBackColor = false;
             this.buttonLuuCD.Click += new System.EventHandler(this.buttonLuuCD_Click);
             // 
@@ -539,12 +542,15 @@
             this.buttonSuaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
             this.buttonSuaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuaCD.Image")));
-            this.buttonSuaCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSuaCD.Location = new System.Drawing.Point(872, 13);
             this.buttonSuaCD.Name = "buttonSuaCD";
-            this.buttonSuaCD.Size = new System.Drawing.Size(200, 35);
+            this.buttonSuaCD.Size = new System.Drawing.Size(200, 42);
             this.buttonSuaCD.TabIndex = 2;
             this.buttonSuaCD.Text = "Sửa thông tin ";
+            this.buttonSuaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSuaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSuaCD.UseCompatibleTextRendering = true;
+            this.buttonSuaCD.UseMnemonic = false;
             this.buttonSuaCD.UseVisualStyleBackColor = false;
             this.buttonSuaCD.Click += new System.EventHandler(this.buttonSuaCD_Click);
             // 
@@ -555,12 +561,15 @@
             this.buttonXoaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
             this.buttonXoaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoaCD.Image")));
-            this.buttonXoaCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonXoaCD.Location = new System.Drawing.Point(482, 13);
             this.buttonXoaCD.Name = "buttonXoaCD";
-            this.buttonXoaCD.Size = new System.Drawing.Size(200, 35);
+            this.buttonXoaCD.Size = new System.Drawing.Size(200, 42);
             this.buttonXoaCD.TabIndex = 1;
             this.buttonXoaCD.Text = "Xóa thông tin ";
+            this.buttonXoaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonXoaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonXoaCD.UseCompatibleTextRendering = true;
+            this.buttonXoaCD.UseMnemonic = false;
             this.buttonXoaCD.UseVisualStyleBackColor = false;
             this.buttonXoaCD.Click += new System.EventHandler(this.buttonXoaCD_Click);
             // 
@@ -571,12 +580,15 @@
             this.buttonThemCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonThemCD.ForeColor = System.Drawing.Color.White;
             this.buttonThemCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonThemCD.Image")));
-            this.buttonThemCD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonThemCD.Location = new System.Drawing.Point(95, 13);
             this.buttonThemCD.Name = "buttonThemCD";
-            this.buttonThemCD.Size = new System.Drawing.Size(200, 35);
+            this.buttonThemCD.Size = new System.Drawing.Size(200, 42);
             this.buttonThemCD.TabIndex = 0;
             this.buttonThemCD.Text = "Thêm thông tin ";
+            this.buttonThemCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThemCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonThemCD.UseCompatibleTextRendering = true;
+            this.buttonThemCD.UseMnemonic = false;
             this.buttonThemCD.UseVisualStyleBackColor = false;
             this.buttonThemCD.Click += new System.EventHandler(this.buttonThemCD_Click);
             // 
@@ -654,7 +666,7 @@
             this.panel1.Controls.Add(this.dataGridViewDanCu);
             this.panel1.Location = new System.Drawing.Point(13, 18);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1656, 968);
+            this.panel1.Size = new System.Drawing.Size(1656, 986);
             this.panel1.TabIndex = 43;
             // 
             // buttonRefesh
@@ -675,7 +687,7 @@
             this.BackColor = System.Drawing.Color.Blue;
             this.Controls.Add(this.panel1);
             this.Name = "QuanLiDanCu";
-            this.Size = new System.Drawing.Size(1684, 1002);
+            this.Size = new System.Drawing.Size(1684, 1016);
             this.Load += new System.EventHandler(this.QuanLiDanCu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);

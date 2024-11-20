@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinAdmin));
             this.label1 = new System.Windows.Forms.Label();
             this.labelAnhChuKy = new System.Windows.Forms.Label();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
@@ -288,11 +289,14 @@
             this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapNhatThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
+            this.btnCapNhatThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatThongTin.Image")));
             this.btnCapNhatThongTin.Location = new System.Drawing.Point(677, 883);
             this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
             this.btnCapNhatThongTin.Size = new System.Drawing.Size(312, 50);
             this.btnCapNhatThongTin.TabIndex = 75;
             this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
+            this.btnCapNhatThongTin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatThongTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCapNhatThongTin.UseVisualStyleBackColor = false;
             this.btnCapNhatThongTin.Click += new System.EventHandler(this.btnCapNhatThongTin_Click);
             // 
