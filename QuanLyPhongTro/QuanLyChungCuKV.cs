@@ -23,13 +23,23 @@ namespace QuanLyPhongTro
         {
             InitializeComponent();
             CenterToScreen();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Cài đặt chế độ tự động điều chỉnh độ rộng cột
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Cài đặt chế độ tự động điều chỉnh độ rộng cột
 
             // Thêm lựa chọn vào ComboBox trang thái
             comboBoxTrangThai.Items.Add("Đang hoạt động");
             comboBoxTrangThai.Items.Add("Không hoạt động");
 
             comboBoxTrangThai.SelectedIndex = 1; // Đặt "Không hoạt động" làm trạng thái mặc định
+
+            // thay đổi cỡ chữ trong datagirdview 
+            dataGridView2.DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold); 
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 14, FontStyle.Bold);
+
+            // thay đổi cỡ chữ trong datagirdview 
+            dataGridView2.DefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 14, FontStyle.Bold);
+
+
         }
 
         private void buttonThem_Click(object sender, EventArgs e)
@@ -49,20 +59,7 @@ namespace QuanLyPhongTro
 
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-            if (index >= 0 && index < dataGridView1.Rows.Count)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[index];
-                textBoxMaChungCu.Text = selectedRow.Cells["MaKhuVuc"].Value.ToString();
-                textBoxTenChungCu.Text = selectedRow.Cells["TenKhuVuc"].Value.ToString();
-
-                // Kiểm tra và gán giá trị của ComboBox TrangThai
-                bool trangThai = Convert.ToBoolean(selectedRow.Cells["TrangThai"].Value);
-                comboBoxTrangThai.SelectedItem = trangThai ? "Đang hoạt động" : "Không hoạt động";
-            }
-        }
+   
 
         private void QuanLyChungCuKV_Load(object sender, EventArgs e)
         {
@@ -89,44 +86,7 @@ namespace QuanLyPhongTro
 
         private void LoadKhuVucData()
         {
-            //using (SqlConnection connection = new SqlConnection(chuoiketnoi))
-            //{
-            //    connection.Open();
-
-            //    // Truy vấn để lấy thông tin khu vực, số lượng phòng và số người trong khu vực
-            //    string query = @"
-            //SELECT kv.MaKhuVuc, 
-            //       kv.TenKhuVuc, 
-            //       COUNT(DISTINCT p.MaPhong) AS SoLuongPhong,  -- Đếm số phòng trong khu vực
-            //       COUNT(DISTINCT ttk.MaKhachTro) AS SoNguoiO,   -- Đếm số người ở trong khu vực
-            //       kv.TrangThai
-            //FROM KhuVuc kv
-            //LEFT JOIN Phong p ON kv.MaKhuVuc = p.MaKhuVuc
-            //LEFT JOIN ThongTinKhach ttk ON p.MaPhong = ttk.MaPhong
-            //GROUP BY kv.MaKhuVuc, kv.TenKhuVuc, kv.TrangThai";
-
-            //    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            //    DataTable dataTable = new DataTable();
-            //    adapter.Fill(dataTable);
-
-            //    // Gán dữ liệu vào DataGridView
-            //    dataGridView1.DataSource = dataTable;
-
-            //    // Đặt tên hiển thị cho các cột mới
-            //    dataGridView1.Columns["MaKhuVuc"].HeaderText = "Mã khu vực";
-            //    dataGridView1.Columns["TenKhuVuc"].HeaderText = "Tên khu vực";
-            //    dataGridView1.Columns["SoLuongPhong"].HeaderText = "Số phòng";
-            //    dataGridView1.Columns["SoNguoiO"].HeaderText = "Số người";
-            //    dataGridView1.Columns["TrangThai"].HeaderText = "Trạng thái";
-
-            //    // Sắp xếp lại thứ tự cột
-            //    dataGridView1.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã khu vực
-            //    dataGridView1.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên khu vực
-            //    dataGridView1.Columns["SoLuongPhong"].DisplayIndex = 2; // Số phòng
-            //    dataGridView1.Columns["SoNguoiO"].DisplayIndex = 3; // Số người
-            //    dataGridView1.Columns["TrangThai"].DisplayIndex = 4; // Trạng thái
-            //}
-
+           
             using (SqlConnection connection = new SqlConnection(chuoiketnoi))
             {
                 connection.Open();
@@ -148,21 +108,21 @@ namespace QuanLyPhongTro
                 adapter.Fill(dataTable);
 
                 // Gán dữ liệu vào DataGridView
-                dataGridView1.DataSource = dataTable;
+                dataGridView2.DataSource = dataTable;
 
                 // Đặt tên hiển thị cho các cột mới
-                dataGridView1.Columns["MaKhuVuc"].HeaderText = "Mã chung cư";
-                dataGridView1.Columns["TenKhuVuc"].HeaderText = "Tên chung cư";
-                dataGridView1.Columns["SoLuongPhong"].HeaderText = "Số phòng";
-                dataGridView1.Columns["SoNguoiO"].HeaderText = "Số người";
-                dataGridView1.Columns["TrangThai"].HeaderText = "Trạng thái";
+                dataGridView2.Columns["MaKhuVuc"].HeaderText = "Mã chung cư";
+                dataGridView2.Columns["TenKhuVuc"].HeaderText = "Tên chung cư";
+                dataGridView2.Columns["SoLuongPhong"].HeaderText = "Số phòng";
+                dataGridView2.Columns["SoNguoiO"].HeaderText = "Số người";
+                dataGridView2.Columns["TrangThai"].HeaderText = "Trạng thái";
 
                 // Sắp xếp lại thứ tự cột
-                dataGridView1.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã chung cư
-                dataGridView1.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên chung cư
-                dataGridView1.Columns["SoLuongPhong"].DisplayIndex = 2; // Số phòng
-                dataGridView1.Columns["SoNguoiO"].DisplayIndex = 3; // Số người
-                dataGridView1.Columns["TrangThai"].DisplayIndex = 4; // Trạng thái
+                dataGridView2.Columns["MaKhuVuc"].DisplayIndex = 0; // Mã chung cư
+                dataGridView2.Columns["TenKhuVuc"].DisplayIndex = 1; // Tên chung cư
+                dataGridView2.Columns["SoLuongPhong"].DisplayIndex = 2; // Số phòng
+                dataGridView2.Columns["SoNguoiO"].DisplayIndex = 3; // Số người
+                dataGridView2.Columns["TrangThai"].DisplayIndex = 4; // Trạng thái
             }
         }
 
@@ -193,7 +153,7 @@ namespace QuanLyPhongTro
         private void buttonCapNhat_Click(object sender, EventArgs e)
         {
             // Kiểm tra nếu chưa có dòng nào được chọn trong DataGridView
-            if (dataGridView1.SelectedRows.Count == 0)
+            if (dataGridView2.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn khu vực để cập nhật thông tin.");
                 return;
@@ -388,6 +348,41 @@ namespace QuanLyPhongTro
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             LoadKhuVucData(); // Gọi phương thức để tải dữ liệu khi form tải
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0 && index < dataGridView2.Rows.Count)
+            {
+                DataGridViewRow selectedRow = dataGridView2.Rows[index];
+                textBoxMaChungCu.Text = selectedRow.Cells["MaKhuVuc"].Value.ToString();
+                textBoxTenChungCu.Text = selectedRow.Cells["TenKhuVuc"].Value.ToString();
+
+                // Kiểm tra và gán giá trị của ComboBox TrangThai
+                bool trangThai = Convert.ToBoolean(selectedRow.Cells["TrangThai"].Value);
+                comboBoxTrangThai.SelectedItem = trangThai ? "Đang hoạt động" : "Không hoạt động";
+            }
+        }
+
+        private void dataGridView2_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        { 
+            DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+            int trangThai = Convert.ToInt32(row.Cells["trangThai"].Value);
+
+            if (trangThai == 0)
+            {
+                row.DefaultCellStyle.BackColor = Color.Gray;  // Màu nền cho dòng chưa thuê
+            }
+            else if (trangThai == 1)
+            {
+                row.DefaultCellStyle.BackColor = Color.Lavender;  // Màu nền cho dòng đã thuê
+            }
         }
     }
 }
