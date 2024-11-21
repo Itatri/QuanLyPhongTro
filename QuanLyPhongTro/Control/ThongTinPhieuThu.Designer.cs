@@ -519,12 +519,13 @@
             this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhat.ForeColor = System.Drawing.Color.White;
             this.btnCapNhat.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhat.Image")));
-            this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCapNhat.Location = new System.Drawing.Point(342, 71);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(194, 58);
             this.btnCapNhat.TabIndex = 35;
             this.btnCapNhat.Text = "Cập Nhật";
+            this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCapNhat.UseVisualStyleBackColor = false;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
@@ -534,12 +535,13 @@
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
-            this.btnQuayLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuayLai.Location = new System.Drawing.Point(122, 71);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(165, 58);
             this.btnQuayLai.TabIndex = 36;
             this.btnQuayLai.Text = "Quay lại";
+            this.btnQuayLai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnQuayLai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQuayLai.UseVisualStyleBackColor = false;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click_1);
             // 

@@ -487,5 +487,20 @@ namespace QuanLyPhongTro
             dangNhapForm.Show();
             this.Hide(); // Ẩn MainForm
         }
+
+        private void dataGridViewTaiKhoan_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridViewRow row = dataGridViewTaiKhoan.Rows[e.RowIndex];
+            int trangThai = Convert.ToInt32(row.Cells["trangThai"].Value);
+
+            if (trangThai == 0)
+            {
+                row.DefaultCellStyle.BackColor = Color.Gray;  // Màu nền cho dòng chưa thuê
+            }
+            else if (trangThai == 1)
+            {
+                row.DefaultCellStyle.BackColor = Color.Lavender;  // Màu nền cho dòng đã thuê
+            }
+        }
     }
 }

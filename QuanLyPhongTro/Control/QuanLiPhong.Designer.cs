@@ -55,13 +55,14 @@
             this.button2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(900, 20);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(297, 42);
+            this.button2.Size = new System.Drawing.Size(297, 46);
             this.button2.TabIndex = 3;
             this.button2.Text = "Tạo phiếu thu";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
             // 
             // btnDangKyTaiKhoan
@@ -70,13 +71,14 @@
             this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKyTaiKhoan.ForeColor = System.Drawing.Color.White;
             this.btnDangKyTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKyTaiKhoan.Image")));
-            this.btnDangKyTaiKhoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(459, 20);
             this.btnDangKyTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKyTaiKhoan.Name = "btnDangKyTaiKhoan";
-            this.btnDangKyTaiKhoan.Size = new System.Drawing.Size(297, 42);
+            this.btnDangKyTaiKhoan.Size = new System.Drawing.Size(297, 46);
             this.btnDangKyTaiKhoan.TabIndex = 2;
             this.btnDangKyTaiKhoan.Text = "Đăng ký tài khoản";
+            this.btnDangKyTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDangKyTaiKhoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangKyTaiKhoan.UseVisualStyleBackColor = false;
             this.btnDangKyTaiKhoan.Click += new System.EventHandler(this.btnDangKyTaiKhoan_Click);
             // 
@@ -98,13 +100,14 @@
             this.btnTaoPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoPhong.ForeColor = System.Drawing.Color.White;
             this.btnTaoPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoPhong.Image")));
-            this.btnTaoPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTaoPhong.Location = new System.Drawing.Point(18, 20);
             this.btnTaoPhong.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoPhong.Name = "btnTaoPhong";
-            this.btnTaoPhong.Size = new System.Drawing.Size(297, 42);
+            this.btnTaoPhong.Size = new System.Drawing.Size(297, 46);
             this.btnTaoPhong.TabIndex = 1;
             this.btnTaoPhong.Text = "Tạo phòng";
+            this.btnTaoPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTaoPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTaoPhong.UseVisualStyleBackColor = false;
             this.btnTaoPhong.Click += new System.EventHandler(this.btnTaoPhong_Click);
             // 
@@ -114,13 +117,14 @@
             this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
             this.buttonTraPhong.Image = ((System.Drawing.Image)(resources.GetObject("buttonTraPhong.Image")));
-            this.buttonTraPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonTraPhong.Location = new System.Drawing.Point(1341, 20);
             this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTraPhong.Name = "buttonTraPhong";
-            this.buttonTraPhong.Size = new System.Drawing.Size(297, 42);
+            this.buttonTraPhong.Size = new System.Drawing.Size(297, 46);
             this.buttonTraPhong.TabIndex = 5;
             this.buttonTraPhong.Text = "Trả phòng";
+            this.buttonTraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonTraPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonTraPhong.UseVisualStyleBackColor = false;
             this.buttonTraPhong.Click += new System.EventHandler(this.buttonTraPhong_Click);
             // 
@@ -204,10 +208,10 @@
             // textBoxTimPhong
             // 
             this.textBoxTimPhong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxTimPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTimPhong.Location = new System.Drawing.Point(161, 123);
+            this.textBoxTimPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTimPhong.Location = new System.Drawing.Point(161, 115);
             this.textBoxTimPhong.Name = "textBoxTimPhong";
-            this.textBoxTimPhong.Size = new System.Drawing.Size(421, 26);
+            this.textBoxTimPhong.Size = new System.Drawing.Size(421, 29);
             this.textBoxTimPhong.TabIndex = 23;
             this.textBoxTimPhong.TextChanged += new System.EventHandler(this.textBoxTimPhong_TextChanged);
             // 
@@ -215,7 +219,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label3.Location = new System.Drawing.Point(23, 125);
+            this.label3.Location = new System.Drawing.Point(23, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 19);
             this.label3.TabIndex = 22;

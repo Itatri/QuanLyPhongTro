@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiFeedBack));
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewFeedBack = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -171,11 +172,14 @@
             this.btnGuiPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuiPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnGuiPhanHoi.ForeColor = System.Drawing.Color.White;
-            this.btnGuiPhanHoi.Location = new System.Drawing.Point(696, 281);
+            this.btnGuiPhanHoi.Image = ((System.Drawing.Image)(resources.GetObject("btnGuiPhanHoi.Image")));
+            this.btnGuiPhanHoi.Location = new System.Drawing.Point(707, 275);
             this.btnGuiPhanHoi.Name = "btnGuiPhanHoi";
-            this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 35);
+            this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 46);
             this.btnGuiPhanHoi.TabIndex = 41;
             this.btnGuiPhanHoi.Text = "Gửi phản hồi";
+            this.btnGuiPhanHoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuiPhanHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuiPhanHoi.UseVisualStyleBackColor = false;
             this.btnGuiPhanHoi.Click += new System.EventHandler(this.btnGuiPhanHoi_Click);
             // 
