@@ -39,6 +39,7 @@
             this.txtDC = new System.Windows.Forms.TextBox();
             this.txtTienDien = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTongTien = new System.Windows.Forms.Button();
             this.dtpNgayThu = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
@@ -175,6 +176,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTongTien);
             this.groupBox1.Controls.Add(this.dtpNgayThu);
             this.groupBox1.Controls.Add(this.dtpNgayLap);
             this.groupBox1.Controls.Add(this.txtDu);
@@ -212,6 +214,16 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu thu";
+            // 
+            // btnTongTien
+            // 
+            this.btnTongTien.Location = new System.Drawing.Point(530, 426);
+            this.btnTongTien.Name = "btnTongTien";
+            this.btnTongTien.Size = new System.Drawing.Size(141, 41);
+            this.btnTongTien.TabIndex = 27;
+            this.btnTongTien.Text = "Tổng tiền";
+            this.btnTongTien.UseVisualStyleBackColor = true;
+            this.btnTongTien.Click += new System.EventHandler(this.btnTongTien_Click);
             // 
             // dtpNgayThu
             // 
@@ -253,10 +265,10 @@
             // 
             this.txtTongTien.Enabled = false;
             this.txtTongTien.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongTien.Location = new System.Drawing.Point(134, 436);
+            this.txtTongTien.Location = new System.Drawing.Point(122, 436);
             this.txtTongTien.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(565, 24);
+            this.txtTongTien.Size = new System.Drawing.Size(360, 24);
             this.txtTongTien.TabIndex = 21;
             this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -609,5 +621,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnQuayLai;
+        private System.Windows.Forms.Button btnTongTien;
     }
 }

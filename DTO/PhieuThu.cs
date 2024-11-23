@@ -15,13 +15,13 @@ namespace DTO
         public float TienNha { get; set; }
         public float DienCu { get; set; }
         public float DienMoi { get; set; }
-        public float TienDien { get; set; }
+        public float? TienDien { get; set; }
         public float NuocCu { get; set; }
         public float NuocMoi { get; set; }
 
-        public float TienNuoc { get; set; }
+        public float? TienNuoc { get; set; }
         public float TienDV { get; set; }
-        public float TongTien { get; set; }
+        public float? TongTien { get; set; }
         public float? ThanhToan {  get; set; }
         public int TrangThai { get; set; }
 

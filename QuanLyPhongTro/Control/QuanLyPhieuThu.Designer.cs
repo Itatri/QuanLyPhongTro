@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvPT = new System.Windows.Forms.DataGridView();
-            this.XemChiTiet = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ThanhToan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +39,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnTao = new System.Windows.Forms.Button();
             this.buttonRefesh = new System.Windows.Forms.Button();
+            this.XemChiTiet = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,25 +59,8 @@
             this.dgvPT.Size = new System.Drawing.Size(1579, 760);
             this.dgvPT.TabIndex = 0;
             this.dgvPT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPT_CellContentClick);
-            // 
-            // XemChiTiet
-            // 
-            this.XemChiTiet.DataPropertyName = "XemChiTiet";
-            this.XemChiTiet.HeaderText = "";
-            this.XemChiTiet.MinimumWidth = 6;
-            this.XemChiTiet.Name = "XemChiTiet";
-            this.XemChiTiet.Text = "Xem Chi Tiết";
-            this.XemChiTiet.UseColumnTextForButtonValue = true;
-            this.XemChiTiet.Width = 125;
-            // 
-            // ThanhToan
-            // 
-            this.ThanhToan.DataPropertyName = "TrangThai";
-            this.ThanhToan.HeaderText = "Đã Thanh Toán";
-            this.ThanhToan.MinimumWidth = 6;
-            this.ThanhToan.Name = "ThanhToan";
-            this.ThanhToan.ReadOnly = true;
-            this.ThanhToan.Width = 125;
+            this.dgvPT.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPT_CellFormatting);
+            this.dgvPT.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvPT_RowPrePaint);
             // 
             // label1
             // 
@@ -160,6 +143,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(314, 27);
             this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnTao
             // 
@@ -185,6 +169,28 @@
             this.buttonRefesh.TabIndex = 39;
             this.buttonRefesh.UseVisualStyleBackColor = true;
             this.buttonRefesh.Click += new System.EventHandler(this.buttonRefesh_Click);
+            // 
+            // XemChiTiet
+            // 
+            this.XemChiTiet.DataPropertyName = "XemChiTiet";
+            this.XemChiTiet.HeaderText = "";
+            this.XemChiTiet.MinimumWidth = 6;
+            this.XemChiTiet.Name = "XemChiTiet";
+            this.XemChiTiet.Text = "Xem Chi Tiết";
+            this.XemChiTiet.UseColumnTextForButtonValue = true;
+            this.XemChiTiet.Width = 125;
+            // 
+            // ThanhToan
+            // 
+            this.ThanhToan.DataPropertyName = "TrangThai";
+            this.ThanhToan.HeaderText = "Đã Thanh Toán";
+            this.ThanhToan.MinimumWidth = 6;
+            this.ThanhToan.Name = "ThanhToan";
+            this.ThanhToan.ReadOnly = true;
+            this.ThanhToan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ThanhToan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ThanhToan.Visible = false;
+            this.ThanhToan.Width = 125;
             // 
             // QuanLyPhieuThu
             // 
@@ -226,6 +232,6 @@
         private System.Windows.Forms.Button btnTao;
         private System.Windows.Forms.Button buttonRefesh;
         private System.Windows.Forms.DataGridViewButtonColumn XemChiTiet;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ThanhToan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhToan;
     }
 }

@@ -139,5 +139,10 @@ namespace QuanLyPhongTro
         {
 
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -14,7 +14,9 @@ namespace DTO
         public DateTime NgaySinh { get; set; }  
         public string Cccd { get; set; }        
         public string Phone { get; set; }       
-        public string DiaChi { get; set; }     
+        public string DiaChi { get; set; }    
+        public string NganHang { get; set; }
+        public string TaiKhoan { get; set; }
         public string ChuKy { get; set; }      
         //public string ChuKyXacNhan { get; set; } 
         public string IdUser { get; set; }    

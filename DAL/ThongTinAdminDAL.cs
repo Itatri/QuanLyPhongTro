@@ -131,6 +131,8 @@ namespace DAL
                         HoTen = @HoTen,
                         GioiTinh = @GioiTinh,
                         NgaySinh = @NgaySinh,
+                        NganHang = @NganHang,
+                        TaiKhoan = @TaiKhoan,
                         Cccd = @Cccd,
                         Phone = @Phone,
                         DiaChi = @DiaChi, " +
@@ -147,6 +149,8 @@ namespace DAL
                     command.Parameters.AddWithValue("@MaAdmin", admin.MaAdmin);
                     command.Parameters.AddWithValue("@HoTen", admin.HoTen);
                     command.Parameters.AddWithValue("@GioiTinh", admin.GioiTinh);
+                    command.Parameters.AddWithValue("@NganHang", admin.NganHang);
+                    command.Parameters.AddWithValue("@TaiKhoan", admin.TaiKhoan);
                     command.Parameters.AddWithValue("@NgaySinh", admin.NgaySinh != DateTime.MinValue ? (object)admin.NgaySinh : DBNull.Value);
                     command.Parameters.AddWithValue("@Cccd", admin.Cccd);
                     command.Parameters.AddWithValue("@Phone", admin.Phone);

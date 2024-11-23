@@ -21,9 +21,18 @@ namespace BLL
             return tkDal.GetPTTheoThangNam(thang, nam, maKhuVuc);
         }
 
-
-
-
+        public DataTable GetPTTheoThangNamPhong(int thang, int nam, string maKhuVuc,string key)
+        {
+            return tkDal.GetPTTheoThangNamPhong(thang, nam, maKhuVuc,key);
+        }
+        public DataTable LayPhongChuaCoPhieuThu(DateTime date, string maKhuVuc)
+        {
+            return tkDal.LayPhongChuaCoPhieuThu(date, maKhuVuc);
+        }
+        public bool CheckPTDaTao(string ma)
+        {
+            return CheckPTDaTao(ma);
+        }
 
 
         //////////////Tạo PT

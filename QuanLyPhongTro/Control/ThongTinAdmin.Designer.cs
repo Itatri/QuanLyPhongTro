@@ -53,6 +53,10 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnCapNhatThongTin = new System.Windows.Forms.Button();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.txtTaiKhoan = new System.Windows.Forms.TextBox();
+            this.cboNganHang = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtRePass = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
@@ -100,7 +104,7 @@
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label13.ForeColor = System.Drawing.Color.Firebrick;
-            this.label13.Location = new System.Drawing.Point(1188, 154);
+            this.label13.Location = new System.Drawing.Point(1185, 337);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(333, 45);
             this.label13.TabIndex = 46;
@@ -304,6 +308,10 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThongTinDanCu.Controls.Add(this.txtTaiKhoan);
+            this.panelThongTinDanCu.Controls.Add(this.cboNganHang);
+            this.panelThongTinDanCu.Controls.Add(this.label14);
+            this.panelThongTinDanCu.Controls.Add(this.label12);
             this.panelThongTinDanCu.Controls.Add(this.txtRePass);
             this.panelThongTinDanCu.Controls.Add(this.label1);
             this.panelThongTinDanCu.Controls.Add(this.label11);
@@ -330,10 +338,50 @@
             this.panelThongTinDanCu.Controls.Add(this.txtMaAdmin);
             this.panelThongTinDanCu.Controls.Add(this.txtHoTenAdmin);
             this.panelThongTinDanCu.Controls.Add(this.label4);
+            this.panelThongTinDanCu.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelThongTinDanCu.Location = new System.Drawing.Point(17, 15);
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
             this.panelThongTinDanCu.Size = new System.Drawing.Size(1651, 969);
             this.panelThongTinDanCu.TabIndex = 76;
+            // 
+            // txtTaiKhoan
+            // 
+            this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTaiKhoan.Location = new System.Drawing.Point(1276, 275);
+            this.txtTaiKhoan.Multiline = true;
+            this.txtTaiKhoan.Name = "txtTaiKhoan";
+            this.txtTaiKhoan.Size = new System.Drawing.Size(242, 40);
+            this.txtTaiKhoan.TabIndex = 80;
+            // 
+            // cboNganHang
+            // 
+            this.cboNganHang.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboNganHang.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboNganHang.FormattingEnabled = true;
+            this.cboNganHang.Location = new System.Drawing.Point(1276, 207);
+            this.cboNganHang.Name = "cboNganHang";
+            this.cboNganHang.Size = new System.Drawing.Size(242, 27);
+            this.cboNganHang.TabIndex = 79;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label14.Location = new System.Drawing.Point(1146, 295);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 20);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "Tài Khoản";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.Location = new System.Drawing.Point(1146, 210);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 20);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "Ngân Hàng";
             // 
             // txtRePass
             // 
@@ -359,9 +407,9 @@
             // 
             this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(1188, 202);
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(1188, 385);
             this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(333, 475);
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(333, 292);
             this.pictureBoxChuKy.TabIndex = 47;
             this.pictureBoxChuKy.TabStop = false;
             // 
@@ -410,5 +458,9 @@
         private System.Windows.Forms.Panel panelThongTinDanCu;
         private System.Windows.Forms.TextBox txtRePass;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cboNganHang;
+        private System.Windows.Forms.TextBox txtTaiKhoan;
     }
 }

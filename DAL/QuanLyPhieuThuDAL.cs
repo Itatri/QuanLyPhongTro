@@ -45,7 +45,85 @@ namespace DAL
 
             return dt;
         }
+        public DataTable LayPhongChuaCoPhieuThu(DateTime date, string maKhuVuc)
+        {
+            DataTable dt = new DataTable();
+            string query = "EXEC LayPhongChuaCoPhieuThu @NgayLap, @MaKhuVuc";
 
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NgayLap", date);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+        public bool CheckPTDaTao(string ma)
+        {
+            string query = "SELECT COUNT(*) FROM PhieuThu WHERE MaPT = @MaPT";
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@MaPT", ma);
+
+                    try
+                    {
+                        conn.Open();
+                        int count = (int)command.ExecuteScalar(); // Thực thi câu lệnh trả về giá trị đơn
+                        return count > 0; // Trả về true nếu phiếu thu đã tồn tại
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                        return false; // Có lỗi xảy ra
+                    }
+                }
+            }
+        }
+        public DataTable GetPTTheoThangNamPhong(int thang, int nam, string maKhuVuc, string key)
+        {
+            DataTable dt = new DataTable();
+            string query = "EXEC GETPTTHeoThangNamPhong @Thang, @Nam, @MaKhuVuc, @Phong";
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Thang", thang);
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+                        cmd.Parameters.AddWithValue("@Phong", key);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
         /////////////Tạo PT
         public DataTable GetPhong(string khuvuc)
         {
@@ -141,12 +219,12 @@ namespace DAL
                     command.Parameters.AddWithValue("@TienNha", phieu.TienNha);
                     command.Parameters.AddWithValue("@DienCu", phieu.DienCu);
                     command.Parameters.AddWithValue("@DienMoi", phieu.DienMoi);
-                    command.Parameters.AddWithValue("@TienDien", phieu.TienDien);
+                    command.Parameters.AddWithValue("@TienDien", phieu.TienDien.HasValue ? (object)phieu.TienDien.Value : DBNull.Value);
                     command.Parameters.AddWithValue("@NuocCu", phieu.NuocCu);
                     command.Parameters.AddWithValue("@NuocMoi", phieu.NuocMoi);
-                    command.Parameters.AddWithValue("@TienNuoc", phieu.TienNuoc);
+                    command.Parameters.AddWithValue("@TienNuoc", phieu.TienNuoc.HasValue ? (object)phieu.TienNuoc.Value : DBNull.Value);
                     command.Parameters.AddWithValue("@TienDV", phieu.TienDV);
-                    command.Parameters.AddWithValue("@TongTien", phieu.TongTien);
+                    command.Parameters.AddWithValue("@TongTien", phieu.TongTien.HasValue ? (object)phieu.TongTien.Value : DBNull.Value);
                     command.Parameters.AddWithValue("@ThanhToan", phieu.ThanhToan.HasValue ? (object)phieu.ThanhToan.Value : DBNull.Value); // Xử lý ThanhToan có thể là null
                     command.Parameters.AddWithValue("@TrangThai", phieu.TrangThai);
 
