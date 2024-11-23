@@ -15,6 +15,7 @@ namespace QuanLyPhongTro.Control
     {
         public string khuvuc {  get; set; }
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
+        DataTable dt;
         public QuanLyPhieuThu()
         {
             InitializeComponent();
@@ -29,12 +30,13 @@ namespace QuanLyPhongTro.Control
         private void LoadCBOThang()
         {
             cboThang.Items.Clear();
+            cboThang.Items.Add("Tất cả");
             for (int i = 1; i <= 12; i++)
             {
                 cboThang.Items.Add(i.ToString("00"));
             }
             int currentMonth = DateTime.Now.Month;
-            cboThang.SelectedIndex = currentMonth - 1;
+            cboThang.SelectedIndex = currentMonth;
         }
         private void LoadCBONam()
         {
@@ -58,11 +60,11 @@ namespace QuanLyPhongTro.Control
         }
         private void LoadDGVPhieuThu(int thang, int nam)
         {
-            DataTable dt = bll.GetPTTheoThangNam(thang, nam, khuvuc);
+            dt = bll.GetPTTheoThangNam(thang, nam, khuvuc);
             dgvPT.DataSource = dt;
             if (dgvPT.Columns.Contains("TrangThai"))
             {
-                dgvPT.Columns["TrangThai"].DisplayIndex = 1;
+                dgvPT.Columns["TrangThai"].DefaultCellStyle.Format = "N0";
             }
             dgvPT.Columns["CSC Điện"].DefaultCellStyle.Format = "N0";
             dgvPT.Columns["CSM Điện"].DefaultCellStyle.Format = "N0";
@@ -113,6 +115,91 @@ namespace QuanLyPhongTro.Control
                     mainForm.ShowControl(f);
                 }
             }
+        }
+
+        private void dgvPT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvPT.Columns[e.ColumnIndex].Name == "ThanhToan" && e.Value != null)
+            {
+                if (e.Value.ToString() == "True")
+                {
+                    e.Value = "Đã thanh toán";
+                    e.CellStyle.ForeColor = Color.Green; // Màu xanh
+                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                }
+                else if (e.Value.ToString() == "False")
+                {
+                    e.Value = "Chưa thanh toán";
+                    e.CellStyle.ForeColor = Color.Red; // Màu đỏ
+                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                }
+            }
+        }
+
+        private void dgvPT_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridViewRow row = dgvPT.Rows[e.RowIndex];
+            int trangThai = Convert.ToInt32(row.Cells["ThanhToan"].Value);
+            int temp = 0;
+            if (DateTime.TryParse(row.Cells["Ngày lập"].Value?.ToString(), out DateTime ngayTao))
+            {
+                // Calculate the difference in days
+                temp = (DateTime.Now.Date - ngayTao.Date).Days;
+            }
+            if (trangThai == 0)
+            {
+
+                if (temp <= 5)
+                    row.DefaultCellStyle.BackColor = Color.LightYellow;
+                else
+                    row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
+            }
+            //else if (trangThai == 1)
+            //{
+            //    row.DefaultCellStyle.BackColor = Color.Lavender;  
+            //}
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //dt = bll.GetPTTheoThangNamPhong(int.Parse(cboThang.Text), int.Parse(cboNam.Text), khuvuc, textBox1.Text);
+            DataTable dtnew = dt.Copy(); // Create a copy of the original DataTable
+            string filterText = textBox1.Text;
+
+            for (int i = dtnew.Rows.Count - 1; i >= 0; i--) // Iterate in reverse order
+            {
+                DataRow dr = dtnew.Rows[i];
+                if (!dr["Phòng"].ToString().Contains(filterText)) // Case-insensitive match
+                {
+                    dr.Delete(); // Mark row for deletion
+                }
+            }
+
+            dtnew.AcceptChanges(); // Commit all deletions
+
+            dgvPT.DataSource = dtnew;
+
+            // Apply formatting
+            if (dgvPT.Columns.Contains("TrangThai"))
+            {
+                dgvPT.Columns["TrangThai"].DefaultCellStyle.Format = "N0";
+            }
+
+            dgvPT.Columns["CSC Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSC Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền DV"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tổng Tiền"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Thanh Toán"].DefaultCellStyle.Format = "N0";
+
+            // Refresh DataGridView
+            dgvPT.Refresh();
+
         }
     }
 }

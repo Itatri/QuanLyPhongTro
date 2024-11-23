@@ -26,7 +26,7 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
             thongTinAdminBLL = new ThongTinAdminBLL(); // Khởi tạo BLL trong constructor
             SetCBGioiTinh();
-          
+            SetNganHang();
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
@@ -36,8 +36,25 @@ namespace QuanLyPhongTro.Control
             comboBoxGioiTinhAdmin.Items.Add("Nam");
             comboBoxGioiTinhAdmin.Items.Add("Nữ");
         }
-      
-        
+        public void SetNganHang()
+        {
+            string[] nganHangList = new string[]
+                {
+                    "Vietcombank", "ViettinBank", "MBBank", "ACB", "VPBank", "TPBank", "MSB",
+                    "NamABank", "LienVietPostBank", "VietCapitalBank", "BIDV", "Sacombank", "VIB",
+                    "HDBank", "SeABank", "GPBank", "PVComBank", "NCB", "ShinhanBank", "SCB",
+                    "PGBank", "AgriBank", "Techcombank", "SaigonBank", "DongABank", "BacABank",
+                    "StandardChartened", "Oceanbank", "VRB", "ABBANK", "VietABank", "Eximbank",
+                    "VietBank", "IndovinaBank", "BaoVietBank", "PublicBank", "SHB", "CBBank",
+                    "OCB", "KienLongBank", "CIMB", "HSBC", "DBSBank", "Nonghyup", "HongLeong",
+                    "Woori", "UnitedOverseas", "KookminHN", "KookminHCM", "COOPBANK"
+                };
+
+            cboNganHang.Items.Clear();
+            cboNganHang.Items.AddRange(nganHangList);
+
+        }
+
         public void SetUserInfo(string id, string region)
         {
             try
@@ -57,6 +74,8 @@ namespace QuanLyPhongTro.Control
                     comboBoxGioiTinhAdmin.SelectedItem = null;
                     txtCCCDAdmin.Text = string.Empty;
                     txtDiaChiAdmin.Text = string.Empty;
+                    txtTaiKhoan.Text = string.Empty;
+                    cboNganHang.Text = string.Empty;
                     txtPhoneAdmin.Text = string.Empty;
                     dateTimePickerNgaySinhAdmin.Value = DateTime.Now;  // Đặt giá trị ngày hiện tại
                     labelAnhChuKy.Text = string.Empty;
@@ -73,6 +92,8 @@ namespace QuanLyPhongTro.Control
                     txtCCCDAdmin.Text = adminInfo.Cccd;
                     txtDiaChiAdmin.Text = adminInfo.DiaChi;
                     txtPhoneAdmin.Text = adminInfo.Phone;
+                    txtTaiKhoan.Text= adminInfo.TaiKhoan;
+                    cboNganHang.Text= adminInfo.NganHang;
                     dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
                     txtIDUserAdmin.Text = adminInfo.IdUser;
                     labelAnhChuKy.Text = adminInfo.ChuKy;
@@ -417,5 +438,7 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgaySinhAdmin.Format = DateTimePickerFormat.Custom;
             dateTimePickerNgaySinhAdmin.CustomFormat = "dd/MM/yyyy";
         }
+
+  
     }
 }

@@ -32,12 +32,23 @@ namespace QuanLyPhongTro.Control
             dtpNgayLap.CustomFormat = "dd/MM/yyyy";
             LoadPhong(khuvuc);
         }
-        private void LoadPhong (string khuvuc)
+        private void LoadPhong(string khuvuc)
         {
+            cboPhong.Items.Clear();
             System.Data.DataTable dt = bll.GetPhong(khuvuc);
             foreach (DataRow dr in dt.Rows)
             {
                 cboPhong.Items.Add(dr[0].ToString());
+            }
+        }
+        private void LoadPhongChuaPT(string khuvuc)
+        {
+            cboPhong.Items.Clear();
+            DateTime date = dtpNgayLap.Value;
+            System.Data.DataTable dt = bll.LayPhongChuaCoPhieuThu(date, khuvuc);
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboPhong.Items.Add(dr[1].ToString());
             }
         }
         private void LoadDVPhong(string phong)
@@ -137,7 +148,6 @@ namespace QuanLyPhongTro.Control
                     txtTienDien.Text = ((decimal)(dien * dongia)).ToString("N0");
                 }
             }
-            TongTien();
         }
 
         private void txtNM_Leave(object sender, EventArgs e)
@@ -163,7 +173,6 @@ namespace QuanLyPhongTro.Control
                     txtTienNuoc.Text = ((decimal)(nuoc * dongia)).ToString("N0");
                 }
             }
-            TongTien();
         }
         private float TienDichVu()
         {
@@ -179,15 +188,7 @@ namespace QuanLyPhongTro.Control
             return tongTien; 
         }
 
-        private void TongTien()
-        {
-            float dien = 0, nuoc = 0,tienp = 0;
-            float.TryParse(txtTienNha.Text,out tienp);
-            float tienDV = TienDichVu();
-            float.TryParse(txtTienDien.Text, out dien);
-            float.TryParse(txtTienNuoc.Text,out nuoc);
-            txtTongTien.Text = ((decimal)(dien + nuoc + tienDV + tienp)).ToString("F0");
-        }
+
 
         private void txtKhachTra_TextChanged(object sender, EventArgs e)
         {
@@ -220,7 +221,10 @@ namespace QuanLyPhongTro.Control
             PhieuThu pt = new PhieuThu();
             if (txtDM.Text.Length == 0)
             {
-                return pt = null;
+                pt.DienMoi = float.Parse(txtDC.Text);
+            }else
+            {
+                pt.DienMoi = float.Parse(txtDM.Text);
             }
             if (txtNM.Text.Length == 0)
             {
@@ -232,13 +236,21 @@ namespace QuanLyPhongTro.Control
             pt.NgayLap = dtpNgayLap.Value;
             pt.NgayThu = dtpNgayLap.Value;
             pt.DienCu = float.Parse(txtDC.Text);
-            pt.DienMoi = float.Parse(txtDM.Text);
-            pt.TienDien = float.Parse(txtTienDien.Text);
+            if(txtTienDien.Text.Length > 0)
+            {
+                pt.TienDien = float.Parse(txtTienDien.Text);
+            }
             pt.NuocCu = float.Parse(txtNC.Text);
             pt.NuocMoi = float.Parse(txtNM.Text);
-            pt.TienNuoc = float.Parse(txtTienNuoc.Text);
+            if(txtTienNuoc.Text.Length > 0)
+            {
+                pt.TienNuoc = float.Parse(txtTienNuoc.Text);
+            }
             pt.TienDV = TienDichVu();
-            pt.TongTien = float.Parse(txtTongTien.Text);
+            if(txtTongTien.Text.Length > 0)
+            {
+                pt.TongTien = float.Parse(txtTongTien.Text);
+            }
             if(txtKhachTra.Text.Length > 0)
             {
                 pt.ThanhToan = float.Parse(txtKhachTra.Text);
@@ -294,14 +306,29 @@ namespace QuanLyPhongTro.Control
             List<ChiTietDichVuPT> lst = chuyendoidichvu();
             if (pt != null)
             {
-                if (bll.CreatePhieuThu(pt))
+                if(!bll.CheckPTDaTao(pt.MaPT))
                 {
-                    float khachtra = 0;
-                    float.TryParse(txtKhachTra.Text, out khachtra);
-                    float congno = float.Parse(txtCongNo.Text) - (khachtra - float.Parse(txtTongTien.Text));
-                    bll.CreateDichVuPhieuThu(lst);
-                    bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
-                    MessageBox.Show("Thành Công");
+                    if (bll.CreatePhieuThu(pt))
+                    {
+                        float khachtra = 0;
+                        float congno = 0;
+                        float.TryParse(txtKhachTra.Text, out khachtra);
+                        if (txtTongTien.Text.Length > 0)
+                        {
+                            congno = float.Parse(txtCongNo.Text) - (khachtra - float.Parse(txtTongTien.Text));
+                        }
+                        else { congno = float.Parse(txtCongNo.Text); }
+                        bll.CreateDichVuPhieuThu(lst);
+                        if (txtDM.Text.Length > 0 && txtNM.Text.Length > 0)
+                        {
+                            bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
+                        }
+                        MessageBox.Show("Thành Công");
+                        Clear();
+                    }
+                }else
+                {
+                    MessageBox.Show("Phòng này đã tạo phiếu trả phòng");
                 }
 
             }
@@ -313,6 +340,21 @@ namespace QuanLyPhongTro.Control
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void dgvDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                // Cập nhật giá trị của CheckBox ngay lập tức
+                dgvDichVu.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+            }
+
+        }
+        private void Clear()
         {
             cboPhong.SelectedIndex = -1;
             txtma.Clear();
@@ -330,24 +372,22 @@ namespace QuanLyPhongTro.Control
             dgvDichVu.Rows.Clear();
             OpenCloseText(false);
             cboPhong.Focus();
-        }
-
-        private void dgvDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
-            {
-                // Cập nhật giá trị của CheckBox ngay lập tức
-                dgvDichVu.CommitEdit(DataGridViewDataErrorContexts.Commit);
-
-                // Sau khi giá trị CheckBox được cập nhật, gọi hàm tính tổng tiền
-                TongTien();
-            }
 
         }
-
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
-            txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
+            if(ckbPTP.Checked)
+            {
+                LoadPhong(khuvuc);
+                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy"+"TraPhong");
+            }
+            else
+            {
+                LoadPhongChuaPT(khuvuc);
+                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
+            }
+            
+
         }
 
         private void txtDM_TextChanged(object sender, EventArgs e)
@@ -387,6 +427,29 @@ namespace QuanLyPhongTro.Control
                 // Đặt lại vị trí con trỏ
                 txtNM.SelectionStart = Math.Max(0, selectionStart + txtNM.Text.Length - text.Length);
                 txtNM.SelectionLength = selectionLength;
+            }
+        }
+
+        private void btnTongTien_Click(object sender, EventArgs e)
+        {
+            float dien = 0, nuoc = 0, tienp = 0;
+            float.TryParse(txtTienNha.Text, out tienp);
+            float tienDV = TienDichVu();
+            float.TryParse(txtTienDien.Text, out dien);
+            float.TryParse(txtTienNuoc.Text, out nuoc);
+            txtTongTien.Text = ((decimal)(dien + nuoc + tienDV + tienp)).ToString("N0");
+        }
+
+        private void ckbPTP_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (ckbPTP.Checked)
+            {
+                LoadPhong(khuvuc);
+            }
+            else
+            {
+                LoadPhongChuaPT(khuvuc);
             }
         }
     }
