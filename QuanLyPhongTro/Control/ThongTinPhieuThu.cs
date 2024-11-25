@@ -28,7 +28,6 @@ namespace QuanLyPhongTro.Control
 
         private void ThongTinPhieuThu_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(khuvuc);
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
             dtpNgayLap.CustomFormat = "dd/MM/yyyy";
             dtpNgayThu.Format = DateTimePickerFormat.Custom;
