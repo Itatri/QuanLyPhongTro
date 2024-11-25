@@ -340,6 +340,8 @@ namespace QuanLyPhongTro.Control
                 string hoTen = txtHoTenAdmin.Text;
                 string gioiTinh = comboBoxGioiTinhAdmin.SelectedItem != null ? comboBoxGioiTinhAdmin.SelectedItem.ToString() : "";
                 string cccd = txtCCCDAdmin.Text;
+                string nganhang = cboNganHang.Text;
+                string taikhoan = txtTaiKhoan.Text;
                 string diachi = txtDiaChiAdmin.Text;
                 string phone = txtPhoneAdmin.Text;
                 DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
@@ -361,6 +363,8 @@ namespace QuanLyPhongTro.Control
                     GioiTinh = gioiTinh,
                     NgaySinh = ngaySinh,
                     Cccd = cccd,
+                    NganHang = nganhang,
+                    TaiKhoan = taikhoan,
                     Phone = phone,
                     DiaChi = diachi,
                     ChuKy = chuKyFileName ?? labelAnhChuKy.Text, // Nếu không có ảnh mới, giữ lại tên cũ

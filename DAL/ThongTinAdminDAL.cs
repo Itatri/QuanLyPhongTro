@@ -38,6 +38,8 @@ namespace DAL
                         Phone = reader["Phone"].ToString(),
                         DiaChi = reader["DiaChi"].ToString(),
                         ChuKy = reader["ChuKy"].ToString(),
+                        NganHang = reader["NganHang"].ToString(),
+                        TaiKhoan = reader["TaiKhoan"].ToString(),
                         ////ChuKyXacNhan = reader["ChuKyXacNhan"].ToString(),
                         IdUser = reader["IdUser"].ToString(),
                         TrangThai = reader["TrangThai"] != DBNull.Value ? Convert.ToInt32(reader["TrangThai"]) : 0
@@ -47,7 +49,41 @@ namespace DAL
 
             return admin;
         }
+        public ThongTinAdminDTO GetThongTinAdminByKhuVuc(string makhuvuc)
+        {
+            ThongTinAdminDTO admin = null;
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM ThongTinAdmin WHERE MaKhuVuc = @MaKhuVuc";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    admin = new ThongTinAdminDTO
+                    {
+                        MaAdmin = reader["MaAdmin"].ToString(),
+                        HoTen = reader["HoTen"].ToString(),
+                        GioiTinh = reader["GioiTinh"].ToString(),
+                        NgaySinh = reader["NgaySinh"] != DBNull.Value ? Convert.ToDateTime(reader["NgaySinh"]) : DateTime.MinValue,
+                        Cccd = reader["Cccd"].ToString(),
+                        Phone = reader["Phone"].ToString(),
+                        DiaChi = reader["DiaChi"].ToString(),
+                        ChuKy = reader["ChuKy"].ToString(),
+                        NganHang = reader["NganHang"].ToString(),
+                        TaiKhoan = reader["TaiKhoan"].ToString(),
+                        ////ChuKyXacNhan = reader["ChuKyXacNhan"].ToString(),
+                        IdUser = reader["IdUser"].ToString(),
+                        TrangThai = reader["TrangThai"] != DBNull.Value ? Convert.ToInt32(reader["TrangThai"]) : 0
+                    };
+                }
+            }
+
+            return admin;
+        }
 
         public bool KiemTraThongTinAdmin(string idUser)
         {

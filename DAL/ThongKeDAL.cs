@@ -18,78 +18,118 @@ namespace DAL
         {
             conn = new SqlConnection(connectionString);
         }
-        public DataTable ThongKeDoanhThuTheoThang(int nam,string khuvuc)
+        public DataTable ThongKeDoanhThuTheoNam(int nam, string khuvuc)
         {
             DataTable dt = new DataTable();
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("ThongKeDoanhThuTheoThangVaKhuVuc", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Nam", nam);
-                    cmd.Parameters.AddWithValue("@KhuVuc", khuvuc);
+            string query = "EXEC ThongKeDoanhThuTheoNam @Nam, @MaKhuVuc";
 
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        conn.Open();
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", khuvuc);
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
                 }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
+
+            return dt;
+        }
+        public DataTable ThongKeDoanhThuTheoThang(int nam, int thang, string khuvuc)
+        {
+            DataTable dt = new DataTable();
+            string query = "EXEC ThongKeDoanhThuTheoThangVaKhuVuc @Nam, @Thang, @MaKhuVuc";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                Console.WriteLine("Lỗi: " + ex.Message);
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@Thang", thang);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", khuvuc);
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
             }
-            conn.Close();
+
             return dt;
         }
         public DataTable ThongKeDichVuTheoNamVaKhuVuc(int nam,string khuvuc)
         {
             DataTable dt = new DataTable();
-            try
+            string query = "EXEC ThongKeDichVuTheoNamVaKhuVuc @Nam, @MaKhuVuc";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand("ThongKeDichVuTheoNamVaKhuVuc", conn))
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Nam", nam);
-                    cmd.Parameters.AddWithValue("@KhuVuc", khuvuc);
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", khuvuc);
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
                 }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in ThongKeDichVuTheoNamVaKhuVuc: " + ex.Message);
-            }
-            conn.Close();
+
             return dt;
         }
         public DataTable ThongKeDichVuTheoThangVaKhuVuc(int thang,int nam, string khuvuc)
         {
             DataTable dt = new DataTable();
-            try
+            string query = "EXEC ThongKeDichVuThang @Nam, @Thang, @MaKhuVuc";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand("ThongKeDichVuTheoThangVaKhuVuc", conn))
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Thang", thang);
-                    cmd.Parameters.AddWithValue("@Nam", nam);
-                    cmd.Parameters.AddWithValue("@KhuVuc", khuvuc);
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@Nam", nam);
+                        cmd.Parameters.AddWithValue("@Thang", thang);
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", khuvuc);
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
                 }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in ThongKeDichVuTheoThangVaKhuVuc: " + ex.Message);
-            }
-            conn.Close();
+
             return dt;
         }
     }

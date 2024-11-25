@@ -144,5 +144,7 @@ namespace QuanLyPhongTro
         {
             Application.Exit();
         }
+
+
     }
 }
