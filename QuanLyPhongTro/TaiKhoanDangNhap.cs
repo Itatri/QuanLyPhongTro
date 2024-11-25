@@ -1,4 +1,5 @@
-﻿using QuanLyPhongTro.Control;
+﻿using iText.IO.Codec;
+using QuanLyPhongTro.Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,24 +42,27 @@ namespace QuanLyPhongTro
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
-                    dataGridViewTaiKhoan.DataSource = dt;
-
-                    // Đổi tên tiêu đề cột
-                    dataGridViewTaiKhoan.Columns["ID"].HeaderText = "Tài Khoản";
-                    dataGridViewTaiKhoan.Columns["PassWord"].HeaderText = "Mật khẩu";
-                    dataGridViewTaiKhoan.Columns["TenKhuVuc"].HeaderText = "Tên khu vực";
-                    dataGridViewTaiKhoan.Columns["TrangThai"].HeaderText = "Trạng thái";
-
-                    // Căn giữa tiêu đề cột
-                    dataGridViewTaiKhoan.Columns["ID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dataGridViewTaiKhoan.Columns["PassWord"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dataGridViewTaiKhoan.Columns["TenKhuVuc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dataGridViewTaiKhoan.Columns["TrangThai"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                    // Ẩn cột MaKhuVuc nếu vẫn tồn tại
-                    if (dataGridViewTaiKhoan.Columns["MaKhuVuc"] != null)
+                    if (dt.Rows.Count > 0)
                     {
-                        dataGridViewTaiKhoan.Columns["MaKhuVuc"].Visible = false;
+                        dataGridViewTaiKhoan.DataSource = dt;
+
+                        // Đổi tên tiêu đề cột
+                        dataGridViewTaiKhoan.Columns["ID"].HeaderText = "Tài Khoản";
+                        dataGridViewTaiKhoan.Columns["PassWord"].HeaderText = "Mật khẩu";
+                        dataGridViewTaiKhoan.Columns["TenKhuVuc"].HeaderText = "Tên khu vực";
+                        dataGridViewTaiKhoan.Columns["TrangThai"].HeaderText = "Trạng thái";
+
+                        // Căn giữa tiêu đề cột
+                        dataGridViewTaiKhoan.Columns["ID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dataGridViewTaiKhoan.Columns["PassWord"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dataGridViewTaiKhoan.Columns["TenKhuVuc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dataGridViewTaiKhoan.Columns["TrangThai"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                        // Ẩn cột MaKhuVuc nếu vẫn tồn tại
+                        if (dataGridViewTaiKhoan.Columns["MaKhuVuc"] != null)
+                        {
+                            dataGridViewTaiKhoan.Columns["MaKhuVuc"].Visible = false;
+                        }
                     }
                 }
             }
@@ -74,7 +78,7 @@ namespace QuanLyPhongTro
             {
                 using (SqlConnection connection = new SqlConnection(chuoiketnoi))
                 {
-                    string query = "SELECT MaKhuVuc, TenKhuVuc FROM KhuVuc WHERE TrangThai = 0"; // Chỉ lấy các khu vực có trạng thái hoạt động
+                    string query = "SELECT MaKhuVuc, TenKhuVuc FROM KhuVuc WHERE TrangThai = 1"; // Chỉ lấy các khu vực có trạng thái hoạt động
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);

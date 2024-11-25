@@ -14,11 +14,23 @@ namespace BLL
         {
             tkDal = new ThongKeDAL();
         }
-        public DataTable ThongKeDoanhThuTheoThang(int nam, string khuvuc)
+        public DataTable ThongKeDoanhThuTheoNam(int nam, string khuvuc)
         {
             try
             {
-                return tkDal.ThongKeDoanhThuTheoThang(nam, khuvuc);
+                return tkDal.ThongKeDoanhThuTheoNam(nam, khuvuc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi thống kê theo tháng: " + ex.Message);
+                return null;
+            }
+        }
+        public DataTable ThongKeDoanhThuTheoThang(int nam, int thang, string khuvuc)
+        {
+            try
+            {
+                return tkDal.ThongKeDoanhThuTheoThang(nam,thang, khuvuc);
             }
             catch (Exception ex)
             {

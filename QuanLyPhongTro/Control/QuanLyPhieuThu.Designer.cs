@@ -40,7 +40,7 @@
             this.btnTao = new System.Windows.Forms.Button();
             this.buttonRefesh = new System.Windows.Forms.Button();
             this.XemChiTiet = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             this.dgvPT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.XemChiTiet,
-            this.ThanhToan});
+            this.TrangThai});
             this.dgvPT.Location = new System.Drawing.Point(38, 153);
             this.dgvPT.Name = "dgvPT";
             this.dgvPT.RowHeadersWidth = 51;
@@ -180,17 +180,17 @@
             this.XemChiTiet.UseColumnTextForButtonValue = true;
             this.XemChiTiet.Width = 125;
             // 
-            // ThanhToan
+            // TrangThai
             // 
-            this.ThanhToan.DataPropertyName = "TrangThai";
-            this.ThanhToan.HeaderText = "Đã Thanh Toán";
-            this.ThanhToan.MinimumWidth = 6;
-            this.ThanhToan.Name = "ThanhToan";
-            this.ThanhToan.ReadOnly = true;
-            this.ThanhToan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ThanhToan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ThanhToan.Visible = false;
-            this.ThanhToan.Width = 125;
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Đã Thanh Toán";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            this.TrangThai.ReadOnly = true;
+            this.TrangThai.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TrangThai.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TrangThai.Visible = false;
+            this.TrangThai.Width = 125;
             // 
             // QuanLyPhieuThu
             // 
@@ -232,6 +232,6 @@
         private System.Windows.Forms.Button btnTao;
         private System.Windows.Forms.Button buttonRefesh;
         private System.Windows.Forms.DataGridViewButtonColumn XemChiTiet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhToan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }

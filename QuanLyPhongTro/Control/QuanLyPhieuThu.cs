@@ -25,12 +25,11 @@ namespace QuanLyPhongTro.Control
         {
             LoadCBOThang();
             LoadCBONam();
-            LoadDGVPhieuThu(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
+            LoadALlPT();
         }
         private void LoadCBOThang()
         {
             cboThang.Items.Clear();
-            cboThang.Items.Add("Tất cả");
             for (int i = 1; i <= 12; i++)
             {
                 cboThang.Items.Add(i.ToString("00"));
@@ -83,12 +82,30 @@ namespace QuanLyPhongTro.Control
         {
             LoadDGVPhieuThu(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
         }
-
+        private void LoadALlPT()
+        {
+            dt = bll.GetALLPT(khuvuc);
+            dgvPT.DataSource = dt;
+            if (dgvPT.Columns.Contains("TrangThai"))
+            {
+                dgvPT.Columns["TrangThai"].DefaultCellStyle.Format = "N0";
+            }
+            dgvPT.Columns["CSC Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Điện"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSC Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["CSM Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền Nước"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tiền DV"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Tổng Tiền"].DefaultCellStyle.Format = "N0";
+            dgvPT.Columns["Thanh Toán"].DefaultCellStyle.Format = "N0";
+            // Làm mới DataGridView
+            dgvPT.Refresh();
+        }
         private void buttonRefesh_Click(object sender, EventArgs e)
         {
-            int currentYear = DateTime.Now.Year;
-            int currentMonth = DateTime.Now.Month;
-            LoadDGVPhieuThu(currentMonth, currentYear);
+            LoadALlPT();
+
         }
 
         private void btnTao_Click(object sender, EventArgs e)
@@ -119,7 +136,7 @@ namespace QuanLyPhongTro.Control
 
         private void dgvPT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvPT.Columns[e.ColumnIndex].Name == "ThanhToan" && e.Value != null)
+            if (dgvPT.Columns[e.ColumnIndex].Name == "TrangThai" && e.Value != null)
             {
                 if (e.Value.ToString() == "True")
                 {
@@ -141,9 +158,9 @@ namespace QuanLyPhongTro.Control
         private void dgvPT_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             DataGridViewRow row = dgvPT.Rows[e.RowIndex];
-            int trangThai = Convert.ToInt32(row.Cells["ThanhToan"].Value);
+            int trangThai = Convert.ToInt32(row.Cells["TrangThai"].Value);
             int temp = 0;
-            if (DateTime.TryParse(row.Cells["Ngày lập"].Value?.ToString(), out DateTime ngayTao))
+            if (DateTime.TryParse(row.Cells["Ngày Lập"].Value?.ToString(), out DateTime ngayTao))
             {
                 // Calculate the difference in days
                 temp = (DateTime.Now.Date - ngayTao.Date).Days;
@@ -156,10 +173,7 @@ namespace QuanLyPhongTro.Control
                 else
                     row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
             }
-            //else if (trangThai == 1)
-            //{
-            //    row.DefaultCellStyle.BackColor = Color.Lavender;  
-            //}
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

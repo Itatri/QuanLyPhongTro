@@ -42,10 +42,38 @@ namespace QuanLyPhongTro
                 return 1; // không có chủ hộ
 
             int n = lst.Count;
-            string duongdan = TaoFolder(dt.Rows[0]["TenPhong"].ToString());
-            if (duongdan == null)
-                return 2; // trùng lập folder phòng
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string duongdankhuvuc = string.Empty;
+            if(!checkFolder(makhuvuc, desktop))
+            {
+                duongdankhuvuc =  TaoFolder(makhuvuc, desktop);
+                MessageBox.Show("1"+duongdankhuvuc);
+            }
+            else
+            {
+                duongdankhuvuc = Path.Combine(desktop, makhuvuc);
+                MessageBox.Show("2"+duongdankhuvuc);
+            }
+            string tenPhong = dt.Rows[0]["TenPhong"].ToString();
+            string duongdan = string.Empty;
+            bool check = checkFolder(tenPhong, duongdankhuvuc);
+            if (check == true)
+            {
 
+                if (MessageBox.Show("Bạn có muốn xóa và tạo lại hợp đồng và ct01 của phòng " + tenPhong + " không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string temp = Path.Combine(duongdankhuvuc, tenPhong);
+                    DeleteFolder(temp);
+                }
+                else
+                {
+                    return 2;// Code khi người dùng chọn No
+                }
+            }
+            duongdan = TaoFolder(tenPhong, duongdankhuvuc);
             // Đường dẫn tới file Word trong thư mục bin
             string binPath = AppDomain.CurrentDomain.BaseDirectory;
             string sourceFilePath = Path.Combine(binPath, @"..\..\..\CT01.dotx");
@@ -75,9 +103,8 @@ namespace QuanLyPhongTro
             string yyyy = DateTime.Now.Year.ToString();
             string date = chuho.NgaySinh.Date.ToString();
 
-            Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
-            Bitmap chukynguoikhai = xuly.XuLy(tt.ChuKy);
-            Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
+            
+            
             Bitmap chukyCha = null;
             Bitmap chukyMe = null;
             List<string> cccdchuho = chuyencccd(chuho.CCCD);
@@ -97,25 +124,28 @@ namespace QuanLyPhongTro
                         { "dd", dd },
                         { "MM", MM },
                         { "yyyy", yyyy },
-                        { "HoTenChuSoHuu",ttadmin.HoTen},
-                        {"CCCDChuSoHuu",ttadmin.Cccd},
+                        { "HoTenChuSoHuu","(7) Họ và tên: "+ttadmin.HoTen},
+                        {"CCCDChuSoHuu","(7) Số định danh cá nhân: "+ttadmin.Cccd},
 
                     };
 
             System.Data.DataTable dt = KhachCungThuongTru(lst, tt);
             // Xuất dữ liệu vào file Word
-            WordExport wd = new WordExport(sourceFilePath, true);
+            WordExport wd = new WordExport(sourceFilePath, false);
             
-            if(chukychuho != null)
+            if(string.IsNullOrEmpty(chuho.ChuKy))
             {
+                Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuHo", chukychuho);
             }
-            if (chukynguoikhai != null)
+            if (string.IsNullOrEmpty(tt.ChuKy))
             {
+                Bitmap chukynguoikhai = xuly.XuLy(tt.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyNguoiKhai", chukynguoikhai);
             }
-            if (chukychusohuu != null)
+            if (string.IsNullOrEmpty(ttadmin.ChuKy))
             {
+                Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuSoHuu", chukychusohuu);
             }
             if (con == -1)
@@ -132,18 +162,18 @@ namespace QuanLyPhongTro
             {
                 dic.Add("HoTenCha", "(7) Họ và tên: " + chuho.HoTen);
                 dic.Add("CCCDCha", "(7) Số định danh cá nhân:" + chuho.CCCD);
-                chukyCha = xuly.XuLy(chuho.ChuKy);
-                if (chukyCha != null)
+                if (string.IsNullOrEmpty(chuho.ChuKy))
                 {
+                    chukyCha = xuly.XuLy(chuho.ChuKy);
                     wd.ReplaceFieldWithImage("ChuKyCha", chukyCha);
                 }
                 if (me != null)
                 {
                     dic.Add("HotenMe", "(7) Họ và tên: " + me.HoTen);
                     dic.Add("CCCDMe", "(7) Số định danh cá nhân:" + me.CCCD);
-                    chukyMe = xuly.XuLy(me.ChuKy);
-                    if (chukyMe != null)
+                    if (string.IsNullOrEmpty(me.ChuKy))
                     {
+                        chukyMe = xuly.XuLy(me.ChuKy);
                         wd.ReplaceFieldWithImage("ChuKyMe", chukyMe);
                     }
                 }
@@ -197,22 +227,28 @@ namespace QuanLyPhongTro
             khach.Clear();
             khach.Add(chuho.MaKhachTro);
             System.Data.DataTable bang = BangHopDong(lst);
-            WordExport wd = new WordExport(sourceFilePath, true);
+            WordExport wd = new WordExport(sourceFilePath, false);
             wd.WriteFields(dic);
             wd.WriteDataTableToWordTable(bang, 1);
-            Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
-            wd.InsertImageAndTextInTableCell(2, 2, 1, chuho.HoTen, chukychuho);
-            Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
-            wd.InsertImageAndTextInTableCell(2, 2, 2, ttadmin.HoTen, chukychusohuu);
+            if(string.IsNullOrEmpty(chuho.ChuKy))
+            {
+                Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
+                wd.InsertImageAndTextInTableCell(2, 2, 1, chuho.HoTen, chukychuho);
+            }
+            if(string.IsNullOrEmpty(ttadmin.ChuKy))
+            {
+                Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
+                wd.InsertImageAndTextInTableCell(2, 2, 2, ttadmin.HoTen, chukychusohuu);
+            }
             int n = 3;
             foreach (ThongTinKhachDTO th in lst)
             {
                 if (th.MaKhachTro != chuho.MaKhachTro)
                 {
-                    if(th.ChuKy == null || th.ChuKy == "")
+                    if(string.IsNullOrEmpty(th.ChuKy))
                     {
                         continue;
-                    }else if (th.ChuKy != null || th.ChuKy != "")
+                    }else
                     {
                         Bitmap anh = xuly.XuLy(th.ChuKy);
                         if (anh != null)
@@ -244,9 +280,29 @@ namespace QuanLyPhongTro
             }
             return chuho;
         }
-        private string TaoFolder(string maphong)
+        private bool checkFolder(string key,string path)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = path;
+
+            // Tên của thư mục muốn tạo
+            string folderName = key;
+
+            // Kết hợp đường dẫn với tên thư mục
+            string folderPath = Path.Combine(desktopPath, folderName);
+            MessageBox.Show("folderPath: " + folderPath);
+            // Kiểm tra nếu thư mục chưa tồn tại thì tạo mới
+            if (!Directory.Exists(path))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private string TaoFolder(string maphong, string path)
+        {
+            string desktopPath = path;
 
             // Tên của thư mục muốn tạo
             string folderName = maphong;
@@ -265,6 +321,42 @@ namespace QuanLyPhongTro
                 return null;
             }
         }
+        private void DeleteFolder(string path)
+        {
+            try
+            {
+                // Kiểm tra xem thư mục có tồn tại không
+                if (Directory.Exists(path))
+                {
+                    // Xóa tất cả các tệp trong thư mục
+                    string[] files = Directory.GetFiles(path);
+                    foreach (string file in files)
+                    {
+                        File.Delete(file);
+                    }
+
+                    // Xóa tất cả các thư mục con trong thư mục
+                    string[] directories = Directory.GetDirectories(path);
+                    foreach (string directory in directories)
+                    {
+                        DeleteFolder(directory); // Gọi đệ quy để xóa thư mục con
+                    }
+
+                    // Xóa thư mục chính
+                    Directory.Delete(path, true); // true để xóa thư mục không rỗng
+                }
+                else
+                {
+                    MessageBox.Show("Thư mục không tồn tại.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra khi xóa thư mục: {ex.Message}");
+            }
+        }
+
+
         private void ExportToPDF(string wordFilePath, string folderPath, string maphong)
         {
             // Tạo đường dẫn cho file PDF
@@ -326,7 +418,7 @@ namespace QuanLyPhongTro
                 // Tạo một hàng mới cho DataTable
                 if(!khach.Contains(th.MaKhachTro))
                 {
-                    if (th.ThuongTru == nguoikhai.ThuongTru)
+                    if (th.ThuongTru == nguoikhai.ThuongTru && th.TrangThai == 1)
                     {
                         var row = dt.NewRow();
 
@@ -360,7 +452,7 @@ namespace QuanLyPhongTro
             int stt = 1;
             foreach(ThongTinKhachDTO th in list)
             {
-                if(!khach.Contains(th.MaKhachTro))
+                if(!khach.Contains(th.MaKhachTro) && th.TrangThai == 1)
                 {
                     var row = dt.NewRow();
                     // Gán giá trị cho các cột
