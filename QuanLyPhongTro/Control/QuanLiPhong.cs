@@ -138,21 +138,22 @@ namespace QuanLyPhongTro.Control
         private void RefreshDataGridView()
         {
             string query = @"
-        SELECT p.MaPhong, 
-               p.TrangThai AS [Đã thuê], 
-               p.TenPhong AS [Tên Phòng], 
-               COUNT(k.MaKhachTro) AS [Số lượng người],
-               p.DienTich AS [Diện tích],  -- Thêm cột Diện tích
-               p.NgayVao AS [Ngày Vào], 
-               p.HanTro AS [Hạn trọ], 
-               p.TienCoc AS [Tiền cọc], 
-               p.TienPhong AS [Giá phòng], 
-               p.CongNo AS [Công nợ], 
-               p.GhiChu AS [Ghi chú]
-        FROM Phong p
-        LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
-        WHERE p.MaKhuVuc = @MaKhuVuc
-        GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.DienTich, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu";
+            SELECT p.MaPhong, 
+           p.TrangThai AS [Đã thuê], 
+           p.TenPhong AS [Tên Phòng], 
+           SUM(CASE WHEN k.TrangThai = 1 THEN 1 ELSE 0 END) AS [Số lượng người],
+           p.DienTich AS [Diện tích], 
+           p.NgayVao AS [Ngày Vào], 
+           p.HanTro AS [Hạn trọ], 
+           p.TienCoc AS [Tiền cọc], 
+           p.TienPhong AS [Giá phòng], 
+           p.CongNo AS [Công nợ], 
+           p.GhiChu AS [Ghi chú]
+            FROM Phong p
+            LEFT JOIN ThongTinKhach k ON p.MaPhong = k.MaPhong
+            WHERE p.MaKhuVuc = @MaKhuVuc
+            GROUP BY p.MaPhong, p.TrangThai, p.TenPhong, p.DienTich, p.NgayVao, p.HanTro, p.TienCoc, p.TienPhong, p.CongNo, p.GhiChu;
+";
 
             DataTable dataTable = ExecuteQuery(query, new SqlParameter("@MaKhuVuc", khuvuc));
             dataGridView1.DataSource = dataTable;
@@ -408,12 +409,10 @@ namespace QuanLyPhongTro.Control
 
         private void CapNhatthongtinkhach(string maPhong, int trangThai)
         {
-            string query = "UPDATE ThongTinKhach SET TrangThai = @TrangThai WHERE MaPhong = @MaPhong";
-            SqlParameter[] parameters = {
-        new SqlParameter("@TrangThai", trangThai),
-        new SqlParameter("@MaPhong", maPhong)
-    };
+            string query = "DELETE FROM ThongTinKhach WHERE MaPhong = @MaPhong";
+            SqlParameter[] parameters = { new SqlParameter("@MaPhong", maPhong) };
             ExecuteNonQuery(query, parameters);
+
         }
 
 
@@ -485,6 +484,16 @@ namespace QuanLyPhongTro.Control
 
                 // Xóa tài khoản phòng
                 //DeleteRoomAccount(maPhong);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is MainForm mainForm)
+            {
+                QuanLyPhieuThu f = new QuanLyPhieuThu();
+                f.khuvuc = khuvuc;
+                mainForm.ShowControl(f);
             }
         }
     }

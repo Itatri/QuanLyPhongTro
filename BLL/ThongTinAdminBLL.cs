@@ -30,7 +30,12 @@ namespace BLL
 
             return admin;
         }
+        public ThongTinAdminDTO GetThongTinAdminByKhuVuc(string makhuvuc)
+        {
+            ThongTinAdminDTO admin = thongTinAdminDAL.GetThongTinAdminByKhuVuc(makhuvuc);
 
+            return admin;
+        }
 
         public bool CapNhatThongTinAdmin(ThongTinAdminDTO admin)
         {

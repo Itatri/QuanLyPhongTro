@@ -45,6 +45,33 @@ namespace DAL
 
             return dt;
         }
+        public DataTable GetALLPT(string khuvuc)
+        {
+            DataTable dt = new DataTable();
+            string query = "EXEC GETALLPT @MaKhuVuc";
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", khuvuc);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
         public DataTable LayPhongChuaCoPhieuThu(DateTime date, string maKhuVuc)
         {
             DataTable dt = new DataTable();
@@ -127,7 +154,7 @@ namespace DAL
         /////////////Tạo PT
         public DataTable GetPhong(string khuvuc)
         {
-            string query = "SELECT TenPhong FROM Phong WHERE MaKhuVuc = @KhuVuc AND TrangThai = 1";
+            string query = "SELECT TenPhong FROM Phong WHERE MaKhuVuc = @KhuVuc";
 
             // Tạo một DataTable để chứa kết quả
             DataTable dt = new DataTable();
@@ -243,6 +270,36 @@ namespace DAL
                 }
             }
         }
+        public DataTable GetDichVuPhieuThu(string mapt)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT TenDichVu, DonGia FROM DichVuPhieuThu WHERE MaPT = @MaPT";
+
+            using (SqlConnection conn = new SqlConnection(strConn)) // Thay bằng chuỗi kết nối của bạn
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MaPT", mapt); // Truyền tham số
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt); // Điền dữ liệu vào DataTable
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
         public void CreateDichVuPhieuThu(ChiTietDichVuPT ct)
         {
             using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
