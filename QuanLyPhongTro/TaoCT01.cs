@@ -47,12 +47,10 @@ namespace QuanLyPhongTro
             if(!checkFolder(makhuvuc, desktop))
             {
                 duongdankhuvuc =  TaoFolder(makhuvuc, desktop);
-                MessageBox.Show("1"+duongdankhuvuc);
             }
             else
             {
                 duongdankhuvuc = Path.Combine(desktop, makhuvuc);
-                MessageBox.Show("2"+duongdankhuvuc);
             }
             string tenPhong = dt.Rows[0]["TenPhong"].ToString();
             string duongdan = string.Empty;
@@ -289,7 +287,6 @@ namespace QuanLyPhongTro
 
             // Kết hợp đường dẫn với tên thư mục
             string folderPath = Path.Combine(desktopPath, folderName);
-            MessageBox.Show("folderPath: " + folderPath);
             // Kiểm tra nếu thư mục chưa tồn tại thì tạo mới
             if (!Directory.Exists(path))
             {

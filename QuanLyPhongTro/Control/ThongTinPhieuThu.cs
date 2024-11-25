@@ -210,6 +210,7 @@ namespace QuanLyPhongTro.Control
                 bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
                 bll.CreateDichVuPhieuThu(lst);
                 Email email = new Email();
+                MessageBox.Show(khuvuc);
                 email.ExportAndSendPhieuThuToEmailAsync(pt, txtPhong.Text, khuvuc);
                 MessageBox.Show("Cập nhật thành công");
             }
