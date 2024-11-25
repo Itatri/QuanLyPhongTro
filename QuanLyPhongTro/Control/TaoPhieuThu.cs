@@ -30,7 +30,7 @@ namespace QuanLyPhongTro.Control
         {
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
             dtpNgayLap.CustomFormat = "dd/MM/yyyy";
-            LoadPhong(khuvuc);
+            LoadPhongChuaPT(khuvuc);
         }
         private void LoadPhong(string khuvuc)
         {
@@ -81,7 +81,7 @@ namespace QuanLyPhongTro.Control
             if(cboPhong.SelectedIndex != -1)
             {
                 OpenCloseText(true);
-                txtma.Text = "PT_" + cboPhong.Text + DateTime.Now.ToString("ddMMyy");
+                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
                 maphong = bll.GetMAByTenPhong(cboPhong.Text);
                 int dem = bll.CountKhach(maphong);
                 System.Data.DataTable dt = bll.LoadPhong(maphong);
@@ -306,7 +306,8 @@ namespace QuanLyPhongTro.Control
             List<ChiTietDichVuPT> lst = chuyendoidichvu();
             if (pt != null)
             {
-                if(!bll.CheckPTDaTao(pt.MaPT))
+
+                if (!bll.CheckPTDaTao(pt.MaPT))
                 {
                     if (bll.CreatePhieuThu(pt))
                     {
@@ -323,10 +324,13 @@ namespace QuanLyPhongTro.Control
                         {
                             bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
                         }
-                        MessageBox.Show("Thành Công");
+                        MessageBox.Show("Tạo phiếu thành Công");
+                        Email email = new Email();
+                        email.SendEmailTaoPhieu(pt, cboPhong.Text);
                         Clear();
                     }
-                }else
+                }
+                else
                 {
                     MessageBox.Show("Phòng này đã tạo phiếu trả phòng");
                 }
@@ -337,6 +341,7 @@ namespace QuanLyPhongTro.Control
                 MessageBox.Show("Thất bại");
                 return;
             }
+            
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -379,7 +384,7 @@ namespace QuanLyPhongTro.Control
             if(ckbPTP.Checked)
             {
                 LoadPhong(khuvuc);
-                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy"+"TraPhong");
+                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
             }
             else
             {

@@ -122,12 +122,13 @@
             this.cboTK.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cboTK.FormattingEnabled = true;
             this.cboTK.Items.AddRange(new object[] {
+            "Thống kê doanh thu trong tháng",
             "Thống kê doanh thu trong năm",
             "Thống kê dịch vụ theo tháng",
             "Thống kê dịch vụ theo năm"});
-            this.cboTK.Location = new System.Drawing.Point(468, 155);
+            this.cboTK.Location = new System.Drawing.Point(425, 155);
             this.cboTK.Name = "cboTK";
-            this.cboTK.Size = new System.Drawing.Size(225, 27);
+            this.cboTK.Size = new System.Drawing.Size(268, 27);
             this.cboTK.TabIndex = 51;
             // 
             // QuanLiThongKe

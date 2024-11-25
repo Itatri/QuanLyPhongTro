@@ -61,15 +61,19 @@ namespace QuanLyPhongTro.Control
         {
             int thang = int.Parse(cboThang.Text);
             int nam = int.Parse(cboNam.Text);
-            if (cboTK.SelectedIndex == 0)
+            if(cboTK.SelectedIndex == 0)
+            {
+                ThongKeDoangThuThang(nam, thang, khuvuc);
+            }
+             else if (cboTK.SelectedIndex == 1)
             {
                 ThongKeDoangThu(nam, khuvuc);
             }
-            else if(cboTK.SelectedIndex == 1)
+            else if(cboTK.SelectedIndex == 2)
             {
                 ThongKeDichVuThang(thang,nam,khuvuc);
             }
-            else if(cboTK.SelectedIndex == 2)
+            else if(cboTK.SelectedIndex == 3)
             {
                 ThongKeDichVuNam(nam,khuvuc);
             }
@@ -77,17 +81,35 @@ namespace QuanLyPhongTro.Control
 
         private void ThongKeDoangThu(int nam, string khuvuc)
         {
-            DataTable dt = bll.ThongKeDoanhThuTheoThang(nam,khuvuc);
+            DataTable dt = bll.ThongKeDoanhThuTheoNam(nam,khuvuc);
             dgvDT.DataSource = null;
             dgvDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDT.DataSource = dt;
+            dgvDT.Columns["Tháng"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Tiền Phòng"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Số Kí Điện Sử Dụng"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Tiền Điện"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Số Khối Nước Sử Dụng"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Tiền Nước"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Tiền Dịch Vụ"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Doanh Thu"].DefaultCellStyle.Format = "N0";
-            
+
+        }
+        private void ThongKeDoangThuThang(int nam, int thang, string khuvuc)
+        {
+            DataTable dt = bll.ThongKeDoanhThuTheoThang(nam, thang, khuvuc);
+            dgvDT.DataSource = null;
+            dgvDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDT.DataSource = dt;
+            dgvDT.Columns["Tên Phòng"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Tiền Phòng"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Số Ký Điện Sử Dụng"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Tiền Điện"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Số Khối Nước Sử Dụng"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Tiền Nước"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Tổng Tiền Dịch Vụ"].DefaultCellStyle.Format = "N0";
+            dgvDT.Columns["Doanh Thu"].DefaultCellStyle.Format = "N0";
+
         }
         private void ThongKeDichVuThang(int thang, int nam, string khuvuc)
         {

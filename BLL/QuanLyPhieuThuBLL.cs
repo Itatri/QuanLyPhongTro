@@ -31,9 +31,13 @@ namespace BLL
         }
         public bool CheckPTDaTao(string ma)
         {
-            return CheckPTDaTao(ma);
+            
+            return tkDal.CheckPTDaTao(ma);
         }
-
+        public DataTable GetALLPT(string khuvuc)
+        {
+            return tkDal.GetALLPT(khuvuc);
+        }
 
         //////////////Tạo PT
         public DataTable GetPhong(string khuvuc)
@@ -47,6 +51,10 @@ namespace BLL
         public DataTable LoadDVPhong(string phong)
         {
             return tkDal.LoadDVPhong(phong);
+        }
+        public DataTable GetDichVuPhieuThu(string mapt)
+        {
+            return tkDal.GetDichVuPhieuThu(mapt);
         }
         public bool CreatePhieuThu(PhieuThu phieu)
         {

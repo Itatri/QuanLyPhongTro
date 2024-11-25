@@ -138,58 +138,36 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int index = e.RowIndex;
-            //if (index >= 0 && index < dataGridView1.Rows.Count)
-            //{
-            //    DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            //    txtMaDV.Text = selectedRow.Cells["MaDichVu"].Value.ToString();
-            //    txtTenDV.Text = selectedRow.Cells["TenDichVu"].Value.ToString();
-
-            //    //-------------------------------------------------------------------------------- 15/10/2024
-
-            //    //txtDonGia.Text = selectedRow.Cells["DonGia"].Value.ToString();
-
-            //    // Định dạng lại giá trị DonGia để hiển thị đúng trong txtDonGia
-            //    decimal donGia = decimal.Parse(selectedRow.Cells["DonGia"].Value.ToString());
-            //    txtDonGia.Text = string.Format("{0:N0}", donGia);
-            //    //-------------------------------------------------------------------------------- 15/10/2024
-
-            //    bool trangThai = bool.Parse(selectedRow.Cells["TrangThai"].Value.ToString());
-
-            //    // Set the ComboBox selected item based on the TrangThai value
-            //    if (trangThai)
-            //    {
-            //        cbbTrangThai.SelectedItem = "Đang hoat động";
-            //    }
-            //    else
-            //    {
-            //        cbbTrangThai.SelectedItem = "Không hoạt động";
-            //    }
-            //}
-
             int index = e.RowIndex;
             if (index >= 0 && index < dataGridView1.Rows.Count)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[index];
-                txtMaDV.Text = selectedRow.Cells["Mã Dịch Vụ"].Value.ToString();
-                txtTenDV.Text = selectedRow.Cells["Tên Dịch Vụ"].Value.ToString();
+                txtMaDV.Text = selectedRow.Cells["MaDichVu"].Value.ToString();
+                txtTenDV.Text = selectedRow.Cells["TenDichVu"].Value.ToString();
 
-                // Định dạng lại giá trị Đơn Giá để hiển thị đúng trong txtDonGia
-                decimal donGia = decimal.Parse(selectedRow.Cells["Đơn Giá"].Value.ToString());
+                //-------------------------------------------------------------------------------- 15/10/2024
+
+                //txtDonGia.Text = selectedRow.Cells["DonGia"].Value.ToString();
+
+                // Định dạng lại giá trị DonGia để hiển thị đúng trong txtDonGia
+                decimal donGia = decimal.Parse(selectedRow.Cells["DonGia"].Value.ToString());
                 txtDonGia.Text = string.Format("{0:N0}", donGia);
+                //-------------------------------------------------------------------------------- 15/10/2024
 
-                bool trangThai = bool.Parse(selectedRow.Cells["Trạng Thái"].Value.ToString());
+                bool trangThai = bool.Parse(selectedRow.Cells["TrangThai"].Value.ToString());
 
                 // Set the ComboBox selected item based on the TrangThai value
                 if (trangThai)
                 {
-                    cbbTrangThai.SelectedItem = "Đang hoạt động";
+                    cbbTrangThai.SelectedItem = "Đang hoat động";
                 }
                 else
                 {
                     cbbTrangThai.SelectedItem = "Không hoạt động";
                 }
             }
+
+
         }
 
         // Hiển thị phan cấp giá tiền người dung nhập vào

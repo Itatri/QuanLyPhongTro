@@ -20,7 +20,7 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 //string query = "SELECT MaPhong, TenPhong FROM Phong";
-                string query = "SELECT * FROM Phong";
+                string query = "SELECT * FROM Phong where TrangThai = 1";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();

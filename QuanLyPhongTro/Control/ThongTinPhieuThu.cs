@@ -28,6 +28,7 @@ namespace QuanLyPhongTro.Control
 
         private void ThongTinPhieuThu_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(khuvuc);
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
             dtpNgayLap.CustomFormat = "dd/MM/yyyy";
             dtpNgayThu.Format = DateTimePickerFormat.Custom;
@@ -43,7 +44,7 @@ namespace QuanLyPhongTro.Control
             if (dt.Rows.Count > 0)
             {
                 txtma.Text = dt.Rows[0]["MaPT"].ToString();
-                txtPhong.Text = maphong;
+                txtPhong.Text = phong.Rows[0]["TenPhong"].ToString();
                 dtpNgayLap.Text = Convert.ToDateTime(dt.Rows[0]["NgayLap"]).ToString("dd/MM/yyyy");
                 dtpNgayThu.Text = Convert.ToDateTime(dt.Rows[0]["NgayThu"]).ToString("dd/MM/yyyy");
                 txtTienNha.Text = Convert.ToDecimal(dt.Rows[0]["TienNha"]).ToString("N0");
@@ -71,11 +72,11 @@ namespace QuanLyPhongTro.Control
                     }
                     else
                     {
-                        txtDu.Text = (-float.Parse(txtTongTien.Text)).ToString("N0");
+                        txtDu.Text = (-(Convert.ToDecimal(dt.Rows[0]["TongTien"]))).ToString("N0");
                         soducu = -float.Parse(txtTongTien.Text);
                     }
                 }
-                LoadCongNo(txtPhong.Text);
+                LoadCongNo(maphong);
             }
         }
         private void LoadCongNo(string phong)
@@ -138,6 +139,7 @@ namespace QuanLyPhongTro.Control
                 return pt = null;
             }
             pt.MaPT = txtma.Text;
+            pt.MaPhong = maphong;
             pt.TienNha = float.Parse(txtTienNha.Text);
             pt.NgayLap = dtpNgayLap.Value;
             pt.NgayThu = dtpNgayLap.Value;
@@ -205,8 +207,10 @@ namespace QuanLyPhongTro.Control
                     congnonew = (congno - (sodumoi - soducu));
                 }
                 else { congnonew = float.Parse(txtCongNo.Text); }
-                bll.UpdatePhong(txtPhong.Text, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
+                bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
                 bll.CreateDichVuPhieuThu(lst);
+                Email email = new Email();
+                email.ExportAndSendPhieuThuToEmailAsync(pt, txtPhong.Text, khuvuc);
                 MessageBox.Show("Cập nhật thành công");
             }
             LoadPT();
