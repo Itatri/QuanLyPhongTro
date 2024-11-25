@@ -56,7 +56,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM ThongTinAdmin WHERE MaKhuVuc = @MaKhuVuc";
+                string query = "SELECT * FROM ThongTinAdmin, DangNhap WHERE MaKhuVuc = @MaKhuVuc";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
                 SqlDataReader reader = command.ExecuteReader();
