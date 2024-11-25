@@ -324,7 +324,7 @@ namespace QuanLyPhongTro.Control
                         {
                             bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congno);
                         }
-                        MessageBox.Show("Tạo phiếu thành Công");
+                        MessageBox.Show("Tạo phiếu thành công");
                         Email email = new Email();
                         email.SendEmailTaoPhieu(pt, cboPhong.Text);
                         Clear();
@@ -332,7 +332,7 @@ namespace QuanLyPhongTro.Control
                 }
                 else
                 {
-                    MessageBox.Show("Phòng này đã tạo phiếu trả phòng");
+                    MessageBox.Show("Phòng này đã tạo phiếu");
                 }
 
             }
