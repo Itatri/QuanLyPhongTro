@@ -24,6 +24,5 @@
 - Đăng nhập : <br>  <br>
 ![LoginForm](https://github.com/user-attachments/assets/ce642402-b15b-49cb-8cec-8be6899ad2c7)
 - Trang chủ :  <br>  <br>
-![TrangChu](https://github.com/user-attachments/assets/f0fc303e-569f-4deb-b70b-867d7bd5c6a1)
-
+![Screenshot 2024-11-25 132943](https://github.com/user-attachments/assets/a470e3b0-0171-4131-941f-3b275c2e6e44)
 
