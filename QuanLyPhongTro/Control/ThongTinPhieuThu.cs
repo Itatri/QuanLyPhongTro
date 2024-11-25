@@ -28,7 +28,6 @@ namespace QuanLyPhongTro.Control
 
         private void ThongTinPhieuThu_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(khuvuc);
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
             dtpNgayLap.CustomFormat = "dd/MM/yyyy";
             dtpNgayThu.Format = DateTimePickerFormat.Custom;
@@ -210,7 +209,6 @@ namespace QuanLyPhongTro.Control
                 bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
                 bll.CreateDichVuPhieuThu(lst);
                 Email email = new Email();
-                MessageBox.Show(khuvuc);
                 email.ExportAndSendPhieuThuToEmailAsync(pt, txtPhong.Text, khuvuc);
                 MessageBox.Show("Cập nhật thành công");
             }

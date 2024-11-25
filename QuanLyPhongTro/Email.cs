@@ -351,7 +351,7 @@ namespace QuanLyPhongTro
                     }
 
                     // Trả về mảng byte của PDF đã tạo
-                    MessageBox.Show($"Đã lưu PDF vào: {tempPdfPath}");
+                    //MessageBox.Show($"Đã lưu PDF vào: {tempPdfPath}");
                 }
                 catch (Exception ex)
                 {
