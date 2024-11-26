@@ -138,7 +138,6 @@ namespace DAL
             Nuoc = @Nuoc, 
             CongNo = @CongNo, 
             HanTro = @HanTro, 
-            TrangThai = @TrangThai, 
             GhiChu = @GhiChu 
         WHERE MaPhong = @MaPhong";
 
@@ -153,7 +152,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Nuoc", phong.Nuoc);
                 cmd.Parameters.AddWithValue("@CongNo", phong.CongNo ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@HanTro", phong.HanTro ?? (object)DBNull.Value); // Cập nhật trường HanTro
-                cmd.Parameters.AddWithValue("@TrangThai", phong.TrangThai ?? (object)DBNull.Value);
+                //cmd.Parameters.AddWithValue("@TrangThai", phong.TrangThai ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@GhiChu", phong.GhiChu);
 
                 conn.Open();

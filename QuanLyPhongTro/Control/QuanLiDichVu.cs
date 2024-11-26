@@ -369,7 +369,7 @@ namespace QuanLyPhongTro.Control
             
             btnLuu.Enabled = !t;
             btnThem.Enabled = t;
-            btnXoa.Enabled = t;
+            //btnXoa.Enabled = t;
             btnSua.Enabled = t;
         }
 

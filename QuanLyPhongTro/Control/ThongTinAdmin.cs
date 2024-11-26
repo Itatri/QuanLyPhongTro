@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace QuanLyPhongTro.Control
 {
@@ -103,8 +104,9 @@ namespace QuanLyPhongTro.Control
                     {
                         // Lấy đường dẫn thư mục chứa ảnh chữ ký
                         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                        string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+                        string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
                         imagesFolderPath = Path.GetFullPath(imagesFolderPath);
+
 
                         // Tạo đường dẫn đầy đủ tới file ảnh
                         string filePath = Path.Combine(imagesFolderPath, adminInfo.ChuKy);
@@ -142,7 +144,7 @@ namespace QuanLyPhongTro.Control
             {
                 // Khai báo đường dẫn tới thư mục chứa ảnh chữ ký
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+                string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
                 imagesFolderPath = Path.GetFullPath(imagesFolderPath); // Đảm bảo đường dẫn chính xác
 
                 // Lấy thông tin admin hiện tại để kiểm tra ảnh chữ ký
@@ -269,7 +271,7 @@ namespace QuanLyPhongTro.Control
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
                 // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
-                string imagesFolderPath = Path.Combine(baseDirectory, "..", "..", "AnhChuKy");
+                string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
 
                 // Chuyển đường dẫn lên thư mục gốc của dự án
                 imagesFolderPath = Path.GetFullPath(imagesFolderPath);

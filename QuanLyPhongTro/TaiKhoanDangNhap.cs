@@ -107,7 +107,7 @@ namespace QuanLyPhongTro
 
             // ẩn hiên button
             buttonThem.Enabled = true;
-            buttonXoa.Enabled = true;
+            //buttonXoa.Enabled = true;
             buttonSua.Enabled = true;
             buttonLuu.Enabled = false;
 
@@ -149,7 +149,7 @@ namespace QuanLyPhongTro
             buttonLuu.Enabled = true;
             buttonSua.Enabled = false;
             buttonThem.Enabled = false;
-            buttonXoa.Enabled = false;
+            //buttonXoa.Enabled = false;
 
             textBoxMatKhau.Clear();
             TextBoxTaiKhoan.Clear();
@@ -228,7 +228,7 @@ namespace QuanLyPhongTro
             flag = 3;
 
             buttonLuu.Enabled = true;
-            buttonXoa.Enabled = false;
+            //buttonXoa.Enabled = false;
             buttonThem.Enabled = false;
             buttonSua.Enabled = false;
 
@@ -247,7 +247,7 @@ namespace QuanLyPhongTro
             buttonLuu.Enabled = true;
             buttonThem.Enabled = false;
             buttonSua.Enabled = false;
-            buttonXoa.Enabled = false;
+            //buttonXoa.Enabled = false;
 
         }
 
@@ -321,6 +321,14 @@ namespace QuanLyPhongTro
                                 {
                                     updateCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
                                     updateCommand.ExecuteNonQuery();
+                                }
+                                string insertTTAdmin = "INSERT INTO ThongTinAdmin (MaAdmin, IdUser, TrangThai) VALUES (@MaAdmin, @IdUser, @TrangThai)";
+                                using (SqlCommand insertCommand = new SqlCommand(insertTTAdmin, connection))
+                                {
+                                    insertCommand.Parameters.AddWithValue("@MaAdmin", taiKhoan);
+                                    insertCommand.Parameters.AddWithValue("@IdUser", taiKhoan);
+                                    insertCommand.Parameters.AddWithValue("@TrangThai", 1);
+                                    insertCommand.ExecuteNonQuery();
                                 }
 
                                 MessageBox.Show("Thêm tài khoản thành công!");
@@ -475,7 +483,7 @@ namespace QuanLyPhongTro
 
             // ẩn hiên button
             buttonThem.Enabled = true;
-            buttonXoa.Enabled = true;
+            //buttonXoa.Enabled = true;
             buttonSua.Enabled = true;
             buttonLuu.Enabled = false;
 

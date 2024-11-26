@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonLuu = new System.Windows.Forms.Button();
-            this.buttonXoa = new System.Windows.Forms.Button();
             this.buttonSua = new System.Windows.Forms.Button();
             this.buttonThem = new System.Windows.Forms.Button();
             this.textBoxMatKhau = new System.Windows.Forms.TextBox();
@@ -57,7 +56,7 @@
             this.buttonLuu.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLuu.ForeColor = System.Drawing.Color.White;
             this.buttonLuu.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuu.Image")));
-            this.buttonLuu.Location = new System.Drawing.Point(426, 714);
+            this.buttonLuu.Location = new System.Drawing.Point(560, 714);
             this.buttonLuu.Name = "buttonLuu";
             this.buttonLuu.Size = new System.Drawing.Size(247, 52);
             this.buttonLuu.TabIndex = 23;
@@ -67,29 +66,13 @@
             this.buttonLuu.UseVisualStyleBackColor = false;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
-            // buttonXoa
-            // 
-            this.buttonXoa.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonXoa.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.buttonXoa.ForeColor = System.Drawing.Color.White;
-            this.buttonXoa.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoa.Image")));
-            this.buttonXoa.Location = new System.Drawing.Point(1234, 714);
-            this.buttonXoa.Name = "buttonXoa";
-            this.buttonXoa.Size = new System.Drawing.Size(247, 52);
-            this.buttonXoa.TabIndex = 22;
-            this.buttonXoa.Text = "Xóa";
-            this.buttonXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonXoa.UseVisualStyleBackColor = false;
-            this.buttonXoa.Click += new System.EventHandler(this.buttonXoa_Click);
-            // 
             // buttonSua
             // 
             this.buttonSua.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.buttonSua.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSua.ForeColor = System.Drawing.Color.White;
             this.buttonSua.Image = ((System.Drawing.Image)(resources.GetObject("buttonSua.Image")));
-            this.buttonSua.Location = new System.Drawing.Point(830, 714);
+            this.buttonSua.Location = new System.Drawing.Point(1098, 714);
             this.buttonSua.Name = "buttonSua";
             this.buttonSua.Size = new System.Drawing.Size(247, 52);
             this.buttonSua.TabIndex = 21;
@@ -232,7 +215,6 @@
             this.panel1.Controls.Add(this.buttonSua);
             this.panel1.Controls.Add(this.buttonLuu);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.buttonXoa);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
@@ -247,7 +229,7 @@
             this.btnThoat.Font = new System.Drawing.Font("Tahoma", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
-            this.btnThoat.Location = new System.Drawing.Point(1638, 714);
+            this.btnThoat.Location = new System.Drawing.Point(1636, 714);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(247, 52);
             this.btnThoat.TabIndex = 24;
@@ -278,7 +260,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonLuu;
-        private System.Windows.Forms.Button buttonXoa;
         private System.Windows.Forms.Button buttonSua;
         private System.Windows.Forms.Button buttonThem;
         private System.Windows.Forms.TextBox textBoxMatKhau;

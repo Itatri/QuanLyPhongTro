@@ -134,8 +134,7 @@ namespace QuanLyPhongTro.Control
 
             dataGridViewDichVu1.Columns["DonGia"].DefaultCellStyle.Format = "N0";
         }
-
-
+        private bool trangthaiPhong = false;
         private void LoadPhong()
         {
             DataTable dt = thongtinphongBLL.GetAllPhong(MAPHONG);
@@ -150,9 +149,9 @@ namespace QuanLyPhongTro.Control
                 textBoxTienCoc.Text = dt.Rows[0]["TienCoc"].ToString();
                 dateTimePickerHanTro.Text = dt.Rows[0]["HanTro"].ToString();
                 RtxtGhiChu.Text = dt.Rows[0]["GhiChu"].ToString();
+                trangthaiPhong = Convert.ToBoolean(dt.Rows[0]["TrangThai"]);
             }
         }
-
         private List<DichVuPhongDTO> chuyendoidichvu()
         {
             List<DichVuPhongDTO> lst = new List<DichVuPhongDTO>();
@@ -231,52 +230,7 @@ namespace QuanLyPhongTro.Control
         private void buttonLuu_Click(object sender, EventArgs e)
         {
 
-            //// Kiểm tra giá trị của các trường nhập liệu
-            //if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
-            //{
-            //    MessageBox.Show("Vui lòng điền đầy đủ thông tin phòng!");
-            //    return;
-            //}
-
-            //// Hiển thị hộp thoại xác nhận
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật thông tin phòng?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if (result == DialogResult.Yes)
-            //{
-            //    TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
-            //    {
-            //        MaPhong = txtMaPhong.Text,
-            //        MaKhuVuc = KhuVuc,
-            //        TenPhong = txtTenPhong.Text,
-            //        NgayVao = DateTime.Now, // Hoặc giá trị khác
-            //        TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
-            //        TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
-            //        Dien = Convert.ToSingle(txtSodien.Text),
-            //        Nuoc = Convert.ToSingle(txtSoNuoc.Text),
-            //        CongNo = 0, // Hoặc giá trị khác
-            //        HanTro = dateTimePickerHanTro.Value, // Lấy giá trị từ DateTimePicker
-            //        TrangThai = true, // Hoặc giá trị khác
-            //        GhiChu = RtxtGhiChu.Text
-            //    };
-
-            //    // Kiểm tra giá trị hạn trọ
-            //    MessageBox.Show($"Giá trị hạn trọ: {phong.HanTro}");
-
-            //    // Cập nhật thông tin phòng
-            //    try
-            //    {
-            //        thongtinphongBLL.UpdatePhong(phong);
-            //        // Cập nhật thông tin dịch vụ
-            //        List<DichVuPhongDTO> dichVuPhongs = chuyendoidichvu();
-            //        thongtinphongBLL.UpdateDichVuPhong(phong.MaPhong, dichVuPhongs);
-            //        MessageBox.Show($"Giá trị hạn trọ: {dateTimePickerHanTro.Value}");
-            //        MessageBox.Show("Cập nhật thông tin phòng thành công!");
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Cập nhật không thành công: " + ex.Message);
-            //    }
-            //}
+            
 
 
             // Kiểm tra giá trị của các trường nhập liệu
@@ -312,7 +266,7 @@ namespace QuanLyPhongTro.Control
                 Nuoc = Convert.ToSingle(txtSoNuoc.Text),
                 CongNo = 0, // Hoặc giá trị khác
                 HanTro = hanTro, // Sử dụng giá trị từ DateTimePicker
-                TrangThai = true, // Hoặc giá trị khác
+                TrangThai = trangthaiPhong, // Hoặc giá trị khác
                 GhiChu = RtxtGhiChu.Text
             };
 
