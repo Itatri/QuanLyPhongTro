@@ -30,9 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DanKyTaiKhoanKhachHang));
-            this.btnLuu = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,28 +51,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.Blue;
-            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnLuu.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLuu.ImageKey = "(none)";
-            this.btnLuu.Location = new System.Drawing.Point(724, 17);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(195, 46);
-            this.btnLuu.TabIndex = 9;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // label5
             // 
@@ -85,23 +68,6 @@
             this.label5.Size = new System.Drawing.Size(10, 13);
             this.label5.TabIndex = 43;
             this.label5.Text = " ";
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.Blue;
-            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.ImageKey = "(none)";
-            this.btnThem.Location = new System.Drawing.Point(364, 17);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(195, 46);
-            this.btnThem.TabIndex = 6;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtMatKhau
             // 
@@ -354,15 +320,49 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.buttonHuy);
-            this.panel3.Controls.Add(this.btnThem);
-            this.panel3.Controls.Add(this.btnQuayLai);
             this.panel3.Controls.Add(this.btnLuu);
+            this.panel3.Controls.Add(this.btnThem);
+            this.panel3.Controls.Add(this.buttonHuy);
+            this.panel3.Controls.Add(this.btnQuayLai);
             this.panel3.Controls.Add(this.buttonSua);
             this.panel3.Location = new System.Drawing.Point(3, 891);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1639, 74);
             this.panel3.TabIndex = 0;
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.BackColor = System.Drawing.Color.Blue;
+            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnLuu.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.Location = new System.Drawing.Point(714, 17);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(195, 46);
+            this.btnLuu.TabIndex = 53;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.Blue;
+            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnThem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.Location = new System.Drawing.Point(361, 17);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(195, 46);
+            this.btnThem.TabIndex = 54;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
             // 
             // DanKyTaiKhoanKhachHang
             // 
@@ -387,10 +387,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label2;
@@ -411,5 +408,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnLuu;
     }
 }

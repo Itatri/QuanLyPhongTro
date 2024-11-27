@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiDichVu));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnXoa = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiDichVu));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSua = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,23 +55,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.Blue;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(1443, 2);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(200, 46);
-            this.btnXoa.TabIndex = 7;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // dataGridView1
             // 
@@ -109,7 +91,7 @@
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
-            this.btnSua.Location = new System.Drawing.Point(968, 2);
+            this.btnSua.Location = new System.Drawing.Point(1440, 2);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(200, 46);
@@ -199,7 +181,7 @@
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
-            this.btnLuu.Location = new System.Drawing.Point(493, 2);
+            this.btnLuu.Location = new System.Drawing.Point(729, 2);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(200, 46);
@@ -317,7 +299,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnXoa);
             this.panel4.Controls.Add(this.btnThem);
             this.panel4.Controls.Add(this.btnLuu);
             this.panel4.Controls.Add(this.btnSua);
@@ -347,8 +328,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label3;

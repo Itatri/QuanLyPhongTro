@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiDanCu));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewDanCu = new System.Windows.Forms.DataGridView();
@@ -45,7 +45,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtQueQuan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBoxPhong = new System.Windows.Forms.ComboBox();
@@ -80,6 +79,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonRefesh = new System.Windows.Forms.Button();
+            this.cbbQueQuan = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
@@ -100,23 +100,23 @@
             // 
             // dataGridViewDanCu
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewDanCu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewDanCu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDanCu.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewDanCu.Location = new System.Drawing.Point(11, 141);
             this.dataGridViewDanCu.Name = "dataGridViewDanCu";
             this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 467);
@@ -239,20 +239,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(547, 144);
+            this.label8.Location = new System.Drawing.Point(538, 149);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "Điện thoại ";
-            // 
-            // txtQueQuan
-            // 
-            this.txtQueQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtQueQuan.Location = new System.Drawing.Point(363, 144);
-            this.txtQueQuan.Multiline = true;
-            this.txtQueQuan.Name = "txtQueQuan";
-            this.txtQueQuan.Size = new System.Drawing.Size(163, 30);
-            this.txtQueQuan.TabIndex = 21;
             // 
             // label9
             // 
@@ -306,6 +297,7 @@
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThongTinDanCu.Controls.Add(this.cbbQueQuan);
             this.panelThongTinDanCu.Controls.Add(this.txtThuongTru);
             this.panelThongTinDanCu.Controls.Add(this.label19);
             this.panelThongTinDanCu.Controls.Add(this.comboboxQuanHe);
@@ -332,7 +324,6 @@
             this.panelThongTinDanCu.Controls.Add(this.label5);
             this.panelThongTinDanCu.Controls.Add(this.label10);
             this.panelThongTinDanCu.Controls.Add(this.label6);
-            this.panelThongTinDanCu.Controls.Add(this.txtQueQuan);
             this.panelThongTinDanCu.Controls.Add(this.label9);
             this.panelThongTinDanCu.Controls.Add(this.comboBoxGioiTinh);
             this.panelThongTinDanCu.Controls.Add(this.txtSDT);
@@ -680,6 +671,16 @@
             this.buttonRefesh.UseVisualStyleBackColor = true;
             this.buttonRefesh.Click += new System.EventHandler(this.buttonRefesh_Click);
             // 
+            // cbbQueQuan
+            // 
+            this.cbbQueQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbQueQuan.FormattingEnabled = true;
+            this.cbbQueQuan.Location = new System.Drawing.Point(363, 147);
+            this.cbbQueQuan.Name = "cbbQueQuan";
+            this.cbbQueQuan.Size = new System.Drawing.Size(169, 24);
+            this.cbbQueQuan.TabIndex = 55;
+            this.cbbQueQuan.SelectedIndexChanged += new System.EventHandler(this.cbbQueQuan_SelectedIndexChanged);
+            // 
             // QuanLiDanCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,7 +717,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtQueQuan;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBoxPhong;
@@ -751,5 +751,6 @@
         private System.Windows.Forms.ComboBox comboboxQuanHe;
         private System.Windows.Forms.TextBox txtThuongTru;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cbbQueQuan;
     }
 }
