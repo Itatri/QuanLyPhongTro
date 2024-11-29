@@ -51,7 +51,6 @@
             this.txtPhoneAdmin = new System.Windows.Forms.TextBox();
             this.txtIDUserAdmin = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnCapNhatThongTin = new System.Windows.Forms.Button();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.cboNganHang = new System.Windows.Forms.ComboBox();
@@ -59,8 +58,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtRePass = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.btnCapNhatThongTin = new System.Windows.Forms.Button();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,8 +70,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(655, 16);
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(565, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(439, 52);
             this.label1.TabIndex = 31;
@@ -79,7 +81,7 @@
             // 
             this.labelAnhChuKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.labelAnhChuKy.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelAnhChuKy.Location = new System.Drawing.Point(1185, 680);
+            this.labelAnhChuKy.Location = new System.Drawing.Point(1185, 701);
             this.labelAnhChuKy.Name = "labelAnhChuKy";
             this.labelAnhChuKy.Size = new System.Drawing.Size(336, 54);
             this.labelAnhChuKy.TabIndex = 49;
@@ -92,7 +94,7 @@
             this.buttonChonChuKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChonChuKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonChonChuKy.ForeColor = System.Drawing.Color.White;
-            this.buttonChonChuKy.Location = new System.Drawing.Point(1185, 737);
+            this.buttonChonChuKy.Location = new System.Drawing.Point(1185, 758);
             this.buttonChonChuKy.Name = "buttonChonChuKy";
             this.buttonChonChuKy.Size = new System.Drawing.Size(336, 49);
             this.buttonChonChuKy.TabIndex = 45;
@@ -284,30 +286,11 @@
             this.txtPassword.Size = new System.Drawing.Size(856, 40);
             this.txtPassword.TabIndex = 74;
             // 
-            // btnCapNhatThongTin
-            // 
-            this.btnCapNhatThongTin.BackColor = System.Drawing.Color.Blue;
-            this.btnCapNhatThongTin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnCapNhatThongTin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnCapNhatThongTin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapNhatThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhatThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatThongTin.Image")));
-            this.btnCapNhatThongTin.Location = new System.Drawing.Point(677, 883);
-            this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
-            this.btnCapNhatThongTin.Size = new System.Drawing.Size(312, 50);
-            this.btnCapNhatThongTin.TabIndex = 75;
-            this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
-            this.btnCapNhatThongTin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCapNhatThongTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCapNhatThongTin.UseVisualStyleBackColor = false;
-            this.btnCapNhatThongTin.Click += new System.EventHandler(this.btnCapNhatThongTin_Click);
-            // 
             // panelThongTinDanCu
             // 
             this.panelThongTinDanCu.BackColor = System.Drawing.Color.White;
             this.panelThongTinDanCu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThongTinDanCu.Controls.Add(this.pictureBoxIcon);
             this.panelThongTinDanCu.Controls.Add(this.txtTaiKhoan);
             this.panelThongTinDanCu.Controls.Add(this.cboNganHang);
             this.panelThongTinDanCu.Controls.Add(this.label14);
@@ -343,6 +326,7 @@
             this.panelThongTinDanCu.Name = "panelThongTinDanCu";
             this.panelThongTinDanCu.Size = new System.Drawing.Size(1651, 969);
             this.panelThongTinDanCu.TabIndex = 76;
+            this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
             // txtTaiKhoan
             // 
@@ -357,10 +341,11 @@
             // 
             this.cboNganHang.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboNganHang.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboNganHang.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cboNganHang.FormattingEnabled = true;
             this.cboNganHang.Location = new System.Drawing.Point(1276, 207);
             this.cboNganHang.Name = "cboNganHang";
-            this.cboNganHang.Size = new System.Drawing.Size(242, 27);
+            this.cboNganHang.Size = new System.Drawing.Size(242, 33);
             this.cboNganHang.TabIndex = 79;
             // 
             // label14
@@ -377,7 +362,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(1146, 210);
+            this.label12.Location = new System.Drawing.Point(1146, 214);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(99, 20);
             this.label12.TabIndex = 77;
@@ -403,13 +388,43 @@
             this.label11.TabIndex = 75;
             this.label11.Text = "Nhập lại ";
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.administrator;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1010, 42);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 81;
+            this.pictureBoxIcon.TabStop = false;
+            // 
+            // btnCapNhatThongTin
+            // 
+            this.btnCapNhatThongTin.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCapNhatThongTin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnCapNhatThongTin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnCapNhatThongTin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnCapNhatThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapNhatThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
+            this.btnCapNhatThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatThongTin.Image")));
+            this.btnCapNhatThongTin.Location = new System.Drawing.Point(677, 883);
+            this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
+            this.btnCapNhatThongTin.Size = new System.Drawing.Size(312, 50);
+            this.btnCapNhatThongTin.TabIndex = 75;
+            this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
+            this.btnCapNhatThongTin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCapNhatThongTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCapNhatThongTin.UseVisualStyleBackColor = false;
+            this.btnCapNhatThongTin.Click += new System.EventHandler(this.btnCapNhatThongTin_Click);
+            // 
             // pictureBoxChuKy
             // 
             this.pictureBoxChuKy.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxChuKy.Location = new System.Drawing.Point(1188, 385);
             this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(333, 292);
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(333, 313);
             this.pictureBoxChuKy.TabIndex = 47;
             this.pictureBoxChuKy.TabStop = false;
             // 
@@ -417,13 +432,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.Controls.Add(this.panelThongTinDanCu);
             this.Name = "ThongTinAdmin";
             this.Size = new System.Drawing.Size(1684, 1002);
             this.Load += new System.EventHandler(this.ThongTinAdmin_Load);
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.ResumeLayout(false);
 
@@ -462,5 +478,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cboNganHang;
         private System.Windows.Forms.TextBox txtTaiKhoan;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

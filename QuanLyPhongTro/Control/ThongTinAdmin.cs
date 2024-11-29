@@ -1,18 +1,12 @@
 ﻿using BLL;
-using DAL;
 using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Configuration;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace QuanLyPhongTro.Control
 {
@@ -93,8 +87,8 @@ namespace QuanLyPhongTro.Control
                     txtCCCDAdmin.Text = adminInfo.Cccd;
                     txtDiaChiAdmin.Text = adminInfo.DiaChi;
                     txtPhoneAdmin.Text = adminInfo.Phone;
-                    txtTaiKhoan.Text= adminInfo.TaiKhoan;
-                    cboNganHang.Text= adminInfo.NganHang;
+                    txtTaiKhoan.Text = adminInfo.TaiKhoan;
+                    cboNganHang.Text = adminInfo.NganHang;
                     dateTimePickerNgaySinhAdmin.Value = adminInfo.NgaySinh != DateTime.MinValue ? adminInfo.NgaySinh : DateTime.Now;
                     txtIDUserAdmin.Text = adminInfo.IdUser;
                     labelAnhChuKy.Text = adminInfo.ChuKy;
@@ -138,7 +132,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonChonChuKy_Click(object sender, EventArgs e)
         {
-           
+
 
             try
             {
@@ -445,6 +439,9 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgaySinhAdmin.CustomFormat = "dd/MM/yyyy";
         }
 
-  
+        private void panelThongTinDanCu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

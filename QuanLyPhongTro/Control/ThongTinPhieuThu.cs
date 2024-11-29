@@ -1,23 +1,17 @@
 ﻿using BLL;
 using DTO;
-using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
     public partial class ThongTinPhieuThu : UserControl
     {
-        public string mapt {  get; set; }
+        public string mapt { get; set; }
         string maphong = string.Empty;
-        public string khuvuc {  get; set; }
+        public string khuvuc { get; set; }
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
         private float soducu;
         System.Data.DataTable dt;
@@ -59,10 +53,10 @@ namespace QuanLyPhongTro.Control
                 txtDM.Text = dt.Rows[0]["DienMoi"].ToString();
                 txtNC.Text = Convert.ToDecimal(dt.Rows[0]["NuocCu"]).ToString("N0");
                 txtNM.Text = dt.Rows[0]["NuocMoi"].ToString();
-                if(dt.Rows[0]["ThanhToan"] != DBNull.Value)
+                if (dt.Rows[0]["ThanhToan"] != DBNull.Value)
                     txtKhachTra.Text = Convert.ToDecimal(dt.Rows[0]["ThanhToan"]).ToString("N0");
 
-                if(dt.Rows[0]["TongTien"] != DBNull.Value)
+                if (dt.Rows[0]["TongTien"] != DBNull.Value)
                 {
                     if (dt.Rows[0]["ThanhToan"] != DBNull.Value)
                     {
@@ -88,7 +82,7 @@ namespace QuanLyPhongTro.Control
         }
         private void LoadDichVuPhieuThu()
         {
-            dt = bll.LoadDichVuPhieuThu(maphong,mapt);
+            dt = bll.LoadDichVuPhieuThu(maphong, mapt);
             dgvDichVu.Rows.Clear();
             foreach (DataRow dr in dt.Rows)
             {
@@ -190,10 +184,11 @@ namespace QuanLyPhongTro.Control
         {
             PhieuThu pt = chuyendoi();
             List<ChiTietDichVuPT> lst = chuyendoidichvu();
-            if(pt ==null)
+            if (pt == null)
             {
                 return;
-            }else
+            }
+            else
             {
                 float congno = float.Parse(txtCongNo.Text);
                 float congnonew = 0;
@@ -261,7 +256,7 @@ namespace QuanLyPhongTro.Control
                 dgvDichVu.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
                 // Sau khi giá trị CheckBox được cập nhật, gọi hàm tính tổng tiền
-                
+
             }
         }
 
@@ -349,7 +344,7 @@ namespace QuanLyPhongTro.Control
                     txtTienNuoc.Text = (nuoc * dongia).ToString();
                 }
             }
-            
+
         }
         private void TinhTienNuoc()
         {
@@ -399,7 +394,7 @@ namespace QuanLyPhongTro.Control
                 txtDM.SelectionLength = selectionLength;
             }
         }
-        
+
         private void txtNM_TextChanged(object sender, EventArgs e)
         {
             int selectionStart = txtNM.SelectionStart;

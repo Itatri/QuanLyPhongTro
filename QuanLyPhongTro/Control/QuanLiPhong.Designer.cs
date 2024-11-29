@@ -28,106 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiPhong));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnDangKyTaiKhoan = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiPhong));
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTaoPhong = new System.Windows.Forms.Button();
-            this.buttonTraPhong = new System.Windows.Forms.Button();
             this.cbbSapXep = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBoxTimPhong = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDangKyTaiKhoan = new System.Windows.Forms.Button();
+            this.buttonTraPhong = new System.Windows.Forms.Button();
+            this.btnTaoPhong = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Blue;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(900, 20);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(297, 46);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Tạo phiếu thu";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnDangKyTaiKhoan
-            // 
-            this.btnDangKyTaiKhoan.BackColor = System.Drawing.Color.Blue;
-            this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKyTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnDangKyTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKyTaiKhoan.Image")));
-            this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(459, 20);
-            this.btnDangKyTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDangKyTaiKhoan.Name = "btnDangKyTaiKhoan";
-            this.btnDangKyTaiKhoan.Size = new System.Drawing.Size(297, 46);
-            this.btnDangKyTaiKhoan.TabIndex = 2;
-            this.btnDangKyTaiKhoan.Text = "Đăng ký tài khoản";
-            this.btnDangKyTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDangKyTaiKhoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDangKyTaiKhoan.UseVisualStyleBackColor = false;
-            this.btnDangKyTaiKhoan.Click += new System.EventHandler(this.btnDangKyTaiKhoan_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(597, 24);
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(559, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(453, 52);
             this.label1.TabIndex = 4;
             this.label1.Text = "DANH SÁCH PHÒNG";
-            // 
-            // btnTaoPhong
-            // 
-            this.btnTaoPhong.BackColor = System.Drawing.Color.Blue;
-            this.btnTaoPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaoPhong.ForeColor = System.Drawing.Color.White;
-            this.btnTaoPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoPhong.Image")));
-            this.btnTaoPhong.Location = new System.Drawing.Point(18, 20);
-            this.btnTaoPhong.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTaoPhong.Name = "btnTaoPhong";
-            this.btnTaoPhong.Size = new System.Drawing.Size(297, 46);
-            this.btnTaoPhong.TabIndex = 1;
-            this.btnTaoPhong.Text = "Tạo phòng";
-            this.btnTaoPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTaoPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTaoPhong.UseVisualStyleBackColor = false;
-            this.btnTaoPhong.Click += new System.EventHandler(this.btnTaoPhong_Click);
-            // 
-            // buttonTraPhong
-            // 
-            this.buttonTraPhong.BackColor = System.Drawing.Color.Blue;
-            this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
-            this.buttonTraPhong.Image = ((System.Drawing.Image)(resources.GetObject("buttonTraPhong.Image")));
-            this.buttonTraPhong.Location = new System.Drawing.Point(1341, 20);
-            this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTraPhong.Name = "buttonTraPhong";
-            this.buttonTraPhong.Size = new System.Drawing.Size(297, 46);
-            this.buttonTraPhong.TabIndex = 5;
-            this.buttonTraPhong.Text = "Trả phòng";
-            this.buttonTraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonTraPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonTraPhong.UseVisualStyleBackColor = false;
-            this.buttonTraPhong.Click += new System.EventHandler(this.buttonTraPhong_Click);
             // 
             // cbbSapXep
             // 
@@ -183,6 +117,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBoxTimPhong);
             this.panel1.Controls.Add(this.label3);
@@ -196,35 +131,25 @@
             this.panel1.Size = new System.Drawing.Size(1656, 972);
             this.panel1.TabIndex = 22;
             // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(588, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 36);
-            this.button1.TabIndex = 25;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // textBoxTimPhong
             // 
             this.textBoxTimPhong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxTimPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTimPhong.Location = new System.Drawing.Point(161, 115);
+            this.textBoxTimPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBoxTimPhong.Location = new System.Drawing.Point(175, 115);
             this.textBoxTimPhong.Name = "textBoxTimPhong";
-            this.textBoxTimPhong.Size = new System.Drawing.Size(421, 29);
+            this.textBoxTimPhong.Size = new System.Drawing.Size(421, 31);
             this.textBoxTimPhong.TabIndex = 23;
             this.textBoxTimPhong.TextChanged += new System.EventHandler(this.textBoxTimPhong_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label3.Location = new System.Drawing.Point(23, 120);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Location = new System.Drawing.Point(22, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 19);
+            this.label3.Size = new System.Drawing.Size(151, 19);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Tìm kiếm phòng:";
+            this.label3.Text = "Tìm kiếm phòng :";
             // 
             // panel2
             // 
@@ -237,11 +162,99 @@
             this.panel2.Size = new System.Drawing.Size(1650, 77);
             this.panel2.TabIndex = 0;
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.bedroom;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1017, 32);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 57;
+            this.pictureBoxIcon.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(602, 113);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(66, 34);
+            this.button1.TabIndex = 25;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDangKyTaiKhoan
+            // 
+            this.btnDangKyTaiKhoan.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnDangKyTaiKhoan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangKyTaiKhoan.ForeColor = System.Drawing.Color.White;
+            this.btnDangKyTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKyTaiKhoan.Image")));
+            this.btnDangKyTaiKhoan.Location = new System.Drawing.Point(459, 20);
+            this.btnDangKyTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangKyTaiKhoan.Name = "btnDangKyTaiKhoan";
+            this.btnDangKyTaiKhoan.Size = new System.Drawing.Size(297, 46);
+            this.btnDangKyTaiKhoan.TabIndex = 2;
+            this.btnDangKyTaiKhoan.Text = "Đăng ký tài khoản";
+            this.btnDangKyTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDangKyTaiKhoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDangKyTaiKhoan.UseVisualStyleBackColor = false;
+            this.btnDangKyTaiKhoan.Click += new System.EventHandler(this.btnDangKyTaiKhoan_Click);
+            // 
+            // buttonTraPhong
+            // 
+            this.buttonTraPhong.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonTraPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTraPhong.ForeColor = System.Drawing.Color.White;
+            this.buttonTraPhong.Image = ((System.Drawing.Image)(resources.GetObject("buttonTraPhong.Image")));
+            this.buttonTraPhong.Location = new System.Drawing.Point(1341, 20);
+            this.buttonTraPhong.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTraPhong.Name = "buttonTraPhong";
+            this.buttonTraPhong.Size = new System.Drawing.Size(297, 46);
+            this.buttonTraPhong.TabIndex = 5;
+            this.buttonTraPhong.Text = "Trả phòng";
+            this.buttonTraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonTraPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTraPhong.UseVisualStyleBackColor = false;
+            this.buttonTraPhong.Click += new System.EventHandler(this.buttonTraPhong_Click);
+            // 
+            // btnTaoPhong
+            // 
+            this.btnTaoPhong.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTaoPhong.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoPhong.ForeColor = System.Drawing.Color.White;
+            this.btnTaoPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoPhong.Image")));
+            this.btnTaoPhong.Location = new System.Drawing.Point(18, 20);
+            this.btnTaoPhong.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTaoPhong.Name = "btnTaoPhong";
+            this.btnTaoPhong.Size = new System.Drawing.Size(297, 46);
+            this.btnTaoPhong.TabIndex = 1;
+            this.btnTaoPhong.Text = "Tạo phòng";
+            this.btnTaoPhong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTaoPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTaoPhong.UseVisualStyleBackColor = false;
+            this.btnTaoPhong.Click += new System.EventHandler(this.btnTaoPhong_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(900, 20);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(297, 46);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Tạo phiếu thu";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // QuanLiPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.Controls.Add(this.panel1);
             this.Name = "QuanLiPhong";
             this.Size = new System.Drawing.Size(1684, 1002);
@@ -250,6 +263,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,5 +282,6 @@
         private System.Windows.Forms.TextBox textBoxTimPhong;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }
