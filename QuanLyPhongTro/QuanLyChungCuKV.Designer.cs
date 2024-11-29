@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyChungCuKV));
-            this.buttonThem = new System.Windows.Forms.Button();
-            this.buttonCapNhat = new System.Windows.Forms.Button();
-            this.buttonLuu = new System.Windows.Forms.Button();
             this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTenChungCu = new System.Windows.Forms.TextBox();
@@ -41,66 +38,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTaiKhoan = new System.Windows.Forms.Button();
+            this.buttonLuu = new System.Windows.Forms.Button();
+            this.buttonCapNhat = new System.Windows.Forms.Button();
+            this.buttonThem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonThem
-            // 
-            this.buttonThem.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonThem.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.buttonThem.ForeColor = System.Drawing.Color.White;
-            this.buttonThem.Image = ((System.Drawing.Image)(resources.GetObject("buttonThem.Image")));
-            this.buttonThem.Location = new System.Drawing.Point(7, 693);
-            this.buttonThem.Name = "buttonThem";
-            this.buttonThem.Size = new System.Drawing.Size(305, 52);
-            this.buttonThem.TabIndex = 1;
-            this.buttonThem.Text = "Thêm";
-            this.buttonThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonThem.UseVisualStyleBackColor = false;
-            this.buttonThem.Click += new System.EventHandler(this.buttonThem_Click);
-            // 
-            // buttonCapNhat
-            // 
-            this.buttonCapNhat.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonCapNhat.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.buttonCapNhat.ForeColor = System.Drawing.Color.White;
-            this.buttonCapNhat.Image = ((System.Drawing.Image)(resources.GetObject("buttonCapNhat.Image")));
-            this.buttonCapNhat.Location = new System.Drawing.Point(1051, 693);
-            this.buttonCapNhat.Name = "buttonCapNhat";
-            this.buttonCapNhat.Size = new System.Drawing.Size(305, 52);
-            this.buttonCapNhat.TabIndex = 3;
-            this.buttonCapNhat.Text = "Cập nhật";
-            this.buttonCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonCapNhat.UseVisualStyleBackColor = false;
-            this.buttonCapNhat.Click += new System.EventHandler(this.buttonCapNhat_Click);
-            // 
-            // buttonLuu
-            // 
-            this.buttonLuu.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.buttonLuu.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.buttonLuu.ForeColor = System.Drawing.Color.White;
-            this.buttonLuu.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuu.Image")));
-            this.buttonLuu.Location = new System.Drawing.Point(529, 693);
-            this.buttonLuu.Name = "buttonLuu";
-            this.buttonLuu.Size = new System.Drawing.Size(305, 52);
-            this.buttonLuu.TabIndex = 4;
-            this.buttonLuu.Text = "Lưu";
-            this.buttonLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLuu.UseVisualStyleBackColor = false;
-            this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
             // comboBoxTrangThai
             // 
             this.comboBoxTrangThai.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTrangThai.FormattingEnabled = true;
-            this.comboBoxTrangThai.Location = new System.Drawing.Point(1388, 146);
+            this.comboBoxTrangThai.Location = new System.Drawing.Point(1389, 135);
             this.comboBoxTrangThai.Name = "comboBoxTrangThai";
             this.comboBoxTrangThai.Size = new System.Drawing.Size(456, 31);
             this.comboBoxTrangThai.TabIndex = 18;
@@ -110,7 +64,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1274, 149);
+            this.label4.Location = new System.Drawing.Point(1275, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 23);
             this.label4.TabIndex = 17;
@@ -119,9 +73,9 @@
             // textBoxTenChungCu
             // 
             this.textBoxTenChungCu.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTenChungCu.Location = new System.Drawing.Point(161, 140);
+            this.textBoxTenChungCu.Location = new System.Drawing.Point(161, 136);
             this.textBoxTenChungCu.Name = "textBoxTenChungCu";
-            this.textBoxTenChungCu.Size = new System.Drawing.Size(918, 30);
+            this.textBoxTenChungCu.Size = new System.Drawing.Size(474, 30);
             this.textBoxTenChungCu.TabIndex = 16;
             this.textBoxTenChungCu.TextChanged += new System.EventHandler(this.textBoxTenChungCu_TextChanged);
             // 
@@ -129,7 +83,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 146);
+            this.label2.Location = new System.Drawing.Point(12, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 23);
             this.label2.TabIndex = 15;
@@ -138,9 +92,9 @@
             // textBoxMaChungCu
             // 
             this.textBoxMaChungCu.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMaChungCu.Location = new System.Drawing.Point(161, 85);
+            this.textBoxMaChungCu.Location = new System.Drawing.Point(161, 84);
             this.textBoxMaChungCu.Name = "textBoxMaChungCu";
-            this.textBoxMaChungCu.Size = new System.Drawing.Size(918, 30);
+            this.textBoxMaChungCu.Size = new System.Drawing.Size(474, 30);
             this.textBoxMaChungCu.TabIndex = 14;
             this.textBoxMaChungCu.TextChanged += new System.EventHandler(this.textBoxMaChungCu_TextChanged);
             // 
@@ -148,7 +102,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 91);
+            this.label1.Location = new System.Drawing.Point(19, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 23);
             this.label1.TabIndex = 13;
@@ -157,10 +111,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(823, 22);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label3.Location = new System.Drawing.Point(670, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(343, 39);
+            this.label3.Size = new System.Drawing.Size(464, 52);
             this.label3.TabIndex = 19;
             this.label3.Text = "QUẢN LÝ CHUNG CƯ";
             // 
@@ -170,6 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.dataGridView2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.buttonTaiKhoan);
@@ -199,11 +155,21 @@
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView2_RowPrePaint);
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1140, 19);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 61;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1850, 146);
+            this.pictureBox1.Location = new System.Drawing.Point(1851, 136);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,11 +193,59 @@
             this.buttonTaiKhoan.UseVisualStyleBackColor = false;
             this.buttonTaiKhoan.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonLuu
+            // 
+            this.buttonLuu.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLuu.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.buttonLuu.ForeColor = System.Drawing.Color.White;
+            this.buttonLuu.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuu.Image")));
+            this.buttonLuu.Location = new System.Drawing.Point(529, 693);
+            this.buttonLuu.Name = "buttonLuu";
+            this.buttonLuu.Size = new System.Drawing.Size(305, 52);
+            this.buttonLuu.TabIndex = 4;
+            this.buttonLuu.Text = "Lưu";
+            this.buttonLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLuu.UseVisualStyleBackColor = false;
+            this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
+            // 
+            // buttonCapNhat
+            // 
+            this.buttonCapNhat.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonCapNhat.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.buttonCapNhat.ForeColor = System.Drawing.Color.White;
+            this.buttonCapNhat.Image = ((System.Drawing.Image)(resources.GetObject("buttonCapNhat.Image")));
+            this.buttonCapNhat.Location = new System.Drawing.Point(1051, 693);
+            this.buttonCapNhat.Name = "buttonCapNhat";
+            this.buttonCapNhat.Size = new System.Drawing.Size(305, 52);
+            this.buttonCapNhat.TabIndex = 3;
+            this.buttonCapNhat.Text = "Cập nhật";
+            this.buttonCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCapNhat.UseVisualStyleBackColor = false;
+            this.buttonCapNhat.Click += new System.EventHandler(this.buttonCapNhat_Click);
+            // 
+            // buttonThem
+            // 
+            this.buttonThem.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonThem.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.buttonThem.ForeColor = System.Drawing.Color.White;
+            this.buttonThem.Image = ((System.Drawing.Image)(resources.GetObject("buttonThem.Image")));
+            this.buttonThem.Location = new System.Drawing.Point(7, 693);
+            this.buttonThem.Name = "buttonThem";
+            this.buttonThem.Size = new System.Drawing.Size(305, 52);
+            this.buttonThem.TabIndex = 1;
+            this.buttonThem.Text = "Thêm";
+            this.buttonThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonThem.UseVisualStyleBackColor = false;
+            this.buttonThem.Click += new System.EventHandler(this.buttonThem_Click);
+            // 
             // QuanLyChungCuKV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(1924, 780);
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyChungCuKV";
@@ -240,6 +254,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -260,5 +275,6 @@
         private System.Windows.Forms.Button buttonTaiKhoan;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

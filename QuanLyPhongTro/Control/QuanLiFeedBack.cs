@@ -1,14 +1,8 @@
 ﻿using BLL;
-using DAL;
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
@@ -24,7 +18,7 @@ namespace QuanLyPhongTro.Control
             // Gắn sự kiện CellContentClick
             dataGridViewFeedBack.CellContentClick += dataGridViewFeedBack_CellContentClick;
         }
-       
+
         private void setConboboxTrangThai()
         {
             // Thêm các lựa chọn vào comboBoxTrangThai
@@ -45,6 +39,7 @@ namespace QuanLyPhongTro.Control
             dataGridViewFeedBack.Columns["NgayGui"].HeaderText = "Ngày Gửi";
             dataGridViewFeedBack.Columns["PhanHoi"].HeaderText = "Phản Hồi";
             dataGridViewFeedBack.Columns["NgayPhanHoi"].HeaderText = "Ngày Phản Hồi";
+            dataGridViewFeedBack.Columns["TrangThai"].HeaderText = "Trạng Thái";
 
             // Thiết lập tự động điều chỉnh kích thước cột
             dataGridViewFeedBack.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -72,17 +67,17 @@ namespace QuanLyPhongTro.Control
 
         private void buttonTimKiemFeedBack_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void buttonRefeshFB_Click(object sender, EventArgs e)
         {
             try
             {
-               
+
                 txtMaPhong.Text = string.Empty;
                 txtNoiDungPhanHoi.Text = string.Empty;
-                txtPhanHoi.Text = string.Empty ;
+                txtPhanHoi.Text = string.Empty;
                 // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
                 LoadData();
             }
@@ -127,7 +122,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonLoc_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string selectedValue = comboboxTrangThai.SelectedItem.ToString();
@@ -160,7 +155,7 @@ namespace QuanLyPhongTro.Control
 
         private void btnGuiPhanHoi_Click(object sender, EventArgs e)
         {
-           
+
 
             try
             {

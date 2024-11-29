@@ -373,6 +373,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\magnifier.png" />
+    <None Include="Images\crowd.png" />
+    <None Include="Images\washing-machine.png" />
+    <None Include="Images\satisfaction.png" />
+    <None Include="Images\condominium.png" />
+    <None Include="Images\administrator.png" />
+    <None Include="Images\add.png" />
+    <None Include="Images\invoice.png" />
+    <None Include="Images\work-plan.png" />
+    <None Include="Images\bedroom.png" />
+    <None Include="Images\customer-service.png" />
+    <None Include="Images\people-together.png" />
+    <None Include="Images\profile.png" />
     <None Include="Images\feedback.png" />
     <None Include="Images\admin.png" />
     <None Include="Images\icon_cudan.png" />
