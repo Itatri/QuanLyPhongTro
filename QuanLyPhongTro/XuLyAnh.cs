@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
+using System.Configuration;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 
 namespace QuanLyPhongTro
 {
@@ -20,7 +17,7 @@ namespace QuanLyPhongTro
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
                 // Navigate back two folders and then into "AnhChuKy"
-                string targetDirectory = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\AnhChuKy"));
+                string targetDirectory = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
 
                 // Specify the filename of the image located in "AnhChuKy" folder
                 string imagePath = Path.Combine(targetDirectory, filename);
