@@ -1,14 +1,11 @@
 ﻿using BLL;
+using DTO;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
-using DTO;
-using System.IO;
-using System.Data;
-using System.Windows.Forms;
-using Microsoft.Office.Interop.Word;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using System.Drawing;
-using Microsoft.SqlServer.Server;
+using System.IO;
+using System.Windows.Forms;
 namespace QuanLyPhongTro
 {
     public class TaoCT01
@@ -18,15 +15,15 @@ namespace QuanLyPhongTro
         private ThongTinAdminBLL admin = new ThongTinAdminBLL();
         private KhuVucBLL khuvucbll = new KhuVucBLL();
         private ThongTinPhongBLL phongbll = new ThongTinPhongBLL();
-        int con= -1;
+        int con = -1;
         ThongTinKhachDTO me = null;
         XuLyAnh xuly = new XuLyAnh();
-        public string idadmin {  get; set; }
-        public string makhuvuc {  get; set; }
-        public string maphong {  get; set; }
+        public string idadmin { get; set; }
+        public string makhuvuc { get; set; }
+        public string maphong { get; set; }
 
         private List<ThongTinKhachDTO> lst;
-        ThongTinAdminDTO ttadmin =new ThongTinAdminDTO();
+        ThongTinAdminDTO ttadmin = new ThongTinAdminDTO();
         KhuVucDTO khuvuc = new KhuVucDTO();
         System.Data.DataTable dt = new System.Data.DataTable();
         public int TaoTamTru()
@@ -38,15 +35,20 @@ namespace QuanLyPhongTro
             CheckCon(lst);
             ThongTinKhachDTO chuho = ChuHo(lst);
             khach.Add(chuho.MaKhachTro);
+            if (ttadmin == null)
+            {
+                MessageBox.Show("Admin chưa kê khai đủ thông tin");
+                return -1;
+            }
             if (chuho == null)
-                return 1; // không có chủ hộ
+                return -1; // không có chủ hộ
 
             int n = lst.Count;
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string duongdankhuvuc = string.Empty;
-            if(!checkFolder(makhuvuc, desktop))
+            if (!checkFolder(makhuvuc, desktop))
             {
-                duongdankhuvuc =  TaoFolder(makhuvuc, desktop);
+                duongdankhuvuc = TaoFolder(makhuvuc, desktop);
             }
             else
             {
@@ -68,7 +70,7 @@ namespace QuanLyPhongTro
                 }
                 else
                 {
-                    return 2;// Code khi người dùng chọn No
+                    return -1;// Code khi người dùng chọn No
                 }
             }
             duongdan = TaoFolder(tenPhong, duongdankhuvuc);
@@ -81,13 +83,13 @@ namespace QuanLyPhongTro
             {
                 if (!khach.Contains(k.MaKhachTro))
                 {
-                    XuatPDF(k,chuho, sourceFilePath, duongdan);
+                    XuatPDF(k, chuho, sourceFilePath, duongdan);
                     con = -1;
                     me = null;
                 }
             }
 
-            XuatHopDong(khuvuc,chuho, sourceFileHongDong, duongdan);
+            XuatHopDong(khuvuc, chuho, sourceFileHongDong, duongdan);
             ///// Tao hop dong
 
 
@@ -101,8 +103,8 @@ namespace QuanLyPhongTro
             string yyyy = DateTime.Now.Year.ToString();
             string date = chuho.NgaySinh.Date.ToString();
 
-            
-            
+
+
             Bitmap chukyCha = null;
             Bitmap chukyMe = null;
             List<string> cccdchuho = chuyencccd(chuho.CCCD);
@@ -130,8 +132,8 @@ namespace QuanLyPhongTro
             System.Data.DataTable dt = KhachCungThuongTru(lst, tt);
             // Xuất dữ liệu vào file Word
             WordExport wd = new WordExport(sourceFilePath, false);
-            
-            if(string.IsNullOrEmpty(chuho.ChuKy))
+
+            if (string.IsNullOrEmpty(chuho.ChuKy))
             {
                 Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuHo", chukychuho);
@@ -149,8 +151,8 @@ namespace QuanLyPhongTro
             if (con == -1)
             {
                 string temp = " ";
-                dic.Add("HoTenCha", "(7) Họ và tên: "+ temp);
-                dic.Add("CCCDCha", "(7) Số định danh cá nhân:"+temp);
+                dic.Add("HoTenCha", "(7) Họ và tên: " + temp);
+                dic.Add("CCCDCha", "(7) Số định danh cá nhân:" + temp);
                 dic.Add("HotenMe", temp);
                 dic.Add("CCCDMe", temp);
                 dic.Add("ChuKyCha", temp);
@@ -183,8 +185,8 @@ namespace QuanLyPhongTro
                     dic.Add("ChuKyMe", temp);
                 }
             }
-            
-            
+
+
             wd.WriteFields(dic);
             wd.WriteToTable(cccdnguoikhai, 1);
             wd.WriteToTable(cccdchuho, 2);
@@ -228,12 +230,12 @@ namespace QuanLyPhongTro
             WordExport wd = new WordExport(sourceFilePath, false);
             wd.WriteFields(dic);
             wd.WriteDataTableToWordTable(bang, 1);
-            if(string.IsNullOrEmpty(chuho.ChuKy))
+            if (string.IsNullOrEmpty(chuho.ChuKy))
             {
                 Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
                 wd.InsertImageAndTextInTableCell(2, 2, 1, chuho.HoTen, chukychuho);
             }
-            if(string.IsNullOrEmpty(ttadmin.ChuKy))
+            if (string.IsNullOrEmpty(ttadmin.ChuKy))
             {
                 Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
                 wd.InsertImageAndTextInTableCell(2, 2, 2, ttadmin.HoTen, chukychusohuu);
@@ -243,10 +245,11 @@ namespace QuanLyPhongTro
             {
                 if (th.MaKhachTro != chuho.MaKhachTro)
                 {
-                    if(string.IsNullOrEmpty(th.ChuKy))
+                    if (string.IsNullOrEmpty(th.ChuKy))
                     {
                         continue;
-                    }else
+                    }
+                    else
                     {
                         Bitmap anh = xuly.XuLy(th.ChuKy);
                         if (anh != null)
@@ -278,7 +281,7 @@ namespace QuanLyPhongTro
             }
             return chuho;
         }
-        private bool checkFolder(string key,string path)
+        private bool checkFolder(string key, string path)
         {
             string desktopPath = path;
 
@@ -413,7 +416,7 @@ namespace QuanLyPhongTro
             foreach (ThongTinKhachDTO th in list)
             {
                 // Tạo một hàng mới cho DataTable
-                if(!khach.Contains(th.MaKhachTro))
+                if (!khach.Contains(th.MaKhachTro))
                 {
                     if (th.ThuongTru == nguoikhai.ThuongTru && th.TrangThai == 1)
                     {
@@ -447,9 +450,9 @@ namespace QuanLyPhongTro
 
             // Biến đếm số thứ tự
             int stt = 1;
-            foreach(ThongTinKhachDTO th in list)
+            foreach (ThongTinKhachDTO th in list)
             {
-                if(!khach.Contains(th.MaKhachTro) && th.TrangThai == 1)
+                if (!khach.Contains(th.MaKhachTro) && th.TrangThai == 1)
                 {
                     var row = dt.NewRow();
                     // Gán giá trị cho các cột
@@ -467,13 +470,13 @@ namespace QuanLyPhongTro
         {
             List<string> list = new List<string> { "Con", "Con chồng", "Con đẻ", "Con nuôi", "Con vợ" };
 
-            foreach (ThongTinKhachDTO k in  lst)
+            foreach (ThongTinKhachDTO k in lst)
             {
-                if(list.Contains(k.QuanHe))
+                if (list.Contains(k.QuanHe))
                 {
                     con = TinhTuoiCon(k.NgaySinh);
                 }
-                if(k.QuanHe == "Vợ")
+                if (k.QuanHe == "Vợ")
                 {
                     me = k;
                 }
