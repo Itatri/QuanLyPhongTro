@@ -68,14 +68,16 @@
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.btnTao = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVu)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCongNo
@@ -176,12 +178,14 @@
             // 
             // btnTongTien
             // 
+            this.btnTongTien.BackColor = System.Drawing.Color.Black;
+            this.btnTongTien.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTongTien.Location = new System.Drawing.Point(499, 460);
             this.btnTongTien.Name = "btnTongTien";
             this.btnTongTien.Size = new System.Drawing.Size(168, 45);
             this.btnTongTien.TabIndex = 28;
             this.btnTongTien.Text = "Tổng tiền";
-            this.btnTongTien.UseVisualStyleBackColor = true;
+            this.btnTongTien.UseVisualStyleBackColor = false;
             this.btnTongTien.Click += new System.EventHandler(this.btnTongTien_Click);
             // 
             // dtpNgayLap
@@ -451,7 +455,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(668, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -538,7 +542,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.BackColor = System.Drawing.Color.Blue;
+            this.btnQuayLai.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnQuayLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.ForeColor = System.Drawing.Color.White;
             this.btnQuayLai.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLai.Image")));
@@ -555,7 +559,7 @@
             // 
             // btnTao
             // 
-            this.btnTao.BackColor = System.Drawing.Color.Blue;
+            this.btnTao.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnTao.Enabled = false;
             this.btnTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTao.ForeColor = System.Drawing.Color.White;
@@ -573,7 +577,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.Blue;
+            this.btnHuy.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.White;
             this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
@@ -588,11 +592,22 @@
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.invoice;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1040, 21);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 60;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // TaoPhieuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -607,6 +622,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVu)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,5 +673,6 @@
         private System.Windows.Forms.Button btnTongTien;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.CheckBox ckbPTP;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

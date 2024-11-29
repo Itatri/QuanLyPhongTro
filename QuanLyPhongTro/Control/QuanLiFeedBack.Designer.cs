@@ -39,7 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNoiDungPhanHoi = new System.Windows.Forms.TextBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
-            this.btnGuiPhanHoi = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPhanHoi = new System.Windows.Forms.TextBox();
@@ -47,20 +46,23 @@
             this.buttonLoc = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.comboboxTrangThai = new System.Windows.Forms.ComboBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonRefeshFB = new System.Windows.Forms.Button();
+            this.btnGuiPhanHoi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFeedBack)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(17, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 24);
+            this.label2.Size = new System.Drawing.Size(222, 25);
             this.label2.TabIndex = 32;
             this.label2.Text = "Danh sách phản hồi";
             // 
@@ -87,8 +89,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 32.25F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(556, 14);
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(522, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(545, 52);
             this.label1.TabIndex = 30;
@@ -166,23 +168,6 @@
             this.panelThongTinDanCu.TabIndex = 40;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
-            // btnGuiPhanHoi
-            // 
-            this.btnGuiPhanHoi.BackColor = System.Drawing.Color.Blue;
-            this.btnGuiPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuiPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnGuiPhanHoi.ForeColor = System.Drawing.Color.White;
-            this.btnGuiPhanHoi.Image = ((System.Drawing.Image)(resources.GetObject("btnGuiPhanHoi.Image")));
-            this.btnGuiPhanHoi.Location = new System.Drawing.Point(707, 275);
-            this.btnGuiPhanHoi.Name = "btnGuiPhanHoi";
-            this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 46);
-            this.btnGuiPhanHoi.TabIndex = 41;
-            this.btnGuiPhanHoi.Text = "Gửi phản hồi";
-            this.btnGuiPhanHoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuiPhanHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuiPhanHoi.UseVisualStyleBackColor = false;
-            this.btnGuiPhanHoi.Click += new System.EventHandler(this.btnGuiPhanHoi_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -216,6 +201,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pictureBoxIcon);
             this.panel1.Controls.Add(this.buttonLoc);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.comboboxTrangThai);
@@ -231,13 +217,13 @@
             // 
             // buttonLoc
             // 
-            this.buttonLoc.BackColor = System.Drawing.Color.Blue;
+            this.buttonLoc.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLoc.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLoc.Location = new System.Drawing.Point(1472, 99);
+            this.buttonLoc.Location = new System.Drawing.Point(1472, 98);
             this.buttonLoc.Name = "buttonLoc";
-            this.buttonLoc.Size = new System.Drawing.Size(117, 27);
+            this.buttonLoc.Size = new System.Drawing.Size(117, 26);
             this.buttonLoc.TabIndex = 44;
             this.buttonLoc.Text = "Lọc ";
             this.buttonLoc.UseVisualStyleBackColor = false;
@@ -262,6 +248,16 @@
             this.comboboxTrangThai.Size = new System.Drawing.Size(153, 26);
             this.comboboxTrangThai.TabIndex = 43;
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.satisfaction;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1064, 14);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 56;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // buttonRefeshFB
             // 
             this.buttonRefeshFB.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.RefeshIcon;
@@ -273,11 +269,28 @@
             this.buttonRefeshFB.UseVisualStyleBackColor = true;
             this.buttonRefeshFB.Click += new System.EventHandler(this.buttonRefeshFB_Click);
             // 
+            // btnGuiPhanHoi
+            // 
+            this.btnGuiPhanHoi.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnGuiPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuiPhanHoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGuiPhanHoi.ForeColor = System.Drawing.Color.White;
+            this.btnGuiPhanHoi.Image = ((System.Drawing.Image)(resources.GetObject("btnGuiPhanHoi.Image")));
+            this.btnGuiPhanHoi.Location = new System.Drawing.Point(707, 275);
+            this.btnGuiPhanHoi.Name = "btnGuiPhanHoi";
+            this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 46);
+            this.btnGuiPhanHoi.TabIndex = 41;
+            this.btnGuiPhanHoi.Text = "Gửi phản hồi";
+            this.btnGuiPhanHoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuiPhanHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuiPhanHoi.UseVisualStyleBackColor = false;
+            this.btnGuiPhanHoi.Click += new System.EventHandler(this.btnGuiPhanHoi_Click);
+            // 
             // QuanLiFeedBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.Controls.Add(this.panel1);
             this.Name = "QuanLiFeedBack";
             this.Size = new System.Drawing.Size(1684, 1002);
@@ -286,6 +299,7 @@
             this.panelThongTinDanCu.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -309,5 +323,6 @@
         private System.Windows.Forms.Button buttonLoc;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboboxTrangThai;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

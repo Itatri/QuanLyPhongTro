@@ -1,22 +1,15 @@
 ﻿using BLL;
 using DTO;
-using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
     public partial class TaoPhieuThu : UserControl
     {
-        public string khuvuc {  get; set; }
+        public string khuvuc { get; set; }
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
         System.Data.DataTable datatable;
         const int sokhoinuoc = 2;
@@ -78,7 +71,7 @@ namespace QuanLyPhongTro.Control
         }
         private void cboPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboPhong.SelectedIndex != -1)
+            if (cboPhong.SelectedIndex != -1)
             {
                 OpenCloseText(true);
                 txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
@@ -131,11 +124,11 @@ namespace QuanLyPhongTro.Control
                 float dienmoi = 0;
                 float.TryParse(txtDM.Text, out dienmoi);
                 float diencu = float.Parse(txtDC.Text);
-                if(dienmoi<diencu)
+                if (dienmoi < diencu)
                 {
                     txtDM.Text = diencu.ToString();
                     txtTienDien.Text = "0";
-                }    
+                }
                 else
                 {
                     float dien = dienmoi - diencu;
@@ -157,11 +150,12 @@ namespace QuanLyPhongTro.Control
                 float nuocmoi = 0;
                 float.TryParse(txtNM.Text, out nuocmoi);
                 float nuoccu = float.Parse(txtNC.Text);
-                if(nuocmoi<nuoccu)
+                if (nuocmoi < nuoccu)
                 {
                     txtNM.Text = nuoccu.ToString();
                     txtTienNuoc.Text = "0";
-                }else
+                }
+                else
                 {
                     float nuoc = nuocmoi - nuoccu;
                     float dongia = 0;
@@ -179,13 +173,13 @@ namespace QuanLyPhongTro.Control
             float tongTien = 0;
             foreach (DataGridViewRow row in dgvDichVu.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[0].Value)) 
+                if (Convert.ToBoolean(row.Cells[0].Value))
                 {
-                    tongTien += Convert.ToSingle(row.Cells[2].Value); 
+                    tongTien += Convert.ToSingle(row.Cells[2].Value);
                 }
             }
 
-            return tongTien; 
+            return tongTien;
         }
 
 
@@ -210,9 +204,9 @@ namespace QuanLyPhongTro.Control
             }
             if (txtKhachTra.Text.Length > 0)
             {
-                float tong = 0,khachtra =0;
-                float.TryParse(txtTongTien.Text,out tong);
-                float.TryParse(txtKhachTra.Text,out khachtra);
+                float tong = 0, khachtra = 0;
+                float.TryParse(txtTongTien.Text, out tong);
+                float.TryParse(txtKhachTra.Text, out khachtra);
                 txtDu.Text = ((decimal)(khachtra - tong)).ToString("N0");
             }
         }
@@ -222,7 +216,8 @@ namespace QuanLyPhongTro.Control
             if (txtDM.Text.Length == 0)
             {
                 pt.DienMoi = float.Parse(txtDC.Text);
-            }else
+            }
+            else
             {
                 pt.DienMoi = float.Parse(txtDM.Text);
             }
@@ -236,22 +231,22 @@ namespace QuanLyPhongTro.Control
             pt.NgayLap = dtpNgayLap.Value;
             pt.NgayThu = dtpNgayLap.Value;
             pt.DienCu = float.Parse(txtDC.Text);
-            if(txtTienDien.Text.Length > 0)
+            if (txtTienDien.Text.Length > 0)
             {
                 pt.TienDien = float.Parse(txtTienDien.Text);
             }
             pt.NuocCu = float.Parse(txtNC.Text);
             pt.NuocMoi = float.Parse(txtNM.Text);
-            if(txtTienNuoc.Text.Length > 0)
+            if (txtTienNuoc.Text.Length > 0)
             {
                 pt.TienNuoc = float.Parse(txtTienNuoc.Text);
             }
             pt.TienDV = TienDichVu();
-            if(txtTongTien.Text.Length > 0)
+            if (txtTongTien.Text.Length > 0)
             {
                 pt.TongTien = float.Parse(txtTongTien.Text);
             }
-            if(txtKhachTra.Text.Length > 0)
+            if (txtKhachTra.Text.Length > 0)
             {
                 pt.ThanhToan = float.Parse(txtKhachTra.Text);
                 pt.TrangThai = 1;
@@ -278,7 +273,7 @@ namespace QuanLyPhongTro.Control
             }
             foreach (DataRow dr in datatable.Rows)
             {
-                if(dr["TenDichVu"].Equals("Dịch vụ nước")|| dr["TenDichVu"].Equals("Dịch vụ điện"))
+                if (dr["TenDichVu"].Equals("Dịch vụ nước") || dr["TenDichVu"].Equals("Dịch vụ điện"))
                 {
                     ChiTietDichVuPT ct = new ChiTietDichVuPT();
                     ct.MaPT = txtma.Text;
@@ -287,7 +282,7 @@ namespace QuanLyPhongTro.Control
                     lst.Add(ct);
                 }
             }
-                return lst;
+            return lst;
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
@@ -341,7 +336,7 @@ namespace QuanLyPhongTro.Control
                 MessageBox.Show("Thất bại");
                 return;
             }
-            
+
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -381,7 +376,7 @@ namespace QuanLyPhongTro.Control
         }
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
-            if(ckbPTP.Checked)
+            if (ckbPTP.Checked)
             {
                 LoadPhong(khuvuc);
                 txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
@@ -391,7 +386,7 @@ namespace QuanLyPhongTro.Control
                 LoadPhongChuaPT(khuvuc);
                 txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
             }
-            
+
 
         }
 
