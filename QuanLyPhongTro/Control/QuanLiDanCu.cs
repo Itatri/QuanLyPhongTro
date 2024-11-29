@@ -1,19 +1,16 @@
 ﻿using BLL;
 using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Net.Http.Json;
-using System.Configuration;
+using System.Text;
+using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
@@ -21,7 +18,7 @@ namespace QuanLyPhongTro.Control
     {
         private ThongTinKhachBLL thongTinKhachBLL = new ThongTinKhachBLL();
         private bool isAddingNew = false; // Biến trạng thái để theo dõi chế độ thêm mới hay sửa
-        public string khuvuc {  get; set; }
+        public string khuvuc { get; set; }
 
         public string makhuvucdancu { get; set; }
 
@@ -178,7 +175,7 @@ namespace QuanLyPhongTro.Control
         private void LoadPhongComboBox()
         {
             QuanLiPhongBLL phongBLL = new QuanLiPhongBLL();
-            DataTable dt = phongBLL.LayTatCaPhong(); 
+            DataTable dt = phongBLL.LayTatCaPhong();
 
             comboBoxPhong.DisplayMember = "TenPhong";
             comboBoxPhong.ValueMember = "MaPhong";
@@ -215,8 +212,8 @@ namespace QuanLyPhongTro.Control
             comboBoxGioiTinh.Enabled = enabled;
             txtCCCD.Enabled = enabled;
             txtSDT.Enabled = enabled;
-             cbbQueQuan.Enabled = enabled;
-           
+            cbbQueQuan.Enabled = enabled;
+
             comboBoxTrangThai.Enabled = enabled;
             comboBoxPhong.Enabled = enabled;
             dateTimePickerNgaySinh.Enabled = enabled;
@@ -298,10 +295,10 @@ namespace QuanLyPhongTro.Control
         private void buttonThemCD_Click(object sender, EventArgs e)
         {
             isAddingNew = true; // Đặt chế độ thêm mới
-            
+
             // Làm mới các trường dữ liệu để nhập thông tin
             SetControlsEnabled(true);
-            
+
             // Đếm số lượng khách hiện tại
             int soLuongKhach = thongTinKhachBLL.DemSoLuongKhach();
 
@@ -314,7 +311,7 @@ namespace QuanLyPhongTro.Control
             comboBoxGioiTinh.SelectedIndex = -1;
             txtCCCD.Clear();
             txtSDT.Clear();
-             cbbQueQuan.SelectedIndex = -1;
+            cbbQueQuan.SelectedIndex = -1;
             comboBoxTrangThai.SelectedIndex = -1;
             comboBoxPhong.SelectedIndex = -1;
             dateTimePickerNgaySinh.Value = DateTime.Now;
@@ -350,7 +347,7 @@ namespace QuanLyPhongTro.Control
 
                         if (currentCustomer != null)
                         {
-                          
+
                             // Xóa chữ ký của khách hàng nếu có
                             if (!string.IsNullOrEmpty(currentCustomer.ChuKy))
                             {
@@ -511,7 +508,7 @@ namespace QuanLyPhongTro.Control
                 string gioiTinh = comboBoxGioiTinh.Text;
                 string cccd = txtCCCD.Text;
                 string phone = txtSDT.Text;
-                string queQuan =  cbbQueQuan.Text;
+                string queQuan = cbbQueQuan.Text;
                 int trangThai = (comboBoxTrangThai.SelectedItem.ToString() == "Đã rời đi") ? 0 : 1;
                 DateTime ngaySinh = dateTimePickerNgaySinh.Value;
                 string email = txtEmail.Text;
@@ -592,7 +589,7 @@ namespace QuanLyPhongTro.Control
         {
 
 
-          
+
 
             // Kiểm tra xem người dùng có nhấn vào cột nút không
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewDanCu.Columns["btnXemChiTiet"].Index)
@@ -606,7 +603,7 @@ namespace QuanLyPhongTro.Control
                 comboBoxGioiTinh.Text = selectedRow.Cells["GioiTinh"].Value.ToString();
                 txtCCCD.Text = selectedRow.Cells["CCCD"].Value.ToString();
                 txtSDT.Text = selectedRow.Cells["Phone"].Value.ToString();
-                 cbbQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
+                cbbQueQuan.Text = selectedRow.Cells["QueQuan"].Value.ToString();
                 labelTenAnhChuKy.Text = selectedRow.Cells["ChuKy"].Value.ToString();
                 txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
                 //txtQuanHe.Text = selectedRow.Cells["QuanHe"].Value.ToString();
@@ -784,7 +781,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonChonAnh_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonChonChuKy_Click(object sender, EventArgs e)
@@ -906,7 +903,7 @@ namespace QuanLyPhongTro.Control
                 txtHoTenCuDan.Text = string.Empty;
                 comboBoxGioiTinh.Text = null;
                 txtCCCD.Text = string.Empty;
-                 cbbQueQuan.Text = string.Empty;
+                cbbQueQuan.Text = string.Empty;
                 comboBoxPhong.Text = null;
                 comboBoxTrangThai.Text = null;
                 txtSDT.Text = string.Empty;
@@ -996,7 +993,7 @@ namespace QuanLyPhongTro.Control
 
         private void buttonLoc_Click(object sender, EventArgs e)
         {
-           
+
 
             // Lấy giá trị MaPhong từ comboBoxLocPhong
             string selectedMaPhong = comboBoxLocPhong.SelectedValue?.ToString();
@@ -1026,7 +1023,7 @@ namespace QuanLyPhongTro.Control
 
         private void dataGridViewDanCu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           
+
 
             if (dataGridViewDanCu.Columns[e.ColumnIndex].Name == "TrangThai" && e.Value != null)
             {
@@ -1053,6 +1050,11 @@ namespace QuanLyPhongTro.Control
         }
 
         private void cbbQueQuan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
         {
 
         }

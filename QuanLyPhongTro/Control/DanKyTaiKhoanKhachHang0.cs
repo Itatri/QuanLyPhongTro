@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using BLL;
+﻿using BLL;
 using DTO;
-using System.Configuration.Abstractions;
-using System.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 using ConfigManager = System.Configuration.ConfigurationManager;
 
 
@@ -407,7 +400,7 @@ namespace QuanLyPhongTro.Control
             txtMatKhau.Clear();
 
             dataGridView1.Enabled = true;
-          
+
 
 
 
@@ -464,7 +457,7 @@ namespace QuanLyPhongTro.Control
             //cbbTenPhong.Items.Clear();
             txtID.Clear();
             txtMatKhau.Clear();
-            
+
             AnHienButton(true);
             AnHienTextBox(false);
             LoadUserPhongData();

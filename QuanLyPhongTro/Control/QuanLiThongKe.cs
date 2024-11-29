@@ -1,19 +1,13 @@
 ﻿using BLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
     public partial class QuanLiThongKe : UserControl
     {
-        public string khuvuc {  get; set; }
+        public string khuvuc { get; set; }
         private ThongKeBLL bll = new ThongKeBLL();
         public QuanLiThongKe()
         {
@@ -61,27 +55,27 @@ namespace QuanLyPhongTro.Control
         {
             int thang = int.Parse(cboThang.Text);
             int nam = int.Parse(cboNam.Text);
-            if(cboTK.SelectedIndex == 0)
+            if (cboTK.SelectedIndex == 0)
             {
                 ThongKeDoangThuThang(nam, thang, khuvuc);
             }
-             else if (cboTK.SelectedIndex == 1)
+            else if (cboTK.SelectedIndex == 1)
             {
                 ThongKeDoangThu(nam, khuvuc);
             }
-            else if(cboTK.SelectedIndex == 2)
+            else if (cboTK.SelectedIndex == 2)
             {
-                ThongKeDichVuThang(thang,nam,khuvuc);
+                ThongKeDichVuThang(thang, nam, khuvuc);
             }
-            else if(cboTK.SelectedIndex == 3)
+            else if (cboTK.SelectedIndex == 3)
             {
-                ThongKeDichVuNam(nam,khuvuc);
+                ThongKeDichVuNam(nam, khuvuc);
             }
         }
 
         private void ThongKeDoangThu(int nam, string khuvuc)
         {
-            DataTable dt = bll.ThongKeDoanhThuTheoNam(nam,khuvuc);
+            DataTable dt = bll.ThongKeDoanhThuTheoNam(nam, khuvuc);
             dgvDT.DataSource = null;
             dgvDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDT.DataSource = dt;
@@ -113,17 +107,17 @@ namespace QuanLyPhongTro.Control
         }
         private void ThongKeDichVuThang(int thang, int nam, string khuvuc)
         {
-            DataTable dt = bll.ThongKeDichVuTheoThangVaKhuVuc(thang,nam,khuvuc);
+            DataTable dt = bll.ThongKeDichVuTheoThangVaKhuVuc(thang, nam, khuvuc);
             dgvDT.DataSource = null;
             dgvDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDT.DataSource = dt;
             dgvDT.Columns["Số Lần Sử Dụng"].DefaultCellStyle.Format = "N0";
             dgvDT.Columns["Tổng Tiền Dịch Vụ"].DefaultCellStyle.Format = "N0";
-            
+
         }
         private void ThongKeDichVuNam(int nam, string khuvuc)
         {
-            DataTable dt = bll.ThongKeDichVuTheoNamVaKhuVuc(nam,khuvuc);
+            DataTable dt = bll.ThongKeDichVuTheoNamVaKhuVuc(nam, khuvuc);
             dgvDT.DataSource = null;
             dgvDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDT.DataSource = dt;

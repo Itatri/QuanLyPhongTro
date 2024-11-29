@@ -1,17 +1,9 @@
-﻿using iText.IO.Codec;
-using QuanLyPhongTro.Control;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace QuanLyPhongTro
 {
     public partial class TaiKhoanDangNhap : Form
@@ -232,7 +224,7 @@ namespace QuanLyPhongTro
             buttonThem.Enabled = false;
             buttonSua.Enabled = false;
 
-            
+
         }
 
         private void buttonSua_Click(object sender, EventArgs e)
@@ -513,6 +505,11 @@ namespace QuanLyPhongTro
             {
                 row.DefaultCellStyle.BackColor = Color.Lavender;  // Màu nền cho dòng đã thuê
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
