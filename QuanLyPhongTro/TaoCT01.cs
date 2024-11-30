@@ -133,17 +133,17 @@ namespace QuanLyPhongTro
             // Xuất dữ liệu vào file Word
             WordExport wd = new WordExport(sourceFilePath, false);
 
-            if (string.IsNullOrEmpty(chuho.ChuKy))
+            if (!string.IsNullOrEmpty(chuho.ChuKy))
             {
                 Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuHo", chukychuho);
             }
-            if (string.IsNullOrEmpty(tt.ChuKy))
+            if (!string.IsNullOrEmpty(tt.ChuKy))
             {
                 Bitmap chukynguoikhai = xuly.XuLy(tt.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyNguoiKhai", chukynguoikhai);
             }
-            if (string.IsNullOrEmpty(ttadmin.ChuKy))
+            if (!string.IsNullOrEmpty(ttadmin.ChuKy))
             {
                 Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuSoHuu", chukychusohuu);
@@ -162,7 +162,7 @@ namespace QuanLyPhongTro
             {
                 dic.Add("HoTenCha", "(7) Họ và tên: " + chuho.HoTen);
                 dic.Add("CCCDCha", "(7) Số định danh cá nhân:" + chuho.CCCD);
-                if (string.IsNullOrEmpty(chuho.ChuKy))
+                if (!string.IsNullOrEmpty(chuho.ChuKy))
                 {
                     chukyCha = xuly.XuLy(chuho.ChuKy);
                     wd.ReplaceFieldWithImage("ChuKyCha", chukyCha);
@@ -171,7 +171,7 @@ namespace QuanLyPhongTro
                 {
                     dic.Add("HotenMe", "(7) Họ và tên: " + me.HoTen);
                     dic.Add("CCCDMe", "(7) Số định danh cá nhân:" + me.CCCD);
-                    if (string.IsNullOrEmpty(me.ChuKy))
+                    if (!string.IsNullOrEmpty(me.ChuKy))
                     {
                         chukyMe = xuly.XuLy(me.ChuKy);
                         wd.ReplaceFieldWithImage("ChuKyMe", chukyMe);
@@ -230,12 +230,12 @@ namespace QuanLyPhongTro
             WordExport wd = new WordExport(sourceFilePath, false);
             wd.WriteFields(dic);
             wd.WriteDataTableToWordTable(bang, 1);
-            if (string.IsNullOrEmpty(chuho.ChuKy))
+            if (!string.IsNullOrEmpty(chuho.ChuKy))
             {
                 Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
                 wd.InsertImageAndTextInTableCell(2, 2, 1, chuho.HoTen, chukychuho);
             }
-            if (string.IsNullOrEmpty(ttadmin.ChuKy))
+            if (!string.IsNullOrEmpty(ttadmin.ChuKy))
             {
                 Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
                 wd.InsertImageAndTextInTableCell(2, 2, 2, ttadmin.HoTen, chukychusohuu);
@@ -245,7 +245,7 @@ namespace QuanLyPhongTro
             {
                 if (th.MaKhachTro != chuho.MaKhachTro)
                 {
-                    if (string.IsNullOrEmpty(th.ChuKy))
+                    if (!string.IsNullOrEmpty(th.ChuKy))
                     {
                         continue;
                     }
