@@ -11,7 +11,7 @@ namespace QuanLyPhongTro
     {
         public Bitmap XuLy(string filename)
         {
-            try
+            try// Nó vậy á 
             {
                 // Get the base directory and construct the image path
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
