@@ -137,6 +137,8 @@ namespace QuanLyPhongTro.Control
             this.Controls.Clear(); // Xóa các control hiện có
             controlQuanLyDanCu.khuvuc = makhuvuc;
             this.Controls.Add(controlQuanLyDanCu); // Thêm control QuanLyDanCu
+
+
         }
 
         

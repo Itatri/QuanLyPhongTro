@@ -32,7 +32,7 @@ namespace QuanLyPhongTro.Control
 
             InitializeComponent();
             LoadProvinces();
-            LoadPhongComboBox();
+        
             // Sự kiện CellFormatting
             dataGridViewDanCu.CellFormatting += dataGridViewDanCu_CellFormatting;
 
@@ -43,7 +43,7 @@ namespace QuanLyPhongTro.Control
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
             // Thiết lập trạng thái của các trường dữ liệu
             SetControlsEnabled(false);
-            LoadData();
+            
             SetComboBoxGioiTinh();
             SetComboBoxTrangThai();
             PopulateComboBoxQuanHe();
@@ -979,6 +979,9 @@ namespace QuanLyPhongTro.Control
             dateTimePickerNgayCap.CustomFormat = "dd/MM/yyyy";
             dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
             dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
+
+            LoadPhongComboBox();
+            LoadData();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
