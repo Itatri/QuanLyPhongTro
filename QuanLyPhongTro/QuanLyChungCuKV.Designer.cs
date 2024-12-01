@@ -37,16 +37,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTaiKhoan = new System.Windows.Forms.Button();
             this.buttonLuu = new System.Windows.Forms.Button();
             this.buttonCapNhat = new System.Windows.Forms.Button();
             this.buttonThem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,16 +145,6 @@
             this.panel1.Size = new System.Drawing.Size(1900, 756);
             this.panel1.TabIndex = 20;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 180);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1876, 495);
-            this.dataGridView2.TabIndex = 23;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            this.dataGridView2.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView2_RowPrePaint);
-            // 
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
@@ -164,6 +154,16 @@
             this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
             this.pictureBoxIcon.TabIndex = 61;
             this.pictureBoxIcon.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(7, 180);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1876, 495);
+            this.dataGridView2.TabIndex = 23;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView2_RowPrePaint);
             // 
             // pictureBox1
             // 
@@ -179,7 +179,7 @@
             // 
             // buttonTaiKhoan
             // 
-            this.buttonTaiKhoan.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.buttonTaiKhoan.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonTaiKhoan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTaiKhoan.ForeColor = System.Drawing.Color.White;
             this.buttonTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("buttonTaiKhoan.Image")));
@@ -253,8 +253,8 @@
             this.Load += new System.EventHandler(this.QuanLyChungCuKV_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
