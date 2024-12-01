@@ -15,19 +15,35 @@ namespace DAL
 
 
 
-        public DataTable LayTatCaPhong()
+        public DataTable LayTatCaPhong(string makhuvuc)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                //string query = "SELECT MaPhong, TenPhong FROM Phong";
-                string query = "SELECT * FROM Phong where TrangThai = 1";
+            DataTable dt = new DataTable();
 
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Phong WHERE MaKhuVuc = @MaKhuVuc AND TrangThai = 1";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                // Log lỗi hoặc xử lý theo yêu cầu
+                Console.WriteLine($"Lỗi xảy ra: {ex.Message}");
+                // throw; // Nếu muốn ném lại lỗi để xử lý ở tầng cao hơn
+            }
+
+            return dt;
         }
+
 
 
         public DataTable TimKiemPhong(string keyword)

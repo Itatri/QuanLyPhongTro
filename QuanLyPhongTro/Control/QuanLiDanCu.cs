@@ -175,7 +175,7 @@ namespace QuanLyPhongTro.Control
         private void LoadPhongComboBox()
         {
             QuanLiPhongBLL phongBLL = new QuanLiPhongBLL();
-            DataTable dt = phongBLL.LayTatCaPhong();
+            DataTable dt = phongBLL.LayTatCaPhong(khuvuc);
 
             comboBoxPhong.DisplayMember = "TenPhong";
             comboBoxPhong.ValueMember = "MaPhong";
