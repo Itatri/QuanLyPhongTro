@@ -188,18 +188,22 @@ namespace DAL
             }
         }
         //----22/10/2024
-        public DataTable GetPhongData()
+        public DataTable GetPhongData(string khuvuc)
         {
-            string query = "SELECT MaPhong, TenPhong FROM Phong WHERE trangthai = 0";
+            string query = "SELECT MaPhong, TenPhong FROM Phong WHERE MaKhuVuc = @MaKhuVuc AND trangthai = 0";
             DataTable dataTable = new DataTable();
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dataTable);
+                    connection.Open(); // Ensure the connection is opened
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MaKhuVuc", khuvuc); // Safely add parameter value
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dataTable);
+                    }
                 }
             }
             catch (Exception ex)
@@ -209,6 +213,7 @@ namespace DAL
 
             return dataTable;
         }
+
 
         public DataTable GetUserPhongByMaPhong(string keyword)
         {

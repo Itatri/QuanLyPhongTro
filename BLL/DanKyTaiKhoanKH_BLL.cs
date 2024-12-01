@@ -47,9 +47,9 @@ namespace BLL
 
   
         // BLL: Gọi phương thức DAL
-        public DataTable GetPhongData() //-----22/10/2024
+        public DataTable GetPhongData(string khuvuc) //-----22/10/2024
         {
-            return dal.GetPhongData();
+            return dal.GetPhongData(khuvuc);
         }
 
 
