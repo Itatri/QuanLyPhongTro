@@ -30,7 +30,7 @@ namespace QuanLyPhongTro.Control
                 cboThang.Items.Add(i.ToString("00"));
             }
             int currentMonth = DateTime.Now.Month;
-            cboThang.SelectedIndex = currentMonth;
+            cboThang.SelectedIndex = currentMonth - 1;
         }
         private void LoadCBONam()
         {
