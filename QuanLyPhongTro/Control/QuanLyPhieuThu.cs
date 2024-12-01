@@ -1,26 +1,21 @@
 ﻿using BLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
     public partial class QuanLyPhieuThu : UserControl
     {
-        public string khuvuc {  get; set; }
+        public string khuvuc { get; set; }
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
         DataTable dt;
         public QuanLyPhieuThu()
         {
             InitializeComponent();
         }
-        
+
         private void QuanLyPhieuThu_Load(object sender, EventArgs e)
         {
             LoadCBOThang();
@@ -35,7 +30,7 @@ namespace QuanLyPhongTro.Control
                 cboThang.Items.Add(i.ToString("00"));
             }
             int currentMonth = DateTime.Now.Month;
-            cboThang.SelectedIndex = currentMonth;
+            cboThang.SelectedIndex = currentMonth - 1;
         }
         private void LoadCBONam()
         {
