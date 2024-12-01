@@ -19,53 +19,54 @@ namespace DAL
         {
             List<ThongTinKhachDTO> danhSachKhach = new List<ThongTinKhachDTO>();
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                string query = "SELECT * FROM ThongTinKhach";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                conn.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    while (reader.Read())
+                    string query = "SELECT * FROM ThongTinKhach, Phong where MaKhuVuc = @MaKhuVuc and Phong.MaPhong = ThongTinKhach.MaPhong";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        ThongTinKhachDTO khach = new ThongTinKhachDTO
+                        while (reader.Read())
                         {
-                            //MaKhachTro = reader["MaKhachTro"].ToString(),
-                            //HoTen = reader["HoTen"].ToString(),
-                            //GioiTinh = reader["GioiTinh"].ToString(),
+                            ThongTinKhachDTO khach = new ThongTinKhachDTO
+                            {
+                                MaKhachTro = reader["MaKhachTro"].ToString(),
+                                HoTen = reader["HoTen"].ToString(),
+                                GioiTinh = reader["GioiTinh"].ToString(),
+                                NgaySinh = reader.GetDateTime(reader.GetOrdinal("NgaySinh")),
+                                CCCD = reader["CCCD"].ToString(),
+                                NgayCap = reader.GetDateTime(reader.GetOrdinal("NgayCap")),
+                                NoiCap = reader["NoiCap"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                ThuongTru = reader["ThuongTru"].ToString(),
+                                QueQuan = reader["QueQuan"].ToString(),
+                                QuanHe = reader["QuanHe"].ToString(),
+                                ChuKy = reader["ChuKy"].ToString(),
+                                MaPhong = reader["MaPhong"].ToString(),
+                                TrangThai = reader.GetInt32(reader.GetOrdinal("TrangThai")),
+                                Email = reader["Email"].ToString()
+                            };
 
-                            //NgaySinh = (DateTime)reader["NgaySinh"],
-                            //CCCD = reader["CCCD"].ToString(),
-                            //Phone = reader["Phone"].ToString(),
-                            //QueQuan = reader["QueQuan"].ToString(),
-                            //ChuKy = reader["ChuKy"].ToString(),
-                            //MaPhong = reader["MaPhong"].ToString(),
-                            //TrangThai = (int)reader["TrangThai"]
-
-                            MaKhachTro = reader["MaKhachTro"].ToString(),
-                            HoTen = reader["HoTen"].ToString(),
-                            GioiTinh = reader["GioiTinh"].ToString(),
-                            NgaySinh = (DateTime)reader["NgaySinh"],
-                            CCCD = reader["CCCD"].ToString(),
-                            NgayCap = (DateTime)reader["NgayCap"],
-                            NoiCap = reader["NoiCap"].ToString(),
-                            Phone = reader["Phone"].ToString(),
-                            ThuongTru = reader["ThuongTru"].ToString(),
-                            QueQuan = reader["QueQuan"].ToString(),
-                            QuanHe = reader["QuanHe"].ToString(),
-                            ChuKy = reader["ChuKy"].ToString(),
-                            MaPhong = reader["MaPhong"].ToString(),
-                            TrangThai = (int)reader["TrangThai"],
-                            Email = reader["Email"].ToString()
-                        };
-
-                        danhSachKhach.Add(khach);
+                            danhSachKhach.Add(khach);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                // Log lỗi hoặc throw lại để xử lý ở tầng cao hơn.
+                Console.WriteLine($"Lỗi xảy ra: {ex.Message}");
+                // throw; // Nếu cần throw lỗi tiếp.
+            }
+
             return danhSachKhach;
         }
+
 
 
 

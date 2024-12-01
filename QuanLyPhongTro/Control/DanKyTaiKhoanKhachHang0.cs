@@ -47,7 +47,7 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                DataTable dataTable = bll.GetPhongData();
+                DataTable dataTable = bll.GetPhongData(makhuvucuserphong);
 
                 cbbTenPhong.Items.Clear();
 

@@ -41,7 +41,10 @@ namespace QuanLyPhongTro
                 return -1;
             }
             if (chuho == null)
-                return -1; // không có chủ hộ
+            {
+                MessageBox.Show("Chủ hộ chưa kê khai đủ thông tin");
+                return -1;
+            }
 
             int n = lst.Count;
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);

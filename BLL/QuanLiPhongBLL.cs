@@ -14,9 +14,9 @@ namespace BLL
     {
         private QuanLiPhongDAL phongDAL = new QuanLiPhongDAL();
 
-        public DataTable LayTatCaPhong()
+        public DataTable LayTatCaPhong(string makhuvuc)
         {
-            return phongDAL.LayTatCaPhong();
+            return phongDAL.LayTatCaPhong(makhuvuc);
         }
 
         public DataTable LayPhongTheoHanTroTangDan(string makhuvuc)
