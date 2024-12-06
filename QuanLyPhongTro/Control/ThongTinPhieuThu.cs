@@ -12,6 +12,7 @@ namespace QuanLyPhongTro.Control
         public string mapt { get; set; }
         string maphong = string.Empty;
         public string khuvuc { get; set; }
+        bool phieumoi = false;
         private QuanLyPhieuThuBLL bll = new QuanLyPhieuThuBLL();
         private float soducu;
         System.Data.DataTable dt;
@@ -28,6 +29,7 @@ namespace QuanLyPhongTro.Control
             dtpNgayThu.CustomFormat = "dd/MM/yyyy";
             LoadPT();
             LoadDichVuPhieuThu();
+            
         }
         private void LoadPT()
         {
@@ -69,6 +71,9 @@ namespace QuanLyPhongTro.Control
                         soducu = -float.Parse(txtTongTien.Text);
                     }
                 }
+                phieumoi = bll.CheckPTMoiNhat(txtma.Text,dt.Rows[0]["MaPhong"].ToString(), dtpNgayLap.Value.Date);
+                txtDM.Enabled = phieumoi;
+                txtNM.Enabled = phieumoi;
                 LoadCongNo(maphong);
             }
         }
@@ -89,7 +94,7 @@ namespace QuanLyPhongTro.Control
 
                 if (dr["TenDichVu"].Equals("Dịch vụ điện") || dr["TenDichVu"].Equals("Dịch vụ nước"))
                     continue;
-                else dgvDichVu.Rows.Add(dr["Chon"], dr["TenDichVu"], dr["DonGia"]);
+                else dgvDichVu.Rows.Add(dr["Chon"], dr["TenDichVu"], dr["SoLuong"], dr["DonGia"], dr["ThanhTien"]);
             }
         }
 
@@ -110,7 +115,7 @@ namespace QuanLyPhongTro.Control
             {
                 if (Convert.ToBoolean(row.Cells[0].Value))
                 {
-                    tongTien += Convert.ToSingle(row.Cells[2].Value);
+                    tongTien += Convert.ToSingle(row.Cells[4].Value);
                 }
             }
 
@@ -152,7 +157,7 @@ namespace QuanLyPhongTro.Control
             {
                 pt.TongTien = float.Parse(txtTongTien.Text);
             }
-            if (txtKhachTra.Text.Length > 0)
+            if (!string.IsNullOrEmpty(txtKhachTra.Text))
             {
                 pt.ThanhToan = float.Parse(txtKhachTra.Text);
                 pt.TrangThai = 1;
@@ -173,15 +178,30 @@ namespace QuanLyPhongTro.Control
                     ChiTietDichVuPT ct = new ChiTietDichVuPT();
                     ct.MaPT = txtma.Text;
                     ct.TenDV = row.Cells[1].Value.ToString();
-                    ct.DonGia = float.Parse(row.Cells[2].Value.ToString());
+                    ct.DonGia = float.Parse(row.Cells[3].Value.ToString());
+                    ct.SoLuong = int.Parse(row.Cells[2].Value.ToString());
+                    ct.ThanhTien = float.Parse(row.Cells[4].Value.ToString());
+                    lst.Add(ct);
+                }
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["TenDichVu"].Equals("Dịch vụ nước") || dr["TenDichVu"].Equals("Dịch vụ điện"))
+                {
+                    ChiTietDichVuPT ct = new ChiTietDichVuPT();
+                    ct.MaPT = txtma.Text;
+                    ct.TenDV = dr["TenDichVu"].ToString();
+                    ct.SoLuong = int.Parse(dr["SoLuong"].ToString());
+                    ct.DonGia = float.Parse(dr["DonGia"].ToString());
                     lst.Add(ct);
                 }
             }
             return lst;
         }
 
-        private void btnCapNhat_Click(object sender, EventArgs e)
+        private async void btnCapNhat_Click(object sender, EventArgs e)
         {
+            //TinhTong();
             PhieuThu pt = chuyendoi();
             List<ChiTietDichVuPT> lst = chuyendoidichvu();
             if (pt == null)
@@ -201,10 +221,16 @@ namespace QuanLyPhongTro.Control
                     congnonew = (congno - (sodumoi - soducu));
                 }
                 else { congnonew = float.Parse(txtCongNo.Text); }
-                bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
+                if(phieumoi)
+                {
+                    bll.UpdatePhong(maphong, float.Parse(txtDM.Text), float.Parse(txtNM.Text), congnonew);
+                }else
+                {
+                    bll.UpdateCongNoPhong(maphong,congnonew);
+                }
                 bll.CreateDichVuPhieuThu(lst);
                 Email email = new Email();
-                email.ExportAndSendPhieuThuToEmailAsync(pt, txtPhong.Text, khuvuc);
+                await email.ExportAndSendPhieuThuToEmailAsync(pt, txtPhong.Text, khuvuc);
                 MessageBox.Show("Cập nhật thành công");
             }
             LoadPT();
@@ -322,28 +348,7 @@ namespace QuanLyPhongTro.Control
         }
         private void txtNM_Leave(object sender, EventArgs e)
         {
-            if (txtDM.Text.Length > 0)
-            {
-                float nuocmoi = 0;
-                float.TryParse(txtNM.Text, out nuocmoi);
-                float nuoccu = float.Parse(txtNC.Text);
-                if (nuocmoi < nuoccu)
-                {
-                    txtNM.Text = nuoccu.ToString();
-                    txtTienNuoc.Text = "0";
-                }
-                else
-                {
-                    float nuoc = nuocmoi - nuoccu;
-                    float dongia = 0;
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        if (dr["TenDichVu"].Equals("Dịch vụ nước"))
-                            dongia = float.Parse(dr["DonGia"].ToString());
-                    }
-                    txtTienNuoc.Text = (nuoc * dongia).ToString();
-                }
-            }
+            TinhTienNuoc();
 
         }
         private void TinhTienNuoc()
@@ -417,6 +422,29 @@ namespace QuanLyPhongTro.Control
 
         private void btnTongTien_Click(object sender, EventArgs e)
         {
+            TinhTong();
+        }
+        private void TinhTong()
+        {
+            if (txtTienDien.Text.Length == 0 && txtDM.Text.Length == 0)
+            {
+                txtDM.Text = txtDC.Text;
+                TinhTienDien();
+            }
+            else
+            {
+                TinhTienDien();
+            }
+
+            if (txtTienNuoc.Text.Length == 0 && txtNM.Text.Length == 0)
+            {
+                txtNM.Text = txtNC.Text;
+                TinhTienNuoc();
+            }
+            else
+            {
+                TinhTienNuoc();
+            }
             float dien = 0, nuoc = 0, tienp = 0;
             float.TryParse(txtTienNha.Text, out tienp);
             float tienDV = TienDichVu();
@@ -427,6 +455,89 @@ namespace QuanLyPhongTro.Control
             float.TryParse(txtKhachTra.Text, out khachtra);
             txtDu.Text = (khachtra - (dien + nuoc + tienDV + tienp)).ToString();
         }
+        private void dgvDichVu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+            {
+                // Lấy giá trị mới trong cột 1
+                float soluong = 1;
+                float dongia = Convert.ToSingle(dgvDichVu.Rows[e.RowIndex].Cells[3].Value);
+                if (dgvDichVu.Rows[e.RowIndex].Cells[2].Value != null &&
+            float.TryParse(dgvDichVu.Rows[e.RowIndex].Cells[2].Value.ToString(), out soluong))
+                {
+                    dgvDichVu.Rows[e.RowIndex].Cells[4].Value = (soluong * dongia).ToString();
+                }
+                else
+                {
+                    dgvDichVu.Rows[e.RowIndex].Cells[2].Value = "1";
+                    //dgvDichVu.Rows[e.RowIndex].Cells[4].Value = dongia.ToString();
+                }
+            }
+        }
 
+        private void txtTongTien_TextChanged(object sender, EventArgs e)
+        {
+            txtKhachTra.Clear();
+            txtDu.Clear();
+            int selectionStart = txtTongTien.SelectionStart;
+            int selectionLength = txtTongTien.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtTongTien.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtTongTien.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtTongTien.SelectionStart = Math.Max(0, selectionStart + txtTongTien.Text.Length - text.Length);
+                txtTongTien.SelectionLength = selectionLength;
+            }
+        }
+
+        private void txtKhachTra_TextChanged_1(object sender, EventArgs e)
+        {
+            int selectionStart = txtKhachTra.SelectionStart;
+            int selectionLength = txtKhachTra.SelectionLength;
+
+            // Xóa bỏ dấu phân cách hiện tại
+            string text = txtKhachTra.Text.Replace(",", "");
+
+            // Chuyển đổi chuỗi sang số
+            if (decimal.TryParse(text, out decimal value))
+            {
+                // Định dạng lại số với dấu phân cách
+                txtKhachTra.Text = string.Format("{0:N0}", value);
+
+                // Đặt lại vị trí con trỏ
+                txtKhachTra.SelectionStart = Math.Max(0, selectionStart + txtKhachTra.Text.Length - text.Length);
+                txtKhachTra.SelectionLength = selectionLength;
+            }
+            if (txtKhachTra.Text.Length > 0)
+            {
+                float tong = 0, khachtra = 0;
+                float.TryParse(txtTongTien.Text, out tong);
+                float.TryParse(txtKhachTra.Text, out khachtra);
+                txtDu.Text = (khachtra - tong).ToString();
+            }
+        }
+
+        private void txtKhachTra_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTongTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

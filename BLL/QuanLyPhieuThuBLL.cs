@@ -103,5 +103,14 @@ namespace BLL
         {
             return tkDal.GetCongNo(phong);
         }
+        public bool CheckPTMoiNhat(string mapt, string maphong, DateTime ngaylap)
+        {
+            return tkDal.CheckPTMoiNhat(mapt, maphong, ngaylap);
+        }
+        public void UpdateCongNoPhong(string maPhong, float congno)
+        {
+            tkDal.UpdateCongNoPhong(maPhong, congno);
+        }
+
     }
 }

@@ -308,6 +308,10 @@ namespace QuanLyPhongTro.Control
         // Phương thức chuyển đổi chuỗi có dấu thành không dấu
         private string RemoveDiacritics(string text)
         {
+            // Bước 1: Thay thế riêng ký tự 'Đ' và 'đ' trước khi loại bỏ dấu
+            text = text.Replace("Đ", "D").Replace("đ", "d");
+
+            // Bước 2: Normalize chuỗi để loại bỏ các dấu
             string normalizedString = text.Normalize(NormalizationForm.FormD);
             var stringBuilder = new StringBuilder();
 
@@ -320,7 +324,7 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-            // Convert back to FormC and remove all spaces
+            // Bước 3: Chuyển về Form C và loại bỏ khoảng trắng
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC).Replace(" ", "");
         }
 

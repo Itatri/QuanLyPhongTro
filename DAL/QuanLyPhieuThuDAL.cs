@@ -208,10 +208,14 @@ namespace DAL
         {
             DataTable dataTable = new DataTable();
             string query = @"
-                            SELECT dv.MaDichVu, dv.TenDichVu, dv.DonGia 
+                            SELECT dv.MaDichVu, dv.TenDichVu, 1 AS SoLuong, dv.DonGia, 1 * dv.DonGia AS ThanhTien 
                             FROM DichVu dv
-                            JOIN DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
-                            WHERE dvp.MaPhong = @MaPhong AND dv.TrangThai = 1";
+                            JOIN 
+                                DichVuPhong dvp ON dv.MaDichVu = dvp.MaDichVu
+                            WHERE 
+                                dvp.MaPhong = @MaPhong 
+                                AND dv.TrangThai = 1;
+                            ";
 
             using (SqlConnection connection = new SqlConnection(strConn))
             {
@@ -273,7 +277,7 @@ namespace DAL
         public DataTable GetDichVuPhieuThu(string mapt)
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT TenDichVu, DonGia FROM DichVuPhieuThu WHERE MaPT = @MaPT";
+            string sql = "SELECT * FROM DichVuPhieuThu WHERE MaPT = @MaPT";
 
             using (SqlConnection conn = new SqlConnection(strConn)) // Thay bằng chuỗi kết nối của bạn
             {
@@ -304,15 +308,17 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
             {
-                string query = "INSERT INTO DichVuPhieuThu (MaPT, TenDichVu, DonGia) " +
-                               "VALUES (@MaPT, @TenDV, @DonGia)";
+                string query = "INSERT INTO DichVuPhieuThu (MaPT, TenDichVu, SoLuong, DonGia, ThanhTien) " +
+                               "VALUES (@MaPT, @TenDV, @SoLuong, @DonGia, @ThanhTien)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     // Thêm các tham số vào truy vấn
                     command.Parameters.AddWithValue("@MaPT", ct.MaPT);
                     command.Parameters.AddWithValue("@TenDV", ct.TenDV); // Ký tự có dấu
+                    command.Parameters.AddWithValue("@SoLuong", ct.SoLuong);
                     command.Parameters.AddWithValue("@DonGia", ct.DonGia);
+                    command.Parameters.AddWithValue("@ThanhTien", ct.ThanhTien);
 
                     try
                     {
@@ -354,7 +360,31 @@ namespace DAL
                 }
             }
         }
+        public void UpdateCongNoPhong(string maPhong, float congno)
+        {
+            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            {
+                string query = "UPDATE Phong SET CongNo = @CongNo WHERE MaPhong = @MaPhong";
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm các tham số vào truy vấn
+                    command.Parameters.AddWithValue("@CongNo", congno);
+                    command.Parameters.AddWithValue("@MaPhong", maPhong);
+
+                    try
+                    {
+                        connection.Open(); // Mở kết nối
+                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý lỗi nếu có
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
         public int CountKhach(string phong)
         {
             int count = 0;
@@ -614,6 +644,41 @@ namespace DAL
             }
 
             return dataTable;
+        }
+
+        public bool CheckPTMoiNhat(string mapt, string maphong, DateTime ngaylap)
+        {
+            // Kết nối cơ sở dữ liệu
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                // Truy vấn để lấy phiếu thu mới nhất của phòng
+                string query = @"
+                                SELECT TOP 1 MaPT, NgayLap
+                                FROM PhieuThu
+                                WHERE MaPhong = @MaPhong
+                                ORDER BY NgayLap DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MaPhong", maphong); // Thêm tham số MaPhong
+
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read()) // Nếu có kết quả
+                    {
+                        // Lấy thông tin phiếu thu mới nhất từ cơ sở dữ liệu
+                        string maPhieuThuMoiNhat = reader.GetString(reader.GetOrdinal("MaPT")); // Lấy giá trị cột MaPT
+                        DateTime ngayThuMoiNhat = reader.GetDateTime(reader.GetOrdinal("NgayLap")); // Lấy giá trị cột NgayLap
+
+                        // So sánh mã phiếu thu và ngày lập (chỉ so sánh ngày, bỏ qua giờ)
+                        return mapt == maPhieuThuMoiNhat && ngaylap.Date == ngayThuMoiNhat.Date;
+
+                    }
+                }
+            }
+
+            return false; // Không tìm thấy phiếu thu nào trong cơ sở dữ liệu
         }
 
 
