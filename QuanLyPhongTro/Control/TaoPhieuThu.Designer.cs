@@ -65,13 +65,15 @@
             this.dgvDichVu = new System.Windows.Forms.DataGridView();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TenDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.btnTao = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -258,6 +260,7 @@
             this.txtTongTien.Size = new System.Drawing.Size(337, 30);
             this.txtTongTien.TabIndex = 21;
             this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTongTien.TextChanged += new System.EventHandler(this.txtTongTien_TextChanged);
             // 
             // label18
             // 
@@ -332,7 +335,6 @@
             // 
             // txtTienDien
             // 
-            this.txtTienDien.Enabled = false;
             this.txtTienDien.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTienDien.Location = new System.Drawing.Point(132, 301);
             this.txtTienDien.Margin = new System.Windows.Forms.Padding(1);
@@ -343,7 +345,6 @@
             // 
             // txtTienNuoc
             // 
-            this.txtTienNuoc.Enabled = false;
             this.txtTienNuoc.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTienNuoc.Location = new System.Drawing.Point(132, 410);
             this.txtTienNuoc.Margin = new System.Windows.Forms.Padding(1);
@@ -482,7 +483,9 @@
             this.dgvDichVu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Chon,
             this.TenDV,
+            this.SoLuong,
             this.DonGia,
+            this.ThanhTien,
             this.MaDV});
             this.dgvDichVu.Location = new System.Drawing.Point(21, 38);
             this.dgvDichVu.Margin = new System.Windows.Forms.Padding(2);
@@ -492,6 +495,7 @@
             this.dgvDichVu.Size = new System.Drawing.Size(736, 664);
             this.dgvDichVu.TabIndex = 3;
             this.dgvDichVu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichVu_CellContentClick);
+            this.dgvDichVu.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichVu_CellValueChanged);
             // 
             // Chon
             // 
@@ -510,6 +514,12 @@
             this.TenDV.Name = "TenDV";
             this.TenDV.ReadOnly = true;
             // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.Name = "SoLuong";
+            // 
             // DonGia
             // 
             this.DonGia.DataPropertyName = "DonGia";
@@ -517,6 +527,13 @@
             this.DonGia.MinimumWidth = 6;
             this.DonGia.Name = "DonGia";
             this.DonGia.ReadOnly = true;
+            // 
+            // ThanhTien
+            // 
+            this.ThanhTien.DataPropertyName = "ThanhTien";
+            this.ThanhTien.HeaderText = "Thành Tiền";
+            this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.ReadOnly = true;
             // 
             // MaDV
             // 
@@ -654,16 +671,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtKhachTra;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvDichVu;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenDV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDV;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.Button btnTao;
@@ -674,5 +686,12 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.CheckBox ckbPTP;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaDV;
+        private System.Windows.Forms.TextBox txtKhachTra;
     }
 }

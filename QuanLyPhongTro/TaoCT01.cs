@@ -104,7 +104,7 @@ namespace QuanLyPhongTro
             string dd = DateTime.Now.Day.ToString();
             string MM = DateTime.Now.Month.ToString();
             string yyyy = DateTime.Now.Year.ToString();
-            string date = chuho.NgaySinh.Date.ToString();
+            string date = chuho.NgaySinh.Value.Date.ToString();
 
 
 
@@ -118,7 +118,7 @@ namespace QuanLyPhongTro
             Dictionary<string, string> dic = new Dictionary<string, string>
                     {
                         { "HoTenNguoiKhai", tt.HoTen },
-                        { "NgaySinhNguoiKhai", tt.NgaySinh.Date.ToString("dd/MM/yyyy") },
+                        { "NgaySinhNguoiKhai", tt.NgaySinh.Value.Date.ToString("dd/MM/yyyy") },
                         { "GioiTinhNguoiKhai", tt.GioiTinh },
                         { "SDT", tt.Phone },
                         { "Email", tt.Email },
@@ -139,17 +139,30 @@ namespace QuanLyPhongTro
             if (!string.IsNullOrEmpty(chuho.ChuKy))
             {
                 Bitmap chukychuho = xuly.XuLy(chuho.ChuKy);
-                wd.ReplaceFieldWithImage("ChuKyChuHo", chukychuho);
+                if(chukychuho != null)
+                    wd.ReplaceFieldWithImage("ChuKyChuHo", chukychuho);
+            }else
+            {
+                dic.Add("ChuKyChuHo", "");
             }
             if (!string.IsNullOrEmpty(tt.ChuKy))
             {
                 Bitmap chukynguoikhai = xuly.XuLy(tt.ChuKy);
-                wd.ReplaceFieldWithImage("ChuKyNguoiKhai", chukynguoikhai);
+                if(chukynguoikhai != null)
+                    wd.ReplaceFieldWithImage("ChuKyNguoiKhai", chukynguoikhai);
+            }
+            else
+            {
+                dic.Add("ChuKyNguoiKhai", "");
             }
             if (!string.IsNullOrEmpty(ttadmin.ChuKy))
             {
                 Bitmap chukychusohuu = xuly.XuLy(ttadmin.ChuKy);
                 wd.ReplaceFieldWithImage("ChuKyChuSoHuu", chukychusohuu);
+            }
+            else
+            {
+                dic.Add("ChuKyChuSoHuu", "");
             }
             if (con == -1)
             {
@@ -227,6 +240,7 @@ namespace QuanLyPhongTro
             dic.Add("yyyy", yyyy);
             dic.Add("DienTichPhong", dt.Rows[0]["DienTich"].ToString());
             dic.Add("TienPhong", Convert.ToDecimal(dt.Rows[0]["TienPhong"]).ToString("N0"));
+            dic.Add("SoNguoi", lst.Count.ToString());
             khach.Clear();
             khach.Add(chuho.MaKhachTro);
             System.Data.DataTable bang = BangHopDong(lst);
@@ -428,7 +442,7 @@ namespace QuanLyPhongTro
                         // Gán giá trị cho các cột
                         row["STT"] = stt++;
                         row["HoTen"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
-                        row["NgaySinh"] = th.NgaySinh.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
+                        row["NgaySinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
                         row["GioiTinh"] = th.GioiTinh; // Giả sử GioiTinh là thuộc tính trong ThongTinKhachDTO
                         row["CCCD"] = th.CCCD; // Giả sử CCCD là thuộc tính trong ThongTinKhachDTO
                         row["QuanHe"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
@@ -461,7 +475,7 @@ namespace QuanLyPhongTro
                     // Gán giá trị cho các cột
                     row["STT"] = stt++;
                     row["HoTen"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
-                    row["NgaySinh"] = th.NgaySinh.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
+                    row["NgaySinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
                     row["QuanHe"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
                                                // Thêm hàng vào DataTable
                     dt.Rows.Add(row);
@@ -477,7 +491,7 @@ namespace QuanLyPhongTro
             {
                 if (list.Contains(k.QuanHe))
                 {
-                    con = TinhTuoiCon(k.NgaySinh);
+                    con = TinhTuoiCon(k.NgaySinh.Value);
                 }
                 if (k.QuanHe == "Vợ")
                 {

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinPhieuThu));
             this.txtDu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtKhachTra = new System.Windows.Forms.TextBox();
             this.txtCongNo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDM = new System.Windows.Forms.TextBox();
@@ -66,11 +65,14 @@
             this.dgvDichVu = new System.Windows.Forms.DataGridView();
             this.Chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TenDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.txtKhachTra = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVu)).BeginInit();
@@ -99,17 +101,6 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "THÔNG TIN PHIẾU THU";
             // 
-            // txtKhachTra
-            // 
-            this.txtKhachTra.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKhachTra.Location = new System.Drawing.Point(134, 503);
-            this.txtKhachTra.Name = "txtKhachTra";
-            this.txtKhachTra.Size = new System.Drawing.Size(210, 24);
-            this.txtKhachTra.TabIndex = 23;
-            this.txtKhachTra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtKhachTra.TextChanged += new System.EventHandler(this.txtKhachTra_TextChanged);
-            this.txtKhachTra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKhachTra_KeyPress);
-            // 
             // txtCongNo
             // 
             this.txtCongNo.Enabled = false;
@@ -132,6 +123,7 @@
             // 
             // txtDM
             // 
+            this.txtDM.Enabled = false;
             this.txtDM.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDM.Location = new System.Drawing.Point(489, 205);
             this.txtDM.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -178,11 +170,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtKhachTra);
             this.groupBox1.Controls.Add(this.btnTongTien);
             this.groupBox1.Controls.Add(this.dtpNgayThu);
             this.groupBox1.Controls.Add(this.dtpNgayLap);
             this.groupBox1.Controls.Add(this.txtDu);
-            this.groupBox1.Controls.Add(this.txtKhachTra);
             this.groupBox1.Controls.Add(this.txtCongNo);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -265,14 +257,15 @@
             // 
             // txtTongTien
             // 
-            this.txtTongTien.Enabled = false;
             this.txtTongTien.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongTien.Location = new System.Drawing.Point(122, 436);
+            this.txtTongTien.Location = new System.Drawing.Point(134, 436);
             this.txtTongTien.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(360, 24);
             this.txtTongTien.TabIndex = 21;
             this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTongTien.TextChanged += new System.EventHandler(this.txtTongTien_TextChanged);
+            this.txtTongTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongTien_KeyPress);
             // 
             // label18
             // 
@@ -307,6 +300,7 @@
             // 
             // txtNM
             // 
+            this.txtNM.Enabled = false;
             this.txtNM.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNM.Location = new System.Drawing.Point(489, 319);
             this.txtNM.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -482,7 +476,9 @@
             this.dgvDichVu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Chon,
             this.TenDV,
-            this.DonGia});
+            this.SoLuong,
+            this.DonGia,
+            this.ThanhTien});
             this.dgvDichVu.Location = new System.Drawing.Point(22, 44);
             this.dgvDichVu.Name = "dgvDichVu";
             this.dgvDichVu.RowHeadersWidth = 51;
@@ -490,6 +486,7 @@
             this.dgvDichVu.Size = new System.Drawing.Size(736, 736);
             this.dgvDichVu.TabIndex = 32;
             this.dgvDichVu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichVu_CellContentClick);
+            this.dgvDichVu.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichVu_CellValueChanged);
             // 
             // Chon
             // 
@@ -508,6 +505,12 @@
             this.TenDV.Name = "TenDV";
             this.TenDV.ReadOnly = true;
             // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.Name = "SoLuong";
+            // 
             // DonGia
             // 
             this.DonGia.DataPropertyName = "DonGia";
@@ -515,6 +518,13 @@
             this.DonGia.MinimumWidth = 6;
             this.DonGia.Name = "DonGia";
             this.DonGia.ReadOnly = true;
+            // 
+            // ThanhTien
+            // 
+            this.ThanhTien.DataPropertyName = "ThanhTien";
+            this.ThanhTien.HeaderText = "Thành Tiền";
+            this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -569,6 +579,15 @@
             this.pictureBoxIcon.TabIndex = 60;
             this.pictureBoxIcon.TabStop = false;
             // 
+            // txtKhachTra
+            // 
+            this.txtKhachTra.Location = new System.Drawing.Point(134, 501);
+            this.txtKhachTra.Name = "txtKhachTra";
+            this.txtKhachTra.Size = new System.Drawing.Size(210, 27);
+            this.txtKhachTra.TabIndex = 28;
+            this.txtKhachTra.TextChanged += new System.EventHandler(this.txtKhachTra_TextChanged_1);
+            this.txtKhachTra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKhachTra_KeyPress_1);
+            // 
             // ThongTinPhieuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -597,7 +616,6 @@
         #endregion
         private System.Windows.Forms.TextBox txtDu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtKhachTra;
         private System.Windows.Forms.TextBox txtCongNo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDM;
@@ -629,13 +647,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvDichVu;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenDV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnQuayLai;
         private System.Windows.Forms.Button btnTongTien;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private System.Windows.Forms.TextBox txtKhachTra;
     }
 }
