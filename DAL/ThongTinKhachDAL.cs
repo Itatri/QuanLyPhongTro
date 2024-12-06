@@ -23,7 +23,7 @@ namespace DAL
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM ThongTinKhach, Phong where MaKhuVuc = @MaKhuVuc and Phong.MaPhong = ThongTinKhach.MaPhong";
+                    string query = "SELECT ThongTinKhach.* FROM ThongTinKhach, Phong where MaKhuVuc = @MaKhuVuc and Phong.MaPhong = ThongTinKhach.MaPhong";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
 
@@ -35,21 +35,21 @@ namespace DAL
                         {
                             ThongTinKhachDTO khach = new ThongTinKhachDTO
                             {
-                                MaKhachTro = reader["MaKhachTro"].ToString(),
-                                HoTen = reader["HoTen"].ToString(),
-                                GioiTinh = reader["GioiTinh"].ToString(),
-                                NgaySinh = reader.GetDateTime(reader.GetOrdinal("NgaySinh")),
-                                CCCD = reader["CCCD"].ToString(),
-                                NgayCap = reader.GetDateTime(reader.GetOrdinal("NgayCap")),
-                                NoiCap = reader["NoiCap"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                ThuongTru = reader["ThuongTru"].ToString(),
-                                QueQuan = reader["QueQuan"].ToString(),
-                                QuanHe = reader["QuanHe"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString(),
-                                MaPhong = reader["MaPhong"].ToString(),
-                                TrangThai = reader.GetInt32(reader.GetOrdinal("TrangThai")),
-                                Email = reader["Email"].ToString()
+                                MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : "",
+                                HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : "",
+                                GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : "",
+                                NgaySinh = !reader.IsDBNull(reader.GetOrdinal("NgaySinh")) ? reader.GetDateTime(reader.GetOrdinal("NgaySinh")) : (DateTime?)null,
+                                CCCD = reader["CCCD"] != DBNull.Value ? reader["CCCD"].ToString() : "",
+                                NgayCap = !reader.IsDBNull(reader.GetOrdinal("NgayCap")) ? reader.GetDateTime(reader.GetOrdinal("NgayCap")) : (DateTime?)null,
+                                NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : "",
+                                Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : "",
+                                ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : "",
+                                QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : "",
+                                QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : "",
+                                ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : "",
+                                MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : "",
+                                TrangThai = !reader.IsDBNull(reader.GetOrdinal("TrangThai")) ? reader.GetInt32(reader.GetOrdinal("TrangThai")) : 0,
+                                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : ""
                             };
 
                             danhSachKhach.Add(khach);
@@ -98,7 +98,7 @@ namespace DAL
         //}
         public void CapNhatThongTinKhach(ThongTinKhachDTO khachDTO)
         {
-            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, CCCD = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy, Email = @Email, NoiCap = @NoiCap, NgayCap = @NgayCap, QuanHe = @QuanHe WHERE MaKhachTro = @MaKhachTro";
+            string query = "UPDATE ThongTinKhach SET HoTen = @HoTen, GioiTinh = @GioiTinh, Cccd = @CCCD, Phone = @Phone, QueQuan = @QueQuan, TrangThai = @TrangThai, MaPhong = @MaPhong, NgaySinh = @NgaySinh, ChuKy = @ChuKy, Email = @Email, NoiCap = @NoiCap, NgayCap = @NgayCap, QuanHe = @QuanHe WHERE MaKhachTro = @MaKhachTro";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -188,7 +188,7 @@ namespace DAL
                     conn.Open();
 
                     // Prepare the base query
-                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, CCCD, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe,ThuongTru";
+                    string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, Cccd, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe,ThuongTru";
                     string values = "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @Email, @NoiCap, @NgayCap, @QuanHe, @ThuongTru";
 
                     // Include ChuKy only if it is not null
@@ -252,7 +252,7 @@ namespace DAL
                         MaKhachTro = reader["MaKhachTro"].ToString(),
                         HoTen = reader["HoTen"].ToString(),
                         GioiTinh = reader["GioiTinh"].ToString(),
-                        CCCD = reader["CCCD"].ToString(),
+                        CCCD = reader["Cccd"].ToString(),
                         Phone = reader["Phone"].ToString(),
                         QueQuan = reader["QueQuan"].ToString(),
                         TrangThai = Convert.ToInt32(reader["TrangThai"]),
@@ -294,7 +294,7 @@ namespace DAL
                                "MaKhachTro LIKE @searchValue OR " +
                                "HoTen LIKE @searchValue OR " +
                                "GioiTinh LIKE @searchValue OR " +
-                               "CCCD LIKE @searchValue OR " +
+                               "Cccd LIKE @searchValue OR " +
                                "Phone LIKE @searchValue OR " +
                                "Phone LIKE @searchValue OR " +
                                "QueQuan LIKE @searchValue OR " +
@@ -313,7 +313,7 @@ namespace DAL
                                 MaKhachTro = reader["MaKhachTro"].ToString(),
                                 HoTen = reader["HoTen"].ToString(),
                                 GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["CCCD"].ToString(),
+                                CCCD = reader["Cccd"].ToString(),
                                 Phone = reader["Phone"].ToString(),
                                 QueQuan = reader["QueQuan"].ToString(),
                                 TrangThai = Convert.ToInt32(reader["TrangThai"]),
@@ -362,7 +362,7 @@ namespace DAL
                                 MaKhachTro = reader["MaKhachTro"].ToString(),
                                 HoTen = reader["HoTen"].ToString(),
                                 GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["CCCD"].ToString(),
+                                CCCD = reader["Cccd"].ToString(),
                                 Phone = reader["Phone"].ToString(),
                                 QueQuan = reader["QueQuan"].ToString(),
                                 TrangThai = Convert.ToInt32(reader["TrangThai"]),

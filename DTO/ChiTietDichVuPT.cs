@@ -11,11 +11,16 @@ namespace DTO
         public string MaPT { get; set; }
         public string TenDV { get; set; }
         public float DonGia { get; set; }
-        public ChiTietDichVuPT(string maPhong, string tenDV, float donGia)
+        public int SoLuong { get; set; }
+        public float ThanhTien { get; set; }
+
+        public ChiTietDichVuPT(string maPhong, string tenDV, float donGia, int soLuong, float thanhTien)
         {
             MaPT = maPhong;
             TenDV = tenDV;
             DonGia = donGia;
+            SoLuong = soLuong;
+            ThanhTien = thanhTien;
         }
         public ChiTietDichVuPT() { }
     }
