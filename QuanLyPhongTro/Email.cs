@@ -295,9 +295,9 @@ namespace QuanLyPhongTro
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph(dichVu["TenDichVu"].ToString() ?? "-").SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph("-").SetFont(font))); // Chỉ số đầu
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph("-").SetFont(font))); // Chỉ số cuối
-                                    phieuThuTable.AddCell(new Cell().Add(new Paragraph("-").SetFont(font))); // Số lượng
+                                    phieuThuTable.AddCell(new Cell().Add(new Paragraph(dichVu["SoLuong"].ToString()).SetFont(font))); // Số lượng
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph($"{(dichVu["DonGia"] != DBNull.Value ? Convert.ToDecimal(dichVu["DonGia"]).ToString("#,0") : "-")}").SetFont(font)));
-                                    phieuThuTable.AddCell(new Cell().Add(new Paragraph($"{((dichVu["DonGia"] is DBNull || dichVu["DonGia"] == null ? 0 : Convert.ToDecimal(dichVu["DonGia"])) * 1).ToString("#,0")}")));
+                                    phieuThuTable.AddCell(new Cell().Add(new Paragraph($"{((dichVu["ThanhTien"] is DBNull || dichVu["ThanhTien"] == null ? 0 : Convert.ToDecimal(dichVu["ThanhTien"])) * 1).ToString("#,0")}")));
                                     stt++;
                                 }
                             }
