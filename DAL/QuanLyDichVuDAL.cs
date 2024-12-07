@@ -191,5 +191,35 @@ namespace DAL
                 return dataTable;
             }
         }
+
+        ////Thêm dịch vụ mới vào tất cả các phòng
+        public void AddServiceToRoom(DichVuPhongDTO dv)
+        {
+            string query = "INSERT INTO DichVuPhong (MaPhong, MaDichVu) VALUES (@MaPhong, @MaDichVu)";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Thêm tham số để tránh SQL Injection
+                        cmd.Parameters.AddWithValue("@MaPhong", dv.maphong);
+                        cmd.Parameters.AddWithValue("@MaDichVu", dv.madichvu);
+
+                        // Thực thi lệnh
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Console.WriteLine($"Lỗi khi thêm dịch vụ vào phòng: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

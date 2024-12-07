@@ -21,6 +21,7 @@ namespace QuanLyPhongTro.Control
         public ThongTinPhongBLL thongtinphongBLL = new ThongTinPhongBLL();
         public ThongTinPhongDAL thongTinPhongDAL = new ThongTinPhongDAL();
         public TaoQuanLyPhongDTO taoquanliphongDTO = new TaoQuanLyPhongDTO();
+        private DataTable phongcu = new DataTable(); 
         public string KhuVuc { get; set; }
         public DataTable DichVuPhongTable { get; set; }
 
@@ -151,6 +152,7 @@ namespace QuanLyPhongTro.Control
                 RtxtGhiChu.Text = dt.Rows[0]["GhiChu"].ToString();
                 trangthaiPhong = Convert.ToBoolean(dt.Rows[0]["TrangThai"]);
             }
+            phongcu = dt;
         }
         private List<DichVuPhongDTO> chuyendoidichvu()
         {
@@ -258,7 +260,7 @@ namespace QuanLyPhongTro.Control
                 MaPhong = txtMaPhong.Text,
                 MaKhuVuc = KhuVuc,
                 TenPhong = txtTenPhong.Text,
-                NgayVao = DateTime.Now, // Hoặc giá trị khác
+                NgayVao = (DateTime)phongcu.Rows[0]["NgayVao"], // Hoặc giá trị khác
                 TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
                 DienTich = Convert.ToSingle(txtDienTich.Text),
                 TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
