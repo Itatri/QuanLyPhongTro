@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using DAL;
 using DTO;
 using BLL;
+using Microsoft.Office.Interop.Word;
 
 
 namespace QuanLyPhongTro.Control
@@ -203,7 +204,7 @@ namespace QuanLyPhongTro.Control
         {
 
         }
-
+        private TaoQuanLyPhongBLL tqlPhong = new TaoQuanLyPhongBLL();
         int flag = 0;
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -242,6 +243,18 @@ namespace QuanLyPhongTro.Control
 
                 if (bll.AddService(service))
                 {
+                    System.Data.DataTable dsphong = tqlPhong.LayDanhSachPhong();
+                    List<DichVuPhongDTO> dsdvphong = new List<DichVuPhongDTO>();
+                    if(dsphong != null && dsphong.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in dsphong.Rows)
+                        {
+                            DichVuPhongDTO d = new DichVuPhongDTO();
+                            d.maphong = row["MaPhong"] != DBNull.Value ? row["MaPhong"].ToString() : string.Empty;
+                            d.madichvu = service.MaDichVu;
+                        }
+                    }
+
                     MessageBox.Show("Thêm dịch vụ thành công");
                     RefreshDataGridView();
                 }
@@ -417,7 +430,7 @@ namespace QuanLyPhongTro.Control
         private void TimKiemDichVu()
         {
             string keyword = textBoxTimDichVu.Text.Trim();
-            DataTable result = bll.TimKiemDichVu(keyword);
+            System.Data.DataTable result = bll.TimKiemDichVu(keyword);
 
             if (result.Rows.Count > 0)
             {
@@ -451,7 +464,7 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                DataTable dataTable = bll.SapXepDichVuTheoTrangThai();
+                System.Data.DataTable dataTable = bll.SapXepDichVuTheoTrangThai();
                 dataGridView1.DataSource = dataTable;
             }
             catch (Exception ex)

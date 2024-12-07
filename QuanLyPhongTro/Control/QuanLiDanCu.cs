@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
@@ -21,7 +22,7 @@ namespace QuanLyPhongTro.Control
         public string khuvuc { get; set; }
 
         public string makhuvucdancu { get; set; }
-
+        private bool IsChuHo = false;
         public class Province
         {
             public string name { get; set; }
@@ -299,8 +300,8 @@ namespace QuanLyPhongTro.Control
             SetControlsEnabled(true);
 
             // Đếm số lượng khách hiện tại
-            int soLuongKhach = thongTinKhachBLL.DemSoLuongKhach();
-
+            string MaKhachMoiNhat = thongTinKhachBLL.DemSoLuongKhach();
+            int soLuongKhach = int.Parse(MaKhachMoiNhat.Substring(2));
             // Tạo mã khách trọ mới với tiền tố "KH" + STT (e.g., KH001)
             string maCuDanMoi = "KH" + (soLuongKhach + 1).ToString("D3"); // Số thứ tự có 3 chữ số
 
@@ -518,7 +519,21 @@ namespace QuanLyPhongTro.Control
                 string thuongtru = txtThuongTru.Text;
                 string newImagePathChuKy = null;
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
-
+                if(IsChuHo == true && quanHe == "Chủ hộ") 
+                {
+                    MessageBox.Show("Phòng đã có chủ hộ! Một phòng chỉ có 1 chủ hộ!");
+                    return;
+                }
+                if (KiemTraSoDienThoai(phone) == false)
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ!");
+                    return;
+                }
+                if (KiemTraEmail(email) == false)
+                {
+                    MessageBox.Show("Email không hợp lệ!");
+                    return;
+                }
                 // Chỉ lưu ảnh chữ ký nếu có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
                 {
@@ -1064,6 +1079,41 @@ namespace QuanLyPhongTro.Control
         private void label19_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxPhong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBoxPhong.SelectedIndex != -1)
+            {
+                MessageBox.Show(comboBoxPhong.SelectedValue.ToString());
+                IsChuHo = thongTinKhachBLL.CheckCoChuHoChua(comboBoxPhong.SelectedValue.ToString());
+                MessageBox.Show(IsChuHo.ToString());
+                if (IsChuHo == false)
+                {
+                    comboboxQuanHe.Text = "Chủ hộ";
+                }
+                else
+                {
+                    comboboxQuanHe.Text = "Cùng ở thuê";
+                }
+            }
+        }
+        public bool KiemTraSoDienThoai(string soDienThoai)
+        {
+            // Mẫu regex kiểm tra số điện thoại (có thể thay đổi tùy theo yêu cầu)
+            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; // Số điện thoại Việt Nam phổ biến
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(soDienThoai, pattern);
+        }
+        public bool KiemTraEmail(string email)
+        {
+            // Mẫu regex kiểm tra email chuẩn
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(email, pattern);
         }
     }
 }

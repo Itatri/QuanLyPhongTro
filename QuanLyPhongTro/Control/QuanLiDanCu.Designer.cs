@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLiDanCu));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewDanCu = new System.Windows.Forms.DataGridView();
@@ -66,8 +66,13 @@
             this.labelTenAnhChuKy = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.buttonChonChuKy = new System.Windows.Forms.Button();
+            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.panelCRUDThongTinDanCu = new System.Windows.Forms.Panel();
+            this.buttonLuuCD = new System.Windows.Forms.Button();
+            this.buttonSuaCD = new System.Windows.Forms.Button();
+            this.buttonXoaCD = new System.Windows.Forms.Button();
+            this.buttonThemCD = new System.Windows.Forms.Button();
             this.buttonTimKiemCuDan = new System.Windows.Forms.Button();
             this.txtTimKiemCuDan = new System.Windows.Forms.TextBox();
             this.comboBoxLocPhong = new System.Windows.Forms.ComboBox();
@@ -76,17 +81,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.buttonRefesh = new System.Windows.Forms.Button();
-            this.buttonLuuCD = new System.Windows.Forms.Button();
-            this.buttonSuaCD = new System.Windows.Forms.Button();
-            this.buttonXoaCD = new System.Windows.Forms.Button();
-            this.buttonThemCD = new System.Windows.Forms.Button();
-            this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).BeginInit();
             this.panelThongTinDanCu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.panelCRUDThongTinDanCu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,23 +102,23 @@
             // 
             // dataGridViewDanCu
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Tahoma", 11F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDanCu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDanCu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewDanCu.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDanCu.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewDanCu.Location = new System.Drawing.Point(11, 141);
             this.dataGridViewDanCu.Name = "dataGridViewDanCu";
             this.dataGridViewDanCu.Size = new System.Drawing.Size(1633, 467);
@@ -275,6 +275,7 @@
             this.comboBoxPhong.Name = "comboBoxPhong";
             this.comboBoxPhong.Size = new System.Drawing.Size(153, 28);
             this.comboBoxPhong.TabIndex = 23;
+            this.comboBoxPhong.SelectedIndexChanged += new System.EventHandler(this.comboBoxPhong_SelectedIndexChanged);
             // 
             // comboBoxTrangThai
             // 
@@ -489,6 +490,17 @@
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
             this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
             // 
+            // pictureBoxChuKy
+            // 
+            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxChuKy.Location = new System.Drawing.Point(1439, 31);
+            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
+            this.pictureBoxChuKy.Size = new System.Drawing.Size(161, 186);
+            this.pictureBoxChuKy.TabIndex = 31;
+            this.pictureBoxChuKy.TabStop = false;
+            this.pictureBoxChuKy.Click += new System.EventHandler(this.pictureBoxChuKy_Click);
+            // 
             // dateTimePickerNgaySinh
             // 
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(844, 73);
@@ -508,6 +520,82 @@
             this.panelCRUDThongTinDanCu.Name = "panelCRUDThongTinDanCu";
             this.panelCRUDThongTinDanCu.Size = new System.Drawing.Size(1633, 72);
             this.panelCRUDThongTinDanCu.TabIndex = 29;
+            // 
+            // buttonLuuCD
+            // 
+            this.buttonLuuCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonLuuCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLuuCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
+            this.buttonLuuCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuuCD.Image")));
+            this.buttonLuuCD.Location = new System.Drawing.Point(1315, 13);
+            this.buttonLuuCD.Name = "buttonLuuCD";
+            this.buttonLuuCD.Size = new System.Drawing.Size(200, 42);
+            this.buttonLuuCD.TabIndex = 3;
+            this.buttonLuuCD.Text = "Lưu thông tin ";
+            this.buttonLuuCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLuuCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLuuCD.UseCompatibleTextRendering = true;
+            this.buttonLuuCD.UseMnemonic = false;
+            this.buttonLuuCD.UseVisualStyleBackColor = false;
+            this.buttonLuuCD.Click += new System.EventHandler(this.buttonLuuCD_Click);
+            // 
+            // buttonSuaCD
+            // 
+            this.buttonSuaCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonSuaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSuaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
+            this.buttonSuaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuaCD.Image")));
+            this.buttonSuaCD.Location = new System.Drawing.Point(872, 13);
+            this.buttonSuaCD.Name = "buttonSuaCD";
+            this.buttonSuaCD.Size = new System.Drawing.Size(200, 42);
+            this.buttonSuaCD.TabIndex = 2;
+            this.buttonSuaCD.Text = "Sửa thông tin ";
+            this.buttonSuaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSuaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSuaCD.UseCompatibleTextRendering = true;
+            this.buttonSuaCD.UseMnemonic = false;
+            this.buttonSuaCD.UseVisualStyleBackColor = false;
+            this.buttonSuaCD.Click += new System.EventHandler(this.buttonSuaCD_Click);
+            // 
+            // buttonXoaCD
+            // 
+            this.buttonXoaCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonXoaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXoaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
+            this.buttonXoaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoaCD.Image")));
+            this.buttonXoaCD.Location = new System.Drawing.Point(482, 13);
+            this.buttonXoaCD.Name = "buttonXoaCD";
+            this.buttonXoaCD.Size = new System.Drawing.Size(200, 42);
+            this.buttonXoaCD.TabIndex = 1;
+            this.buttonXoaCD.Text = "Xóa thông tin ";
+            this.buttonXoaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonXoaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonXoaCD.UseCompatibleTextRendering = true;
+            this.buttonXoaCD.UseMnemonic = false;
+            this.buttonXoaCD.UseVisualStyleBackColor = false;
+            this.buttonXoaCD.Click += new System.EventHandler(this.buttonXoaCD_Click);
+            // 
+            // buttonThemCD
+            // 
+            this.buttonThemCD.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonThemCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonThemCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.buttonThemCD.ForeColor = System.Drawing.Color.White;
+            this.buttonThemCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonThemCD.Image")));
+            this.buttonThemCD.Location = new System.Drawing.Point(95, 13);
+            this.buttonThemCD.Name = "buttonThemCD";
+            this.buttonThemCD.Size = new System.Drawing.Size(200, 42);
+            this.buttonThemCD.TabIndex = 0;
+            this.buttonThemCD.Text = "Thêm thông tin ";
+            this.buttonThemCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThemCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonThemCD.UseCompatibleTextRendering = true;
+            this.buttonThemCD.UseMnemonic = false;
+            this.buttonThemCD.UseVisualStyleBackColor = false;
+            this.buttonThemCD.Click += new System.EventHandler(this.buttonThemCD_Click);
             // 
             // buttonTimKiemCuDan
             // 
@@ -608,93 +696,6 @@
             this.buttonRefesh.UseVisualStyleBackColor = true;
             this.buttonRefesh.Click += new System.EventHandler(this.buttonRefesh_Click);
             // 
-            // buttonLuuCD
-            // 
-            this.buttonLuuCD.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonLuuCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLuuCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
-            this.buttonLuuCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuuCD.Image")));
-            this.buttonLuuCD.Location = new System.Drawing.Point(1315, 13);
-            this.buttonLuuCD.Name = "buttonLuuCD";
-            this.buttonLuuCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonLuuCD.TabIndex = 3;
-            this.buttonLuuCD.Text = "Lưu thông tin ";
-            this.buttonLuuCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonLuuCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLuuCD.UseCompatibleTextRendering = true;
-            this.buttonLuuCD.UseMnemonic = false;
-            this.buttonLuuCD.UseVisualStyleBackColor = false;
-            this.buttonLuuCD.Click += new System.EventHandler(this.buttonLuuCD_Click);
-            // 
-            // buttonSuaCD
-            // 
-            this.buttonSuaCD.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonSuaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSuaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
-            this.buttonSuaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuaCD.Image")));
-            this.buttonSuaCD.Location = new System.Drawing.Point(872, 13);
-            this.buttonSuaCD.Name = "buttonSuaCD";
-            this.buttonSuaCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonSuaCD.TabIndex = 2;
-            this.buttonSuaCD.Text = "Sửa thông tin ";
-            this.buttonSuaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSuaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSuaCD.UseCompatibleTextRendering = true;
-            this.buttonSuaCD.UseMnemonic = false;
-            this.buttonSuaCD.UseVisualStyleBackColor = false;
-            this.buttonSuaCD.Click += new System.EventHandler(this.buttonSuaCD_Click);
-            // 
-            // buttonXoaCD
-            // 
-            this.buttonXoaCD.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonXoaCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonXoaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
-            this.buttonXoaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoaCD.Image")));
-            this.buttonXoaCD.Location = new System.Drawing.Point(482, 13);
-            this.buttonXoaCD.Name = "buttonXoaCD";
-            this.buttonXoaCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonXoaCD.TabIndex = 1;
-            this.buttonXoaCD.Text = "Xóa thông tin ";
-            this.buttonXoaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonXoaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonXoaCD.UseCompatibleTextRendering = true;
-            this.buttonXoaCD.UseMnemonic = false;
-            this.buttonXoaCD.UseVisualStyleBackColor = false;
-            this.buttonXoaCD.Click += new System.EventHandler(this.buttonXoaCD_Click);
-            // 
-            // buttonThemCD
-            // 
-            this.buttonThemCD.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonThemCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonThemCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonThemCD.ForeColor = System.Drawing.Color.White;
-            this.buttonThemCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonThemCD.Image")));
-            this.buttonThemCD.Location = new System.Drawing.Point(95, 13);
-            this.buttonThemCD.Name = "buttonThemCD";
-            this.buttonThemCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonThemCD.TabIndex = 0;
-            this.buttonThemCD.Text = "Thêm thông tin ";
-            this.buttonThemCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonThemCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonThemCD.UseCompatibleTextRendering = true;
-            this.buttonThemCD.UseMnemonic = false;
-            this.buttonThemCD.UseVisualStyleBackColor = false;
-            this.buttonThemCD.Click += new System.EventHandler(this.buttonThemCD_Click);
-            // 
-            // pictureBoxChuKy
-            // 
-            this.pictureBoxChuKy.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxChuKy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxChuKy.Location = new System.Drawing.Point(1439, 31);
-            this.pictureBoxChuKy.Name = "pictureBoxChuKy";
-            this.pictureBoxChuKy.Size = new System.Drawing.Size(161, 186);
-            this.pictureBoxChuKy.TabIndex = 31;
-            this.pictureBoxChuKy.TabStop = false;
-            this.pictureBoxChuKy.Click += new System.EventHandler(this.pictureBoxChuKy_Click);
-            // 
             // QuanLiDanCu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,11 +708,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDanCu)).EndInit();
             this.panelThongTinDanCu.ResumeLayout(false);
             this.panelThongTinDanCu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.panelCRUDThongTinDanCu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChuKy)).EndInit();
             this.ResumeLayout(false);
 
         }
