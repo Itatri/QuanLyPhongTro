@@ -128,9 +128,9 @@
             "Thống kê doanh thu trong năm",
             "Thống kê dịch vụ theo tháng",
             "Thống kê dịch vụ theo năm"});
-            this.cboTK.Location = new System.Drawing.Point(414, 150);
+            this.cboTK.Location = new System.Drawing.Point(269, 150);
             this.cboTK.Name = "cboTK";
-            this.cboTK.Size = new System.Drawing.Size(268, 31);
+            this.cboTK.Size = new System.Drawing.Size(413, 31);
             this.cboTK.TabIndex = 51;
             // 
             // pictureBoxIcon
