@@ -28,12 +28,15 @@ namespace BLL
             thongTinKhachDAL.CapNhatThongTinKhach(khachDTO);
         }
 
-        public int DemSoLuongKhach()
+        public string DemSoLuongKhach()
         {
             // Gọi DAL để thực hiện truy vấn đếm số lượng khách
             return thongTinKhachDAL.DemSoLuongKhach();
         }
-
+        public bool CheckCoChuHoChua(string maPhong)
+        {
+            return thongTinKhachDAL.CheckCoChuHoChua(maPhong);
+        }
         public void ThemThongTinKhach(ThongTinKhachDTO khachDTO)
         {
             try

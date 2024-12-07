@@ -124,16 +124,22 @@ namespace DAL
         }
 
 
-        public int DemSoLuongKhach()
+        public string DemSoLuongKhach()
         {
-            int soLuongKhach = 0;
-            string query = "SELECT COUNT(*) FROM ThongTinKhach";
+            string soLuongKhach = string.Empty;
+            string query = "SELECT TOP 1 MaKhachTro FROM ThongTinKhach ORDER BY MaKhachTro DESC";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                soLuongKhach = (int)cmd.ExecuteScalar();
+                var result = cmd.ExecuteScalar();
+
+                // Kiểm tra kết quả trước khi gán
+                if (result != null && result != DBNull.Value)
+                {
+                    soLuongKhach = result.ToString();
+                }
             }
 
             return soLuongKhach;
@@ -398,6 +404,37 @@ namespace DAL
 
                 connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+        ////Kiểm tra phòng đã có chủ hộ chưa
+        public bool CheckCoChuHoChua(string maPhong)
+        {
+            string query = "SELECT COUNT(*) FROM ThongTinKhach WHERE MaPhong = @MaPhong AND QuanHe = @QuanHe";
+            string quanhe = "Chủ hộ";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Thêm tham số
+                        cmd.Parameters.AddWithValue("@MaPhong", maPhong);
+                        cmd.Parameters.AddWithValue("@QuanHe", quanhe);
+
+                        // Thực thi câu lệnh và kiểm tra kết quả
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0; // Nếu số lượng lớn hơn 0, phòng đã có chủ hộ
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                Console.WriteLine($"Lỗi khi kiểm tra chủ hộ: {ex.Message}");
+                throw;
             }
         }
 

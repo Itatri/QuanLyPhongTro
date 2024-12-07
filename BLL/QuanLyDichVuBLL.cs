@@ -31,7 +31,13 @@ namespace BLL
             }
             return dal.InsertService(service) > 0;
         }
-
+        public void AddServiceToRoom(List<DichVuPhongDTO> lst)
+        {
+            foreach (DichVuPhongDTO d in lst)
+            {
+                dal.AddServiceToRoom(d);
+            }
+        }
         public bool RemoveService(string maDV)
         {
             if (!CanRemoveService(maDV, out string message))
