@@ -13,15 +13,16 @@ namespace DAL
     {
         // Lấy chuỗi kết nối từ tệp App.config
         private string connectionString = ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
-
-        public List<FeedBackDTO> LayTatCaFeedBack()
+        public List<FeedBackDTO> LayTatCaFeedBack(string makhuvuc)
         {
             List<FeedBackDTO> danhSachFeedBack = new List<FeedBackDTO>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM FeedBack";
+                string query = "SELECT * FROM FeedBack,Phong WHERE FeedBack.MaPhong = Phong.MaPhong AND MaKhuVuc = @makhuvuc";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@makhuvuc", makhuvuc); // Thêm tham số @makhuvuc
+
                 conn.Open();
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -48,7 +49,8 @@ namespace DAL
         }
 
 
-       
+
+
 
         //public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
         //{
