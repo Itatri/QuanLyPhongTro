@@ -153,7 +153,9 @@ namespace QuanLyPhongTro.Control
         private void btnQLPhanHoi_Click_1(object sender, EventArgs e)
         {
             this.Controls.Clear(); // Xóa các control hiện có
+            controlQuanLyPhanHoi.makhuvuc = makhuvuc;
             this.Controls.Add(controlQuanLyPhanHoi); // Thêm control QuanLyDanCu
+
         }
 
         private void btnQLHopDong1_Click(object sender, EventArgs e)

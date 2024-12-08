@@ -28,7 +28,7 @@ namespace QuanLyPhongTro
                     MessageBox.Show("File does not exist: " + imagePath);
                     return null;
                 }
-                MessageBox.Show(imagePath);
+                //MessageBox.Show(imagePath);
                 // Load the original image
                 using (Image originalImage = Image.FromFile(imagePath))
                 {

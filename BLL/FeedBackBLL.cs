@@ -10,11 +10,12 @@ namespace BLL
 {
     public class FeedBackBLL
     {
+
         private FeedBackDAL feedbackDAL = new FeedBackDAL();
 
-        public List<FeedBackDTO> LayTatCaFeedBack()
+        public List<FeedBackDTO> LayTatCaFeedBack(string makhuvuc)
         {
-            return feedbackDAL.LayTatCaFeedBack();
+            return feedbackDAL.LayTatCaFeedBack(makhuvuc);
         }
 
         //public List<FeedBackDTO> TimKiemFeedBack(string searchValue)
