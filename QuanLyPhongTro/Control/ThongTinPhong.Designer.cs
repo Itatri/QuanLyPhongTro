@@ -58,17 +58,17 @@
             this.dataGridViewDichVu1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.buttonLuu = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu1)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // MaDichVu
@@ -137,6 +137,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(633, 675);
             this.panel1.TabIndex = 35;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtDienTich
             // 
@@ -147,6 +148,7 @@
             this.txtDienTich.Name = "txtDienTich";
             this.txtDienTich.Size = new System.Drawing.Size(413, 29);
             this.txtDienTich.TabIndex = 4;
+            this.txtDienTich.TextChanged += new System.EventHandler(this.txtDienTich_TextChanged);
             // 
             // label10
             // 
@@ -158,6 +160,7 @@
             this.label10.Size = new System.Drawing.Size(90, 20);
             this.label10.TabIndex = 24;
             this.label10.Text = "Diện tích :";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -170,6 +173,7 @@
             this.label9.Size = new System.Drawing.Size(306, 33);
             this.label9.TabIndex = 22;
             this.label9.Text = "THÔNG TIN PHÒNG";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // dateTimePickerHanTro
             // 
@@ -179,6 +183,7 @@
             this.dateTimePickerHanTro.Name = "dateTimePickerHanTro";
             this.dateTimePickerHanTro.Size = new System.Drawing.Size(413, 26);
             this.dateTimePickerHanTro.TabIndex = 8;
+            this.dateTimePickerHanTro.ValueChanged += new System.EventHandler(this.dateTimePickerHanTro_ValueChanged);
             // 
             // RtxtGhiChu
             // 
@@ -190,6 +195,7 @@
             this.RtxtGhiChu.Size = new System.Drawing.Size(581, 128);
             this.RtxtGhiChu.TabIndex = 9;
             this.RtxtGhiChu.Text = "";
+            this.RtxtGhiChu.TextChanged += new System.EventHandler(this.RtxtGhiChu_TextChanged);
             // 
             // txtSoNuoc
             // 
@@ -212,6 +218,7 @@
             this.label8.Size = new System.Drawing.Size(86, 20);
             this.label8.TabIndex = 20;
             this.label8.Text = "Tiền cọc :";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtSodien
             // 
@@ -234,6 +241,7 @@
             this.label7.Size = new System.Drawing.Size(115, 20);
             this.label7.TabIndex = 21;
             this.label7.Text = "Thời hạn trọ :";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label12
             // 
@@ -245,6 +253,7 @@
             this.label12.Size = new System.Drawing.Size(164, 20);
             this.label12.TabIndex = 20;
             this.label12.Text = "Số kí điện bắt đầu :";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label13
             // 
@@ -256,6 +265,7 @@
             this.label13.Size = new System.Drawing.Size(164, 20);
             this.label13.TabIndex = 21;
             this.label13.Text = "Khối nước bắt đầu :";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // textBoxTienPhong
             // 
@@ -277,6 +287,7 @@
             this.txtTenPhong.Name = "txtTenPhong";
             this.txtTenPhong.Size = new System.Drawing.Size(413, 29);
             this.txtTenPhong.TabIndex = 2;
+            this.txtTenPhong.TextChanged += new System.EventHandler(this.txtTenPhong_TextChanged);
             // 
             // txtMaPhong
             // 
@@ -288,6 +299,7 @@
             this.txtMaPhong.Name = "txtMaPhong";
             this.txtMaPhong.Size = new System.Drawing.Size(413, 29);
             this.txtMaPhong.TabIndex = 1;
+            this.txtMaPhong.TextChanged += new System.EventHandler(this.txtMaPhong_TextChanged);
             // 
             // label3
             // 
@@ -299,6 +311,7 @@
             this.label3.Size = new System.Drawing.Size(108, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Tiền phòng :";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -310,6 +323,7 @@
             this.label4.Size = new System.Drawing.Size(81, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Ghi chú :";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -321,6 +335,7 @@
             this.label5.Size = new System.Drawing.Size(104, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Tên phòng :";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label2
             // 
@@ -332,6 +347,7 @@
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mã phòng :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dataGridViewDichVu1
             // 
@@ -366,6 +382,7 @@
             this.dataGridViewDichVu1.Size = new System.Drawing.Size(969, 649);
             this.dataGridViewDichVu1.TabIndex = 38;
             this.dataGridViewDichVu1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDichVu_CellClick);
+            this.dataGridViewDichVu1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDichVu1_CellContentClick);
             // 
             // label1
             // 
@@ -378,6 +395,7 @@
             this.label1.Size = new System.Drawing.Size(444, 52);
             this.label1.TabIndex = 3;
             this.label1.Text = "THÔNG TIN PHÒNG";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel3
             // 
@@ -392,6 +410,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1656, 968);
             this.panel3.TabIndex = 39;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.bedroom;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(986, 29);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 59;
+            this.pictureBoxIcon.TabStop = false;
+            this.pictureBoxIcon.Click += new System.EventHandler(this.pictureBoxIcon_Click);
             // 
             // label6
             // 
@@ -404,6 +434,7 @@
             this.label6.Size = new System.Drawing.Size(151, 20);
             this.label6.TabIndex = 39;
             this.label6.Text = "DỊCH VỤ PHÒNG";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // panel4
             // 
@@ -414,6 +445,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1653, 68);
             this.panel4.TabIndex = 0;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // btnUpdate
             // 
@@ -466,16 +498,6 @@
             this.btnQuayLai.UseVisualStyleBackColor = false;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click_1);
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.bedroom;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(986, 29);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
-            this.pictureBoxIcon.TabIndex = 59;
-            this.pictureBoxIcon.TabStop = false;
-            // 
             // ThongTinPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,8 +513,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDichVu1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

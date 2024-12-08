@@ -145,7 +145,7 @@
             this.btnQLDichVu.Location = new System.Drawing.Point(1121, 425);
             this.btnQLDichVu.Name = "btnQLDichVu";
             this.btnQLDichVu.Size = new System.Drawing.Size(511, 255);
-            this.btnQLDichVu.TabIndex = 9;
+            this.btnQLDichVu.TabIndex = 3;
             this.btnQLDichVu.Text = "QUẢN LÝ DỊCH VỤ";
             this.btnQLDichVu.Click += new System.EventHandler(this.btnQLDichVu_Click_1);
             // 
@@ -162,7 +162,7 @@
             this.btnQLDanCu.Location = new System.Drawing.Point(570, 425);
             this.btnQLDanCu.Name = "btnQLDanCu";
             this.btnQLDanCu.Size = new System.Drawing.Size(511, 255);
-            this.btnQLDanCu.TabIndex = 9;
+            this.btnQLDanCu.TabIndex = 2;
             this.btnQLDanCu.Text = "QUẢN LÝ DÂN CƯ";
             this.btnQLDanCu.Click += new System.EventHandler(this.btnQLDanCu_Click_1);
             // 
@@ -179,7 +179,7 @@
             this.btnQLPhanHoi.Location = new System.Drawing.Point(570, 739);
             this.btnQLPhanHoi.Name = "btnQLPhanHoi";
             this.btnQLPhanHoi.Size = new System.Drawing.Size(511, 255);
-            this.btnQLPhanHoi.TabIndex = 10;
+            this.btnQLPhanHoi.TabIndex = 5;
             this.btnQLPhanHoi.Text = "PHẢN HỒI KHÁCH HÀNG";
             this.btnQLPhanHoi.Click += new System.EventHandler(this.btnQLPhanHoi_Click_1);
             // 
@@ -196,7 +196,7 @@
             this.btnQuanLyPhong.Location = new System.Drawing.Point(19, 425);
             this.btnQuanLyPhong.Name = "btnQuanLyPhong";
             this.btnQuanLyPhong.Size = new System.Drawing.Size(511, 255);
-            this.btnQuanLyPhong.TabIndex = 9;
+            this.btnQuanLyPhong.TabIndex = 1;
             this.btnQuanLyPhong.Text = "QUẢN LÝ PHÒNG";
             this.btnQuanLyPhong.Click += new System.EventHandler(this.btnQuanLyPhong_Click_1);
             // 
@@ -213,7 +213,7 @@
             this.btnQLGiaoDich.Location = new System.Drawing.Point(19, 739);
             this.btnQLGiaoDich.Name = "btnQLGiaoDich";
             this.btnQLGiaoDich.Size = new System.Drawing.Size(511, 255);
-            this.btnQLGiaoDich.TabIndex = 10;
+            this.btnQLGiaoDich.TabIndex = 4;
             this.btnQLGiaoDich.Text = "QUẢN LÝ GIAO DỊCH";
             this.btnQLGiaoDich.Click += new System.EventHandler(this.btnQLGiaoDich_Click_1);
             // 
@@ -245,7 +245,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(1121, 739);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(511, 255);
-            this.guna2Button1.TabIndex = 9;
+            this.guna2Button1.TabIndex = 6;
             this.guna2Button1.Text = "THỐNG KÊ";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
