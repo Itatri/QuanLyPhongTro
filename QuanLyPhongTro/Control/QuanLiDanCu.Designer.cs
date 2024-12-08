@@ -144,7 +144,7 @@
             this.txtMaCuDan.Multiline = true;
             this.txtMaCuDan.Name = "txtMaCuDan";
             this.txtMaCuDan.Size = new System.Drawing.Size(122, 30);
-            this.txtMaCuDan.TabIndex = 8;
+            this.txtMaCuDan.TabIndex = 1;
             this.txtMaCuDan.TextChanged += new System.EventHandler(this.txtMaCuDan_TextChanged);
             // 
             // label3
@@ -165,7 +165,7 @@
             this.txtHoTenCuDan.Multiline = true;
             this.txtHoTenCuDan.Name = "txtHoTenCuDan";
             this.txtHoTenCuDan.Size = new System.Drawing.Size(191, 30);
-            this.txtHoTenCuDan.TabIndex = 10;
+            this.txtHoTenCuDan.TabIndex = 2;
             this.txtHoTenCuDan.TextChanged += new System.EventHandler(this.txtHoTenCuDan_TextChanged);
             // 
             // label4
@@ -206,16 +206,16 @@
             this.comboBoxGioiTinh.Location = new System.Drawing.Point(624, 70);
             this.comboBoxGioiTinh.Name = "comboBoxGioiTinh";
             this.comboBoxGioiTinh.Size = new System.Drawing.Size(126, 28);
-            this.comboBoxGioiTinh.TabIndex = 15;
+            this.comboBoxGioiTinh.TabIndex = 3;
             // 
             // txtCCCD
             // 
-            this.txtCCCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtCCCD.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCCCD.Location = new System.Drawing.Point(115, 218);
             this.txtCCCD.Multiline = true;
             this.txtCCCD.Name = "txtCCCD";
             this.txtCCCD.Size = new System.Drawing.Size(254, 30);
-            this.txtCCCD.TabIndex = 17;
+            this.txtCCCD.TabIndex = 11;
             this.txtCCCD.TextChanged += new System.EventHandler(this.txtCCCD_TextChanged);
             // 
             // label7
@@ -235,7 +235,7 @@
             this.txtSDT.Multiline = true;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(150, 30);
-            this.txtSDT.TabIndex = 19;
+            this.txtSDT.TabIndex = 8;
             // 
             // label8
             // 
@@ -274,7 +274,7 @@
             this.comboBoxPhong.Location = new System.Drawing.Point(1186, 72);
             this.comboBoxPhong.Name = "comboBoxPhong";
             this.comboBoxPhong.Size = new System.Drawing.Size(153, 28);
-            this.comboBoxPhong.TabIndex = 23;
+            this.comboBoxPhong.TabIndex = 5;
             this.comboBoxPhong.SelectedIndexChanged += new System.EventHandler(this.comboBoxPhong_SelectedIndexChanged);
             // 
             // comboBoxTrangThai
@@ -284,7 +284,7 @@
             this.comboBoxTrangThai.Location = new System.Drawing.Point(1186, 148);
             this.comboBoxTrangThai.Name = "comboBoxTrangThai";
             this.comboBoxTrangThai.Size = new System.Drawing.Size(153, 28);
-            this.comboBoxTrangThai.TabIndex = 25;
+            this.comboBoxTrangThai.TabIndex = 10;
             // 
             // label11
             // 
@@ -346,16 +346,17 @@
             this.cbbQueQuan.Location = new System.Drawing.Point(357, 148);
             this.cbbQueQuan.Name = "cbbQueQuan";
             this.cbbQueQuan.Size = new System.Drawing.Size(169, 28);
-            this.cbbQueQuan.TabIndex = 55;
+            this.cbbQueQuan.TabIndex = 7;
             this.cbbQueQuan.SelectedIndexChanged += new System.EventHandler(this.cbbQueQuan_SelectedIndexChanged);
             // 
             // txtThuongTru
             // 
-            this.txtThuongTru.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThuongTru.Location = new System.Drawing.Point(1135, 217);
+            this.txtThuongTru.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtThuongTru.Location = new System.Drawing.Point(1147, 221);
+            this.txtThuongTru.Multiline = true;
             this.txtThuongTru.Name = "txtThuongTru";
             this.txtThuongTru.Size = new System.Drawing.Size(250, 27);
-            this.txtThuongTru.TabIndex = 54;
+            this.txtThuongTru.TabIndex = 15;
             // 
             // label19
             // 
@@ -375,7 +376,7 @@
             this.comboboxQuanHe.Location = new System.Drawing.Point(116, 148);
             this.comboboxQuanHe.Name = "comboboxQuanHe";
             this.comboboxQuanHe.Size = new System.Drawing.Size(153, 28);
-            this.comboboxQuanHe.TabIndex = 51;
+            this.comboboxQuanHe.TabIndex = 6;
             // 
             // txtEmail
             // 
@@ -384,7 +385,7 @@
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(248, 30);
-            this.txtEmail.TabIndex = 50;
+            this.txtEmail.TabIndex = 9;
             // 
             // label18
             // 
@@ -418,19 +419,19 @@
             // 
             // txtNoiCap
             // 
-            this.txtNoiCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtNoiCap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNoiCap.Location = new System.Drawing.Point(734, 218);
             this.txtNoiCap.Multiline = true;
             this.txtNoiCap.Name = "txtNoiCap";
             this.txtNoiCap.Size = new System.Drawing.Size(296, 30);
-            this.txtNoiCap.TabIndex = 45;
+            this.txtNoiCap.TabIndex = 14;
             // 
             // dateTimePickerNgayCap
             // 
             this.dateTimePickerNgayCap.Location = new System.Drawing.Point(466, 221);
             this.dateTimePickerNgayCap.Name = "dateTimePickerNgayCap";
             this.dateTimePickerNgayCap.Size = new System.Drawing.Size(192, 20);
-            this.dateTimePickerNgayCap.TabIndex = 44;
+            this.dateTimePickerNgayCap.TabIndex = 12;
             // 
             // label15
             // 
@@ -485,7 +486,7 @@
             this.buttonChonChuKy.Location = new System.Drawing.Point(1439, 246);
             this.buttonChonChuKy.Name = "buttonChonChuKy";
             this.buttonChonChuKy.Size = new System.Drawing.Size(161, 23);
-            this.buttonChonChuKy.TabIndex = 29;
+            this.buttonChonChuKy.TabIndex = 16;
             this.buttonChonChuKy.Text = "Chọn ảnh";
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
             this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
@@ -506,7 +507,7 @@
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(844, 73);
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(199, 20);
-            this.dateTimePickerNgaySinh.TabIndex = 28;
+            this.dateTimePickerNgaySinh.TabIndex = 4;
             // 
             // panelCRUDThongTinDanCu
             // 
@@ -528,10 +529,10 @@
             this.buttonLuuCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonLuuCD.ForeColor = System.Drawing.Color.White;
             this.buttonLuuCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonLuuCD.Image")));
-            this.buttonLuuCD.Location = new System.Drawing.Point(1315, 13);
+            this.buttonLuuCD.Location = new System.Drawing.Point(496, 13);
             this.buttonLuuCD.Name = "buttonLuuCD";
             this.buttonLuuCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonLuuCD.TabIndex = 3;
+            this.buttonLuuCD.TabIndex = 18;
             this.buttonLuuCD.Text = "Lưu thông tin ";
             this.buttonLuuCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLuuCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -547,10 +548,10 @@
             this.buttonSuaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonSuaCD.ForeColor = System.Drawing.Color.White;
             this.buttonSuaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuaCD.Image")));
-            this.buttonSuaCD.Location = new System.Drawing.Point(872, 13);
+            this.buttonSuaCD.Location = new System.Drawing.Point(919, 13);
             this.buttonSuaCD.Name = "buttonSuaCD";
             this.buttonSuaCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonSuaCD.TabIndex = 2;
+            this.buttonSuaCD.TabIndex = 19;
             this.buttonSuaCD.Text = "Sửa thông tin ";
             this.buttonSuaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSuaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -566,10 +567,10 @@
             this.buttonXoaCD.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.buttonXoaCD.ForeColor = System.Drawing.Color.White;
             this.buttonXoaCD.Image = ((System.Drawing.Image)(resources.GetObject("buttonXoaCD.Image")));
-            this.buttonXoaCD.Location = new System.Drawing.Point(482, 13);
+            this.buttonXoaCD.Location = new System.Drawing.Point(1336, 13);
             this.buttonXoaCD.Name = "buttonXoaCD";
             this.buttonXoaCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonXoaCD.TabIndex = 1;
+            this.buttonXoaCD.TabIndex = 20;
             this.buttonXoaCD.Text = "Xóa thông tin ";
             this.buttonXoaCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonXoaCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -588,7 +589,7 @@
             this.buttonThemCD.Location = new System.Drawing.Point(95, 13);
             this.buttonThemCD.Name = "buttonThemCD";
             this.buttonThemCD.Size = new System.Drawing.Size(200, 42);
-            this.buttonThemCD.TabIndex = 0;
+            this.buttonThemCD.TabIndex = 17;
             this.buttonThemCD.Text = "Thêm thông tin ";
             this.buttonThemCD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonThemCD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

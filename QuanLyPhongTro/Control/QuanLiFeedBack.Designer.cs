@@ -125,7 +125,7 @@
             this.txtMaPhong.Name = "txtMaPhong";
             this.txtMaPhong.ReadOnly = true;
             this.txtMaPhong.Size = new System.Drawing.Size(185, 26);
-            this.txtMaPhong.TabIndex = 8;
+            this.txtMaPhong.TabIndex = 1;
             this.txtMaPhong.TextChanged += new System.EventHandler(this.txtMaPhong_TextChanged);
             // 
             // label4
@@ -146,7 +146,7 @@
             this.txtNoiDungPhanHoi.Name = "txtNoiDungPhanHoi";
             this.txtNoiDungPhanHoi.ReadOnly = true;
             this.txtNoiDungPhanHoi.Size = new System.Drawing.Size(1517, 55);
-            this.txtNoiDungPhanHoi.TabIndex = 10;
+            this.txtNoiDungPhanHoi.TabIndex = 2;
             this.txtNoiDungPhanHoi.TextChanged += new System.EventHandler(this.txtHoTenCuDan_TextChanged);
             // 
             // panelThongTinDanCu
@@ -178,7 +178,7 @@
             this.btnGuiPhanHoi.Location = new System.Drawing.Point(707, 275);
             this.btnGuiPhanHoi.Name = "btnGuiPhanHoi";
             this.btnGuiPhanHoi.Size = new System.Drawing.Size(219, 46);
-            this.btnGuiPhanHoi.TabIndex = 41;
+            this.btnGuiPhanHoi.TabIndex = 4;
             this.btnGuiPhanHoi.Text = "Gửi phản hồi";
             this.btnGuiPhanHoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuiPhanHoi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -213,7 +213,7 @@
             this.txtPhanHoi.Multiline = true;
             this.txtPhanHoi.Name = "txtPhanHoi";
             this.txtPhanHoi.Size = new System.Drawing.Size(1517, 55);
-            this.txtPhanHoi.TabIndex = 41;
+            this.txtPhanHoi.TabIndex = 3;
             // 
             // panel1
             // 

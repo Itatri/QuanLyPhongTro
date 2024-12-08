@@ -57,7 +57,7 @@
             this.comboBoxTrangThai.Location = new System.Drawing.Point(1389, 135);
             this.comboBoxTrangThai.Name = "comboBoxTrangThai";
             this.comboBoxTrangThai.Size = new System.Drawing.Size(456, 31);
-            this.comboBoxTrangThai.TabIndex = 18;
+            this.comboBoxTrangThai.TabIndex = 3;
             this.comboBoxTrangThai.SelectedIndexChanged += new System.EventHandler(this.comboBoxTrangThai_SelectedIndexChanged);
             // 
             // label4
@@ -76,7 +76,7 @@
             this.textBoxTenChungCu.Location = new System.Drawing.Point(161, 136);
             this.textBoxTenChungCu.Name = "textBoxTenChungCu";
             this.textBoxTenChungCu.Size = new System.Drawing.Size(474, 30);
-            this.textBoxTenChungCu.TabIndex = 16;
+            this.textBoxTenChungCu.TabIndex = 2;
             this.textBoxTenChungCu.TextChanged += new System.EventHandler(this.textBoxTenChungCu_TextChanged);
             // 
             // label2
@@ -95,7 +95,7 @@
             this.textBoxMaChungCu.Location = new System.Drawing.Point(161, 84);
             this.textBoxMaChungCu.Name = "textBoxMaChungCu";
             this.textBoxMaChungCu.Size = new System.Drawing.Size(474, 30);
-            this.textBoxMaChungCu.TabIndex = 14;
+            this.textBoxMaChungCu.TabIndex = 1;
             this.textBoxMaChungCu.TextChanged += new System.EventHandler(this.textBoxMaChungCu_TextChanged);
             // 
             // label1
@@ -186,7 +186,7 @@
             this.buttonTaiKhoan.Location = new System.Drawing.Point(1573, 693);
             this.buttonTaiKhoan.Name = "buttonTaiKhoan";
             this.buttonTaiKhoan.Size = new System.Drawing.Size(305, 52);
-            this.buttonTaiKhoan.TabIndex = 20;
+            this.buttonTaiKhoan.TabIndex = 7;
             this.buttonTaiKhoan.Text = "Tài Khoản";
             this.buttonTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonTaiKhoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -202,7 +202,7 @@
             this.buttonLuu.Location = new System.Drawing.Point(529, 693);
             this.buttonLuu.Name = "buttonLuu";
             this.buttonLuu.Size = new System.Drawing.Size(305, 52);
-            this.buttonLuu.TabIndex = 4;
+            this.buttonLuu.TabIndex = 5;
             this.buttonLuu.Text = "Lưu";
             this.buttonLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -218,7 +218,7 @@
             this.buttonCapNhat.Location = new System.Drawing.Point(1051, 693);
             this.buttonCapNhat.Name = "buttonCapNhat";
             this.buttonCapNhat.Size = new System.Drawing.Size(305, 52);
-            this.buttonCapNhat.TabIndex = 3;
+            this.buttonCapNhat.TabIndex = 6;
             this.buttonCapNhat.Text = "Cập nhật";
             this.buttonCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -234,7 +234,7 @@
             this.buttonThem.Location = new System.Drawing.Point(7, 693);
             this.buttonThem.Name = "buttonThem";
             this.buttonThem.Size = new System.Drawing.Size(305, 52);
-            this.buttonThem.TabIndex = 1;
+            this.buttonThem.TabIndex = 4;
             this.buttonThem.Text = "Thêm";
             this.buttonThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

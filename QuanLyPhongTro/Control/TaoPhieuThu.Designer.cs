@@ -89,7 +89,7 @@
             this.txtCongNo.Location = new System.Drawing.Point(129, 184);
             this.txtCongNo.Name = "txtCongNo";
             this.txtCongNo.Size = new System.Drawing.Size(210, 30);
-            this.txtCongNo.TabIndex = 5;
+            this.txtCongNo.TabIndex = 4;
             this.txtCongNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDu
@@ -195,7 +195,7 @@
             this.dtpNgayLap.Location = new System.Drawing.Point(129, 129);
             this.dtpNgayLap.Name = "dtpNgayLap";
             this.dtpNgayLap.Size = new System.Drawing.Size(556, 27);
-            this.dtpNgayLap.TabIndex = 27;
+            this.dtpNgayLap.TabIndex = 3;
             this.dtpNgayLap.ValueChanged += new System.EventHandler(this.dtpNgayLap_ValueChanged);
             // 
             // label2
@@ -215,7 +215,7 @@
             this.cboPhong.Location = new System.Drawing.Point(475, 77);
             this.cboPhong.Name = "cboPhong";
             this.cboPhong.Size = new System.Drawing.Size(210, 31);
-            this.cboPhong.TabIndex = 3;
+            this.cboPhong.TabIndex = 2;
             this.cboPhong.SelectedIndexChanged += new System.EventHandler(this.cboPhong_SelectedIndexChanged);
             // 
             // txtKhachTra

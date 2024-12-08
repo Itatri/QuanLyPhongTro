@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static DAL.ThongTinKhachDAL;
+using System.Data;
 
 namespace DAL
 {
@@ -287,7 +288,62 @@ namespace DAL
             }
         }
 
-     
+
+        //public List<ThongTinKhachDTO> TimKiemThongTinKhach(string searchValue)
+        //{
+        //    List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
+
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        string query = "SELECT * FROM ThongTinKhach WHERE " +
+        //                       "MaKhachTro LIKE @searchValue OR " +
+        //                       "HoTen LIKE @searchValue OR " +
+        //                       "GioiTinh LIKE @searchValue OR " +
+        //                       "Cccd LIKE @searchValue OR " +
+        //                       "Phone LIKE @searchValue OR " +
+        //                       "Phone LIKE @searchValue OR " +
+        //                       "QueQuan LIKE @searchValue OR " +
+        //                       "MaPhong LIKE @searchValue";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@searchValue", "%" + searchValue + "%");
+
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    ThongTinKhachDTO item = new ThongTinKhachDTO
+        //                    {
+        //                        MaKhachTro = reader["MaKhachTro"].ToString(),
+        //                        HoTen = reader["HoTen"].ToString(),
+        //                        GioiTinh = reader["GioiTinh"].ToString(),
+        //                        CCCD = reader["Cccd"].ToString(),
+        //                        Phone = reader["Phone"].ToString(),
+        //                        QueQuan = reader["QueQuan"].ToString(),
+        //                        TrangThai = Convert.ToInt32(reader["TrangThai"]),
+        //                        MaPhong = reader["MaPhong"].ToString(),
+        //                        NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
+        //                        // AnhNhanDien = reader["AnhNhanDien"].ToString(),
+        //                        ChuKy = reader["ChuKy"].ToString(),
+        //                        Email = reader["Email"].ToString(),
+        //                        QuanHe = reader["QuanHe"].ToString(),
+        //                        NoiCap = reader["NoiCap"].ToString(),
+        //                        NgayCap = Convert.ToDateTime(reader["NgayCap"]),
+        //                        ThuongTru = reader["ThuongTru"].ToString(),
+        //                    };
+
+        //                    results.Add(item);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return results;
+        //}
+
         public List<ThongTinKhachDTO> TimKiemThongTinKhach(string searchValue)
         {
             List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
@@ -302,7 +358,6 @@ namespace DAL
                                "GioiTinh LIKE @searchValue OR " +
                                "Cccd LIKE @searchValue OR " +
                                "Phone LIKE @searchValue OR " +
-                               "Phone LIKE @searchValue OR " +
                                "QueQuan LIKE @searchValue OR " +
                                "MaPhong LIKE @searchValue";
 
@@ -316,22 +371,21 @@ namespace DAL
                         {
                             ThongTinKhachDTO item = new ThongTinKhachDTO
                             {
-                                MaKhachTro = reader["MaKhachTro"].ToString(),
-                                HoTen = reader["HoTen"].ToString(),
-                                GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["Cccd"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                QueQuan = reader["QueQuan"].ToString(),
-                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
-                                MaPhong = reader["MaPhong"].ToString(),
-                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                QuanHe = reader["QuanHe"].ToString(),
-                                NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
-                                ThuongTru = reader["ThuongTru"].ToString(),
+                                MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : string.Empty,
+                                HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : string.Empty,
+                                GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : string.Empty,
+                                CCCD = reader["Cccd"] != DBNull.Value ? reader["Cccd"].ToString() : string.Empty,
+                                Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : string.Empty,
+                                QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : string.Empty,
+                                TrangThai = reader["TrangThai"] != DBNull.Value ? Convert.ToInt32(reader["TrangThai"]) : 0,
+                                MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : string.Empty,
+                                NgaySinh = reader["NgaySinh"] != DBNull.Value ? Convert.ToDateTime(reader["NgaySinh"]) : DateTime.MinValue,
+                                ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : string.Empty,
+                                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : string.Empty,
+                                QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : string.Empty,
+                                NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : string.Empty,
+                                NgayCap = reader["NgayCap"] != DBNull.Value ? Convert.ToDateTime(reader["NgayCap"]) : DateTime.MinValue,
+                                ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : string.Empty,
                             };
 
                             results.Add(item);
@@ -343,6 +397,54 @@ namespace DAL
             return results;
         }
 
+
+        //public List<ThongTinKhachDTO> LayThongTinKhachTheoMaPhong(string searchValue)
+        //{
+        //    List<ThongTinKhachDTO> results = new List<ThongTinKhachDTO>();
+
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        string query = "SELECT * FROM ThongTinKhach WHERE MaPhong = @MaPhong";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            // Sử dụng đúng tên tham số là "@MaPhong"
+        //            command.Parameters.AddWithValue("@MaPhong", searchValue);
+
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    ThongTinKhachDTO item = new ThongTinKhachDTO
+        //                    {
+        //                        MaKhachTro = reader["MaKhachTro"].ToString(),
+        //                        HoTen = reader["HoTen"].ToString(),
+        //                        GioiTinh = reader["GioiTinh"].ToString(),
+        //                        CCCD = reader["Cccd"].ToString(),
+        //                        Phone = reader["Phone"].ToString(),
+        //                        QueQuan = reader["QueQuan"].ToString(),
+        //                        TrangThai = Convert.ToInt32(reader["TrangThai"]),
+        //                        MaPhong = reader["MaPhong"].ToString(),
+        //                        NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
+        //                        // AnhNhanDien = reader["AnhNhanDien"].ToString(),
+        //                        ChuKy = reader["ChuKy"].ToString(),
+        //                        Email = reader["Email"].ToString(),
+        //                        QuanHe = reader["QuanHe"].ToString(),
+        //                        NoiCap = reader["NoiCap"].ToString(),
+        //                        NgayCap = Convert.ToDateTime(reader["NgayCap"]),
+        //                        ThuongTru = reader["ThuongTru"].ToString(),
+        //                    };
+
+        //                    results.Add(item);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return results;
+        //}
 
         public List<ThongTinKhachDTO> LayThongTinKhachTheoMaPhong(string searchValue)
         {
@@ -356,8 +458,8 @@ namespace DAL
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Sử dụng đúng tên tham số là "@MaPhong"
-                    command.Parameters.AddWithValue("@MaPhong", searchValue);
+                    // Sử dụng SqlParameter và rõ ràng kiểu dữ liệu
+                    command.Parameters.Add(new SqlParameter("@MaPhong", SqlDbType.NVarChar) { Value = searchValue });
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -365,22 +467,21 @@ namespace DAL
                         {
                             ThongTinKhachDTO item = new ThongTinKhachDTO
                             {
-                                MaKhachTro = reader["MaKhachTro"].ToString(),
-                                HoTen = reader["HoTen"].ToString(),
-                                GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["Cccd"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                QueQuan = reader["QueQuan"].ToString(),
-                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
-                                MaPhong = reader["MaPhong"].ToString(),
-                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                QuanHe = reader["QuanHe"].ToString(),
-                                NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
-                                ThuongTru = reader["ThuongTru"].ToString(),
+                                MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : string.Empty,
+                                HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : string.Empty,
+                                GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : string.Empty,
+                                CCCD = reader["Cccd"] != DBNull.Value ? reader["Cccd"].ToString() : string.Empty,
+                                Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : string.Empty,
+                                QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : string.Empty,
+                                TrangThai = reader["TrangThai"] != DBNull.Value ? Convert.ToInt32(reader["TrangThai"]) : 0,
+                                MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : string.Empty,
+                                NgaySinh = reader["NgaySinh"] != DBNull.Value ? Convert.ToDateTime(reader["NgaySinh"]) : DateTime.MinValue,
+                                ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : string.Empty,
+                                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : string.Empty,
+                                QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : string.Empty,
+                                NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : string.Empty,
+                                NgayCap = reader["NgayCap"] != DBNull.Value ? Convert.ToDateTime(reader["NgayCap"]) : DateTime.MinValue,
+                                ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : string.Empty,
                             };
 
                             results.Add(item);
@@ -391,6 +492,7 @@ namespace DAL
 
             return results;
         }
+
 
 
         public void CapNhatChuKyKhachHang(string maKhachTro, string chuKyMoi)

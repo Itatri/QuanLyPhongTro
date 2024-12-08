@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using DAL;
+using QuanLyPhongTro.Control;
+
 
 namespace QuanLyPhongTro.Control
 {
@@ -229,60 +231,105 @@ namespace QuanLyPhongTro.Control
             dataGridViewDichVu1.Enabled = true;
         }
 
+
+
+
         private void buttonLuu_Click(object sender, EventArgs e)
         {
+            //// Kiểm tra giá trị của các trường nhập liệu
+            //if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
+            //{
+            //    MessageBox.Show("Vui lòng điền đầy đủ thông tin phòng!");
+            //    return;
+            //}
 
-            
+            ////// Hiển thị hộp thoại xác nhận
+            ////DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật thông tin phòng?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            ////if (result == DialogResult.Yes)
+            ////{
 
-            // Kiểm tra giá trị của các trường nhập liệu
-            if (string.IsNullOrEmpty(txtMaPhong.Text) || string.IsNullOrEmpty(txtTenPhong.Text))
+            ////}
+            //DateTime? hanTro = dateTimePickerHanTro.Value;
+            //if (hanTro == dateTimePickerHanTro.MinDate) // Kiểm tra nếu người dùng không chọn ngày hạn trọ
+            //{
+            //    hanTro = null; // Đặt giá trị null để trigger tự động cập nhật
+            //}
+
+            //TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
+            //{
+            //    MaPhong = txtMaPhong.Text,
+            //    MaKhuVuc = KhuVuc,
+            //    TenPhong = txtTenPhong.Text,
+            //    NgayVao = (DateTime)phongcu.Rows[0]["NgayVao"], // Hoặc giá trị khác
+            //    TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
+            //    DienTich = Convert.ToSingle(txtDienTich.Text),
+            //    TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
+            //    Dien = Convert.ToSingle(txtSodien.Text),
+            //    Nuoc = Convert.ToSingle(txtSoNuoc.Text),
+            //    CongNo = 0, // Hoặc giá trị khác
+            //    HanTro = hanTro, // Sử dụng giá trị từ DateTimePicker
+            //    TrangThai = trangthaiPhong, // Hoặc giá trị khác
+            //    GhiChu = RtxtGhiChu.Text
+            //};
+
+            ////// Kiểm tra giá trị hạn trọ
+            ////MessageBox.Show($"Giá trị hạn trọ: {phong.HanTro}");
+
+            //// Cập nhật thông tin phòng
+            //try
+            //{
+            //    thongtinphongBLL.UpdatePhong(phong);
+            //    // Cập nhật thông tin dịch vụ
+            //    List<DichVuPhongDTO> dichVuPhongs = chuyendoidichvu();
+            //    thongtinphongBLL.UpdateDichVuPhong(phong.MaPhong, dichVuPhongs);
+            //    //MessageBox.Show($"Giá trị hạn trọ: {dateTimePickerHanTro.Value}");
+            //    MessageBox.Show("Cập nhật thông tin phòng thành công!");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Cập nhật không thành công: " + ex.Message);
+            //}
+
+            // Lấy giá trị ngày vào từ phongcu (giá trị ban đầu)
+            DateTime ngayVao = (DateTime)phongcu.Rows[0]["NgayVao"];
+
+            // Lấy giá trị hạn trọ từ DateTimePicker
+            DateTime hanTro = dateTimePickerHanTro.Value;
+
+            // Kiểm tra nếu hạn trọ phải sau ngày vào ít nhất 60 ngày
+            if ((hanTro - ngayVao).TotalDays < 10)
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin phòng!");
+                MessageBox.Show("Hạn trọ phải sau ngày vào. Vui lòng chọn lại.", "Lỗi cập nhật", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //// Hiển thị hộp thoại xác nhận
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật thông tin phòng?", "Xác nhận cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if (result == DialogResult.Yes)
-            //{
-
-            //}
-            DateTime? hanTro = dateTimePickerHanTro.Value;
-            if (hanTro == dateTimePickerHanTro.MinDate) // Kiểm tra nếu người dùng không chọn ngày hạn trọ
-            {
-                hanTro = null; // Đặt giá trị null để trigger tự động cập nhật
-            }
-
-            TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
-            {
-                MaPhong = txtMaPhong.Text,
-                MaKhuVuc = KhuVuc,
-                TenPhong = txtTenPhong.Text,
-                NgayVao = (DateTime)phongcu.Rows[0]["NgayVao"], // Hoặc giá trị khác
-                TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
-                DienTich = Convert.ToSingle(txtDienTich.Text),
-                TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
-                Dien = Convert.ToSingle(txtSodien.Text),
-                Nuoc = Convert.ToSingle(txtSoNuoc.Text),
-                CongNo = 0, // Hoặc giá trị khác
-                HanTro = hanTro, // Sử dụng giá trị từ DateTimePicker
-                TrangThai = trangthaiPhong, // Hoặc giá trị khác
-                GhiChu = RtxtGhiChu.Text
-            };
-
-            //// Kiểm tra giá trị hạn trọ
-            //MessageBox.Show($"Giá trị hạn trọ: {phong.HanTro}");
-
-            // Cập nhật thông tin phòng
+            // Nếu qua kiểm tra, tiếp tục cập nhật thông tin
             try
             {
+                TaoQuanLyPhongDTO phong = new TaoQuanLyPhongDTO
+                {
+                    MaPhong = txtMaPhong.Text,
+                    MaKhuVuc = KhuVuc,
+                    TenPhong = txtTenPhong.Text,
+                    NgayVao = ngayVao,
+                    TienCoc = Convert.ToSingle(textBoxTienCoc.Text),
+                    DienTich = Convert.ToSingle(txtDienTich.Text),
+                    TienPhong = Convert.ToSingle(textBoxTienPhong.Text),
+                    Dien = Convert.ToSingle(txtSodien.Text),
+                    Nuoc = Convert.ToSingle(txtSoNuoc.Text),
+                    HanTro = hanTro,
+                    TrangThai = trangthaiPhong,
+                    GhiChu = RtxtGhiChu.Text
+                };
+
+                // Gọi phương thức cập nhật
                 thongtinphongBLL.UpdatePhong(phong);
-                // Cập nhật thông tin dịch vụ
+
+                // Cập nhật dịch vụ nếu có thay đổi
                 List<DichVuPhongDTO> dichVuPhongs = chuyendoidichvu();
                 thongtinphongBLL.UpdateDichVuPhong(phong.MaPhong, dichVuPhongs);
-                //MessageBox.Show($"Giá trị hạn trọ: {dateTimePickerHanTro.Value}");
+
                 MessageBox.Show("Cập nhật thông tin phòng thành công!");
             }
             catch (Exception ex)
@@ -357,6 +404,116 @@ namespace QuanLyPhongTro.Control
                 textBoxTienCoc.SelectionStart = Math.Max(0, selectionStart + textBoxTienCoc.Text.Length - text.Length);
                 textBoxTienCoc.SelectionLength = selectionLength;
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtDienTich_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RtxtGhiChu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenPhong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaPhong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewDichVu1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerHanTro_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
