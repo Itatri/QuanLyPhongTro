@@ -49,7 +49,6 @@ namespace DAL
     FROM UserPhong up
     INNER JOIN Phong p ON up.MaPhong = p.MaPhong
     WHERE up.TRANGTHAI = 1 AND p.MaKhuVuc = @MaKhuVuc"; // Use p.MaKhuVuc here
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);

@@ -7,13 +7,16 @@ using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
 {
+
     public partial class QuanLiFeedBack : UserControl
     {
+
+        public string makhuvuc {  get; set; }
         private FeedBackBLL feedbackBLL = new FeedBackBLL();
         public QuanLiFeedBack()
         {
             InitializeComponent();
-            LoadData();
+
             setConboboxTrangThai();
             // Gắn sự kiện CellContentClick
             dataGridViewFeedBack.CellContentClick += dataGridViewFeedBack_CellContentClick;
@@ -28,7 +31,7 @@ namespace QuanLyPhongTro.Control
         }
         private void LoadData()
         {
-            var danhSachFeedBack = feedbackBLL.LayTatCaFeedBack();
+            var danhSachFeedBack = feedbackBLL.LayTatCaFeedBack(makhuvuc);
             dataGridViewFeedBack.DataSource = danhSachFeedBack;
 
             // Đặt lại tên các cột
@@ -236,6 +239,11 @@ namespace QuanLyPhongTro.Control
                     txtPhanHoi.BackColor = Color.White; // Màu nền mặc định
                 }
             }
+        }
+
+        private void QuanLiFeedBack_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -519,11 +519,7 @@ namespace QuanLyPhongTro.Control
                 string thuongtru = txtThuongTru.Text;
                 string newImagePathChuKy = null;
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
-                if(IsChuHo == true && quanHe == "Chủ hộ") 
-                {
-                    MessageBox.Show("Phòng đã có chủ hộ! Một phòng chỉ có 1 chủ hộ!");
-                    return;
-                }
+                
                 if (KiemTraSoDienThoai(phone) == false)
                 {
                     MessageBox.Show("Số điện thoại không hợp lệ!");
@@ -585,6 +581,11 @@ namespace QuanLyPhongTro.Control
                 }
                 else
                 {
+                    if (IsChuHo == true && quanHe == "Chủ hộ")
+                    {
+                        MessageBox.Show("Phòng đã có chủ hộ! Một phòng chỉ có 1 chủ hộ!");
+                        return;
+                    }
                     // Thêm thông tin khách hàng mới
                     thongTinKhachBLL.ThemThongTinKhach(khachDTO);
                 }
@@ -625,7 +626,49 @@ namespace QuanLyPhongTro.Control
                 txtThuongTru.Text = selectedRow.Cells["ThuongTru"].Value.ToString();
                 txtNoiCap.Text = selectedRow.Cells["NoiCap"].Value.ToString(); // Assuming "NoiCap" is a column in your DataGridView.
 
-                if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
+                //if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
+                //{
+                //    dateTimePickerNgayCap.Value = (DateTime)selectedRow.Cells["NgayCap"].Value;
+                //}
+                //else
+                //{
+                //    dateTimePickerNgayCap.Value = DateTime.Now;
+                //}
+
+                //if (selectedRow.Cells["NgayCap"].Value != DBNull.Value)
+                //{
+                //    if (selectedRow.Cells["NgayCap"].Value != null && selectedRow.Cells["NgayCap"].Value.ToString() != string.Empty)
+                //    {
+                //        dateTimePickerNgayCap.Value = (DateTime)selectedRow.Cells["NgayCap"].Value;
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Ngày cấp rỗng. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //        dateTimePickerNgayCap.Value = DateTime.Now;
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Ngày cấp rỗng. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    dateTimePickerNgayCap.Value = DateTime.Now;
+                //}
+
+
+                //int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
+                //comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0;
+
+                //comboBoxPhong.Text = selectedRow.Cells["MaPhong"].Value.ToString();
+
+                //if (selectedRow.Cells["NgaySinh"].Value != DBNull.Value)
+                //{
+                //    dateTimePickerNgaySinh.Value = (DateTime)selectedRow.Cells["NgaySinh"].Value;
+                //}
+                //else
+                //{
+                //    dateTimePickerNgaySinh.Value = DateTime.Now;
+                //}
+
+                if (selectedRow.Cells["NgayCap"].Value != null && selectedRow.Cells["NgayCap"].Value != DBNull.Value)
                 {
                     dateTimePickerNgayCap.Value = (DateTime)selectedRow.Cells["NgayCap"].Value;
                 }
@@ -634,12 +677,13 @@ namespace QuanLyPhongTro.Control
                     dateTimePickerNgayCap.Value = DateTime.Now;
                 }
 
+
                 int trangThaiValue = Convert.ToInt32(selectedRow.Cells["TrangThai"].Value);
                 comboBoxTrangThai.SelectedIndex = (trangThaiValue == 0) ? 1 : 0;
 
                 comboBoxPhong.Text = selectedRow.Cells["MaPhong"].Value.ToString();
 
-                if (selectedRow.Cells["NgaySinh"].Value != DBNull.Value)
+                if (selectedRow.Cells["NgaySinh"].Value != null && selectedRow.Cells["NgaySinh"].Value != DBNull.Value)
                 {
                     dateTimePickerNgaySinh.Value = (DateTime)selectedRow.Cells["NgaySinh"].Value;
                 }
@@ -1086,9 +1130,9 @@ namespace QuanLyPhongTro.Control
 
             if (comboBoxPhong.SelectedIndex != -1)
             {
-                MessageBox.Show(comboBoxPhong.SelectedValue.ToString());
+                //MessageBox.Show(comboBoxPhong.SelectedValue.ToString());
                 IsChuHo = thongTinKhachBLL.CheckCoChuHoChua(comboBoxPhong.SelectedValue.ToString());
-                MessageBox.Show(IsChuHo.ToString());
+                //MessageBox.Show(IsChuHo.ToString());
                 if (IsChuHo == false)
                 {
                     comboboxQuanHe.Text = "Chủ hộ";
