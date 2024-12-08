@@ -262,9 +262,86 @@ namespace QuanLyPhongTro
 
         private void buttonLuu_Click(object sender, EventArgs e)
         {
+            //if (flag == 1)
+            //{
+
+            //    string taiKhoan = TextBoxTaiKhoan.Text.Trim();
+            //    string matKhau = textBoxMatKhau.Text.Trim();
+            //    string maKhuVuc = comboBoxKhuVuc.SelectedValue?.ToString();
+
+            //    if (string.IsNullOrEmpty(taiKhoan) || string.IsNullOrEmpty(matKhau) || string.IsNullOrEmpty(maKhuVuc))
+            //    {
+            //        MessageBox.Show("Vui lòng nhập đủ thông tin tài khoản, mật khẩu và khu vực!");
+            //        return;
+            //    }
+
+            //    try
+            //    {
+            //        using (SqlConnection connection = new SqlConnection(chuoiketnoi))
+            //        {
+            //            connection.Open();
+
+            //            // Kiểm tra xem khu vực đã có tài khoản hay chưa
+            //            string checkQuery = "SELECT COUNT(*) FROM DangNhap WHERE MaKhuVuc = @MaKhuVuc";
+            //            using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+            //            {
+            //                checkCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+            //                int count = (int)checkCommand.ExecuteScalar();
+
+            //                if (count > 0)
+            //                {
+            //                    MessageBox.Show("Khu vực này đã có tài khoản. Vui lòng chọn khu vực khác!");
+            //                    return;
+            //                }
+            //            }
+
+            //            // Thực hiện thêm tài khoản mới
+            //            string query = "INSERT INTO DangNhap (ID, PassWord, MaKhuVuc, TrangThai) VALUES (@ID, @PassWord, @MaKhuVuc, @TrangThai)";
+            //            using (SqlCommand command = new SqlCommand(query, connection))
+            //            {
+            //                command.Parameters.AddWithValue("@ID", taiKhoan);
+            //                command.Parameters.AddWithValue("@PassWord", matKhau);
+            //                command.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+            //                command.Parameters.AddWithValue("@TrangThai", 1);
+
+            //                int rowsAffected = command.ExecuteNonQuery();
+            //                if (rowsAffected > 0)
+            //                {
+            //                    // Cập nhật trạng thái của khu vực thành 1
+            //                    string updateQuery = "UPDATE KhuVuc SET TrangThai = 1 WHERE MaKhuVuc = @MaKhuVuc";
+            //                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+            //                    {
+            //                        updateCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+            //                        updateCommand.ExecuteNonQuery();
+            //                    }
+            //                    string insertTTAdmin = "INSERT INTO ThongTinAdmin (MaAdmin, IdUser, TrangThai) VALUES (@MaAdmin, @IdUser, @TrangThai)";
+            //                    using (SqlCommand insertCommand = new SqlCommand(insertTTAdmin, connection))
+            //                    {
+            //                        insertCommand.Parameters.AddWithValue("@MaAdmin", taiKhoan);
+            //                        insertCommand.Parameters.AddWithValue("@IdUser", taiKhoan);
+            //                        insertCommand.Parameters.AddWithValue("@TrangThai", 1);
+            //                        insertCommand.ExecuteNonQuery();
+            //                    }
+
+            //                    MessageBox.Show("Thêm tài khoản thành công!");
+            //                    LoadData(); // Tải lại dữ liệu nếu cần thiết
+            //                    LoadKhuVucComboBox(); // Tải lại ComboBox khu vực để loại bỏ khu vực đã sử dụng
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Thêm tài khoản thất bại.");
+            //                }
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Lỗi khi thêm tài khoản: " + ex.Message);
+            //    }
+            //}
+
             if (flag == 1)
             {
-
                 string taiKhoan = TextBoxTaiKhoan.Text.Trim();
                 string matKhau = textBoxMatKhau.Text.Trim();
                 string maKhuVuc = comboBoxKhuVuc.SelectedValue?.ToString();
@@ -281,14 +358,28 @@ namespace QuanLyPhongTro
                     {
                         connection.Open();
 
-                        // Kiểm tra xem khu vực đã có tài khoản hay chưa
-                        string checkQuery = "SELECT COUNT(*) FROM DangNhap WHERE MaKhuVuc = @MaKhuVuc";
-                        using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                        // Kiểm tra xem ID có bị trùng không
+                        string checkIDQuery = "SELECT COUNT(*) FROM DangNhap WHERE ID = @ID";
+                        using (SqlCommand checkIDCommand = new SqlCommand(checkIDQuery, connection))
                         {
-                            checkCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
-                            int count = (int)checkCommand.ExecuteScalar();
+                            checkIDCommand.Parameters.AddWithValue("@ID", taiKhoan);
+                            int idCount = (int)checkIDCommand.ExecuteScalar();
 
-                            if (count > 0)
+                            if (idCount > 0)
+                            {
+                                MessageBox.Show("Tên tài khoản đã tồn tại. Vui lòng chọn tài khoản khác!");
+                                return;
+                            }
+                        }
+
+                        // Kiểm tra xem khu vực đã có tài khoản hay chưa
+                        string checkKhuVucQuery = "SELECT COUNT(*) FROM DangNhap WHERE MaKhuVuc = @MaKhuVuc";
+                        using (SqlCommand checkKhuVucCommand = new SqlCommand(checkKhuVucQuery, connection))
+                        {
+                            checkKhuVucCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+                            int khuVucCount = (int)checkKhuVucCommand.ExecuteScalar();
+
+                            if (khuVucCount > 0)
                             {
                                 MessageBox.Show("Khu vực này đã có tài khoản. Vui lòng chọn khu vực khác!");
                                 return;
@@ -296,15 +387,15 @@ namespace QuanLyPhongTro
                         }
 
                         // Thực hiện thêm tài khoản mới
-                        string query = "INSERT INTO DangNhap (ID, PassWord, MaKhuVuc, TrangThai) VALUES (@ID, @PassWord, @MaKhuVuc, @TrangThai)";
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        string insertQuery = "INSERT INTO DangNhap (ID, PassWord, MaKhuVuc, TrangThai) VALUES (@ID, @PassWord, @MaKhuVuc, @TrangThai)";
+                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                         {
-                            command.Parameters.AddWithValue("@ID", taiKhoan);
-                            command.Parameters.AddWithValue("@PassWord", matKhau);
-                            command.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
-                            command.Parameters.AddWithValue("@TrangThai", 1);
+                            insertCommand.Parameters.AddWithValue("@ID", taiKhoan);
+                            insertCommand.Parameters.AddWithValue("@PassWord", matKhau);
+                            insertCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
+                            insertCommand.Parameters.AddWithValue("@TrangThai", 1);
 
-                            int rowsAffected = command.ExecuteNonQuery();
+                            int rowsAffected = insertCommand.ExecuteNonQuery();
                             if (rowsAffected > 0)
                             {
                                 // Cập nhật trạng thái của khu vực thành 1
@@ -314,13 +405,15 @@ namespace QuanLyPhongTro
                                     updateCommand.Parameters.AddWithValue("@MaKhuVuc", maKhuVuc);
                                     updateCommand.ExecuteNonQuery();
                                 }
+
+                                // Thêm vào bảng ThongTinAdmin
                                 string insertTTAdmin = "INSERT INTO ThongTinAdmin (MaAdmin, IdUser, TrangThai) VALUES (@MaAdmin, @IdUser, @TrangThai)";
-                                using (SqlCommand insertCommand = new SqlCommand(insertTTAdmin, connection))
+                                using (SqlCommand insertAdminCommand = new SqlCommand(insertTTAdmin, connection))
                                 {
-                                    insertCommand.Parameters.AddWithValue("@MaAdmin", taiKhoan);
-                                    insertCommand.Parameters.AddWithValue("@IdUser", taiKhoan);
-                                    insertCommand.Parameters.AddWithValue("@TrangThai", 1);
-                                    insertCommand.ExecuteNonQuery();
+                                    insertAdminCommand.Parameters.AddWithValue("@MaAdmin", taiKhoan);
+                                    insertAdminCommand.Parameters.AddWithValue("@IdUser", taiKhoan);
+                                    insertAdminCommand.Parameters.AddWithValue("@TrangThai", 1);
+                                    insertAdminCommand.ExecuteNonQuery();
                                 }
 
                                 MessageBox.Show("Thêm tài khoản thành công!");
@@ -339,6 +432,7 @@ namespace QuanLyPhongTro
                     MessageBox.Show("Lỗi khi thêm tài khoản: " + ex.Message);
                 }
             }
+
 
             if (flag == 2)
             {

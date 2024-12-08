@@ -42,18 +42,18 @@
             this.dataGridViewTaiKhoan = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.buttonThem = new System.Windows.Forms.Button();
             this.buttonSua = new System.Windows.Forms.Button();
             this.buttonLuu = new System.Windows.Forms.Button();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTaiKhoan)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxMatKhau
@@ -63,7 +63,7 @@
             this.textBoxMatKhau.Location = new System.Drawing.Point(140, 159);
             this.textBoxMatKhau.Name = "textBoxMatKhau";
             this.textBoxMatKhau.Size = new System.Drawing.Size(633, 30);
-            this.textBoxMatKhau.TabIndex = 19;
+            this.textBoxMatKhau.TabIndex = 2;
             this.textBoxMatKhau.TextChanged += new System.EventHandler(this.textBoxMatKhau_TextChanged);
             // 
             // TextBoxTaiKhoan
@@ -73,7 +73,7 @@
             this.TextBoxTaiKhoan.Location = new System.Drawing.Point(140, 99);
             this.TextBoxTaiKhoan.Name = "TextBoxTaiKhoan";
             this.TextBoxTaiKhoan.Size = new System.Drawing.Size(633, 30);
-            this.TextBoxTaiKhoan.TabIndex = 18;
+            this.TextBoxTaiKhoan.TabIndex = 1;
             this.TextBoxTaiKhoan.TextChanged += new System.EventHandler(this.TextBoxTaiKhoan_TextChanged);
             // 
             // comboBoxKhuVuc
@@ -83,7 +83,7 @@
             this.comboBoxKhuVuc.Location = new System.Drawing.Point(1141, 159);
             this.comboBoxKhuVuc.Name = "comboBoxKhuVuc";
             this.comboBoxKhuVuc.Size = new System.Drawing.Size(742, 31);
-            this.comboBoxKhuVuc.TabIndex = 17;
+            this.comboBoxKhuVuc.TabIndex = 3;
             this.comboBoxKhuVuc.SelectedIndexChanged += new System.EventHandler(this.comboBoxKhuVuc_SelectedIndexChanged);
             // 
             // label4
@@ -184,6 +184,36 @@
             this.panel1.Size = new System.Drawing.Size(1900, 785);
             this.panel1.TabIndex = 24;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(1182, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(58, 52);
+            this.pictureBox2.TabIndex = 62;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(929, 374);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(58, 52);
+            this.pictureBox1.TabIndex = 63;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(921, 366);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 62;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.Color.DodgerBlue;
@@ -193,7 +223,7 @@
             this.btnThoat.Location = new System.Drawing.Point(1636, 714);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(247, 52);
-            this.btnThoat.TabIndex = 24;
+            this.btnThoat.TabIndex = 7;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -209,7 +239,7 @@
             this.buttonThem.Location = new System.Drawing.Point(22, 714);
             this.buttonThem.Name = "buttonThem";
             this.buttonThem.Size = new System.Drawing.Size(247, 52);
-            this.buttonThem.TabIndex = 20;
+            this.buttonThem.TabIndex = 4;
             this.buttonThem.Text = "Thêm";
             this.buttonThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -227,7 +257,7 @@
             this.buttonSua.Location = new System.Drawing.Point(1098, 714);
             this.buttonSua.Name = "buttonSua";
             this.buttonSua.Size = new System.Drawing.Size(247, 52);
-            this.buttonSua.TabIndex = 21;
+            this.buttonSua.TabIndex = 6;
             this.buttonSua.Text = "Cập nhật";
             this.buttonSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -243,42 +273,12 @@
             this.buttonLuu.Location = new System.Drawing.Point(560, 714);
             this.buttonLuu.Name = "buttonLuu";
             this.buttonLuu.Size = new System.Drawing.Size(247, 52);
-            this.buttonLuu.TabIndex = 23;
+            this.buttonLuu.TabIndex = 5;
             this.buttonLuu.Text = "Lưu";
             this.buttonLuu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonLuu.UseVisualStyleBackColor = false;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
-            // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(921, 366);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
-            this.pictureBoxIcon.TabIndex = 62;
-            this.pictureBoxIcon.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(929, 374);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 52);
-            this.pictureBox1.TabIndex = 63;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.condominium;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(1182, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(58, 52);
-            this.pictureBox2.TabIndex = 62;
-            this.pictureBox2.TabStop = false;
             // 
             // TaiKhoanDangNhap
             // 
@@ -294,9 +294,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTaiKhoan)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

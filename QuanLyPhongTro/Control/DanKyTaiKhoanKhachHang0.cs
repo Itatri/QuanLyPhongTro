@@ -19,6 +19,10 @@ namespace QuanLyPhongTro.Control
 
         public string makhuvucuserphong { get; set; }
 
+        public DateTime NGAYVAO { get; set; }
+
+        
+
         private string connectionString = ConfigManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
         private Dictionary<string, string> tenPhongToMaPhong = new Dictionary<string, string>();
 
@@ -609,6 +613,11 @@ namespace QuanLyPhongTro.Control
             AnHienTextBox(true);
             AnHienButton(false);
             dataGridView1.Enabled = false;
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

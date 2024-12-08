@@ -530,6 +530,12 @@ namespace QuanLyPhongTro.Control
                     MessageBox.Show("Email không hợp lệ!");
                     return;
                 }
+                if (KiemTraCCCD(email) == false)
+                {
+                    MessageBox.Show("Căn cước công dân không hợp lệ!");
+                    return;
+                }
+
                 // Chỉ lưu ảnh chữ ký nếu có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
                 {
@@ -1158,6 +1164,15 @@ namespace QuanLyPhongTro.Control
 
             // Kiểm tra với Regex
             return Regex.IsMatch(email, pattern);
+        }
+
+        public bool KiemTraCCCD(string cccd)
+        {
+            // Mẫu regex kiểm tra căn cước công dân (12 chữ số)
+            string pattern = @"^\d{12}$"; // Căn cước công dân có 12 chữ số
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(cccd, pattern);
         }
     }
 }
