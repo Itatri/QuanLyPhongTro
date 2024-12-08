@@ -81,6 +81,7 @@ namespace QuanLyPhongTro
             string binPath = AppDomain.CurrentDomain.BaseDirectory;
             string sourceFilePath = Path.Combine(binPath, @"..\..\..\CT01.dotx");
             string sourceFileHongDong = Path.Combine(binPath, @"..\..\..\HopDong.dotx");
+            MessageBox.Show(duongdan);
             XuatPDF(chuho, chuho, sourceFilePath, duongdan);
             foreach (ThongTinKhachDTO k in lst)
             {
@@ -461,9 +462,9 @@ namespace QuanLyPhongTro
             System.Data.DataTable dt = new System.Data.DataTable();
             // Thêm các cột vào DataTable
             dt.Columns.Add("STT", typeof(int));        // Cột STT
-            dt.Columns.Add("HoTen", typeof(string));   // Cột Họ Tên
-            dt.Columns.Add("NgaySinh", typeof(string)); // Cột Ngày Sinh
-            dt.Columns.Add("QuanHe", typeof(string));  // Cột Quan Hệ
+            dt.Columns.Add("Họ tên", typeof(string));   // Cột Họ Tên
+            dt.Columns.Add("Ngày sinh", typeof(string)); // Cột Ngày Sinh
+            dt.Columns.Add("Quan hệ", typeof(string));  // Cột Quan Hệ
 
             // Biến đếm số thứ tự
             int stt = 1;
@@ -474,9 +475,9 @@ namespace QuanLyPhongTro
                     var row = dt.NewRow();
                     // Gán giá trị cho các cột
                     row["STT"] = stt++;
-                    row["HoTen"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
-                    row["NgaySinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
-                    row["QuanHe"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
+                    row["Họ tên"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
+                    row["Ngày sinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
+                    row["Quan hệ"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
                                                // Thêm hàng vào DataTable
                     dt.Rows.Add(row);
                 }
