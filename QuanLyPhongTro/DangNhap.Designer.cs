@@ -40,6 +40,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
@@ -96,6 +97,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(350, 28);
             this.txtMatKhau.TabIndex = 3;
+            this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
             this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatKhau_KeyPress);
             // 
             // cbbChungCu
@@ -114,6 +116,7 @@
             this.btnDangNhap.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnDangNhap.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(145, 328);
             this.btnDangNhap.Name = "btnDangNhap";
@@ -127,6 +130,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnDangNhap);
             this.panel1.Controls.Add(this.label2);
@@ -165,23 +169,35 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(40, 331);
+            this.label5.Location = new System.Drawing.Point(28, 291);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(309, 29);
+            this.label5.Size = new System.Drawing.Size(340, 52);
             this.label5.TabIndex = 8;
-            this.label5.Text = "HỆ THỐNG QUẢN LÝ NHÀ TRỌ";
+            this.label5.Text = "PHẦN MỀM QUẢN LÝ NHÂN KHẨU VÀ\r\n    DỊCH VỤ NHÀ CHO THUÊ CĂN HỘ\r\n";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.apartment1;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(18, 25);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(45, 25);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(354, 288);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(306, 247);
             this.pictureBoxIcon.TabIndex = 31;
             this.pictureBoxIcon.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(24, 299);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(95, 17);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Hiện mật khẩu";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // DangNhap
             // 
@@ -217,6 +233,7 @@
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTaiKhoan;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

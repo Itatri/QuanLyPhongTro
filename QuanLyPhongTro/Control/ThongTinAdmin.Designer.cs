@@ -52,13 +52,13 @@
             this.txtIDUserAdmin = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.panelThongTinDanCu = new System.Windows.Forms.Panel();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.cboNganHang = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtRePass = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.btnCapNhatThongTin = new System.Windows.Forms.Button();
             this.pictureBoxChuKy = new System.Windows.Forms.PictureBox();
             this.panelThongTinDanCu.SuspendLayout();
@@ -97,7 +97,7 @@
             this.buttonChonChuKy.Location = new System.Drawing.Point(1185, 758);
             this.buttonChonChuKy.Name = "buttonChonChuKy";
             this.buttonChonChuKy.Size = new System.Drawing.Size(336, 49);
-            this.buttonChonChuKy.TabIndex = 45;
+            this.buttonChonChuKy.TabIndex = 13;
             this.buttonChonChuKy.Text = "Chọn ảnh";
             this.buttonChonChuKy.UseVisualStyleBackColor = false;
             this.buttonChonChuKy.Click += new System.EventHandler(this.buttonChonChuKy_Click);
@@ -119,7 +119,7 @@
             this.dateTimePickerNgaySinhAdmin.Location = new System.Drawing.Point(185, 534);
             this.dateTimePickerNgaySinhAdmin.Name = "dateTimePickerNgaySinhAdmin";
             this.dateTimePickerNgaySinhAdmin.Size = new System.Drawing.Size(856, 26);
-            this.dateTimePickerNgaySinhAdmin.TabIndex = 67;
+            this.dateTimePickerNgaySinhAdmin.TabIndex = 7;
             // 
             // label3
             // 
@@ -139,7 +139,7 @@
             this.txtMaAdmin.Name = "txtMaAdmin";
             this.txtMaAdmin.ReadOnly = true;
             this.txtMaAdmin.Size = new System.Drawing.Size(201, 40);
-            this.txtMaAdmin.TabIndex = 51;
+            this.txtMaAdmin.TabIndex = 1;
             // 
             // label4
             // 
@@ -158,7 +158,7 @@
             this.txtHoTenAdmin.Multiline = true;
             this.txtHoTenAdmin.Name = "txtHoTenAdmin";
             this.txtHoTenAdmin.Size = new System.Drawing.Size(510, 40);
-            this.txtHoTenAdmin.TabIndex = 53;
+            this.txtHoTenAdmin.TabIndex = 2;
             // 
             // label5
             // 
@@ -187,7 +187,7 @@
             this.txtDiaChiAdmin.Multiline = true;
             this.txtDiaChiAdmin.Name = "txtDiaChiAdmin";
             this.txtDiaChiAdmin.Size = new System.Drawing.Size(856, 40);
-            this.txtDiaChiAdmin.TabIndex = 62;
+            this.txtDiaChiAdmin.TabIndex = 5;
             // 
             // label9
             // 
@@ -206,7 +206,7 @@
             this.comboBoxGioiTinhAdmin.Location = new System.Drawing.Point(185, 292);
             this.comboBoxGioiTinhAdmin.Name = "comboBoxGioiTinhAdmin";
             this.comboBoxGioiTinhAdmin.Size = new System.Drawing.Size(201, 28);
-            this.comboBoxGioiTinhAdmin.TabIndex = 56;
+            this.comboBoxGioiTinhAdmin.TabIndex = 3;
             // 
             // label7
             // 
@@ -235,7 +235,7 @@
             this.txtCCCDAdmin.Multiline = true;
             this.txtCCCDAdmin.Name = "txtCCCDAdmin";
             this.txtCCCDAdmin.Size = new System.Drawing.Size(510, 40);
-            this.txtCCCDAdmin.TabIndex = 58;
+            this.txtCCCDAdmin.TabIndex = 4;
             // 
             // label2
             // 
@@ -264,7 +264,7 @@
             this.txtPhoneAdmin.Multiline = true;
             this.txtPhoneAdmin.Name = "txtPhoneAdmin";
             this.txtPhoneAdmin.Size = new System.Drawing.Size(856, 40);
-            this.txtPhoneAdmin.TabIndex = 72;
+            this.txtPhoneAdmin.TabIndex = 6;
             // 
             // txtIDUserAdmin
             // 
@@ -274,7 +274,7 @@
             this.txtIDUserAdmin.Name = "txtIDUserAdmin";
             this.txtIDUserAdmin.ReadOnly = true;
             this.txtIDUserAdmin.Size = new System.Drawing.Size(856, 40);
-            this.txtIDUserAdmin.TabIndex = 73;
+            this.txtIDUserAdmin.TabIndex = 8;
             // 
             // txtPassword
             // 
@@ -284,7 +284,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(856, 40);
-            this.txtPassword.TabIndex = 74;
+            this.txtPassword.TabIndex = 9;
             // 
             // panelThongTinDanCu
             // 
@@ -328,6 +328,16 @@
             this.panelThongTinDanCu.TabIndex = 76;
             this.panelThongTinDanCu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelThongTinDanCu_Paint);
             // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.administrator;
+            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(1010, 42);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxIcon.TabIndex = 81;
+            this.pictureBoxIcon.TabStop = false;
+            // 
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -335,7 +345,7 @@
             this.txtTaiKhoan.Multiline = true;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(242, 40);
-            this.txtTaiKhoan.TabIndex = 80;
+            this.txtTaiKhoan.TabIndex = 12;
             // 
             // cboNganHang
             // 
@@ -346,7 +356,7 @@
             this.cboNganHang.Location = new System.Drawing.Point(1276, 207);
             this.cboNganHang.Name = "cboNganHang";
             this.cboNganHang.Size = new System.Drawing.Size(242, 33);
-            this.cboNganHang.TabIndex = 79;
+            this.cboNganHang.TabIndex = 11;
             // 
             // label14
             // 
@@ -376,7 +386,7 @@
             this.txtRePass.Name = "txtRePass";
             this.txtRePass.PasswordChar = '*';
             this.txtRePass.Size = new System.Drawing.Size(856, 40);
-            this.txtRePass.TabIndex = 76;
+            this.txtRePass.TabIndex = 10;
             // 
             // label11
             // 
@@ -388,16 +398,6 @@
             this.label11.TabIndex = 75;
             this.label11.Text = "Nhập lại ";
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackgroundImage = global::QuanLyPhongTro.Properties.Resources.administrator;
-            this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(1010, 42);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(58, 52);
-            this.pictureBoxIcon.TabIndex = 81;
-            this.pictureBoxIcon.TabStop = false;
-            // 
             // btnCapNhatThongTin
             // 
             this.btnCapNhatThongTin.BackColor = System.Drawing.Color.DodgerBlue;
@@ -408,10 +408,10 @@
             this.btnCapNhatThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnCapNhatThongTin.ForeColor = System.Drawing.Color.White;
             this.btnCapNhatThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatThongTin.Image")));
-            this.btnCapNhatThongTin.Location = new System.Drawing.Point(677, 883);
+            this.btnCapNhatThongTin.Location = new System.Drawing.Point(672, 886);
             this.btnCapNhatThongTin.Name = "btnCapNhatThongTin";
             this.btnCapNhatThongTin.Size = new System.Drawing.Size(312, 50);
-            this.btnCapNhatThongTin.TabIndex = 75;
+            this.btnCapNhatThongTin.TabIndex = 14;
             this.btnCapNhatThongTin.Text = "Cập nhật thông tin";
             this.btnCapNhatThongTin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhatThongTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
