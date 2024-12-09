@@ -1,11 +1,13 @@
 ﻿using BLL;
 using DTO;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Configuration;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro.Control
@@ -331,7 +333,24 @@ namespace QuanLyPhongTro.Control
 
         private void btnCapNhatThongTin_Click(object sender, EventArgs e)
         {
+            // Kiểm tra số điện thoại và email
+            if (!KiemTraSoDienThoai(txtPhoneAdmin.Text))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ!");
+                return;
+            }
 
+            if (!KiemTraEmail(txtTaiKhoan.Text))
+            {
+                MessageBox.Show("Email không hợp lệ!");
+                return;
+            }
+
+            if (!KiemTraCCCD(txtCCCDAdmin.Text))
+            {
+                MessageBox.Show("Căn cước công dân không hợp lệ!");
+                return;
+            }
             try
             {
                 // Lấy thông tin từ các điều khiển
@@ -435,6 +454,32 @@ namespace QuanLyPhongTro.Control
                 MessageBox.Show($"Lỗi khi cập nhật thông tin Admin: {ex.Message}");
             }
 
+        }
+
+        public bool KiemTraSoDienThoai(string soDienThoai)
+        {
+            // Mẫu regex kiểm tra số điện thoại (có thể thay đổi tùy theo yêu cầu)
+            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; // Số điện thoại Việt Nam phổ biến
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(soDienThoai, pattern);
+        }
+        public bool KiemTraEmail(string email)
+        {
+            // Mẫu regex kiểm tra email chuẩn
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(email, pattern);
+        }
+
+        public bool KiemTraCCCD(string cccd)
+        {
+            // Mẫu regex kiểm tra căn cước công dân (12 chữ số)
+            string pattern = @"^\d{12}$"; // Căn cước công dân có 12 chữ số
+
+            // Kiểm tra với Regex
+            return Regex.IsMatch(cccd, pattern);
         }
 
         private void ThongTinAdmin_Load(object sender, EventArgs e)

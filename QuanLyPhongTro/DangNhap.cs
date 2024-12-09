@@ -90,8 +90,6 @@ namespace QuanLyPhongTro
         }
         private bool ValidateSpecialLogin(string id, string password)
         {
-            
-
             // Giả sử cbbChungCu là tên của ComboBox
             if (string.Equals(id, "DN01", StringComparison.Ordinal) &&
                 string.Equals(password, "pass123", StringComparison.Ordinal) &&
@@ -233,6 +231,30 @@ namespace QuanLyPhongTro
             {
                 e.Handled = true; // Ngăn chặn Enter xuống dòng
             }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                // Nếu checkbox được chọn, hiển thị mật khẩu
+                txtMatKhau.PasswordChar = '\0'; // Không ẩn mật khẩu
+            }
+            else
+            {
+                // Nếu checkbox không được chọn, ẩn mật khẩu
+                txtMatKhau.PasswordChar = '*'; // Ẩn mật khẩu
+            }
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+            txtMatKhau.PasswordChar = '*'; // Ẩn mật khẩu mặc định
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
 
         }
     }
