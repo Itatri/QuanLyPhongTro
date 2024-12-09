@@ -393,7 +393,7 @@ namespace QuanLyPhongTro.Control
 
         private void UpdateRoomStatus(string maPhong, bool trangThai)
         {
-            string query = "UPDATE Phong SET TrangThai = @TrangThai WHERE MaPhong = @MaPhong";
+            string query = "UPDATE Phong SET TrangThai = @TrangThai, NgayVao = NULL, HanTro = NULL WHERE MaPhong = @MaPhong";
             SqlParameter[] parameters = { new SqlParameter("@TrangThai", trangThai), new SqlParameter("@MaPhong", maPhong) };
             ExecuteNonQuery(query, parameters);
         }
