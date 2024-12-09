@@ -75,8 +75,8 @@ namespace QuanLyPhongTro.Control
             if (cboPhong.SelectedIndex != -1)
             {
                 OpenCloseText(true);
-                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
                 maphong = bll.GetMAByTenPhong(cboPhong.Text);
+                txtma.Text = "PT_" + maphong + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
                 int dem = bll.CountKhach(maphong);
                 System.Data.DataTable dt = bll.LoadPhong(maphong);
                 if (dt.Rows.Count > 0)
@@ -413,17 +413,17 @@ namespace QuanLyPhongTro.Control
         }
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
-            if (ckbPTP.Checked)
-            {
-                LoadPhong(khuvuc);
-                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
-            }
-            else
-            {
-                LoadPhongChuaPT(khuvuc);
-                txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
-            }
-
+            //if (ckbPTP.Checked)
+            //{
+            //    LoadPhong(khuvuc);
+            //    txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
+            //}
+            //else
+            //{
+            //    LoadPhongChuaPT(khuvuc);
+            //    txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
+            //}
+            Clear();
 
         }
 

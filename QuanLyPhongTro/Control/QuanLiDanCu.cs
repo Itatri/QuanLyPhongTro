@@ -521,37 +521,35 @@ namespace QuanLyPhongTro.Control
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
                 if (string.IsNullOrEmpty(maPhong))
                 {
-                    MessageBox.Show("Chưa chọn phòng!");
+                    MessageBox.Show("Chưa chọn phòng!"); return;
                 }
                 if (string.IsNullOrEmpty(gioiTinh))
                 {
-                    MessageBox.Show("Chưa nhập giới tính");
+                    MessageBox.Show("Chưa nhập giới tính"); return;
                 }
                 if (string.IsNullOrEmpty(maPhong))
                 {
-                    MessageBox.Show("Chưa chọn phòng!");
+                    MessageBox.Show("Chưa chọn phòng!"); return;
                 }
                 if (string.IsNullOrEmpty(cccd))
                 {
-                    MessageBox.Show("Chưa nhập căn cước công dân");
+                    MessageBox.Show("Chưa nhập căn cước công dân"); return;
                 }
                 if (KiemTraSoDienThoai(phone) == false)
                 {
-                    MessageBox.Show("Số điện thoại không hợp lệ!");
-                    return;
+                    MessageBox.Show("Số điện thoại không hợp lệ!"); return;
                 }
                 if (KiemTraEmail(email) == false)
                 {
-                    MessageBox.Show("Email không hợp lệ!");
-                    return;
+                    MessageBox.Show("Email không hợp lệ!"); return;
                 }
                 if (string.IsNullOrEmpty(quanHe))
                 {
-                    MessageBox.Show("Chưa chọn quan hệ");
+                    MessageBox.Show("Chưa chọn quan hệ"); return;
                 }
                 if (string.IsNullOrEmpty(thuongtru))
                 {
-                    MessageBox.Show("Chưa nhập thương trú");
+                    MessageBox.Show("Chưa nhập thương trú"); return;
                 }
                 // Chỉ lưu ảnh chữ ký nếu có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
