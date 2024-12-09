@@ -340,12 +340,6 @@ namespace QuanLyPhongTro.Control
                 return;
             }
 
-            if (!KiemTraEmail(txtTaiKhoan.Text))
-            {
-                MessageBox.Show("Email không hợp lệ!");
-                return;
-            }
-
             if (!KiemTraCCCD(txtCCCDAdmin.Text))
             {
                 MessageBox.Show("Căn cước công dân không hợp lệ!");

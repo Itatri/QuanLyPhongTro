@@ -551,7 +551,7 @@ namespace QuanLyPhongTro.Control
                 {
                     MessageBox.Show("Chưa nhập thương trú"); return;
                 }
-                if (KiemTraCCCD(email) == false)
+                if (KiemTraCCCD(cccd) == false)
                 {
                     MessageBox.Show("Căn cước công dân không hợp lệ!");
                     return;

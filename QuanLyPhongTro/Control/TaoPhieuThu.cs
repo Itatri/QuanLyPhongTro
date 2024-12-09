@@ -341,11 +341,16 @@ namespace QuanLyPhongTro.Control
                         float khachtra = 0;
                         float congno = 0;
                         float.TryParse(txtKhachTra.Text, out khachtra);
-                        if ((float.Parse(txtCongNo.Text) - float.Parse(txtTongTien.Text)) >= 0)
-                            khachtra = float.Parse(txtTongTien.Text);
+                        
+                        if(txtTongTien.Text.Length > 0)
+                        {
+                            if ((float.Parse(txtCongNo.Text) - float.Parse(txtTongTien.Text)) >= 0)
+                                khachtra = float.Parse(txtTongTien.Text);
+                        }
                         if (txtTongTien.Text.Length > 0)
                         {
                             congno = float.Parse(txtCongNo.Text) - (khachtra - float.Parse(txtTongTien.Text));
+
                         }
                         else { congno = float.Parse(txtCongNo.Text); }
 
