@@ -519,7 +519,22 @@ namespace QuanLyPhongTro.Control
                 string thuongtru = txtThuongTru.Text;
                 string newImagePathChuKy = null;
                 string maPhong = comboBoxPhong.SelectedValue != null ? comboBoxPhong.SelectedValue.ToString() : null;
-                
+                if (string.IsNullOrEmpty(maPhong))
+                {
+                    MessageBox.Show("Chưa chọn phòng!");
+                }
+                if (string.IsNullOrEmpty(gioiTinh))
+                {
+                    MessageBox.Show("Chưa nhập giới tính");
+                }
+                if (string.IsNullOrEmpty(maPhong))
+                {
+                    MessageBox.Show("Chưa chọn phòng!");
+                }
+                if (string.IsNullOrEmpty(cccd))
+                {
+                    MessageBox.Show("Chưa nhập căn cước công dân");
+                }
                 if (KiemTraSoDienThoai(phone) == false)
                 {
                     MessageBox.Show("Số điện thoại không hợp lệ!");
@@ -529,6 +544,14 @@ namespace QuanLyPhongTro.Control
                 {
                     MessageBox.Show("Email không hợp lệ!");
                     return;
+                }
+                if (string.IsNullOrEmpty(quanHe))
+                {
+                    MessageBox.Show("Chưa chọn quan hệ");
+                }
+                if (string.IsNullOrEmpty(thuongtru))
+                {
+                    MessageBox.Show("Chưa nhập thương trú");
                 }
                 // Chỉ lưu ảnh chữ ký nếu có ảnh trong pictureBoxChuKy
                 if (pictureBoxChuKy.Image != null)
