@@ -26,6 +26,7 @@ namespace QuanLyPhongTro
         ThongTinAdminDTO ttadmin = new ThongTinAdminDTO();
         KhuVucDTO khuvuc = new KhuVucDTO();
         System.Data.DataTable dt = new System.Data.DataTable();
+        /// Tạo CT01 và Hợp đồng
         public int TaoTamTru()
         {
             lst = khachbll.LayThongTinKhachTheoMaPhong(maphong);
@@ -73,11 +74,10 @@ namespace QuanLyPhongTro
                 }
                 else
                 {
-                    return -1;// Code khi người dùng chọn No
+                    return -1;
                 }
             }
             duongdan = TaoFolder(tenPhong, duongdankhuvuc);
-            // Đường dẫn tới file Word trong thư mục bin
             string binPath = AppDomain.CurrentDomain.BaseDirectory;
             string sourceFilePath = Path.Combine(binPath, @"..\..\..\CT01.dotx");
             string sourceFileHongDong = Path.Combine(binPath, @"..\..\..\HopDong.dotx");
@@ -93,12 +93,9 @@ namespace QuanLyPhongTro
             }
 
             XuatHopDong(khuvuc, chuho, sourceFileHongDong, duongdan);
-            ///// Tao hop dong
-
-
             return 0;
         }
-
+        //Tạo CT01
         private void XuatPDF(ThongTinKhachDTO tt, ThongTinKhachDTO chuho, string sourceFilePath, string duongdan)
         {
             string dd = DateTime.Now.Day.ToString();
@@ -222,6 +219,7 @@ namespace QuanLyPhongTro
             me = null;
         }
 
+        //Tạo hợp đồng
         private void XuatHopDong(KhuVucDTO kv, ThongTinKhachDTO chuho, string sourceFilePath, string duongdan)
         {
             string dd = DateTime.Now.Day.ToString();
@@ -277,16 +275,12 @@ namespace QuanLyPhongTro
                     }
                 }
             }
-            string newFileName = "HopDong" + dt.Rows[0]["TenPhong"].ToString() + ".docx"; // Đổi sang định dạng docx
-            string newFilePath = Path.Combine(duongdan, newFileName); // Đường dẫn tới file mới
-
-            // Lưu file với tên mới trong thư mục mới
+            string newFileName = "HopDong" + dt.Rows[0]["TenPhong"].ToString() + ".docx"; 
+            string newFilePath = Path.Combine(duongdan, newFileName); 
             wd.SaveAs(newFilePath);
-
-            // Đóng file Word
             wd.Close();
             ExportToPDF(newFilePath, duongdan, newFileName);
-            wd = null; // Giải phóng tài nguyên
+            wd = null; 
         }
         private ThongTinKhachDTO ChuHo(List<ThongTinKhachDTO> lst)
         {
@@ -298,6 +292,7 @@ namespace QuanLyPhongTro
             }
             return chuho;
         }
+        //Kiểm tra folder đã tạo chưa
         private bool checkFolder(string key, string path)
         {
             string desktopPath = path;
