@@ -49,7 +49,7 @@ namespace QuanLyPhongTro
             int n = lst.Count;
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string duongdankhuvuc = string.Empty;
-            if (!checkFolder(makhuvuc, desktop))
+            if (checkFolder(makhuvuc, desktop) == false)
             {
                 duongdankhuvuc = TaoFolder(makhuvuc, desktop);
             }
@@ -81,7 +81,6 @@ namespace QuanLyPhongTro
             string binPath = AppDomain.CurrentDomain.BaseDirectory;
             string sourceFilePath = Path.Combine(binPath, @"..\..\..\CT01.dotx");
             string sourceFileHongDong = Path.Combine(binPath, @"..\..\..\HopDong.dotx");
-            MessageBox.Show(duongdan);
             XuatPDF(chuho, chuho, sourceFilePath, duongdan);
             foreach (ThongTinKhachDTO k in lst)
             {
@@ -309,7 +308,7 @@ namespace QuanLyPhongTro
             // Kết hợp đường dẫn với tên thư mục
             string folderPath = Path.Combine(desktopPath, folderName);
             // Kiểm tra nếu thư mục chưa tồn tại thì tạo mới
-            if (!Directory.Exists(path))
+            if (!Directory.Exists(folderPath))
             {
                 return false;
             }

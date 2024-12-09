@@ -255,18 +255,21 @@ namespace DAL
                 {
                     khachDTO = new ThongTinKhachDTO
                     {
-                        MaKhachTro = reader["MaKhachTro"].ToString(),
-                        HoTen = reader["HoTen"].ToString(),
-                        GioiTinh = reader["GioiTinh"].ToString(),
-                        CCCD = reader["Cccd"].ToString(),
-                        Phone = reader["Phone"].ToString(),
-                        QueQuan = reader["QueQuan"].ToString(),
-                        TrangThai = Convert.ToInt32(reader["TrangThai"]),
-                        MaPhong = reader["MaPhong"].ToString(),
-                        NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                        ThuongTru = reader["ThuongTru"].ToString(),
-                        //AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                        ChuKy = reader["ChuKy"].ToString()
+                        MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : "",
+                        HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : "",
+                        GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : "",
+                        NgaySinh = !reader.IsDBNull(reader.GetOrdinal("NgaySinh")) ? reader.GetDateTime(reader.GetOrdinal("NgaySinh")) : (DateTime?)null,
+                        CCCD = reader["CCCD"] != DBNull.Value ? reader["CCCD"].ToString() : "",
+                        NgayCap = !reader.IsDBNull(reader.GetOrdinal("NgayCap")) ? reader.GetDateTime(reader.GetOrdinal("NgayCap")) : (DateTime?)null,
+                        NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : "",
+                        Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : "",
+                        ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : "",
+                        QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : "",
+                        QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : "",
+                        ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : "",
+                        MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : "",
+                        TrangThai = !reader.IsDBNull(reader.GetOrdinal("TrangThai")) ? reader.GetInt32(reader.GetOrdinal("TrangThai")) : 0,
+                        Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : ""
                     };
                 }
             }
@@ -316,22 +319,21 @@ namespace DAL
                         {
                             ThongTinKhachDTO item = new ThongTinKhachDTO
                             {
-                                MaKhachTro = reader["MaKhachTro"].ToString(),
-                                HoTen = reader["HoTen"].ToString(),
-                                GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["Cccd"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                QueQuan = reader["QueQuan"].ToString(),
-                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
-                                MaPhong = reader["MaPhong"].ToString(),
-                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                QuanHe = reader["QuanHe"].ToString(),
-                                NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
-                                ThuongTru = reader["ThuongTru"].ToString(),
+                                MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : "",
+                                HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : "",
+                                GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : "",
+                                NgaySinh = !reader.IsDBNull(reader.GetOrdinal("NgaySinh")) ? reader.GetDateTime(reader.GetOrdinal("NgaySinh")) : (DateTime?)null,
+                                CCCD = reader["CCCD"] != DBNull.Value ? reader["CCCD"].ToString() : "",
+                                NgayCap = !reader.IsDBNull(reader.GetOrdinal("NgayCap")) ? reader.GetDateTime(reader.GetOrdinal("NgayCap")) : (DateTime?)null,
+                                NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : "",
+                                Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : "",
+                                ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : "",
+                                QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : "",
+                                QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : "",
+                                ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : "",
+                                MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : "",
+                                TrangThai = !reader.IsDBNull(reader.GetOrdinal("TrangThai")) ? reader.GetInt32(reader.GetOrdinal("TrangThai")) : 0,
+                                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : ""
                             };
 
                             results.Add(item);
@@ -365,22 +367,21 @@ namespace DAL
                         {
                             ThongTinKhachDTO item = new ThongTinKhachDTO
                             {
-                                MaKhachTro = reader["MaKhachTro"].ToString(),
-                                HoTen = reader["HoTen"].ToString(),
-                                GioiTinh = reader["GioiTinh"].ToString(),
-                                CCCD = reader["Cccd"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                QueQuan = reader["QueQuan"].ToString(),
-                                TrangThai = Convert.ToInt32(reader["TrangThai"]),
-                                MaPhong = reader["MaPhong"].ToString(),
-                                NgaySinh = Convert.ToDateTime(reader["NgaySinh"]),
-                                // AnhNhanDien = reader["AnhNhanDien"].ToString(),
-                                ChuKy = reader["ChuKy"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                QuanHe = reader["QuanHe"].ToString(),
-                                NoiCap = reader["NoiCap"].ToString(),
-                                NgayCap = Convert.ToDateTime(reader["NgayCap"]),
-                                ThuongTru = reader["ThuongTru"].ToString(),
+                                MaKhachTro = reader["MaKhachTro"] != DBNull.Value ? reader["MaKhachTro"].ToString() : "",
+                                HoTen = reader["HoTen"] != DBNull.Value ? reader["HoTen"].ToString() : "",
+                                GioiTinh = reader["GioiTinh"] != DBNull.Value ? reader["GioiTinh"].ToString() : "",
+                                NgaySinh = !reader.IsDBNull(reader.GetOrdinal("NgaySinh")) ? reader.GetDateTime(reader.GetOrdinal("NgaySinh")) : (DateTime?)null,
+                                CCCD = reader["CCCD"] != DBNull.Value ? reader["CCCD"].ToString() : "",
+                                NgayCap = !reader.IsDBNull(reader.GetOrdinal("NgayCap")) ? reader.GetDateTime(reader.GetOrdinal("NgayCap")) : (DateTime?)null,
+                                NoiCap = reader["NoiCap"] != DBNull.Value ? reader["NoiCap"].ToString() : "",
+                                Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : "",
+                                ThuongTru = reader["ThuongTru"] != DBNull.Value ? reader["ThuongTru"].ToString() : "",
+                                QueQuan = reader["QueQuan"] != DBNull.Value ? reader["QueQuan"].ToString() : "",
+                                QuanHe = reader["QuanHe"] != DBNull.Value ? reader["QuanHe"].ToString() : "",
+                                ChuKy = reader["ChuKy"] != DBNull.Value ? reader["ChuKy"].ToString() : "",
+                                MaPhong = reader["MaPhong"] != DBNull.Value ? reader["MaPhong"].ToString() : "",
+                                TrangThai = !reader.IsDBNull(reader.GetOrdinal("TrangThai")) ? reader.GetInt32(reader.GetOrdinal("TrangThai")) : 0,
+                                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : ""
                             };
 
                             results.Add(item);
