@@ -34,15 +34,10 @@ namespace QuanLyPhongTro.Control
             InitializeComponent();
             LoadProvinces();
         
-            // Sự kiện CellFormatting
             dataGridViewDanCu.CellFormatting += dataGridViewDanCu_CellFormatting;
 
-            // Đăng ký sự kiện CellClick cho DataGridView
             dataGridViewDanCu.CellClick += dataGridViewDanCu_CellClick;
-            // Thiết lập chế độ hiển thị ảnh cho PictureBox
-            //pictureBoxAnhCuDan.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxChuKy.SizeMode = PictureBoxSizeMode.Zoom;
-            // Thiết lập trạng thái của các trường dữ liệu
             SetControlsEnabled(false);
             
             SetComboBoxGioiTinh();
@@ -168,7 +163,7 @@ namespace QuanLyPhongTro.Control
             });
 
 
-            comboboxQuanHe.SelectedIndex = -1; // Set no selection by default
+            comboboxQuanHe.SelectedIndex = -1;
         }
 
 
@@ -235,7 +230,6 @@ namespace QuanLyPhongTro.Control
             var danhSachKhach = thongTinKhachBLL.LayTatCaThongTinKhach(khuvuc);
             dataGridViewDanCu.DataSource = danhSachKhach;
 
-            // Đặt lại tên các cột
             dataGridViewDanCu.Columns["MaKhachTro"].HeaderText = "Mã Cư Dân";
             dataGridViewDanCu.Columns["MaKhachTro"].Visible = false;
             dataGridViewDanCu.Columns["ChuKy"].HeaderText = "Chữ Ký";
@@ -253,17 +247,15 @@ namespace QuanLyPhongTro.Control
             dataGridViewDanCu.Columns["NgayCap"].HeaderText = "Ngày Cấp";
             dataGridViewDanCu.Columns["NoiCap"].HeaderText = "Nơi Cấp";
             dataGridViewDanCu.Columns["ThuongTru"].HeaderText = "Thường Trú";
-            // Tạo cột "TrangThai" mới nếu chưa tồn tại
             if (dataGridViewDanCu.Columns["TrangThai"] == null)
             {
                 DataGridViewTextBoxColumn colTrangThai = new DataGridViewTextBoxColumn();
                 colTrangThai.Name = "TrangThai";
                 colTrangThai.HeaderText = "Trạng Thái";
-                colTrangThai.DataPropertyName = "TrangThai"; // Tên thuộc tính trong DataSource
+                colTrangThai.DataPropertyName = "TrangThai"; 
                 dataGridViewDanCu.Columns.Add(colTrangThai);
             }
 
-            // Thêm cột nút "Xem Chi Tiết" nếu chưa tồn tại
             if (dataGridViewDanCu.Columns["btnXemChiTiet"] == null)
             {
                 DataGridViewButtonColumn btnXemChiTiet = new DataGridViewButtonColumn();
@@ -275,16 +267,13 @@ namespace QuanLyPhongTro.Control
                 dataGridViewDanCu.Columns.Add(btnXemChiTiet);
             }
 
-            // Đảm bảo cột "btnXemChiTiet" luôn ở vị trí cuối cùng
             dataGridViewDanCu.Columns["btnXemChiTiet"].DisplayIndex = dataGridViewDanCu.Columns.Count - 1;
 
-            // Tùy chỉnh màu sắc cho cột nút
             dataGridViewDanCu.Columns["btnXemChiTiet"].DefaultCellStyle.BackColor = Color.Black;
             dataGridViewDanCu.Columns["btnXemChiTiet"].DefaultCellStyle.ForeColor = Color.White;
             dataGridViewDanCu.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionBackColor = Color.Green;
             dataGridViewDanCu.Columns["btnXemChiTiet"].DefaultCellStyle.SelectionForeColor = Color.White;
 
-            // Thiết lập tự động điều chỉnh kích thước cột
             dataGridViewDanCu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -294,19 +283,17 @@ namespace QuanLyPhongTro.Control
 
         private void buttonThemCD_Click(object sender, EventArgs e)
         {
-            isAddingNew = true; // Đặt chế độ thêm mới
+            isAddingNew = true;
 
-            // Làm mới các trường dữ liệu để nhập thông tin
             SetControlsEnabled(true);
 
-            // Đếm số lượng khách hiện tại
             string MaKhachMoiNhat = thongTinKhachBLL.DemSoLuongKhach();
             int soLuongKhach = int.Parse(MaKhachMoiNhat.Substring(2));
             // Tạo mã khách trọ mới với tiền tố "KH" + STT (e.g., KH001)
-            string maCuDanMoi = "KH" + (soLuongKhach + 1).ToString("D3"); // Số thứ tự có 3 chữ số
+            string maCuDanMoi = "KH" + (soLuongKhach + 1).ToString("D3");
 
             txtMaCuDan.Text = maCuDanMoi;
-            txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ mới
+            txtMaCuDan.Enabled = false; 
             txtHoTenCuDan.Clear();
             comboBoxGioiTinh.SelectedIndex = -1;
             txtCCCD.Clear();
@@ -332,49 +319,37 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                // Lấy mã khách hàng từ txtMaCuDan
                 string maKhachTro = txtMaCuDan.Text;
 
-                // Kiểm tra xem mã khách hàng có hợp lệ không
                 if (!string.IsNullOrEmpty(maKhachTro))
                 {
-                    // Xác nhận việc xóa
                     var result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        // Lấy thông tin khách hàng hiện tại để lấy tên file ảnh
                         var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
 
                         if (currentCustomer != null)
                         {
 
-                            // Xóa chữ ký của khách hàng nếu có
                             if (!string.IsNullOrEmpty(currentCustomer.ChuKy))
                             {
-                                // Tạo đường dẫn đầy đủ tới ảnh
                                 string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
                                 string imagesFolderPathChuKy = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
                                 string filePathChuKy = Path.Combine(imagesFolderPathChuKy, currentCustomer.ChuKy);
-                                //ConfigurationManager.ConnectionStrings["QuanLyPhongTro"].ConnectionString;
 
-                                // Giải phóng tài nguyên ảnh nếu cần
                                 pictureBoxChuKy.Image?.Dispose();
                                 pictureBoxChuKy.Image = null;
 
-                                // Đảm bảo file không còn được sử dụng
-                                GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
-                                GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+                                GC.Collect(); 
+                                GC.WaitForPendingFinalizers(); 
 
-                                // Xóa file ảnh nếu tồn tại
                                 if (File.Exists(filePathChuKy))
                                 {
                                     File.Delete(filePathChuKy);
                                 }
                             }
-                            // Xóa thông tin khách hàng khỏi cơ sở dữ liệu
                             thongTinKhachBLL.XoaThongTinKhach(maKhachTro);
 
-                            // Cập nhật lại DataGridView
                             LoadData();
 
                             MessageBox.Show("Khách hàng và ảnh của họ đã được xóa thành công.");
@@ -402,14 +377,13 @@ namespace QuanLyPhongTro.Control
 
         private void buttonSuaCD_Click(object sender, EventArgs e)
         {
-            isAddingNew = false; // Đặt chế độ sửa
-            // Kích hoạt các trường dữ liệu để chỉnh sửa thông tin
+            isAddingNew = false; 
             SetControlsEnabled(true);
-            txtMaCuDan.Enabled = false; // Không cho phép chỉnh sửa mã khách trọ
+            txtMaCuDan.Enabled = false;
 
 
 
-            // Giải phóng tài nguyên ảnh chũ ký hiện tại 
+            
             if (pictureBoxChuKy.Image != null)
             {
                 pictureBoxChuKy.Image.Dispose();
@@ -800,41 +774,32 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                // Lấy thư mục gốc của ứng dụng
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
                 string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
 
-                // Chuyển đường dẫn lên thư mục gốc của dự án
                 imagesFolderPath = Path.GetFullPath(imagesFolderPath);
 
-                // Tạo thư mục nếu chưa tồn tại
                 if (!Directory.Exists(imagesFolderPath))
                 {
                     Directory.CreateDirectory(imagesFolderPath);
                 }
 
-                // Chuyển hoTen thành không dấu
                 string hoTenKhongDau = RemoveDiacritics(hoTen);
 
-                // Tạo tên tệp ảnh
                 string fileName = $"CK_{maKhachTro}_{hoTenKhongDau}.jpg";
                 string filePath = Path.Combine(imagesFolderPath, fileName);
 
-                // Kiểm tra nếu tệp đã tồn tại
                 if (File.Exists(filePath))
                 {
-                    File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+                    File.Delete(filePath); 
                 }
 
-                // Lưu ảnh
                 using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
                     image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
 
-                // Trả về tên tệp ảnh cho cơ sở dữ liệu
                 return fileName;
             }
             catch (Exception ex)
@@ -844,13 +809,10 @@ namespace QuanLyPhongTro.Control
             }
         }
 
-        // Phương thức chuyển đổi chuỗi có dấu thành không dấu
         private string RemoveDiacritics(string text)
         {
-            // Bước 1: Thay thế riêng ký tự 'Đ' và 'đ' trước khi loại bỏ dấu
             text = text.Replace("Đ", "D").Replace("đ", "d");
 
-            // Bước 2: Normalize chuỗi để loại bỏ các dấu
             string normalizedString = text.Normalize(NormalizationForm.FormD);
             var stringBuilder = new StringBuilder();
 
@@ -863,7 +825,6 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-            // Bước 3: Chuyển về Form C và loại bỏ khoảng trắng
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC).Replace(" ", "");
         }
 
@@ -902,49 +863,40 @@ namespace QuanLyPhongTro.Control
 
             try
             {
-                // Lấy mã khách hàng từ txtMaCuDan
                 string maKhachTro = txtMaCuDan.Text;
                 var currentCustomer = thongTinKhachBLL.LayThongTinKhachTheoMa(maKhachTro);
 
                 if (currentCustomer != null && !string.IsNullOrEmpty(currentCustomer.ChuKy))
                 {
-                    // Hỏi người dùng xem có muốn xóa ảnh cũ để cập nhật ảnh mới không
                     var result = MessageBox.Show("Xóa ảnh cũ để cập nhật ảnh mới?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                     if (result == DialogResult.OK)
                     {
-                        // Tạo đường dẫn đầy đủ tới ảnh
                         string baseDirectoryChuKy = AppDomain.CurrentDomain.BaseDirectory;
                         string imagesFolderPathChuKy = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
                         string filePathChuKy = Path.Combine(imagesFolderPathChuKy, currentCustomer.ChuKy);
 
-                        // Giải phóng tài nguyên ảnh nếu cần
                         pictureBoxChuKy.Image?.Dispose();
                         pictureBoxChuKy.Image = null;
 
-                        // Đảm bảo file không còn được sử dụng
-                        GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
-                        GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
 
-                        // Xóa file ảnh nếu tồn tại
                         if (File.Exists(filePathChuKy))
                         {
                             File.Delete(filePathChuKy);
                         }
 
-                        // Xóa tên ảnh cũ khỏi cột ChuKy trong cơ sở dữ liệu
                         thongTinKhachBLL.CapNhatChuKyKhachHang(maKhachTro, null);
 
                         MessageBox.Show("Ảnh cũ đã được xóa. Vui lòng chọn ảnh mới.");
                     }
                     else
                     {
-                        // Nếu người dùng chọn "Hủy", không làm gì cả
                         return;
                     }
                 }
 
-                // Mở hộp thoại chọn ảnh mới
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
@@ -952,7 +904,6 @@ namespace QuanLyPhongTro.Control
 
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Hiển thị ảnh mới trong PictureBox
                         Image selectedImage = Image.FromFile(openFileDialog.FileName);
                         pictureBoxChuKy.Image = selectedImage;
                     }
@@ -970,10 +921,9 @@ namespace QuanLyPhongTro.Control
             {
                 string searchValue = txtTimKiemCuDan.Text.Trim();
 
-                // Gọi phương thức tìm kiếm từ BLL
                 var searchResults = thongTinKhachBLL.TimKiemThongTinKhach(searchValue);
 
-                // Hiển thị kết quả tìm kiếm trên DataGridView
+           
                 dataGridViewDanCu.DataSource = searchResults;
             }
             catch (Exception ex)
@@ -988,7 +938,6 @@ namespace QuanLyPhongTro.Control
 
             try
             {
-                // Xóa giá trị tìm kiếm và các trường nhập liệu
                 txtTimKiemCuDan.Text = string.Empty;
                 txtMaCuDan.Text = string.Empty;
                 txtHoTenCuDan.Text = string.Empty;
@@ -1002,10 +951,8 @@ namespace QuanLyPhongTro.Control
                 labelTenAnhChuKy.Text = "AnhChuKy.jpg";
                 pictureBoxChuKy.Image = null;
 
-                // Gọi phương thức để tải toàn bộ dữ liệu và cập nhật DataGridView
                 LoadData();
 
-                // Đảm bảo cột "btnXemChiTiet" luôn ở vị trí cuối cùng sau khi làm mới
                 dataGridViewDanCu.Columns["btnXemChiTiet"].DisplayIndex = dataGridViewDanCu.Columns.Count - 1;
             }
             catch (Exception ex)
@@ -1088,23 +1035,18 @@ namespace QuanLyPhongTro.Control
         {
 
 
-            // Lấy giá trị MaPhong từ comboBoxLocPhong
             string selectedMaPhong = comboBoxLocPhong.SelectedValue?.ToString();
 
-            // Kiểm tra nếu giá trị không null hoặc rỗng
             if (!string.IsNullOrEmpty(selectedMaPhong))
             {
-                // Gọi phương thức từ BLL để lấy danh sách khách trọ có MaPhong tương ứng
                 var danhSachKhach = thongTinKhachBLL.LayThongTinKhachTheoMaPhong(selectedMaPhong);
 
-                // Kiểm tra nếu danh sách khách trọ rỗng
                 if (danhSachKhach.Count == 0)
                 {
                     MessageBox.Show("Phòng trống.");
                 }
                 else
                 {
-                    // Hiển thị danh sách khách trọ trên dataGridView
                     dataGridViewDanCu.DataSource = danhSachKhach;
                 }
             }
@@ -1172,27 +1114,21 @@ namespace QuanLyPhongTro.Control
         }
         public bool KiemTraSoDienThoai(string soDienThoai)
         {
-            // Mẫu regex kiểm tra số điện thoại (có thể thay đổi tùy theo yêu cầu)
-            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; // Số điện thoại Việt Nam phổ biến
+            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; 
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(soDienThoai, pattern);
         }
         public bool KiemTraEmail(string email)
         {
-            // Mẫu regex kiểm tra email chuẩn
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(email, pattern);
         }
 
         public bool KiemTraCCCD(string cccd)
         {
-            // Mẫu regex kiểm tra căn cước công dân (12 chữ số)
-            string pattern = @"^\d{12}$"; // Căn cước công dân có 12 chữ số
+            string pattern = @"^\d{12}$"; 
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(cccd, pattern);
         }
     }
