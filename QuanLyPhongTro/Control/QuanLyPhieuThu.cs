@@ -139,15 +139,15 @@ namespace QuanLyPhongTro.Control
                 {
                     e.Value = "Đã thanh toán";
                     e.CellStyle.ForeColor = Color.Green; // Màu xanh
-                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
-                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); 
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); 
                 }
                 else if (e.Value.ToString() == "False")
                 {
                     e.Value = "Chưa thanh toán";
                     e.CellStyle.ForeColor = Color.Red; // Màu đỏ
-                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); // Chữ đậm
-                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold); // Kích thước chữ lớn hơn
+                    e.CellStyle.Font = new Font(dgvPT.Font, FontStyle.Bold | FontStyle.Regular); 
+                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 10, FontStyle.Bold);
                 }
             }
         }
@@ -159,7 +159,6 @@ namespace QuanLyPhongTro.Control
             int temp = 0;
             if (DateTime.TryParse(row.Cells["Ngày Lập"].Value?.ToString(), out DateTime ngayTao))
             {
-                // Calculate the difference in days
                 temp = (DateTime.Now.Date - ngayTao.Date).Days;
             }
             if (trangThai == 0)
@@ -176,23 +175,22 @@ namespace QuanLyPhongTro.Control
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //dt = bll.GetPTTheoThangNamPhong(int.Parse(cboThang.Text), int.Parse(cboNam.Text), khuvuc, textBox1.Text);
-            DataTable dtnew = dt.Copy(); // Create a copy of the original DataTable
+            DataTable dtnew = dt.Copy(); 
             string filterText = textBox1.Text;
 
-            for (int i = dtnew.Rows.Count - 1; i >= 0; i--) // Iterate in reverse order
+            for (int i = dtnew.Rows.Count - 1; i >= 0; i--) 
             {
                 DataRow dr = dtnew.Rows[i];
-                if (!dr["Phòng"].ToString().Contains(filterText)) // Case-insensitive match
+                if (!dr["Phòng"].ToString().Contains(filterText)) 
                 {
-                    dr.Delete(); // Mark row for deletion
+                    dr.Delete(); 
                 }
             }
 
-            dtnew.AcceptChanges(); // Commit all deletions
+            dtnew.AcceptChanges(); 
 
             dgvPT.DataSource = dtnew;
 
-            // Apply formatting
             if (dgvPT.Columns.Contains("TrangThai"))
             {
                 dgvPT.Columns["TrangThai"].DefaultCellStyle.Format = "N0";
@@ -208,7 +206,6 @@ namespace QuanLyPhongTro.Control
             dgvPT.Columns["Tổng Tiền"].DefaultCellStyle.Format = "N0";
             dgvPT.Columns["Thanh Toán"].DefaultCellStyle.Format = "N0";
 
-            // Refresh DataGridView
             dgvPT.Refresh();
 
         }

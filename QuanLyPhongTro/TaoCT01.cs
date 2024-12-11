@@ -130,7 +130,6 @@ namespace QuanLyPhongTro
                     };
 
             System.Data.DataTable dt = KhachCungThuongTru(lst, tt);
-            // Xuất dữ liệu vào file Word
             WordExport wd = new WordExport(sourceFilePath, false);
 
             if (!string.IsNullOrEmpty(chuho.ChuKy))
@@ -204,17 +203,14 @@ namespace QuanLyPhongTro
             wd.WriteToTable(cccdnguoikhai, 1);
             wd.WriteToTable(cccdchuho, 2);
             wd.WriteDataTableToWordTable(dt, 3);
-            // Tạo tên file mới để lưu
-            string newFileName = "CT01_" + tt.HoTen + ".docx"; // Đổi sang định dạng docx
-            string newFilePath = Path.Combine(duongdan, newFileName); // Đường dẫn tới file mới
+            string newFileName = "CT01_" + tt.HoTen + ".docx"; 
+            string newFilePath = Path.Combine(duongdan, newFileName); 
 
-            // Lưu file với tên mới trong thư mục mới
             wd.SaveAs(newFilePath);
 
-            // Đóng file Word
             wd.Close();
             ExportToPDF(newFilePath, duongdan, tt.HoTen);
-            wd = null; // Giải phóng tài nguyên
+            wd = null; 
             con = -1;
             me = null;
         }
@@ -297,12 +293,9 @@ namespace QuanLyPhongTro
         {
             string desktopPath = path;
 
-            // Tên của thư mục muốn tạo
             string folderName = key;
 
-            // Kết hợp đường dẫn với tên thư mục
             string folderPath = Path.Combine(desktopPath, folderName);
-            // Kiểm tra nếu thư mục chưa tồn tại thì tạo mới
             if (!Directory.Exists(folderPath))
             {
                 return false;
@@ -316,13 +309,10 @@ namespace QuanLyPhongTro
         {
             string desktopPath = path;
 
-            // Tên của thư mục muốn tạo
             string folderName = maphong;
 
-            // Kết hợp đường dẫn với tên thư mục
             string folderPath = Path.Combine(desktopPath, folderName);
 
-            // Kiểm tra nếu thư mục chưa tồn tại thì tạo mới
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -337,25 +327,21 @@ namespace QuanLyPhongTro
         {
             try
             {
-                // Kiểm tra xem thư mục có tồn tại không
                 if (Directory.Exists(path))
                 {
-                    // Xóa tất cả các tệp trong thư mục
                     string[] files = Directory.GetFiles(path);
                     foreach (string file in files)
                     {
                         File.Delete(file);
                     }
 
-                    // Xóa tất cả các thư mục con trong thư mục
                     string[] directories = Directory.GetDirectories(path);
                     foreach (string directory in directories)
                     {
-                        DeleteFolder(directory); // Gọi đệ quy để xóa thư mục con
+                        DeleteFolder(directory); 
                     }
 
-                    // Xóa thư mục chính
-                    Directory.Delete(path, true); // true để xóa thư mục không rỗng
+                    Directory.Delete(path, true);
                 }
                 else
                 {
@@ -397,10 +383,8 @@ namespace QuanLyPhongTro
         {
             List<string> result = new List<string>();
 
-            // Duyệt qua từng ký tự trong chuỗi cccd
             foreach (char digit in cccd)
             {
-                // Chỉ thêm vào danh sách nếu ký tự là số
                 if (char.IsDigit(digit))
                 {
                     result.Add(digit.ToString());
@@ -413,66 +397,57 @@ namespace QuanLyPhongTro
         {
             System.Data.DataTable dt = new System.Data.DataTable();
 
-            // Thêm các cột vào DataTable
-            dt.Columns.Add("STT", typeof(int));        // Cột STT
-            dt.Columns.Add("HoTen", typeof(string));   // Cột Họ Tên
-            dt.Columns.Add("NgaySinh", typeof(string)); // Cột Ngày Sinh
-            dt.Columns.Add("GioiTinh", typeof(string)); // Cột Giới Tính
-            dt.Columns.Add("CCCD", typeof(string));    // Cột CCCD
-            dt.Columns.Add("QuanHe", typeof(string));  // Cột Quan Hệ
+            dt.Columns.Add("STT", typeof(int));      
+            dt.Columns.Add("HoTen", typeof(string));  
+            dt.Columns.Add("NgaySinh", typeof(string)); 
+            dt.Columns.Add("GioiTinh", typeof(string)); 
+            dt.Columns.Add("CCCD", typeof(string));   
+            dt.Columns.Add("QuanHe", typeof(string));  
 
-            // Biến đếm số thứ tự
             int stt = 1;
 
-            // Duyệt qua danh sách và thêm dữ liệu vào DataTable
             foreach (ThongTinKhachDTO th in list)
             {
-                // Tạo một hàng mới cho DataTable
                 if (!khach.Contains(th.MaKhachTro))
                 {
                     if (th.ThuongTru == nguoikhai.ThuongTru && th.TrangThai == 1)
                     {
                         var row = dt.NewRow();
 
-                        // Gán giá trị cho các cột
                         row["STT"] = stt++;
-                        row["HoTen"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
-                        row["NgaySinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
-                        row["GioiTinh"] = th.GioiTinh; // Giả sử GioiTinh là thuộc tính trong ThongTinKhachDTO
-                        row["CCCD"] = th.CCCD; // Giả sử CCCD là thuộc tính trong ThongTinKhachDTO
-                        row["QuanHe"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
+                        row["HoTen"] = th.HoTen;
+                        row["NgaySinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); 
+                        row["GioiTinh"] = th.GioiTinh; 
+                        row["CCCD"] = th.CCCD; 
+                        row["QuanHe"] = th.QuanHe; 
                         khach.Add(th.MaKhachTro);
 
-                        // Thêm hàng vào DataTable
                         dt.Rows.Add(row);
                     }
                 }
             }
 
-            return dt; // Trả về DataTable chứa dữ liệu
+            return dt; 
         }
         private System.Data.DataTable BangHopDong(List<ThongTinKhachDTO> list)
         {
             System.Data.DataTable dt = new System.Data.DataTable();
-            // Thêm các cột vào DataTable
-            dt.Columns.Add("STT", typeof(int));        // Cột STT
-            dt.Columns.Add("Họ tên", typeof(string));   // Cột Họ Tên
-            dt.Columns.Add("Ngày sinh", typeof(string)); // Cột Ngày Sinh
-            dt.Columns.Add("Quan hệ", typeof(string));  // Cột Quan Hệ
+            dt.Columns.Add("STT", typeof(int));        
+            dt.Columns.Add("Họ tên", typeof(string));  
+            dt.Columns.Add("Ngày sinh", typeof(string)); 
+            dt.Columns.Add("Quan hệ", typeof(string));  
 
-            // Biến đếm số thứ tự
             int stt = 1;
             foreach (ThongTinKhachDTO th in list)
             {
                 if (!khach.Contains(th.MaKhachTro) && th.TrangThai == 1)
                 {
                     var row = dt.NewRow();
-                    // Gán giá trị cho các cột
                     row["STT"] = stt++;
-                    row["Họ tên"] = th.HoTen; // Giả sử HoTen là thuộc tính trong ThongTinKhachDTO
-                    row["Ngày sinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); // Giả sử NgaySinh là thuộc tính DateTime
-                    row["Quan hệ"] = th.QuanHe; // Giả sử QuanHe là thuộc tính trong ThongTinKhachDTO
-                                               // Thêm hàng vào DataTable
+                    row["Họ tên"] = th.HoTen; 
+                    row["Ngày sinh"] = th.NgaySinh.Value.ToString("dd/MM/yyyy"); 
+                    row["Quan hệ"] = th.QuanHe;
+                                               
                     dt.Rows.Add(row);
                 }
             }
@@ -497,7 +472,6 @@ namespace QuanLyPhongTro
         private int TinhTuoiCon(DateTime ngaysinh)
         {
             DateTime today = DateTime.Now;
-            // Calculate the age
             int age = today.Year - ngaysinh.Year;
             return age;
         }

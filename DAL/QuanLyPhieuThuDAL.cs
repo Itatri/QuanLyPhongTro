@@ -38,7 +38,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -111,13 +110,13 @@ namespace DAL
                     try
                     {
                         conn.Open();
-                        int count = (int)command.ExecuteScalar(); // Thực thi câu lệnh trả về giá trị đơn
-                        return count > 0; // Trả về true nếu phiếu thu đã tồn tại
+                        int count = (int)command.ExecuteScalar(); 
+                        return count > 0; 
                     }
                     catch (SqlException ex)
                     {
                         Console.WriteLine("Error: " + ex.Message);
-                        return false; // Có lỗi xảy ra
+                        return false; 
                     }
                 }
             }
@@ -156,27 +155,21 @@ namespace DAL
         {
             string query = "SELECT TenPhong FROM Phong WHERE MaKhuVuc = @KhuVuc";
 
-            // Tạo một DataTable để chứa kết quả
             DataTable dt = new DataTable();
 
-            // Sử dụng SqlConnection và SqlCommand để kết nối và thực thi truy vấn
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    // Thêm tham số vào câu lệnh SQL
                     cmd.Parameters.AddWithValue("@KhuVuc", khuvuc);
 
-                    // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                    // Mở kết nối, thực thi truy vấn và điền dữ liệu
                     conn.Open();
                     da.Fill(dt);
                 }
             }
 
-            // Trả về DataTable kết quả
             return dt;
         }
         public DataTable LoadPhong(string phong)
@@ -184,24 +177,19 @@ namespace DAL
             string query = "SELECT * FROM Phong WHERE MaPhong = @MaPhong";
             DataTable dt = new DataTable();
 
-            // Sử dụng SqlConnection và SqlCommand để kết nối và thực thi truy vấn
-            using (SqlConnection conn = new SqlConnection(strConn)) // Đặt chuỗi kết nối của bạn ở đây
+            using (SqlConnection conn = new SqlConnection(strConn)) 
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    // Thêm tham số vào câu lệnh SQL
                     cmd.Parameters.AddWithValue("@MaPhong", phong);
 
-                    // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                    // Mở kết nối, thực thi truy vấn và điền dữ liệu
                     conn.Open();
                     da.Fill(dt);
                 }
             }
 
-            // Trả về DataTable chứa dữ liệu
             return dt;
         }
         public DataTable LoadDVPhong(string phong)
@@ -221,7 +209,6 @@ namespace DAL
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm tham số vào câu lệnh
                     command.Parameters.AddWithValue("@MaPhong", phong);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -262,14 +249,13 @@ namespace DAL
                     try
                     {
                         conn.Open();
-                        int result = command.ExecuteNonQuery(); // Thực thi câu lệnh
-                        return result > 0; // Trả về true nếu đã thêm thành công
+                        int result = command.ExecuteNonQuery(); 
+                        return result > 0;
                     }
                     catch (SqlException ex)
                     {
-                        // Xử lý lỗi (ghi log, hiển thị thông báo, v.v.)
                         Console.WriteLine("Error: " + ex.Message);
-                        return false; // Trả về false nếu có lỗi
+                        return false; 
                     }
                 }
             }
@@ -279,24 +265,23 @@ namespace DAL
             DataTable dt = new DataTable();
             string sql = "SELECT * FROM DichVuPhieuThu WHERE MaPT = @MaPT";
 
-            using (SqlConnection conn = new SqlConnection(strConn)) // Thay bằng chuỗi kết nối của bạn
+            using (SqlConnection conn = new SqlConnection(strConn)) 
             {
                 try
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@MaPT", mapt); // Truyền tham số
+                        cmd.Parameters.AddWithValue("@MaPT", mapt); 
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
-                            adapter.Fill(dt); // Điền dữ liệu vào DataTable
+                            adapter.Fill(dt); 
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -306,28 +291,27 @@ namespace DAL
 
         public void CreateDichVuPhieuThu(ChiTietDichVuPT ct)
         {
-            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            using (SqlConnection connection = new SqlConnection(strConn)) 
             {
                 string query = "INSERT INTO DichVuPhieuThu (MaPT, TenDichVu, SoLuong, DonGia, ThanhTien) " +
                                "VALUES (@MaPT, @TenDV, @SoLuong, @DonGia, @ThanhTien)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm các tham số vào truy vấn
                     command.Parameters.AddWithValue("@MaPT", ct.MaPT);
-                    command.Parameters.AddWithValue("@TenDV", ct.TenDV); // Ký tự có dấu
+                    command.Parameters.AddWithValue("@TenDV", ct.TenDV);
                     command.Parameters.AddWithValue("@SoLuong", ct.SoLuong);
                     command.Parameters.AddWithValue("@DonGia", ct.DonGia);
                     command.Parameters.AddWithValue("@ThanhTien", ct.ThanhTien);
 
                     try
                     {
-                        connection.Open(); // Mở kết nối
-                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                        connection.Open();
+                        command.ExecuteNonQuery(); 
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý lỗi nếu có
+                        
                         Console.WriteLine("Error: " + ex.Message);
                     }
                 }
@@ -335,13 +319,12 @@ namespace DAL
         }
         public void UpdatePhong(string maPhong, float dien, float nuoc, float congno)
         {
-            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            using (SqlConnection connection = new SqlConnection(strConn)) 
             {
                 string query = "UPDATE Phong SET Dien = @Dien, Nuoc = @Nuoc, CongNo = @CongNo WHERE MaPhong = @MaPhong";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm các tham số vào truy vấn
                     command.Parameters.AddWithValue("@Dien", dien);
                     command.Parameters.AddWithValue("@Nuoc", nuoc);
                     command.Parameters.AddWithValue("@CongNo", congno);
@@ -349,12 +332,12 @@ namespace DAL
 
                     try
                     {
-                        connection.Open(); // Mở kết nối
-                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                        connection.Open();
+                        command.ExecuteNonQuery(); 
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý lỗi nếu có
+                        
                         Console.WriteLine("Error: " + ex.Message);
                     }
                 }
@@ -362,24 +345,23 @@ namespace DAL
         }
         public void UpdateCongNoPhong(string maPhong, float congno)
         {
-            using (SqlConnection connection = new SqlConnection(strConn)) // Đảm bảo connectionString là chuỗi kết nối của bạn
+            using (SqlConnection connection = new SqlConnection(strConn)) 
             {
                 string query = "UPDATE Phong SET CongNo = @CongNo WHERE MaPhong = @MaPhong";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm các tham số vào truy vấn
                     command.Parameters.AddWithValue("@CongNo", congno);
                     command.Parameters.AddWithValue("@MaPhong", maPhong);
 
                     try
                     {
-                        connection.Open(); // Mở kết nối
-                        command.ExecuteNonQuery(); // Thực thi truy vấn
+                        connection.Open(); 
+                        command.ExecuteNonQuery(); 
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý lỗi nếu có
+                        
                         Console.WriteLine("Error: " + ex.Message);
                     }
                 }
@@ -390,23 +372,19 @@ namespace DAL
             int count = 0;
             string query = "SELECT COUNT(*) FROM ThongTinKhach WHERE MaPhong = @MaPhong AND TrangThai = 1";
 
-            // Sử dụng đối tượng kết nối và lệnh (ví dụ SqlConnection, SqlCommand)
             using (SqlConnection connection = new SqlConnection(strConn))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm tham số để tránh lỗi SQL Injection
                     command.Parameters.AddWithValue("@MaPhong", phong);
 
                     try
                     {
                         connection.Open();
-                        // Thực thi truy vấn và ép kiểu kết quả về int
                         count = (int)command.ExecuteScalar();
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý lỗi, ghi log hoặc hiển thị thông báo nếu cần
                         Console.WriteLine("Error: " + ex.Message);
                     }
                 }
@@ -414,26 +392,22 @@ namespace DAL
 
             return count;
         }
-        public string GetMAByTenPhong(string phong)
+        public string GetMAByTenPhong(string phong, string makhuvuc)
         {
             string maPhong = string.Empty;
-            string query = "SELECT MaPhong FROM Phong WHERE TenPhong = @TenPhong";
+            string query = "SELECT MaPhong FROM Phong WHERE TenPhong = @TenPhong and MaKhuVuc = @MaKhuVuc";
 
-            // Sử dụng đối tượng kết nối và lệnh (ví dụ SqlConnection, SqlCommand)
             using (SqlConnection connection = new SqlConnection(strConn))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm tham số để tránh lỗi SQL Injection
                     command.Parameters.AddWithValue("@TenPhong", phong);
-
+                    command.Parameters.AddWithValue("@MaKhuVuc", makhuvuc);
                     try
                     {
                         connection.Open();
-                        // Thực thi truy vấn và lấy kết quả
                         object result = command.ExecuteScalar();
 
-                        // Kiểm tra nếu kết quả không phải là null, chuyển thành chuỗi
                         if (result != null)
                         {
                             maPhong = result.ToString();
@@ -441,7 +415,6 @@ namespace DAL
                     }
                     catch (Exception ex)
                     {
-                        // Xử lý lỗi, ghi log hoặc hiển thị thông báo nếu cần
                         Console.WriteLine("Error: " + ex.Message);
                     }
                 }
@@ -453,27 +426,20 @@ namespace DAL
         ////////////Thông tin phiếu thu
         public DataTable LoadPhieuThu(string maPhieu)
         {
-            // Tạo đối tượng DataTable để lưu kết quả
             DataTable dt = new DataTable();
 
-            // Tạo truy vấn SQL để lấy thông tin chi tiết từ bảng PhieuThu
             string query = "SELECT * FROM PhieuThu WHERE MaPT = @MaPT";
 
-            // Sử dụng try-catch để xử lý ngoại lệ
             try
             {
-                // Mở kết nối đến cơ sở dữ liệu
                 using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
 
-                    // Tạo đối tượng SqlCommand và thiết lập truy vấn, kết nối
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Thêm tham số vào truy vấn
                         cmd.Parameters.AddWithValue("@MaPT", maPhieu);
 
-                        // Thực hiện truy vấn và lưu kết quả vào DataTable
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
                             da.Fill(dt);
@@ -483,11 +449,9 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Hiển thị lỗi hoặc xử lý ngoại lệ nếu có
                 Console.WriteLine("Error: " + ex.Message);
             }
 
-            // Trả về kết quả
             return dt;
         }
 
@@ -495,7 +459,6 @@ namespace DAL
         {
             DataTable dt = new DataTable();
 
-            // Chuỗi kết nối SQL của bạn
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 try
@@ -505,42 +468,34 @@ namespace DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        // Thêm các tham số
                         cmd.Parameters.AddWithValue("@MaPhong", maPhong);
                         cmd.Parameters.AddWithValue("@MaPT", maPT);
 
-                        // Tạo SqlDataAdapter để điền dữ liệu vào DataTable
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý ngoại lệ (nếu có)
                     Console.WriteLine("Error: " + ex.Message);
                 }
                 finally
                 {
-                    // Đảm bảo kết nối được đóng
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                 }
             }
 
-            // Trả về DataTable chứa thông tin dịch vụ của phiếu thu
             return dt;
         }
         public bool UpdatePhieuThu(PhieuThu phieuThu)
         {
             try
             {
-                // Chuỗi kết nối tới cơ sở dữ liệu
                 using (SqlConnection conn = new SqlConnection(strConn))
                 {
-                    // Mở kết nối
                     conn.Open();
 
-                    // Tạo câu lệnh SQL để cập nhật thông tin phiếu thu
                     string query = @"
                 UPDATE PhieuThu
                 SET NgayThu = @NgayThu,
@@ -554,10 +509,8 @@ namespace DAL
                     TrangThai = @TrangThai
                 WHERE MaPT = @MaPT";
 
-                    // Tạo đối tượng SqlCommand
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Thêm các tham số
                         cmd.Parameters.AddWithValue("@MaPT", phieuThu.MaPT);
                         cmd.Parameters.AddWithValue("@NgayThu", phieuThu.NgayThu);
                         cmd.Parameters.AddWithValue("@DienMoi", phieuThu.DienMoi);
@@ -569,17 +522,14 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@ThanhToan", phieuThu.ThanhToan.HasValue ? (object)phieuThu.ThanhToan.Value : DBNull.Value);
                         cmd.Parameters.AddWithValue("@TrangThai", phieuThu.TrangThai);
 
-                        // Thực thi lệnh
                         int rowsAffected = cmd.ExecuteNonQuery();
 
-                        // Kiểm tra số lượng bản ghi được cập nhật
                         return rowsAffected > 0;    
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi
                 Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
@@ -588,29 +538,22 @@ namespace DAL
         {
             try
             {
-                // Chuỗi kết nối tới cơ sở dữ liệu
                 using (SqlConnection conn = new SqlConnection(strConn))
                 {
-                    // Mở kết nối
                     conn.Open();
 
-                    // Tạo câu lệnh SQL để xóa dịch vụ phiếu thu dựa trên MaPT
                     string query = "DELETE FROM DichVuPhieuThu WHERE MaPT = @MaPT";
 
-                    // Tạo đối tượng SqlCommand
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Thêm tham số
                         cmd.Parameters.AddWithValue("@MaPT", mapt);
 
-                        // Thực thi lệnh
                         cmd.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
@@ -626,19 +569,16 @@ namespace DAL
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Thêm tham số @MaPhong vào câu lệnh SQL
                         command.Parameters.AddWithValue("@MaPhong", phong);
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            // Điền kết quả vào DataTable
                             adapter.Fill(dataTable);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi (ghi log, hiển thị thông báo, v.v.)
                     Console.WriteLine("Lỗi: " + ex.Message);
                 }
             }
@@ -648,10 +588,8 @@ namespace DAL
 
         public bool CheckPTMoiNhat(string mapt, string maphong, DateTime ngaylap)
         {
-            // Kết nối cơ sở dữ liệu
             using (SqlConnection conn = new SqlConnection(strConn))
             {
-                // Truy vấn để lấy phiếu thu mới nhất của phòng
                 string query = @"
                                 SELECT TOP 1 MaPT, NgayLap
                                 FROM PhieuThu
@@ -659,26 +597,24 @@ namespace DAL
                                 ORDER BY NgayLap DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@MaPhong", maphong); // Thêm tham số MaPhong
+                cmd.Parameters.AddWithValue("@MaPhong", maphong); 
 
                 conn.Open();
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read()) // Nếu có kết quả
+                    if (reader.Read()) 
                     {
-                        // Lấy thông tin phiếu thu mới nhất từ cơ sở dữ liệu
-                        string maPhieuThuMoiNhat = reader.GetString(reader.GetOrdinal("MaPT")); // Lấy giá trị cột MaPT
-                        DateTime ngayThuMoiNhat = reader.GetDateTime(reader.GetOrdinal("NgayLap")); // Lấy giá trị cột NgayLap
+                        string maPhieuThuMoiNhat = reader.GetString(reader.GetOrdinal("MaPT"));
+                        DateTime ngayThuMoiNhat = reader.GetDateTime(reader.GetOrdinal("NgayLap"));
 
-                        // So sánh mã phiếu thu và ngày lập (chỉ so sánh ngày, bỏ qua giờ)
                         return mapt == maPhieuThuMoiNhat && ngaylap.Date == ngayThuMoiNhat.Date;
 
                     }
                 }
             }
 
-            return false; // Không tìm thấy phiếu thu nào trong cơ sở dữ liệu
+            return false; 
         }
 
 

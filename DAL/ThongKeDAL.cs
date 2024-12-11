@@ -39,7 +39,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -68,7 +67,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -96,7 +94,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
@@ -125,7 +122,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }

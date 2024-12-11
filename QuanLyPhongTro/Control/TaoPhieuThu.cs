@@ -47,9 +47,8 @@ namespace QuanLyPhongTro.Control
         private void LoadDVPhong(string phong)
         {
             datatable = new System.Data.DataTable();
-            // Gọi phương thức lấy dữ liệu dịch vụ từ lớp BLL
             datatable = bll.LoadDVPhong(phong);
-            // Xóa tất cả các dòng hiện có trong DataGridView trước khi thêm mới
+   
             dgvDichVu.Rows.Clear();
 
             foreach (DataRow dr in datatable.Rows)
@@ -75,7 +74,7 @@ namespace QuanLyPhongTro.Control
             if (cboPhong.SelectedIndex != -1)
             {
                 OpenCloseText(true);
-                maphong = bll.GetMAByTenPhong(cboPhong.Text);
+                maphong = bll.GetMAByTenPhong(cboPhong.Text, khuvuc);
                 txtma.Text = "PT_" + maphong + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
                 int dem = bll.CountKhach(maphong);
                 System.Data.DataTable dt = bll.LoadPhong(maphong);
@@ -95,7 +94,6 @@ namespace QuanLyPhongTro.Control
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Nếu không phải là số hoặc phím Backspace, thì hủy sự kiện
                 e.Handled = true;
             }
         }
@@ -104,7 +102,6 @@ namespace QuanLyPhongTro.Control
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Nếu không phải là số hoặc phím Backspace, thì hủy sự kiện
                 e.Handled = true;
             }
         }
@@ -113,7 +110,6 @@ namespace QuanLyPhongTro.Control
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Nếu không phải là số hoặc phím Backspace, thì hủy sự kiện
                 e.Handled = true;
             }
         }
@@ -418,16 +414,14 @@ namespace QuanLyPhongTro.Control
         }
         private void dtpNgayLap_ValueChanged(object sender, EventArgs e)
         {
-            //if (ckbPTP.Checked)
-            //{
-            //    LoadPhong(khuvuc);
-            //    txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
-            //}
-            //else
-            //{
-            //    LoadPhongChuaPT(khuvuc);
-            //    txtma.Text = "PT_" + cboPhong.Text + dtpNgayLap.Value.Date.ToString("ddMMyyyy");
-            //}
+            if (ckbPTP.Checked)
+            {
+                LoadPhong(khuvuc);
+            }
+            else
+            {
+                LoadPhongChuaPT(khuvuc);
+            }
             Clear();
 
         }
@@ -483,20 +477,20 @@ namespace QuanLyPhongTro.Control
                 txtDM.Text = txtDC.Text;
                 TinhTienDien();
             }
-            //else
-            //{
-            //    TinhTienDien();
-            //}
+            else
+            {
+                TinhTienDien();
+            }
 
             if (txtTienNuoc.Text.Length == 0 && txtNM.Text.Length == 0)
             {
                 txtNM.Text = txtNC.Text;
                 TinhTienNuoc();
             }
-            //else
-            //{
-            //    TinhTienNuoc();
-            //}
+            else
+            {
+                TinhTienNuoc();
+            }
 
             float dien = 0, nuoc = 0, tienp = 0;
             float.TryParse(txtTienNha.Text, out tienp);
