@@ -79,20 +79,16 @@ namespace QuanLyPhongTro
                 MessageBox.Show("Không tìm thấy phòng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Lấy danh sách email từ mã phòng
             List<string> emailList = bll.LayDSEmail(pt.MaPhong);
             if (emailList.Count == 0 || emailList.All(string.IsNullOrWhiteSpace))
             {
-                //MessageBox.Show("Phòng chưa kê khai thông tin email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // Đường dẫn tạm thời lưu file PDF
                 string tempPdfPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"PhieuThu_{pt.MaPT}.pdf");
 
-                // Bước 1: Xuất phiếu thu sang file PDF
                 await ExportPhieuThuToPdfAsync(pt, tempPdfPath, khuvuc);
 
                 if (!File.Exists(tempPdfPath))
@@ -101,7 +97,6 @@ namespace QuanLyPhongTro
                     return;
                 }
 
-                // Đọc cấu hình email từ App.config
                 string smtpServer = ConfigurationManager.AppSettings["SMTPServer"];
                 int smtpPort = int.Parse(ConfigurationManager.AppSettings["SMTPPort"]);
                 string emailSender = ConfigurationManager.AppSettings["EmailSender"];
@@ -109,14 +104,12 @@ namespace QuanLyPhongTro
 
                 
 
-                // Nội dung email
                 string subject = $"Phòng {phong} - Mã phiếu: {pt.MaPT}";
                 string body = $"<p>Phiếu thu của phòng <strong>{phong}</strong>.</p>" +
                               $"<p><strong>Mã phiếu:</strong> {pt.MaPT}</p>" +
                               $"<p><strong>Ngày lập:</strong> {pt.NgayLap:dd/MM/yyyy}</p>" +
                               "<p>File PDF của phiếu thu được đính kèm theo email này.</p>";
 
-                // Bước 2: Gửi email với file PDF đính kèm
                 using (SmtpClient smtp = new SmtpClient(smtpServer, smtpPort))
                 {
                     smtp.Credentials = new NetworkCredential(emailSender, emailPassword);
@@ -130,8 +123,8 @@ namespace QuanLyPhongTro
                             mail.To.Add(recipientEmail);
                             mail.Subject = subject;
                             mail.Body = body;
-                            mail.IsBodyHtml = true; // Cho phép nội dung HTML
-                            mail.Attachments.Add(new Attachment(tempPdfPath)); // Đính kèm file PDF
+                            mail.IsBodyHtml = true;
+                            mail.Attachments.Add(new Attachment(tempPdfPath));
 
                             try
                             {
@@ -146,7 +139,6 @@ namespace QuanLyPhongTro
                     }
                 }
 
-                // Xóa file tạm sau khi gửi email
                 if (File.Exists(tempPdfPath))
                 {
                     File.Delete(tempPdfPath);
@@ -174,14 +166,13 @@ namespace QuanLyPhongTro
             {
                 try
                 {
-                    using (var writer = new PdfWriter(ms)) // Tạo PdfWriter với MemoryStream
+                    using (var writer = new PdfWriter(ms)) 
                     {
-                        using (var pdf = new PdfDocument(writer)) // Tạo PdfDocument từ PdfWriter
+                        using (var pdf = new PdfDocument(writer)) 
                         {
-                            var document = new Document(pdf, PageSize.A4); // Tạo Document
-                            var font = PdfFontFactory.CreateFont(_fontPath, PdfEncodings.IDENTITY_H); // Đảm bảo font hợp lệ
+                            var document = new Document(pdf, PageSize.A4);
+                            var font = PdfFontFactory.CreateFont(_fontPath, PdfEncodings.IDENTITY_H); 
                             Image logoImage = null;
-                            // Thêm logo nếu tồn tại
                             if (File.Exists(_logoPath))
                             {
                                  logoImage = new Image(ImageDataFactory.Create(_logoPath))
@@ -190,18 +181,15 @@ namespace QuanLyPhongTro
                                 document.Add(logoImage);
                             }
 
-                            // Thêm tiêu đề
                             document.Add(new Paragraph("HÓA ĐƠN TIỀN PHÒNG")
                                 .SetTextAlignment(TextAlignment.CENTER)
                                 .SetFont(font)
                                 .SetFontSize(20));
 
-                            // Thêm thông tin phiếu thu
                             document.Add(new Paragraph($"Mã Phiếu Thu: {phieuThu.MaPT}")
                                 .SetFont(font)
                                 .SetFontSize(12));
 
-                            // Phòng và trạng thái thanh toán
                             var roomStatusLine = new Paragraph()
                                 .Add(new Text($"Phòng: {phieuThu.MaPhong} ").SetFont(font).SetFontSize(12))
                                 .Add(new Text("     Trạng Thái: ").SetFont(font).SetFontSize(12))
@@ -211,13 +199,11 @@ namespace QuanLyPhongTro
                                     .SetFontColor(phieuThu.TrangThai == 1 ? iText.Kernel.Colors.ColorConstants.GREEN : iText.Kernel.Colors.ColorConstants.RED));
                             document.Add(roomStatusLine);
 
-                            // Ngày lập và ngày thu
                             var dateLine = new Paragraph()
                                 .Add(new Text($"Ngày Lập: {phieuThu.NgayLap:dd/MM/yyyy}     ").SetFont(font).SetFontSize(12))
                                 .Add(new Text($"Ngày Thu: {phieuThu.NgayThu:dd/MM/yyyy}").SetFont(font).SetFontSize(12));
                             document.Add(dateLine);
 
-                            // Tổng tiền còn nợ
                             decimal conno = 0;
                             if (phong.Rows[0]["Congno"] != DBNull.Value)
                             {
@@ -230,15 +216,10 @@ namespace QuanLyPhongTro
 
                             int stt = 1;
 
-
-
-
-                            // Thêm khoảng cách trước bảng Phiếu Thu
                             document.Add(new Paragraph("\n"));
 
-                            // Thêm bảng Phiếu Thu tiền phòng
-                            var phieuThuTable = new Table(7); // Bảng có 7 cột
-                            phieuThuTable.SetWidth(UnitValue.CreatePercentValue(100)); // Đặt độ rộng bảng là 100% chiều rộng trang
+                            var phieuThuTable = new Table(7); 
+                            phieuThuTable.SetWidth(UnitValue.CreatePercentValue(100)); 
 
                             phieuThuTable.AddHeaderCell(new Cell().Add(new Paragraph("STT").SetFont(font)));
                             phieuThuTable.AddHeaderCell(new Cell().Add(new Paragraph("Khoản").SetFont(font)));
@@ -250,7 +231,6 @@ namespace QuanLyPhongTro
 
                             stt = 1;
 
-                            // Thêm các dịch vụ cố định như Tiền Phòng
                             phieuThuTable.AddCell(new Cell().Add(new Paragraph(stt.ToString()).SetFont(font)));
                             phieuThuTable.AddCell(new Cell().Add(new Paragraph("Tiền Phòng").SetFont(font)));
                             phieuThuTable.AddCell(new Cell().Add(new Paragraph("-")).SetFont(font));
@@ -263,10 +243,8 @@ namespace QuanLyPhongTro
 
                             foreach (DataRow dichVu in dichVuList.Rows)
                             {
-                                // Kiểm tra nếu là dịch vụ điện hoặc nước
                                 if (dichVu["TenDichVu"].ToString() == "Dịch vụ điện")
                                 {
-                                    // Cập nhật dòng Tiền Điện
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph(stt.ToString()).SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph("Tiền Điện").SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph($"{phieuThu.DienCu.ToString()}").SetFont(font)));
@@ -278,7 +256,6 @@ namespace QuanLyPhongTro
                                 }
                                 else if (dichVu["TenDichVu"].ToString() == "Dịch vụ nước")
                                 {
-                                    // Cập nhật dòng Tiền Nước
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph(stt.ToString()).SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph("Tiền Nước").SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph($"{phieuThu.NuocCu.ToString()}").SetFont(font)));
@@ -290,7 +267,6 @@ namespace QuanLyPhongTro
                                 }
                                 else
                                 {
-                                    // Các dịch vụ còn lại hiển thị bình thường
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph(stt.ToString()).SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph(dichVu["TenDichVu"].ToString() ?? "-").SetFont(font)));
                                     phieuThuTable.AddCell(new Cell().Add(new Paragraph("-").SetFont(font))); // Chỉ số đầu
@@ -310,17 +286,13 @@ namespace QuanLyPhongTro
 
                             document.Add(new Paragraph("\n"));
 
-                            // Tổng tiền và kết thúc
                             document.Add(new Paragraph($"Tổng Tiền: {phieuThu.TongTien?.ToString("#,0")} VND")
                                 .SetTextAlignment(TextAlignment.RIGHT).SetFont(font).SetFontSize(12));
 
 
 
-
-
                             document.Add(new Paragraph("\n"));
 
-                            // Thêm dòng yêu cầu và thông tin liên hệ, căn giữa
                             document.Add(new Paragraph("* Yêu cầu các phòng thanh toán trước thời gian quy định")
                                 .SetTextAlignment(TextAlignment.CENTER)
                                 .SetFont(font)
@@ -337,25 +309,19 @@ namespace QuanLyPhongTro
                                 .SetFont(font)
                                 .SetFontSize(12));
 
-                            // Thêm khoảng cách giữa logo và tiêu đề
                             document.Add(new Paragraph("\n"));
-                            // Thêm logo vào đầu trang, căn giữa
                             logoImage = new Image(ImageDataFactory.Create(_logoPath));
                             logoImage.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
-                            logoImage.ScaleToFit(30, 30); // Điều chỉnh kích thước logo nếu cần
+                            logoImage.ScaleToFit(30, 30); 
                             document.Add(logoImage);
 
-                            // Kết thúc tài liệu
                             document.Close();
                         }
                     }
 
-                    // Trả về mảng byte của PDF đã tạo
-                    //MessageBox.Show($"Đã lưu PDF vào: {tempPdfPath}");
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý ngoại lệ
                     Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
                     throw;
                 }

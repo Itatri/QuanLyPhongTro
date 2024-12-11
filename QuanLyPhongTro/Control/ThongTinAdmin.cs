@@ -56,16 +56,12 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                // Gọi phương thức BLL để lấy thông tin admin theo IdUser
                 ThongTinAdminDTO adminInfo = thongTinAdminBLL.LayThongTinAdminTheoIdUser(id);
 
-                // Nếu không tìm thấy thông tin admin thì chỉ hiển thị IdUser và xóa thông tin khác
                 if (adminInfo == null)
                 {
-                    // Chỉ hiển thị IdUser
-                    txtIDUserAdmin.Text = id;  // Gán giá trị IdUser từ DangNhap
+                    txtIDUserAdmin.Text = id; 
 
-                    // Xóa thông tin khác trên giao diện
                     txtMaAdmin.Text = string.Empty;
                     txtHoTenAdmin.Text = string.Empty;
                     comboBoxGioiTinhAdmin.SelectedItem = null;
@@ -74,15 +70,14 @@ namespace QuanLyPhongTro.Control
                     txtTaiKhoan.Text = string.Empty;
                     cboNganHang.Text = string.Empty;
                     txtPhoneAdmin.Text = string.Empty;
-                    dateTimePickerNgaySinhAdmin.Value = DateTime.Now;  // Đặt giá trị ngày hiện tại
+                    dateTimePickerNgaySinhAdmin.Value = DateTime.Now; 
                     labelAnhChuKy.Text = string.Empty;
-                    pictureBoxChuKy.Image = null; // Xóa ảnh chữ ký nếu không có thông tin
+                    pictureBoxChuKy.Image = null; 
 
 
                 }
                 else
                 {
-                    // Hiển thị thông tin admin lên các control
                     txtMaAdmin.Text = adminInfo.MaAdmin;
                     txtHoTenAdmin.Text = adminInfo.HoTen;
                     comboBoxGioiTinhAdmin.SelectedItem = adminInfo.GioiTinh;
@@ -95,33 +90,27 @@ namespace QuanLyPhongTro.Control
                     txtIDUserAdmin.Text = adminInfo.IdUser;
                     labelAnhChuKy.Text = adminInfo.ChuKy;
 
-                    // Hiển thị ảnh chữ ký nếu có
                     if (!string.IsNullOrEmpty(adminInfo.ChuKy))
                     {
-                        // Lấy đường dẫn thư mục chứa ảnh chữ ký
                         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                         string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
                         imagesFolderPath = Path.GetFullPath(imagesFolderPath);
 
 
-                        // Tạo đường dẫn đầy đủ tới file ảnh
                         string filePath = Path.Combine(imagesFolderPath, adminInfo.ChuKy);
 
-                        // Kiểm tra xem file ảnh có tồn tại không
                         if (File.Exists(filePath))
                         {
-                            // Hiển thị ảnh trong pictureBox
                             pictureBoxChuKy.Image = Image.FromFile(filePath);
                         }
                         else
                         {
-                            //MessageBox.Show("Không tìm thấy ảnh chữ ký.");
-                            pictureBoxChuKy.Image = null; // Xóa ảnh nếu không tìm thấy
+                            pictureBoxChuKy.Image = null;
                         }
                     }
                     else
                     {
-                        pictureBoxChuKy.Image = null; // Xóa ảnh nếu không có chữ ký
+                        pictureBoxChuKy.Image = null; 
                     }
                 }
             }
@@ -138,18 +127,14 @@ namespace QuanLyPhongTro.Control
 
             try
             {
-                // Khai báo đường dẫn tới thư mục chứa ảnh chữ ký
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
-                imagesFolderPath = Path.GetFullPath(imagesFolderPath); // Đảm bảo đường dẫn chính xác
+                imagesFolderPath = Path.GetFullPath(imagesFolderPath); 
 
-                // Lấy thông tin admin hiện tại để kiểm tra ảnh chữ ký
                 ThongTinAdminDTO adminInfo = thongTinAdminBLL.LayThongTinAdminTheoIdUser(txtIDUserAdmin.Text);
 
-                // Kiểm tra xem Admin đã có chữ ký hay chưa
                 if (!string.IsNullOrEmpty(adminInfo?.ChuKy))
                 {
-                    // Hiển thị thông báo xác nhận xóa ảnh cũ
                     var confirmResult = MessageBox.Show("Admin đã có ảnh chữ ký. Bạn có muốn xóa ảnh cũ để cập nhật ảnh mới không?",
                                                          "Xác nhận xóa ảnh chữ ký",
                                                          MessageBoxButtons.YesNo,
@@ -157,37 +142,29 @@ namespace QuanLyPhongTro.Control
 
                     if (confirmResult == DialogResult.Yes)
                     {
-                        // Lấy tên ảnh cũ từ cơ sở dữ liệu
                         string oldSignatureFileName = adminInfo.ChuKy;
 
-                        // Xóa ảnh cũ
                         string oldFilePath = Path.Combine(imagesFolderPath, oldSignatureFileName);
 
-                        // Giải phóng tài nguyên ảnh nếu cần
                         pictureBoxChuKy.Image?.Dispose();
                         pictureBoxChuKy.Image = null;
 
-                        // Đảm bảo file không còn được sử dụng
-                        GC.Collect(); // Yêu cầu Garbage Collector để thu hồi bộ nhớ không sử dụng
-                        GC.WaitForPendingFinalizers(); // Đợi cho Garbage Collector hoàn tất
+                        GC.Collect(); 
+                        GC.WaitForPendingFinalizers(); 
 
-                        // Xóa file ảnh nếu tồn tại
                         if (File.Exists(oldFilePath))
                         {
                             File.Delete(oldFilePath);
                         }
 
-                        // Cập nhật tên ảnh trong cơ sở dữ liệu thành null
                         thongTinAdminBLL.CapNhatChuKy(txtIDUserAdmin.Text, null);
                     }
                     else
                     {
-                        // Nếu người dùng chọn Hủy, không làm gì cả
                         return;
                     }
                 }
 
-                // Bước này sẽ luôn thực hiện để cho phép chọn ảnh mới
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
@@ -195,12 +172,10 @@ namespace QuanLyPhongTro.Control
 
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Hiển thị ảnh mới trong PictureBox
                         Image selectedImage = Image.FromFile(openFileDialog.FileName);
                         pictureBoxChuKy.Image = selectedImage;
 
-                        // Đánh dấu rằng có ảnh chữ ký mới đã được chọn
-                        isChuKyUpdated = true; // Biến này cần được khai báo ở nơi khác trong class
+                        isChuKyUpdated = true; 
                     }
                 }
             }
@@ -263,41 +238,32 @@ namespace QuanLyPhongTro.Control
         {
             try
             {
-                // Lấy thư mục gốc của ứng dụng
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                // Tạo đường dẫn thư mục AnhCuDan trong thư mục gốc của dự án
                 string imagesFolderPath = ConfigurationManager.ConnectionStrings["imagesPath"].ConnectionString;
 
-                // Chuyển đường dẫn lên thư mục gốc của dự án
                 imagesFolderPath = Path.GetFullPath(imagesFolderPath);
 
-                // Tạo thư mục nếu chưa tồn tại
                 if (!Directory.Exists(imagesFolderPath))
                 {
                     Directory.CreateDirectory(imagesFolderPath);
                 }
 
-                // Chuyển hoTen thành không dấu
                 string hoTenKhongDau = RemoveDiacritics(hoTen);
 
-                // Tạo tên tệp ảnh
                 string fileName = $"CK_{maKhachTro}_{hoTenKhongDau}.jpg";
                 string filePath = Path.Combine(imagesFolderPath, fileName);
 
-                // Kiểm tra nếu tệp đã tồn tại
                 if (File.Exists(filePath))
                 {
-                    File.Delete(filePath); // Xóa tệp nếu nó đã tồn tại
+                    File.Delete(filePath); 
                 }
 
-                // Lưu ảnh
                 using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
                     image.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
 
-                // Trả về tên tệp ảnh cho cơ sở dữ liệu
                 return fileName;
             }
             catch (Exception ex)
@@ -310,10 +276,8 @@ namespace QuanLyPhongTro.Control
         // Phương thức chuyển đổi chuỗi có dấu thành không dấu
         private string RemoveDiacritics(string text)
         {
-            // Bước 1: Thay thế riêng ký tự 'Đ' và 'đ' trước khi loại bỏ dấu
             text = text.Replace("Đ", "D").Replace("đ", "d");
 
-            // Bước 2: Normalize chuỗi để loại bỏ các dấu
             string normalizedString = text.Normalize(NormalizationForm.FormD);
             var stringBuilder = new StringBuilder();
 
@@ -326,14 +290,12 @@ namespace QuanLyPhongTro.Control
                 }
             }
 
-            // Bước 3: Chuyển về Form C và loại bỏ khoảng trắng
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC).Replace(" ", "");
         }
 
 
         private void btnCapNhatThongTin_Click(object sender, EventArgs e)
         {
-            // Kiểm tra số điện thoại và email
             if (!KiemTraSoDienThoai(txtPhoneAdmin.Text))
             {
                 MessageBox.Show("Số điện thoại không hợp lệ!");
@@ -347,7 +309,6 @@ namespace QuanLyPhongTro.Control
             }
             try
             {
-                // Lấy thông tin từ các điều khiển
                 string idUser = txtIDUserAdmin.Text;
                 string maAdmin = txtMaAdmin.Text;
                 string hoTen = txtHoTenAdmin.Text;
@@ -359,16 +320,13 @@ namespace QuanLyPhongTro.Control
                 string phone = txtPhoneAdmin.Text;
                 DateTime ngaySinh = dateTimePickerNgaySinhAdmin.Value;
 
-                // Lưu ảnh chữ ký mới nếu có
                 string chuKyFileName = null;
 
-                if (isChuKyUpdated && pictureBoxChuKy.Image != null) // Nếu có ảnh mới và được đánh dấu
+                if (isChuKyUpdated && pictureBoxChuKy.Image != null) 
                 {
-                    // Lưu ảnh chữ ký mới và lấy tên tệp
                     chuKyFileName = SaveImageToFolderChuKy(pictureBoxChuKy.Image, maAdmin, hoTen);
                 }
 
-                // Tạo đối tượng DTO với các thông tin mới
                 ThongTinAdminDTO adminInfo = new ThongTinAdminDTO
                 {
                     MaAdmin = maAdmin,
@@ -380,16 +338,14 @@ namespace QuanLyPhongTro.Control
                     TaiKhoan = taikhoan,
                     Phone = phone,
                     DiaChi = diachi,
-                    ChuKy = chuKyFileName ?? labelAnhChuKy.Text, // Nếu không có ảnh mới, giữ lại tên cũ
+                    ChuKy = chuKyFileName ?? labelAnhChuKy.Text, 
                     IdUser = idUser
                 };
 
-                // Kiểm tra xem Admin đã tồn tại chưa
                 bool adminExists = thongTinAdminBLL.KiemTraThongTinAdmin(idUser);
 
                 if (adminExists)
                 {
-                    // Nếu tồn tại, cập nhật thông tin Admin
                     bool isUpdated = thongTinAdminBLL.CapNhatThongTinAdmin(adminInfo);
 
                     if (isUpdated)
@@ -403,7 +359,6 @@ namespace QuanLyPhongTro.Control
                 }
                 else
                 {
-                    // Thêm mới Admin
                     bool isAdded = thongTinAdminBLL.ThemAdmin(adminInfo);
 
                     if (isAdded)
@@ -416,7 +371,6 @@ namespace QuanLyPhongTro.Control
                     }
                 }
 
-                // Kiểm tra và cập nhật mật khẩu
                 string password = txtPassword.Text;
                 string rePass = txtRePass.Text;
 
@@ -424,7 +378,6 @@ namespace QuanLyPhongTro.Control
                 {
                     if (password == rePass)
                     {
-                        // Gọi phương thức cập nhật mật khẩu trong BLL
                         DangNhapAdminBLL dangNhapBLL = new DangNhapAdminBLL();
                         bool isPasswordUpdated = dangNhapBLL.CapNhatMatKhau(idUser, password);
 
@@ -452,27 +405,21 @@ namespace QuanLyPhongTro.Control
 
         public bool KiemTraSoDienThoai(string soDienThoai)
         {
-            // Mẫu regex kiểm tra số điện thoại (có thể thay đổi tùy theo yêu cầu)
-            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; // Số điện thoại Việt Nam phổ biến
+            string pattern = @"^(0[3|5|7|8|9])\d{8}$"; 
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(soDienThoai, pattern);
         }
         public bool KiemTraEmail(string email)
         {
-            // Mẫu regex kiểm tra email chuẩn
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(email, pattern);
         }
 
         public bool KiemTraCCCD(string cccd)
         {
-            // Mẫu regex kiểm tra căn cước công dân (12 chữ số)
-            string pattern = @"^\d{12}$"; // Căn cước công dân có 12 chữ số
+            string pattern = @"^\d{12}$"; 
 
-            // Kiểm tra với Regex
             return Regex.IsMatch(cccd, pattern);
         }
 

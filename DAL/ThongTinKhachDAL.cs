@@ -60,9 +60,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Log lỗi hoặc throw lại để xử lý ở tầng cao hơn.
                 Console.WriteLine($"Lỗi xảy ra: {ex.Message}");
-                // throw; // Nếu cần throw lỗi tiếp.
             }
 
             return danhSachKhach;
@@ -136,7 +134,6 @@ namespace DAL
                 conn.Open();
                 var result = cmd.ExecuteScalar();
 
-                // Kiểm tra kết quả trước khi gán
                 if (result != null && result != DBNull.Value)
                 {
                     soLuongKhach = result.ToString();
@@ -194,11 +191,9 @@ namespace DAL
                 {
                     conn.Open();
 
-                    // Prepare the base query
                     string query = "INSERT INTO ThongTinKhach (MaKhachTro, HoTen, GioiTinh, Cccd, Phone, QueQuan, TrangThai, MaPhong, NgaySinh, Email, NoiCap, NgayCap, QuanHe,ThuongTru";
                     string values = "VALUES (@MaKhachTro, @HoTen, @GioiTinh, @CCCD, @Phone, @QueQuan, @TrangThai, @MaPhong, @NgaySinh, @Email, @NoiCap, @NgayCap, @QuanHe, @ThuongTru";
 
-                    // Include ChuKy only if it is not null
                     if (!string.IsNullOrEmpty(khachDTO.ChuKy))
                     {
                         query += ", ChuKy";
