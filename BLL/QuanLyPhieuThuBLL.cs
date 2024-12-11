@@ -75,9 +75,9 @@ namespace BLL
         {
             return tkDal.CountKhach(phong);
         }
-        public string GetMAByTenPhong(string phong)
+        public string GetMAByTenPhong(string phong, string makhuvuc)
         {
-            return tkDal.GetMAByTenPhong(phong);
+            return tkDal.GetMAByTenPhong(phong,makhuvuc);
         }
 
 

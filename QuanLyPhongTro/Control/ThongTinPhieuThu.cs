@@ -281,8 +281,6 @@ namespace QuanLyPhongTro.Control
                 // Cập nhật giá trị của CheckBox ngay lập tức
                 dgvDichVu.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
-                // Sau khi giá trị CheckBox được cập nhật, gọi hàm tính tổng tiền
-
             }
         }
 
@@ -298,7 +296,6 @@ namespace QuanLyPhongTro.Control
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Nếu không phải là số hoặc phím Backspace, thì hủy sự kiện
                 e.Handled = true;
             }
         }
@@ -307,7 +304,6 @@ namespace QuanLyPhongTro.Control
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Nếu không phải là số hoặc phím Backspace, thì hủy sự kiện
                 e.Handled = true;
             }
         }
