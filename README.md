@@ -1,4 +1,4 @@
-## Phần mềm Winform C# quản lý thông tin thuê căn hộ ( Admin ) 
+## Phần mềm Winform C# quản lý thông tin thuê căn hộ 
 
 - Web khách hàng : https://github.com/Itatri/Apartment_Management_Web.git
 
