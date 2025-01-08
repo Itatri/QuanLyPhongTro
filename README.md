@@ -2,18 +2,18 @@
 
 - Web khách hàng : https://github.com/Itatri/Apartment_Management_Web.git
 
-### Functions
+### Chức năng
 
 - Quản lí các thông tin cơ bản của hệ thống căn hộ 
 - Tạo hợp đồng thuê nhà , CT01  dành cho căn hộ
 
 
 
-### Tech
+### Công nghệ
 - Microsoft SQL Server (Database SQL) 
 - Windows Forms App .Net Framework
 
-### Model
+### Mô hình
 - Mô hình 3 lớp C# ( GUI , BLL , DAL )
 
 
