@@ -5,7 +5,8 @@
 ### Function
 
 - Manage basic information of the apartment system
-- Create a rental contract, CT01 for apartments
+- Create and sign a room rental contract
+- Create a declaration to change residence information CT01
 
 
 
