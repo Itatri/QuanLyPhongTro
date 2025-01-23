@@ -20,5 +20,8 @@
 ### Demo 
 <details>
   <summary>Login</summary>
-  <img loading="lazy" src="https://github.com/user-attachments/assets/0c414f4a-485f-454a-bdc4-ef0bb11b4b65">
+  <div align="center">
+    <img loading="lazy" src="https://github.com/user-attachments/assets/0c414f4a-485f-454a-bdc4-ef0bb11b4b65">
+  </div>
+  
 </details>
