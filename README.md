@@ -19,4 +19,7 @@
 
 ### Demo 
 ![ManagApart](https://github.com/user-attachments/assets/0c414f4a-485f-454a-bdc4-ef0bb11b4b65)
-
+<details>
+    <summary>Preview</summary>
+    <img loading="lazy" src="https://github.com/user-attachments/assets/0c414f4a-485f-454a-bdc4-ef0bb11b4b65">
+  </details>
