@@ -17,9 +17,9 @@
 ### Model
 - C# 3-layer model (GUI, BLL, DAL)
 
-### Demo 
+## Demo 
 - Login
-<details>
+  <details>
     <summary>Preview</summary>
     <img loading="lazy" src="https://github.com/user-attachments/assets/0c414f4a-485f-454a-bdc4-ef0bb11b4b65">
   </details>
