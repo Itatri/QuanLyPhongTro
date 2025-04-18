@@ -1,0 +1,6 @@
+Lỗi không tìm thấy tệp Microsoft.Extensions.DependencyInjection.Abstractions.dll trong thư mục packages của dự án
+
+1. Xóa thư mục packages
+
+2. Sau khi xóa,  restore package bằng cách mở dự án trong Visual Studio và rebuild hoặc chạy lệnh sau trong Package Manager Console:
+dotnet restore hoặc nuget restore
